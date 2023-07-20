@@ -1,4 +1,3 @@
-import { MealPlan } from '@/types';
 import { toDateTime } from './helpers';
 import { stripe } from './stripe';
 import { createClient } from '@supabase/supabase-js';
@@ -110,7 +109,7 @@ const createOrRetrieveMealPlan = async (mealPlan: MealPlan, owner_id: string, pl
     .from('mealplans')
     .insert([
       {
-        id: 9999,
+        id: "here",
         owner: owner_id,
         name: planName,
         description: planDescription,
@@ -198,5 +197,6 @@ export {
   upsertProductRecord,
   upsertPriceRecord,
   createOrRetrieveCustomer,
-  manageSubscriptionStatusChange
+  manageSubscriptionStatusChange,
+  createOrRetrieveMealPlan
 };
