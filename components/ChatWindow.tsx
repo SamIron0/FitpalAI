@@ -1,3 +1,4 @@
+'use client'
 import { useState, ReactNode, FC, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import React from 'react';
