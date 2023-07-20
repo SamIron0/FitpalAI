@@ -3,10 +3,6 @@ import { useState, ReactNode, FC, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import React from 'react';
 import { GetServerSidePropsContext } from 'next';
-import {
-    createServerSupabaseClient,
-    User
-} from '@supabase/auth-helpers-nextjs';
 
 import LoadingDots from '@/components/ui/LoadingDots';
 import Button from '@/components/ui/Button';
@@ -47,27 +43,7 @@ function PlanCard({ title, footer, children, completed }: Props) {
     );
 } // PlanCard
 
-export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
-    const supabase = createServerSupabaseClient(ctx);
-    const {
-        data: { session }
-    } = await supabase.auth.getSession();
 
-    if (!session)
-        return {
-            redirect: {
-                destination: '/signin',
-                permanent: false
-            }
-        };
-
-    return {
-        props: {
-            initialSession: session,
-            user: session.user
-        }
-    };
-};
 export default function ChatWindow() {
     const [loading, setLoading] = useState(false);
     const [activeSection, setActiveSection] = useState(1);
