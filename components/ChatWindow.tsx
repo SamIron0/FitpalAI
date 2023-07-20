@@ -77,6 +77,7 @@ export default function ChatWindow() {
             console.log(error);
         }
     }
+    
     const handleButtonClick = () => {
         setQueryText('')
         setMessages([...messageList?.concat("U" + queryText) ?? ["U" + queryText]]);

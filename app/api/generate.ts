@@ -18,7 +18,7 @@ const openai = new OpenAIApi(configuration);
 type Intention = {
   response: string,
 }
-const testPlan: MealPlan={
+const testPlan: MealPlan = {
   "day1": {
     breakfast: {
       item: "Oatmeal",
@@ -116,7 +116,7 @@ const testPlan: MealPlan={
     totalCalories: "1150"
   }
 }
-  const handler: NextApiHandler = async (req, res) => {
+const handler: NextApiHandler = async (req, res) => {
   if (req.method === 'GET') {
     const { AIquery, userPlan } = req.query;
     const chatResponseQuery = "You are a helpful fitness AI bot that resides on a backend server, servicing a website's users and your job is to make and edit meal plans. Reply only in json format and remove all newline characters(backslash n) that may exist in the json. If the user's input query listed at the end is asking to make a meal plan,then response: 'make', mealPlan: input the json meal plan you make using the users input request here , message:a response to be displayed to user saying you've created it. else, if the statement is asking to edit a meal plan, then response: edit, mealPlan: the edited mealPlan created using the given mealplan and users instructions, message:some response saying youre done editing it. else if the statement is asking to delete a meal plan, then response:delete, mealPlan:null, message:some response saying you've done it. else if it is just a chat message that is within the context of your job, then response:chat, mealPlan:null, message: A response to the user's chat message. else,response:invalid, mealPlan:null, message: A sentence or 2 about not being able to complete user's request asking user to try a different message. User's input query: " + AIquery + " ,. each day in the mealplan should have: meal: Breakfast/lunch/dinner/snack, item: items contained in meal, for example, Oatmeal with banana and almond milk(only an example of a type of item), calories: e.g 350. use day1,day2,etc instead of monday etc. make meal plans for 5 days unless specified otherwise. also include a total calorie count for each entire day. the following is the interface of a mealplan, follow this to construct the json export interface MealPlan{[day: string]:{breakfast: {item: string;calories: string;};lunch: {item: string;calories: string;};    dinner: {      item: string;      calories: string;    };    snack: {      item: string;      calories: string; };    totalCalories: string;};}";
@@ -137,7 +137,7 @@ const testPlan: MealPlan={
       "chat": "Hello",
       "plan": testPlan,
     }
-    res.status(200).json(response);
+    res.status(200).json({"chat":"hello"});
 
     /*     if (intent === "edit") {
          }
