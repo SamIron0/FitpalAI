@@ -1,19 +1,19 @@
 import { NextApiHandler } from 'next'
-import { Configuration, OpenAIApi } from "openai";
+//import { Configuration, OpenAIApi } from "openai";
 import { useState } from 'react';
 import {
   //createorRetrieveMealPlan
 } from '@/utils/supabase-admin';
 import { Json } from '@/types_db';
 import { Meal, MealPlan } from '@/types';
-import { createServerSupabaseClient } from '@supabase/auth-helpers-nextjs';
+import { createPagesServerClient } from '@supabase/auth-helpers-nextjs';
 // Create a new configuration object
-const configuration = new Configuration({
+/*const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
 });
 const openai = new OpenAIApi(configuration);
 // method to add two numbers
-
+*/
 
 type Intention = {
   response: string,

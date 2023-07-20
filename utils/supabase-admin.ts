@@ -1,3 +1,4 @@
+import { MealPlan } from '@/types';
 import { toDateTime } from './helpers';
 import { stripe } from './stripe';
 import { createClient } from '@supabase/supabase-js';
@@ -104,7 +105,23 @@ const copyBillingDetailsToCustomer = async (
     .eq('id', uuid);
   if (error) throw error;
 };
-
+const createOrRetrieveMealPlan = async (mealPlan: MealPlan, owner_id: string, planName: string, planDescription: string) => {
+  const { data, error: supabaseError } = await supabaseAdmin
+    .from('mealplans')
+    .insert([
+      {
+        id: 9999,
+        owner: owner_id,
+        name: planName,
+        description: planDescription,
+        weeks: 1,
+        plan: mealPlan
+      },
+    ])
+  if (supabaseError) throw supabaseError;
+  console.log(`New mealplan inserted for ${mealPlan.owner}.`);
+  return mealPlan.id;
+};
 const manageSubscriptionStatusChange = async (
   subscriptionId: string,
   customerId: string,

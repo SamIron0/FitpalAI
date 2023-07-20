@@ -31,6 +31,41 @@ export interface Database {
           }
         ]
       }
+      mealplans: {
+        Row: {
+          id: string;
+          owner: string;
+          name: string | null;
+          description: string | null;
+          weeks: number | null;
+          plan: Json | null;
+        };
+        Insert: {
+          id: string;
+          owner: string;
+          name?: string | null;
+          description?: string | null;
+          weeks?: number | null;
+          plan?: Json | null;
+        };
+        Update: {
+          id?: string;
+          owner: string;
+          name?: string | null;
+          description?: string | null;
+          weeks?: number | null;
+          plan?: Json | null;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "mealplans_owner_fkey"
+            columns: ["owner"]
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          }
+        ]
+      };
+
       prices: {
         Row: {
           active: boolean | null
