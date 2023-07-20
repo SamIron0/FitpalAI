@@ -10,11 +10,8 @@ import {
 
 import LoadingDots from '@/components/ui/LoadingDots';
 import Button from '@/components/ui/Button';
-import { useUser } from '@/utils/useUser';
 import { postMealPlan } from '@/utils/helpers';
 import { Meal, MealPlan } from '@/types';
-import robotImage from '../robot-icon.jpg';
-import userImage from '../ai-icon.jpg';
 
 interface Props {
     title: string;
@@ -73,7 +70,6 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
 };
 export default function ChatWindow() {
     const [loading, setLoading] = useState(false);
-    const { isLoading, subscription, userDetails } = useUser();
     const [activeSection, setActiveSection] = useState(1);
     const [responseData, setResponseData] = useState('');
     const [mealPlan, setMealPlan] = useState<MealPlan>();
@@ -127,11 +123,9 @@ export default function ChatWindow() {
                         <div className="px-2 py-2 w-1/10">
                             {message.charAt(0) === "U" ?
                                 <div className="circle-div overflow-hidden">
-                                    <img src={userImage.src} alt="user Image" />
                                 </div>
                                 :
                                 <div className="circle-div overflow-hidden">
-                                    <img src={robotImage.src} alt="ai Image" />
                                 </div>
                             }
                         </div>

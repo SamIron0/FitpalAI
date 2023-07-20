@@ -1,4 +1,5 @@
 import { Database } from '@/types_db';
+import { MealPlan } from 'types';
 
 type Price = Database['public']['Tables']['prices']['Row'];
 
@@ -12,6 +13,31 @@ export const getURL = () => {
   // Make sure to including trailing `/`.
   url = url.charAt(url.length - 1) === '/' ? url : `${url}/`;
   return url;
+};
+
+export const postMealPlan = async ({
+  url,
+  data
+}: {
+  url: string;
+  data?: { mealplan: MealPlan, planName: string, planDescription: string };
+}) => {
+  console.log('posting,', url, data);
+
+  const res: Response = await fetch(url, {
+    method: 'POST',
+    headers: new Headers({ 'Content-Type': 'application/json' }),
+    credentials: 'same-origin',
+    body: JSON.stringify(data)
+  });
+
+  if (!res.ok) {
+    console.log('Error in postData', { url, data, res });
+
+    throw Error(res.statusText);
+  }
+
+  return res.json();
 };
 
 export const postData = async ({
