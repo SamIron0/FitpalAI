@@ -117,7 +117,7 @@ export async function POST(req: Request) {
         uuid:  '',
         email: ''
       });*/
-      return new Response(JSON.stringify("hello"), {
+      return new Response(JSON.stringify(queryText), {
         status: 200
       });
     } catch (err: any) {
