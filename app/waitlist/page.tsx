@@ -1,4 +1,5 @@
 'use client';
+import { Resend } from 'resend';
 
 import { getData } from "@/utils/helpers";
 import Link from "next/link";
@@ -28,10 +29,20 @@ function waitlist() {
         data: { userName, userEmail }
       });
       showMessage();
-
+      sendConfirmationEmail();
     } catch (error) {
       return alert((error as Error)?.message);
     }
+  }
+
+  const sendConfirmationEmail = () => {
+    const resend = new Resend('re_Xj6L7X3q_Mj3PXWYa9NCtFW8PpQUHZChY');
+    resend.emails.send({
+      from: 'onboarding@resend.dev',
+      to: userEmail,
+      subject: 'Hello World',
+      html: '<p>Congrats on sending your <strong>first email</strong>!</p>'
+    });
   }
 
   return (
@@ -45,7 +56,7 @@ function waitlist() {
             <span className="block sm:inline">Joined Waitlist</span>
           </div>
         )}
-        </div>
+      </div>
       <div className="mx-auto py-8 w-full sm:pt-24 pb-6 px-4 sm:px-6 lg:px-8">
         <h2 className="flex text-4xl pb-6 justify-center">Join the Waitlist</h2>
 
