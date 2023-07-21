@@ -6,7 +6,7 @@ import { GetServerSidePropsContext } from 'next';
 
 import LoadingDots from '@/components/ui/LoadingDots';
 import Button from '@/components/ui/Button';
-import { postMealPlan } from '@/utils/helpers';
+import { getData, postMealPlan } from '@/utils/helpers';
 import { Meal, MealPlan } from '@/types';
 
 interface Props {
@@ -59,7 +59,7 @@ export default function ChatWindow() {
     const planDescription = '';
 
     const fetchAIData = async () => {
-        try {
+        /*try {
             setLoading(true);
             const response = await fetch(`/api/generate?AIquery=${queryText}&userPlan=${mealPlan}`);
 
@@ -75,9 +75,26 @@ export default function ChatWindow() {
         }
         catch (error) {
             console.log(error);
-        }
+        }*/
+     //   if (!user) {
+     //       return router.push('/signin');
+     //   }
+     //   if (subscription) {
+     //       return router.push('/account');
+     //   }
+        try {
+            const { data } = await getData({
+                url: '/api/create-checkout-session',
+                data: { queryText }
+            });
+
+         //   const stripe = await getStripe();
+          //  stripe?.redirectToCheckout({ sessionId });
+        } catch (error) {
+            return alert((error as Error)?.message);
+        } 
     }
-    
+
     const handleButtonClick = () => {
         setQueryText('')
         setMessages([...messageList?.concat("U" + queryText) ?? ["U" + queryText]]);
@@ -215,6 +232,12 @@ export default function ChatWindow() {
         //return data;
     };
 
+/*
+    const handleCheckout = async (price: Price) => {
+       // setPriceIdLoading(price.id);
+        
+    };
+*/
     return (
         <section className="bg-black overflow-hidden flex-auto">
             <div className="sm:flex px-4 sm:flex-col sm:align-center">
@@ -266,7 +289,7 @@ export default function ChatWindow() {
                                         <div className="h-12 mb-6">
                                             <LoadingDots />
                                         </div>
-                                        
+
                                     ) : mealPlan ? (
                                         <div className="text-xs ">
                                             <div className="row">
