@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import { useSupabaseClient } from '@supabase/auth-helpers-react';
 
 import Logo from '@/components/icons/Logo';
@@ -12,7 +11,6 @@ import logo from "../../../logo.png";
 import Image from "next/image";
 
 const Navbar = () => {
-  const router = useRouter();
   const supabaseClient = useSupabaseClient();
   const { user } = useUser();
 
