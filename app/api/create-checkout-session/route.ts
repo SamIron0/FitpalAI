@@ -9,7 +9,9 @@ export async function GET(req: Request) {
   if (req.method === 'GET') {
     // 1. Destructure the price and quantity from the POST body
     const { queryText } = await req.json();
-    return new Response(JSON.stringify("hello")), {
+    return new Response(JSON.stringify("hello"), {
+      status: 200
+    });
 
     //    try {
     // 2. Get the user from Supabase auth

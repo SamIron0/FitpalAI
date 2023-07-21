@@ -87,7 +87,9 @@ export default function ChatWindow() {
                 url: '/api/create-checkout-session',
                 data: { queryText }
             });
-
+            if (data != undefined) {
+                setMessages((prevList) => [...prevList, "A" + data]);
+            }
          //   const stripe = await getStripe();
           //  stripe?.redirectToCheckout({ sessionId });
         } catch (error) {
