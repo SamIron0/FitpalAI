@@ -66,7 +66,6 @@ export default function RootLayout({
           >
             {children}
             <Analytics/>
-
           </main>
         </SupabaseProvider>
       </body>
