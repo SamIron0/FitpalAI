@@ -8,10 +8,6 @@
   box-sizing: inherit;
 }
 
-*:focus {
-  @apply outline-none ring-2 ring-pink-500 ring-opacity-50;
-}
-
 html {
   height: 100%;
   box-sizing: border-box;
@@ -28,15 +24,13 @@ body {
   @apply text-white bg-zinc-800 antialiased;
 }
 
+
 body {
   position: relative;
   min-height: 100%;
   margin: 0;
 }
-
-a {
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-}
+jh
 
 .animated {
   -webkit-animation-duration: 1s;
@@ -45,6 +39,33 @@ a {
   animation-duration: 1s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
+}
+.blue-gradient-text {
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(to right, rgb(0, 112, 255), #baffdc);
+}
+.pill-bg { 
+  background-image: linear-gradient(to right, black, rgb(12, 12, 12));
+}
+.blue-bg {
+  background: #2087cc;
+}
+.blue-gradient-bg {
+  background-image: linear-gradient(to right, #2087cc, #58a0cf);
+}
+.green-gradient-bg {
+  background-image: linear-gradient(to right, #23e24c, #87df9a);
+}
+.grey-gradient-text {
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(to right, #989898, #c4c3c3);
+}
+.circle-div {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
 }
 
 .height-screen-helper {
