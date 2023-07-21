@@ -38,14 +38,22 @@ export const metadata = {
     cardImage: meta.cardImage
   }
 };
-
 export default function RootLayout({
   // Layouts must accept a children prop.
   // This will be populated with nested layouts or pages
   children
 }: PropsWithChildren) {
   return (
-    <html lang="en">
+    <>
+      <head>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-39N664CG65"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-39N664CG65');
+        </script>
+      </head>
       <body className="bg-black loading">
         <SupabaseProvider>
           {/* @ts-expect-error */}
@@ -58,6 +66,6 @@ export default function RootLayout({
           </main>
         </SupabaseProvider>
       </body>
-    </html>
+    </>
   );
 }
