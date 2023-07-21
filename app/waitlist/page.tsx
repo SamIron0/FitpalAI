@@ -46,7 +46,7 @@ function waitlist() {
   }
 
   return (
-    <div className='h-full bg-black'>
+    <div className='h-screen bg-black'>
       <div className="mx-auto h-20">
         {showAlert && (
           <div
