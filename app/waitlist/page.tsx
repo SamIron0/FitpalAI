@@ -34,7 +34,6 @@ function waitlist() {
     }
   }
 
-
   return (
     <div className='h-full bg-black'>
       <div className="">
