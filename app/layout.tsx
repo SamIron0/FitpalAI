@@ -54,6 +54,7 @@ export default function RootLayout({
           gtag('js', new Date());
           gtag('config', 'G-39N664CG65');
         </script>
+        
       </head>
       <body className="bg-black loading">
         <SupabaseProvider>
