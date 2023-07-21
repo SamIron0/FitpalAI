@@ -40,10 +40,10 @@ function waitlist() {
 
       {showAlert && (
         <div
-          className="mt-4 border border-t-8 rounded text-gray-700 px-4 py-3 shadow-md relative flex bg-white border-blue-500 text-blue-500"
+          className="mt-4 w-[300px] rounded-md text-gray-700 px-4 py-3 shadow-md relative flex bg-white border-blue-500 text-blue-500"
           role="alert"
         >
-          <span className="block sm:inline">Done!</span>
+          <span className="block sm:inline">Joined Waitlist</span>
         </div>
       )}
 
