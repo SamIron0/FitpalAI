@@ -33,20 +33,18 @@ export interface Database {
       }
       contacts: {
         Row: {
-          id: number;
-          created_at?: string;
+          id: string;
           name: string;
           email: string;
+
         };
         Insert: {
-          id: number;
-          created_at?: string;
+          id: string;
           name: string;
           email: string;
         };
         Update: {
-          id: number;
-          created_at?: string;
+          id: string;
           name: string;
           email: string;
         };
