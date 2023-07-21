@@ -13,6 +13,13 @@ function waitlist() {
   const [isMounted, setIsMounted] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
 
+  const showMessage = () => {
+    setShowAlert(true);
+    setTimeout(() => {
+      setShowAlert(false);
+    }, 2000);
+  }
+
 
   const saveWaitListContact = async (userName: string, userEmail: string) => {
     try {
@@ -20,6 +27,7 @@ function waitlist() {
         url: '/api/create-checkout-session',
         data: { userName, userEmail }
       });
+      showMessage();
 
     } catch (error) {
       return alert((error as Error)?.message);
@@ -30,7 +38,14 @@ function waitlist() {
   return (
     <div className='h-full bg-black'>
 
-
+      {showAlert && (
+        <div
+          className="mt-4 border border-t-8 rounded text-gray-700 px-4 py-3 shadow-md relative flex bg-white border-blue-500 text-blue-500"
+          role="alert"
+        >
+          <span className="block sm:inline">Done!</span>
+        </div>
+      )}
 
       <div className="mx-auto py-8 w-full sm:pt-24 pb-6 px-4 sm:px-6 lg:px-8">
         <h2 className="flex pt-20 text-4xl pb-6 justify-center">Join the Waitlist</h2>
