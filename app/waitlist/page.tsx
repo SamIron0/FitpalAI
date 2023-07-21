@@ -39,7 +39,7 @@ function waitlist() {
       <div className="mx-auto h-20">
         {showAlert && (
           <div
-            className="pt-4 w-[300px] rounded-md text-gray-700 px-4 py-3 shadow-md relative flex bg-white border-blue-500 text-blue-500"
+            className="pt-4 mx-auto w-[220px] rounded-lg text-gray-700 px-4 py-3 shadow-md relative flex bg-white border-blue-500 text-blue-500"
             role="alert"
           >
             <span className="block sm:inline">Joined Waitlist</span>
