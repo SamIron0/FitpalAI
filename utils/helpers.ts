@@ -75,7 +75,7 @@ export const getData = async ({
   console.log('getting,', url, data);
 
   const res = await fetch(url, {
-    method: 'GET',
+    method: 'POST',
     headers: new Headers({ 'Content-Type': 'application/json' }),
     credentials: 'same-origin',
     body: JSON.stringify(data)
