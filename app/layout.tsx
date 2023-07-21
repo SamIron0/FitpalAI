@@ -46,6 +46,16 @@ export default function RootLayout({
 }: PropsWithChildren) {
   return (
     <html lang="en">
+      <head>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-39N664CG65"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-39N664CG65');
+        </script>
+      </head>
       <body className="bg-black loading">
         <SupabaseProvider>
           {/* @ts-expect-error */}
