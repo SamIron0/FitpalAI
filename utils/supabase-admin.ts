@@ -111,7 +111,6 @@ const createOrRetrieveMealPlan = async (mealPlan: MealPlan, owner_id: string, pl
     .insert([
       {
         id: "here",
-        owner: owner_id,
         name: planName,
         description: planDescription,
         weeks: 1,
@@ -119,7 +118,7 @@ const createOrRetrieveMealPlan = async (mealPlan: MealPlan, owner_id: string, pl
       },
     ])
   if (supabaseError) throw supabaseError;
-  console.log(`New mealplan inserted for ${mealPlan.owner}.`);
+  console.log(`New mealplan inserted for}.`);
   return mealPlan.id;
 };
 const manageSubscriptionStatusChange = async (

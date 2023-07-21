@@ -34,7 +34,6 @@ export interface Database {
       mealplans: {
         Row: {
           id: string;
-          owner: string;
           name: string | null;
           description: string | null;
           weeks: number | null;
@@ -42,7 +41,6 @@ export interface Database {
         };
         Insert: {
           id: string;
-          owner: string;
           name?: string | null;
           description?: string | null;
           weeks?: number | null;
@@ -50,7 +48,6 @@ export interface Database {
         };
         Update: {
           id?: string;
-          owner: string;
           name?: string | null;
           description?: string | null;
           weeks?: number | null;
