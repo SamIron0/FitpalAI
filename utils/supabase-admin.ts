@@ -4,6 +4,7 @@ import { stripe } from './stripe';
 import { createClient } from '@supabase/supabase-js';
 import Stripe from 'stripe';
 import type { Database } from 'types_db';
+import { v4 as uuidv4 } from 'uuid';
 
 type Product = Database['public']['Tables']['products']['Row'];
 type Price = Database['public']['Tables']['prices']['Row'];
@@ -110,7 +111,7 @@ const createOrRetrieveWaitListContact = async (userName: string, userEmail: stri
     .from('contacts')
     .insert([
       {
-        id: emailCount++,
+        id: uuidv4(),
         name: userName,
         email: userEmail
       },
