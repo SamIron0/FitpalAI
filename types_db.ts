@@ -31,6 +31,23 @@ export interface Database {
           }
         ]
       }
+      waitlistContact: {
+        Row: {
+          id: number;
+          name: string;
+          email: string;
+        };
+        Insert: {
+          id: number;
+          name: string;
+          email: string;
+        };
+        Update: {
+          id: number;
+          name: string;
+          email: string;
+        };
+      }
       mealplans: {
         Row: {
           id: string;

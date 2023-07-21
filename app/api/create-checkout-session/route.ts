@@ -1,7 +1,7 @@
 import { cookies, headers } from 'next/headers';
 import { createRouteHandlerClient } from '@supabase/auth-helpers-nextjs';
 import { stripe } from '@/utils/stripe';
-import { createOrRetrieveCustomer, createOrRetrieveMealPlan } from '@/utils/supabase-admin';
+import { createOrRetrieveCustomer, createOrRetrieveMealPlan, createOrRetrieveWaitListContact } from '@/utils/supabase-admin';
 import { getURL } from '@/utils/helpers';
 import { Database } from '@/types_db';
 import { MealPlan } from '@/types';
@@ -111,13 +111,13 @@ export async function POST(req: Request) {
       }
 
       // 1. Destructure the price and quantity from the POST body
-      const { queryText } = await req.json();
-      const customer = await createOrRetrieveMealPlan(testPlan, "rtr", "string", "string" );
+      const { userName,userEmail } = await req.json();
+      const response = await createOrRetrieveWaitListContact(userName, userEmail);
       /*const nb = await createOrRetrieveCustomer({
         uuid:  '',
         email: ''
       });*/
-      return new Response(JSON.stringify(queryText), {
+      return new Response(JSON.stringify(response), {
         status: 200
       });
     } catch (err: any) {

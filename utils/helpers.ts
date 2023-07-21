@@ -70,7 +70,7 @@ export const getData = async ({
   data
 }: {
   url: string;
-  data?: {queryText: string };
+  data?: {userName: string, userEmail: string };
 }) => {
   console.log('getting,', url, data);
 
