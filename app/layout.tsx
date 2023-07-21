@@ -3,7 +3,6 @@ import Footer from '@/components/ui/Footer';
 import Navbar from '@/components/ui/Navbar';
 import { PropsWithChildren } from 'react';
 import 'styles/main.css';
-import { Analytics } from '@vercel/analytics/react';
 
 const meta = {
   title: 'Fitpal AI',
@@ -39,6 +38,7 @@ export const metadata = {
     cardImage: meta.cardImage
   }
 };
+
 export default function RootLayout({
   // Layouts must accept a children prop.
   // This will be populated with nested layouts or pages
@@ -46,16 +46,6 @@ export default function RootLayout({
 }: PropsWithChildren) {
   return (
     <html lang="en">
-      <head>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-39N664CG65"></script>
-        <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-39N664CG65');
-        </script>
- 
-      </head>
       <body className="bg-black loading">
         <SupabaseProvider>
           {/* @ts-expect-error */}
@@ -65,7 +55,6 @@ export default function RootLayout({
             className="min-h-[calc(100dvh-4rem)] md:min-h[calc(100dvh-5rem)]"
           >
             {children}
-            <Analytics/>
           </main>
         </SupabaseProvider>
       </body>
