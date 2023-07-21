@@ -47,10 +47,10 @@ function waitlist() {
 
   return (
     <div className='h-screen bg-black'>
-      <div className="flex jusify-center h-20">
+      <div className="flex items-center jusify-center h-20">
         {showAlert && (
           <div
-            className="pt-4 flex justify-center items-center w-[220px] rounded-full h-[35px] text-gray-700 px-4 py-3 shadow-md relative bg-white border-blue-500 text-blue-500"
+            className="flex justify-center items-center w-[220px] rounded-full h-[35px] text-gray-700 px-4 py-3 shadow-md relative bg-white border-blue-500 text-blue-500"
             role="alert"
           >
             <span className="block sm:inline">Joined Waitlist</span>
