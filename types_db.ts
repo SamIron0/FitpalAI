@@ -31,7 +31,7 @@ export interface Database {
           }
         ]
       }
-      waitlistContact: {
+      contacts: {
         Row: {
           id: number;
           name: string;
