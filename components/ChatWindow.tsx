@@ -82,7 +82,7 @@ export default function ChatWindow() {
      //   if (subscription) {
      //       return router.push('/account');
      //   }
-        try {
+        /*try {
             const { data } = await getData({
                 url: '/api/create-checkout-session',
                 data: { queryText }
@@ -94,7 +94,7 @@ export default function ChatWindow() {
           //  stripe?.redirectToCheckout({ sessionId });
         } catch (error) {
             return alert((error as Error)?.message);
-        } 
+        } */
     }
 
     const handleButtonClick = () => {
