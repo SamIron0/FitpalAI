@@ -6,8 +6,8 @@ import Logo from '@/components/icons/Logo';
 import { useUser } from '@/utils/useUser';
 
 import s from './Navbar.module.css';
-import Button from '../Button/Button';
-import { UserMenu } from '@/components/user-menu';
+//import Button from '../Button/Button';
+//import { UserMenu } from '@/components/user-menu';
 import logo from "../../../logo.png";
 import Image from "next/image";
 
@@ -16,7 +16,7 @@ const Navbar = () => {
   const supabaseClient = useSupabaseClient();
   const { user } = useUser();
 
-  function handleButtonClick(): void {
+  function handleButtonClick(): void {//
 
   }
 
