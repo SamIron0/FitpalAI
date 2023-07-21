@@ -36,7 +36,7 @@ function waitlist() {
   }
 
   const sendConfirmationEmail = async() => {
-    const resend = new Resend(process.env.RESEND_API_KEY);
+    const resend = new Resend('re_g7SkyJ36_Ez2eAW4CDDKo9GMBKPWg9Q5e');
     resend.emails.send({
       from: 'onboarding@resend.dev',
       to: userEmail,
@@ -50,7 +50,7 @@ function waitlist() {
       <div className="flex items-center jusify-center h-20">
         {showAlert && (
           <div
-            className="flex justify-center items-center w-[220px] rounded-full h-[35px] text-gray-700 px-4 py-3 shadow-md relative bg-white border-blue-500 text-blue-500"
+            className="flex justify-center items-center w-[220px] rounded-full h-[46px] text-gray-700 px-4 py-3 shadow-md bg-white border-blue-500 text-blue-500"
             role="alert"
           >
             <span className="block sm:inline">Joined Waitlist</span>
