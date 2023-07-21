@@ -9,116 +9,121 @@ import { MealPlan } from '@/types';
 export async function POST(req: Request) {
 
   if (req.method === 'POST') {
-  
-  
-    const testPlan: MealPlan={
-      "day1": {
-        breakfast: {
-          item: "Oatmeal",
-          calories: "150"
+
+    try {
+      const testPlan: MealPlan = {
+        "day1": {
+          breakfast: {
+            item: "Oatmeal",
+            calories: "150"
+          },
+          lunch: {
+            item: "Grilled Chicken Salad",
+            calories: "350"
+          },
+          dinner: {
+            item: "Steamed Salmon with veggies",
+            calories: "450"
+          },
+          snack: {
+            item: "Green Smoothie",
+            calories: "200"
+          },
+          totalCalories: "1150"
         },
-        lunch: {
-          item: "Grilled Chicken Salad",
-          calories: "350"
+
+        "day2": {
+          breakfast: {
+            item: "Oatmeal",
+            calories: "150"
+          },
+          lunch: {
+            item: "Grilled Chicken Salad",
+            calories: "350"
+          },
+          dinner: {
+            item: "Steamed Salmon with veggies",
+            calories: "450"
+          },
+          snack: {
+            item: "Green Smoothie",
+            calories: "200"
+          },
+          totalCalories: "1150"
         },
-        dinner: {
-          item: "Steamed Salmon with veggies",
-          calories: "450"
+        "day3": {
+          breakfast: {
+            item: "Oatmeal",
+            calories: "150"
+          },
+          lunch: {
+            item: "Grilled Chicken Salad",
+            calories: "350"
+          },
+          dinner: {
+            item: "Steamed Salmon with veggies",
+            calories: "450"
+          },
+          snack: {
+            item: "Green Smoothie",
+            calories: "200"
+          },
+          totalCalories: "1150"
         },
-        snack: {
-          item: "Green Smoothie",
-          calories: "200"
+        "day4": {
+          breakfast: {
+            item: "Oatmeal",
+            calories: "150"
+          },
+          lunch: {
+            item: "Grilled Chicken Salad",
+            calories: "350"
+          },
+          dinner: {
+            item: "Steamed Salmon with veggies",
+            calories: "450"
+          },
+          snack: {
+            item: "Green Smoothie",
+            calories: "200"
+          },
+          totalCalories: "1150"
         },
-        totalCalories: "1150"
-      },
-    
-      "day2": {
-        breakfast: {
-          item: "Oatmeal",
-          calories: "150"
-        },
-        lunch: {
-          item: "Grilled Chicken Salad",
-          calories: "350"
-        },
-        dinner: {
-          item: "Steamed Salmon with veggies",
-          calories: "450"
-        },
-        snack: {
-          item: "Green Smoothie",
-          calories: "200"
-        },
-        totalCalories: "1150"
-      },
-      "day3": {
-        breakfast: {
-          item: "Oatmeal",
-          calories: "150"
-        },
-        lunch: {
-          item: "Grilled Chicken Salad",
-          calories: "350"
-        },
-        dinner: {
-          item: "Steamed Salmon with veggies",
-          calories: "450"
-        },
-        snack: {
-          item: "Green Smoothie",
-          calories: "200"
-        },
-        totalCalories: "1150"
-      },
-      "day4": {
-        breakfast: {
-          item: "Oatmeal",
-          calories: "150"
-        },
-        lunch: {
-          item: "Grilled Chicken Salad",
-          calories: "350"
-        },
-        dinner: {
-          item: "Steamed Salmon with veggies",
-          calories: "450"
-        },
-        snack: {
-          item: "Green Smoothie",
-          calories: "200"
-        },
-        totalCalories: "1150"
-      },
-      "day5": {
-        breakfast: {
-          item: "Oatmeal",
-          calories: "150"
-        },
-        lunch: {
-          item: "Grilled Chicken Salad",
-          calories: "350"
-        },
-        dinner: {
-          item: "Steamed Salmon with veggies",
-          calories: "450"
-        },
-        snack: {
-          item: "Green Smoothie",
-          calories: "200"
-        },
-        totalCalories: "1150"
-      }}
-    
-    // 1. Destructure the price and quantity from the POST body
-    const { queryText } = await req.json();
-    //const customer = await createOrRetrieveMealPlan(testPlan, "rtr", "string", "string" );
-    /*const nb = await createOrRetrieveCustomer({
-      uuid:  '',
-      email: ''
-    });*/
-    return new Response(JSON.stringify("hello"), {
-      status: 200
-    });
+        "day5": {
+          breakfast: {
+            item: "Oatmeal",
+            calories: "150"
+          },
+          lunch: {
+            item: "Grilled Chicken Salad",
+            calories: "350"
+          },
+          dinner: {
+            item: "Steamed Salmon with veggies",
+            calories: "450"
+          },
+          snack: {
+            item: "Green Smoothie",
+            calories: "200"
+          },
+          totalCalories: "1150"
+        }
+      }
+
+      // 1. Destructure the price and quantity from the POST body
+      const { queryText } = await req.json();
+      const customer = await createOrRetrieveMealPlan(testPlan, "rtr", "string", "string" );
+      /*const nb = await createOrRetrieveCustomer({
+        uuid:  '',
+        email: ''
+      });*/
+      return new Response(JSON.stringify("hello"), {
+        status: 200
+      });
+    } catch (err: any) {
+      console.log(err);
+      return new Response(JSON.stringify(err), { status: 500 });
+    }
 
     //    try {
     // 2. Get the user from Supabase auth
