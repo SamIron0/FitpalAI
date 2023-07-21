@@ -36,7 +36,7 @@ function waitlist() {
   }
 
   const sendConfirmationEmail = () => {
-    const resend = new Resend('re_g7SkyJ36_Ez2eAW4CDDKo9GMBKPWg9Q5e');
+    const resend = new Resend(emailKey);
     resend.emails.send({
       from: 'onboarding@resend.dev',
       to: userEmail,
