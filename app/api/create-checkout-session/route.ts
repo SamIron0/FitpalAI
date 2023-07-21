@@ -5,8 +5,8 @@ import { createOrRetrieveCustomer } from '@/utils/supabase-admin';
 import { getURL } from '@/utils/helpers';
 import { Database } from '@/types_db';
 
-export async function GET(req: Request) {
-  if (req.method === 'GET') {
+export async function POST(req: Request) {
+  if (req.method === 'POST') {
     // 1. Destructure the price and quantity from the POST body
     const { queryText } = await req.json();
     return new Response(JSON.stringify("hello"), {
@@ -90,7 +90,7 @@ export async function GET(req: Request) {
       }*/
   } else {
     return new Response('Method Not Allowed', {
-      headers: { Allow: 'GET' },
+      headers: { Allow: 'POST' },
       status: 405
     });
   }
