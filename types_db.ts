@@ -33,17 +33,17 @@ export interface Database {
       }
       contacts: {
         Row: {
-          id: number;
+          id: string;
           name: string;
           email: string;
         };
         Insert: {
-          id: number;
+          id: string;
           name: string;
           email: string;
         };
         Update: {
-          id: number;
+          id: string;
           name: string;
           email: string;
         };
