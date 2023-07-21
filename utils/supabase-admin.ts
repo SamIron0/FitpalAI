@@ -110,7 +110,7 @@ const createOrRetrieveWaitListContact = async (userName: string, userEmail: stri
     .from('contacts')
     .insert([
       {
-        id: "test",
+        id: emailCount++,
         name: userName,
         email: userEmail
       },
