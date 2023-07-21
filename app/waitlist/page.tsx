@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 //import Image from "next/image";
 
-const emailKey = process.env.RESEND_KEY;
+//const emailKey = process.env.RESEND_KEY;
 function waitlist() {
   const [userName, setUserName] = useState("");
   const [userEmail, setUserEmail] = useState("");
@@ -36,7 +36,7 @@ function waitlist() {
   }
 
   const sendConfirmationEmail = () => {
-    const resend = new Resend(emailKey);
+    const resend = new Resend('re_g7SkyJ36_Ez2eAW4CDDKo9GMBKPWg9Q5e');
     resend.emails.send({
       from: 'onboarding@resend.dev',
       to: userEmail,
