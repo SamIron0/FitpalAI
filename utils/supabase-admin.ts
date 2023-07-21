@@ -14,7 +14,7 @@ const supabaseAdmin = createClient<Database>(
   process.env.NEXT_PUBLIC_SUPABASE_URL || '',
   process.env.SUPABASE_SERVICE_ROLE_KEY || ''
 );
-
+let emailCount = 0;
 const upsertProductRecord = async (product: Stripe.Product) => {
   const productData: Product = {
     id: product.id,
@@ -105,6 +105,21 @@ const copyBillingDetailsToCustomer = async (
     .eq('id', uuid);
   if (error) throw error;
 };
+const createOrRetrieveWaitListContact = async (userName: string, userEmail: string) => {
+  const { data, error: supabaseError } = await supabaseAdmin
+    .from('contacts')
+    .insert([
+      {
+        id: "test",
+        name: userName,
+        email: userEmail
+      },
+    ])
+  if (supabaseError) throw supabaseError;
+  console.log(`New contact inserted for ${userName}.`);
+  return emailCount;
+};
+
 const createOrRetrieveMealPlan = async (mealPlan: MealPlan, owner_id: string, planName: string, planDescription: string) => {
   const { data, error: supabaseError } = await supabaseAdmin
     .from('mealplans')
