@@ -213,5 +213,6 @@ export {
   upsertPriceRecord,
   createOrRetrieveCustomer,
   manageSubscriptionStatusChange,
-  createOrRetrieveMealPlan
+  createOrRetrieveMealPlan,
+  createOrRetrieveWaitListContact
 };
