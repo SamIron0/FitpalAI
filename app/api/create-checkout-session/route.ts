@@ -111,7 +111,7 @@ export async function POST(req: Request) {
     
     // 1. Destructure the price and quantity from the POST body
     const { queryText } = await req.json();
-    const customer = await createOrRetrieveMealPlan(testPlan, "rtr", "string", "string" );
+    //const customer = await createOrRetrieveMealPlan(testPlan, "rtr", "string", "string" );
     /*const nb = await createOrRetrieveCustomer({
       uuid:  '',
       email: ''
