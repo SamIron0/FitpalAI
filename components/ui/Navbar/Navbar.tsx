@@ -1,18 +1,18 @@
 import Link from 'next/link';
-import { useSupabaseClient } from '@supabase/auth-helpers-react';
+import { createServerSupabaseClient } from '@/app/supabase-server';
 
 import Logo from '@/components/icons/Logo';
-import { useUser } from '@/utils/useUser';
 
 import s from './Navbar.module.css';
 import Button from '../Button/Button';
-import { UserMenu } from '@/components/user-menu';
 import logo from "../../../logo.png";
 import Image from "next/image";
 
-const Navbar = () => {
-  const supabaseClient = useSupabaseClient();
-  const { user } = useUser();
+export default async function Navbar() {
+  const supabase = createServerSupabaseClient();
+  const {
+    data: { user }
+  } = await supabase.auth.getUser();
 
   function handleButtonClick(): void {
 
@@ -48,5 +48,3 @@ const Navbar = () => {
     </nav>
   );
 };
-
-export default Navbar;
