@@ -4,7 +4,6 @@ import { createServerSupabaseClient } from '@/app/supabase-server';
 import Logo from '@/components/icons/Logo';
 
 import s from './Navbar.module.css';
-import Button from '../Button/Button';
 import logo from "../../../logo.png";
 import Image from "next/image";
 
