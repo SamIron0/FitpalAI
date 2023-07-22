@@ -47,7 +47,7 @@ function waitlist() {
 
   return (
     <div className='h-screen bg-black'>
-      <div className="flex items-center jusify-center h-20">
+      <div className="mx-auto h-20">
         {showAlert && (
           <div
             className="flex justify-center items-center w-[220px] rounded-full h-[46px] text-gray-700 px-4 py-3 shadow-md bg-white border-blue-500 text-blue-500"
