@@ -21,7 +21,6 @@ function waitlist() {
     }, 2000);
   }
 
-  
   const saveWaitListContact = async (userName: string, userEmail: string) => {
     try {
       const { data } = await getData({
