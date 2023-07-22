@@ -34,6 +34,7 @@ function waitlist() {
     }
   }
 
+  
   const sendConfirmationEmail = async() => {
     const resend = new Resend('re_g7SkyJ36_Ez2eAW4CDDKo9GMBKPWg9Q5e');
     resend.emails.send({
