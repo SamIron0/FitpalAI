@@ -35,7 +35,7 @@ function waitlist() {
   }
 
   const sendConfirmationEmail = async () => {
-    const resend = new Resend(process.env.RESEND_KEY);
+    const resend = new Resend('re_4LGbbR2i_4R3gRxuh5ieG8xSyVAPZHR1j');
     resend.emails.send({
       from: 'waitlist@fitpalai.com',
       to: userEmail,
