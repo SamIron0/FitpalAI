@@ -3,6 +3,7 @@ import Footer from '@/components/ui/Footer';
 import Navbar from '@/components/ui/Navbar';
 import { PropsWithChildren } from 'react';
 import 'styles/main.css';
+import { Analytics } from '@vercel/analytics/react';
 
 const meta = {
   title: 'Fitpal AI',
@@ -44,16 +45,7 @@ export default function RootLayout({
   children
 }: PropsWithChildren) {
   return (
-    <html lang="en">
-      <head>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-39N664CG65"></script>
-        <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-39N664CG65');
-        </script>
-      </head>
+    <>
       <body className="bg-black loading">
         <SupabaseProvider>
           {/* @ts-expect-error */}
@@ -64,8 +56,9 @@ export default function RootLayout({
           >
             {children}
           </main>
+          <Analytics />
         </SupabaseProvider>
       </body>
-    </html>
+    </>
   );
 }

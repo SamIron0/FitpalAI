@@ -1,11 +1,12 @@
 'use client';
+import { Resend } from 'resend';
 
 import { getData } from "@/utils/helpers";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 //import Image from "next/image";
 
-
+//const emailKey = process.env.RESEND_KEY;
 function waitlist() {
   const [userName, setUserName] = useState("");
   const [userEmail, setUserEmail] = useState("");
@@ -20,7 +21,6 @@ function waitlist() {
     }, 2000);
   }
 
-
   const saveWaitListContact = async (userName: string, userEmail: string) => {
     try {
       const { data } = await getData({
@@ -28,27 +28,37 @@ function waitlist() {
         data: { userName, userEmail }
       });
       showMessage();
-
+      sendConfirmationEmail();
     } catch (error) {
       return alert((error as Error)?.message);
     }
   }
 
+  const sendConfirmationEmail = async () => {
+    const resend = new Resend('re_4LGbbR2i_4R3gRxuh5ieG8xSyVAPZHR1j');
+    resend.emails.send({
+      from: 'waitlist@fitpalai.com',
+      to: userEmail,
+      subject: 'Thank you for joining the fitpal community!',
+      //  html: '<p>Congrats on sending your <strong>first email</strong>!</p> '
+      html: '<body><h1>Welcome to the FitPal Community!</h1>   <p>Hello</p>   <p>Thank you for joining the FitPal community!</p> <p>We are excited to have you on board. Joining our waitlist means you will be one of the first to experience our transformational platform. We are currently working day and night to bring you the best.</p>    <p>Keep an eye on your inbox for more updates on early access, news, and special promotions available exclusively to our waitlist members.</p> <p>Stay hydrated and excited. We promise it will be worth the wait!</p><p>Gratefully,</p><p>samuel<br />FitPalAI Team</p>'
+    });
+  }
 
   return (
-    <div className='h-full bg-black'>
-
-      {showAlert && (
-        <div
-          className="mt-4 w-[300px] rounded-md text-gray-700 px-4 py-3 shadow-md relative flex bg-white border-blue-500 text-blue-500"
-          role="alert"
-        >
-          <span className="block sm:inline">Joined Waitlist</span>
-        </div>
-      )}
-
+    <div className='h-screen bg-black'>
+      <div className="flex items-center jusify-center h-20">
+        {showAlert && (
+          <div
+            className="flex justify-center items-center w-[220px] rounded-full h-[46px] text-gray-700 px-4 py-3 shadow-md bg-white border-blue-500 text-blue-500"
+            role="alert"
+          >
+            <span className="block sm:inline">Joined Waitlist</span>
+          </div>
+        )}
+      </div>
       <div className="mx-auto py-8 w-full sm:pt-24 pb-6 px-4 sm:px-6 lg:px-8">
-        <h2 className="flex pt-20 text-4xl pb-6 justify-center">Join the Waitlist</h2>
+        <h2 className="flex text-4xl pb-6 justify-center">Join the Waitlist</h2>
 
         <form className="flex flex-col w-6/10  items-center">
 
