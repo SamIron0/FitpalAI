@@ -35,9 +35,9 @@ function waitlist() {
   }
 
   const sendConfirmationEmail = async() => {
-    const resend = new Resend('re_g7SkyJ36_Ez2eAW4CDDKo9GMBKPWg9Q5e');
+    const resend = new Resend('re_VgYf2ncK_DyDCHDADwp8vhUpHDzD7PQTd');
     resend.emails.send({
-      from: 'onboarding@resend.dev',
+      from: '',
       to: userEmail,
       subject: 'Hello World',
       html: '<p>Congrats on sending your <strong>first email</strong>!</p>'
