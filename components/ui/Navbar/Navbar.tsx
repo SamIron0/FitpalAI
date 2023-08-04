@@ -36,8 +36,8 @@ export default async function Navbar() {
             <button
               className="w-[87px] flex  justify-center items-center h-[35px] bg-transparent border-[1px] border-blue-500 rounded-md"
             >
-              <Link href="/waitlist" className="active:scale-95 items-center cursor-pointer text-zinc-200 rounded-md p-1 font-medium scale-100 duration-75">
-                Waitlist
+              <Link href="/signin" className="active:scale-95 items-center cursor-pointer text-zinc-200 rounded-md p-1 font-medium scale-100 duration-75">
+                Login
               </Link>
 
             </button>
