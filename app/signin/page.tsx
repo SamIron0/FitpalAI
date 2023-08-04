@@ -9,7 +9,7 @@ export default async function SignIn() {
   const session = await getSession();
 
   if (session) {
-    return redirect('/account');
+    return redirect('https://chat.fitpalai.com');
   }
 
   return (
