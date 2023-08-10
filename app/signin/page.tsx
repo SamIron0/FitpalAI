@@ -7,10 +7,9 @@ import logo from "../../../logo.png";
 
 export default async function SignIn() {
   const session = await getSession();
-
   if (session) {
     const user = session?.user;
-    return redirect(`https://chat.fitpalai.com?user=${encodeURIComponent(JSON.stringify(user))}`);
+    return redirect(`https://chat.fitpalai.com`);
   }
 
   return (
