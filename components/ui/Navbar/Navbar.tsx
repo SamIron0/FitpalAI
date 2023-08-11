@@ -38,7 +38,7 @@ export default async function Navbar() {
               href="/signin"
               className={cn(buttonVariants())}
             >
-              <span className="">Login</span>
+              <span className="">Get Started</span>
             </a>
           </div>
         </div>
