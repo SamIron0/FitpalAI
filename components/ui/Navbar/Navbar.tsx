@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { createServerSupabaseClient } from '@/app/supabase-server';
-
+import { Button, buttonVariants } from '@/components/ui/button'
+import { cn } from '@/lib/utils'
 import Logo from '@/components/icons/Logo';
 
 import s from './Navbar.module.css';
@@ -33,14 +34,12 @@ export default async function Navbar() {
 
 
           <div className="flex flex-1 items-center justify-end space-x-8">
-            <button
-              className="w-[87px] flex  justify-center items-center h-[35px] bg-transparent border-[1px] border-blue-500 rounded-md"
+            <a
+              href="/signin"
+              F className={cn(buttonVariants())}
             >
-              <Link href="/signin" className="active:scale-95 items-center cursor-pointer text-zinc-200 rounded-md p-1 font-medium scale-100 duration-75">
-                Get Started
-              </Link>
-
-            </button>
+              <span className="">Login</span>
+            </a>
           </div>
         </div>
       </div>
