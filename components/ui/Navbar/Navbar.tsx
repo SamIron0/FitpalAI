@@ -36,7 +36,7 @@ export default async function Navbar() {
           <div className="flex flex-1 items-center justify-end space-x-8">
             <a
               href="/signin"
-              F className={cn(buttonVariants())}
+              className={cn(buttonVariants())}
             >
               <span className="">Login</span>
             </a>
