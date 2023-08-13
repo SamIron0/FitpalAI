@@ -1,8 +1,10 @@
+import ManageSubscriptionButton from './ManageSubscriptionButton';
 import {
   getSession,
   getUserDetails,
   getSubscription
 } from '@/app/supabase-server';
+import Button from '@/components/ui/Button';
 import { Database } from '@/types_db';
 import { createServerActionClient } from '@supabase/auth-helpers-nextjs';
 import { revalidatePath } from 'next/cache';
@@ -74,14 +76,38 @@ export default async function Account() {
         </div>
       </div>
       <div className="p-4">
-
+        <Card
+          title="Your Plan"
+          description={
+            subscription
+              ? `You are currently on the ${subscription?.prices?.products?.name} plan.`
+              : 'You are not currently subscribed to any plan.'
+          }
+          footer={<ManageSubscriptionButton session={session} />}
+        >
+          <div className="mt-8 mb-4 text-xl font-semibold">
+            {subscription ? (
+              `${subscriptionPrice}/${subscription?.prices?.interval}`
+            ) : (
+              <Link href="/">Choose your plan</Link>
+            )}
+          </div>
+        </Card>
         <Card
           title="Your Name"
           description="Please enter your full name, or a display name you are comfortable with."
           footer={
             <div className="flex flex-col items-start justify-between sm:flex-row sm:items-center">
               <p className="pb-4 sm:pb-0">64 characters maximum</p>
-
+              <Button
+                variant="slim"
+                type="submit"
+                form="nameForm"
+                disabled={true}
+              >
+                {/* WARNING - In Next.js 13.4.x server actions are in alpha and should not be used in production code! */}
+                Update Name
+              </Button>
             </div>
           }
         >
@@ -106,7 +132,15 @@ export default async function Account() {
               <p className="pb-4 sm:pb-0">
                 We will email you to verify the change.
               </p>
-
+              <Button
+                variant="slim"
+                type="submit"
+                form="emailForm"
+                disabled={true}
+              >
+                {/* WARNING - In Next.js 13.4.x server actions are in alpha and should not be used in production code! */}
+                Update Email
+              </Button>
             </div>
           }
         >
@@ -143,7 +177,7 @@ function Card({ title, description, footer, children }: Props) {
         <p className="text-zinc-300">{description}</p>
         {children}
       </div>
-
+      
     </div>
   );
 }
