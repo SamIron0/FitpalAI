@@ -5,7 +5,6 @@ import React from 'react';
 import { GetServerSidePropsContext } from 'next';
 
 import LoadingDots from '@/components/ui/LoadingDots';
-import Button from '@/components/ui/Button';
 import { getData, postMealPlan } from '@/utils/helpers';
 import { Meal, MealPlan } from '@/types';
 
