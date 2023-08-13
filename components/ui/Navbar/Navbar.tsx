@@ -30,7 +30,7 @@ export default async function Navbar() {
         <div className="flex justify-between align-center flex-row py-4 md:py-6 relative">
           <div className="flex flex-1 items-center">
             <Link href="/" >
-              <Image className="h-[50px] md:h-[60px]" src={logo.src} alt="logo" />
+              <Image className="h-[40px] md:h-[50px]" src={logo.src} alt="logo" />
             </Link>
 
           </div>
