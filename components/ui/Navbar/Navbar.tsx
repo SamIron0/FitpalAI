@@ -10,7 +10,7 @@ import logo from "../../../logo.png";
 import Image from "next/image";
 
 export default async function Navbar() {
-  const router = useRouter();
+  //const router = useRouter();
 
   //const supabase = createServerSupabaseClient();
   //const {
