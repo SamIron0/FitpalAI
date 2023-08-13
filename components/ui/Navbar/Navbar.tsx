@@ -39,9 +39,7 @@ export default async function Navbar() {
               boxShadow: "0 1px 1px #0c192714, 0 1px 3px #0c192724",
             }}
           >
-            <a href="/signin">
               Get Started
-            </a>
           </button>
         </div>
       </div>
