@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { createServerSupabaseClient } from '@/app/supabase-server';
-import { Button, buttonVariants } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 import Logo from '@/components/icons/Logo';
 
