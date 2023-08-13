@@ -2,7 +2,7 @@
 import { useRouter } from 'next/navigation';
 
 import Link from 'next/link';
-import { createServerSupabaseClient } from '@/app/supabase-server';
+//import { createServerSupabaseClient } from '@/app/supabase-server';
 
 import Logo from '@/components/icons/Logo';
 
@@ -13,10 +13,10 @@ import Image from "next/image";
 export default async function Navbar() {
   const router = useRouter();
 
-  const supabase = createServerSupabaseClient();
-  const {
-    data: { user }
-  } = await supabase.auth.getUser();
+  //const supabase = createServerSupabaseClient();
+  //const {
+    //data: { user }
+  //} = await supabase.auth.getUser();
 
   function handleButtonClick(): void {
 
