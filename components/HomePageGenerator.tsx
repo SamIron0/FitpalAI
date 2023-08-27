@@ -545,7 +545,7 @@ export default function HomePageGenerator() {
 
                 {showSecondBox === 'true'
                     ?
-                    <div className="">
+                    <div className="mt-6">
                         {primaryIsLoading ? (
                             <>
                                 <GhostCard />
