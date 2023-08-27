@@ -8,6 +8,9 @@ import Logo from '@/components/icons/Logo';
 import s from './Navbar.module.css';
 import logo from "../../../logo.png";
 import Image from "next/image";
+import {
+  getSession,
+} from '@/app/supabase-server';
 
 export default async function Navbar() {
   //const router = useRouter();
@@ -15,7 +18,9 @@ export default async function Navbar() {
   //const supabase = createServerSupabaseClient();
   //const {
   //data: { user }
-  //} = await supabase.auth.getUser();
+  //} = await supabase.auth.getUser(); 
+   const session = await getSession();
+
 
   function handleButtonClick(): void {
 
