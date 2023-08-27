@@ -27,14 +27,14 @@ export default async function Navbar() {
   }
 
   return (
-    <header className="sticky top-0 z-50 flex items-center justify-between w-full h-16 px-4 border-b shrink-0 bg-gradient-to-b from-background/10 via-background/50 to-background/80 backdrop-blur-xl">
+    <header className="sticky top-0 z-50 flex items-center justify-between w-full h-16 pl-2 border-#232325 border-b shrink-0 bg-gradient-to-b from-background/10 via-background/50 to-background/80 backdrop-blur-xl">
       <div className="flex items-center">
         <Link href="/" rel="nofollow">
           <Image className="h-[32px] pl-4 sm:pl-6 md:h-[42px]" src={logo.src} alt="logo" />
         </Link>
 
       </div>
-      <div className="flex items-center pr-4 sm:pr-6 justify-end space-x-2">
+      <div className="flex items-center pr-2 sm:pr-6 justify-end space-x-2">
         
           <Link
             href="/signin"
