@@ -63,9 +63,9 @@ export default async function PricingPage() {
 
         </div>
       </div>
-
-      <HomePageGenerator />
-
+      <div className='p-3 bg-black pb-12 mt-6'>
+        <HomePageGenerator />
+      </div>
     </div>
   );
 }
