@@ -10,7 +10,10 @@ module.exports = {
   ],
   theme: {
     extend: {
-      fontFamily: {
+      colors: {
+        background: 'hsl(var(--background))',
+      },
+        fontFamily: {
         sans: ['var(--font-sans)', ...fontFamily.sans]
       }
     }
