@@ -30,7 +30,6 @@ export async function fetcher<JSON = any>(
       throw new Error('An unexpected error occurred')
     }
   }
-
   return res.json()
 }
 
