@@ -36,9 +36,7 @@ export default async function Navbar() {
 
       </div>
       <div className="flex items-center pr-4 sm:pr-6 justify-end space-x-2">
-        {session?.user ? (
-          <UserMenu user={session.user} />
-        ) : (
+        
           <Link
             href="/signin"
             className="group flex rounded-md px-4 py-2 text-[13px] font-semibold transition-all items-center justify-center bg-[#f5f7f9] text-[#1E2B3A] no-underline active:scale-95 scale-100 duration-75"
@@ -48,7 +46,7 @@ export default async function Navbar() {
           >
             Get Started
           </Link>
-        )}
+     
 
       </div>
     </header >
