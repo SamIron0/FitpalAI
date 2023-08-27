@@ -1,4 +1,5 @@
 import { useRouter } from 'next/navigation';
+import { getSession } from '@/app/supabase-server';
 
 import Link from 'next/link';
 //import { createServerSupabaseClient } from '@/app/supabase-server';
@@ -10,12 +11,7 @@ import logo from "../../../logo.png";
 import Image from "next/image";
 
 export default async function Navbar() {
-  //const router = useRouter();
-
-  //const supabase = createServerSupabaseClient();
-  //const {
-  //data: { user }
-  //} = await supabase.auth.getUser();
+  const session = await getSession();
 
   function handleButtonClick(): void {
 
