@@ -357,7 +357,7 @@ export default function HomePageGenerator() {
     <div>
 
       <div className="mx-auto max-w-2xl px-1">
-        <div className="rounded-lg border bg-background mt-6 p-6">
+        <div className="rounded-lg border bg-black mt-6 p-6">
           <div className=" relative  w-full flex justify-center h-[45px]  bg-zinc-900 rounded-lg p-0.5 flex sm:mt-4 border border-zinc-800">
             <button
               onClick={() => setGenerationType('mealplan')}
