@@ -63,7 +63,7 @@ export default async function PricingPage() {
 
         </div>
       </div>
-      <div className='p-3 bg-[#18181A] pb-6 mt-6'>
+      <div className='p-3 bg-black pb-6 mt-6'>
         <HomePageGenerator />
       </div>
     </div>
