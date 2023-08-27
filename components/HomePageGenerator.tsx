@@ -544,276 +544,19 @@ export default function HomePageGenerator() {
                 </div>
 
                 {showSecondBox === 'true'
-                    ? <div className="rounded-lg border mt-6 bg-background p-2">
-
-                        <div className='h-3/20 flex pb-2 w-full'>
-                            <div className='flex justify-start w-1/2'>
-                                <button
-                                    onClick={(e: React.MouseEvent<HTMLButtonElement>) => fetchData(1).then(() => {
-                                        // Execute logic after generate Promise resolves
-                                    }).catch(error => {
-                                        // Handle error here
-                                    })} className="group w-[375px] h-[39px] mt-6 sm:w-[220px] rounded-md px-4 py-2 text-[13px] font-semibold transition-all flex items-center justify-center bg-[#f5f7f9] text-[#1E2B3A] no-underline active:scale-95 scale-100 duration-75"
-                                    style={{
-                                        boxShadow: "0 1px 1px #0c192714, 0 1px 3px #0c192724",
-                                    }}
-                                >
-                                    <span className="text-md"> Generate </span>
-                                    <svg
-                                        className="w-5 h-5"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                        <path
-                                            d="M13.75 6.75L19.25 12L13.75 17.25"
-                                            stroke="#1E2B3A"
-                                            strokeWidth="1.5"
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                        />
-                                        <path
-                                            d="M19 12H4.75"
-                                            stroke="#1E2B3A"
-                                            strokeWidth="1.5"
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                        />
-                                    </svg>
-                                </button>
-
-
-
-                            </div>
-                            <div className='flex justify-end w-1/2'>
-
-                            </div>
-                        </div>
-                        <div className="">
-                            {primaryIsLoading ? (
+                    ?
+                    <div className="">
+                        {primaryIsLoading ? (
+                            <>
+                                <GhostCard />
+                                <GhostCard />
+                                <GhostCard />
+                                <GhostCard />
+                                <GhostCard />
+                            </>
+                        ) : secondaryIsLoading ? (
+                            primaryMealPlan ? (
                                 <>
-                                    <GhostCard />
-                                    <GhostCard />
-                                    <GhostCard />
-                                    <GhostCard />
-                                    <GhostCard />
-                                </>
-                            ) : secondaryIsLoading ? (
-                                primaryMealPlan ? (
-                                    <>
-                                        <PlanCard
-                                            title="Breakfast"
-                                            footer={
-                                                <div>
-                                                    {primaryMealPlan.day1 ? (
-                                                        <div className="flex items-start justify-between flex-col ">
-                                                            {"Calories: " + primaryMealPlan.day1.totalCalories}
-                                                        </div>
-                                                    ) : <div> </div>}
-                                                </div>
-                                            }
-                                            completed={true}
-                                        >
-                                            <div className="mt-1  w-full mb-1">
-                                                {primaryMealPlan.day1 ? (
-                                                    <div className="text-xs ">
-                                                        <div className="row">
-                                                            {breakfast.breakfast.title}
-                                                        </div>
-
-                                                    </div>
-                                                ) : (
-                                                    <p></p>
-                                                )}
-                                            </div>
-                                        </PlanCard>
-                                        <PlanCard
-                                            title="Lunch"
-                                            footer={
-                                                <div>
-                                                    {primaryMealPlan.day2 ? (
-                                                        <div className="flex items-start justify-between flex-col ">
-                                                            {"Calories: " + primaryMealPlan.day2.totalCalories}
-                                                        </div>
-                                                    ) : <div> </div>}
-                                                </div>
-                                            }
-                                            completed={true}
-                                        >
-                                            <div className="mt-1  w-full mb-1">
-                                                {primaryMealPlan.day2 ? (
-                                                    <div className="text-xs ">
-                                                        <div className="row">
-                                                            {"Breakfast: "} {primaryMealPlan.day2.breakfast.item}
-                                                        </div>
-                                                        <hr />
-                                                        <div className="row">
-                                                            {"Lunch: "} {primaryMealPlan.day2.lunch.item}
-                                                        </div>
-                                                        <hr />
-                                                        <div className="row">
-                                                            {"Dinner: "} {primaryMealPlan.day2.dinner.item}
-                                                        </div>
-                                                        <hr />
-                                                        <div className="row">
-                                                            {"Snack: "} {primaryMealPlan.day2.snack.item}
-                                                        </div>
-                                                    </div>
-                                                ) : (
-                                                    <p></p>
-                                                )}
-                                            </div>
-                                        </PlanCard>
-                                        <GhostCard />
-                                        <GhostCard />
-                                        <GhostCard />
-                                    </>
-                                ) : <></>
-                            ) : tertiaryIsLoading ? (
-                                secondaryMealPlan && primaryMealPlan ? (
-                                    <>
-                                        <PlanCard
-                                            title="Breakfast"
-                                            footer={
-                                                <div>
-                                                    {primaryMealPlan.day1 ? (
-                                                        <div className="flex items-start justify-between flex-col ">
-                                                            {"Calories: " + primaryMealPlan.day1.totalCalories}
-                                                        </div>
-                                                    ) : <div> </div>}
-                                                </div>
-                                            }
-                                            completed={true}
-                                        >
-                                            <div className="mt-1  w-full mb-1">
-                                                {primaryMealPlan.day1 ? (
-                                                    <div className="text-xs ">
-                                                        <div className="row">
-                                                            {breakfast.breakfast.title}
-                                                        </div>
-
-                                                    </div>
-                                                ) : (
-                                                    <p></p>
-                                                )}
-                                            </div>
-                                        </PlanCard>
-                                        <PlanCard
-                                            title="Lunch"
-                                            footer={
-                                                <div>
-                                                    {primaryMealPlan.day2 ? (
-                                                        <div className="flex items-start justify-between flex-col ">
-                                                            {"Calories: " + primaryMealPlan.day2.totalCalories}
-                                                        </div>
-                                                    ) : <div> </div>}
-                                                </div>
-                                            }
-                                            completed={true}
-                                        >
-                                            <div className="mt-1  w-full mb-1">
-                                                {primaryMealPlan.day2 ? (
-                                                    <div className="text-xs ">
-                                                        <div className="row">
-                                                            {"Breakfast: "} {primaryMealPlan.day2.breakfast.item}
-                                                        </div>
-                                                        <hr />
-                                                        <div className="row">
-                                                            {"Lunch: "} {primaryMealPlan.day2.lunch.item}
-                                                        </div>
-                                                        <hr />
-                                                        <div className="row">
-                                                            {"Dinner: "} {primaryMealPlan.day2.dinner.item}
-                                                        </div>
-                                                        <hr />
-                                                        <div className="row">
-                                                            {"Snack: "} {primaryMealPlan.day2.snack.item}
-                                                        </div>
-                                                    </div>
-                                                ) : (
-                                                    <p></p>
-                                                )}
-                                            </div>
-                                        </PlanCard>
-                                        <PlanCard
-                                            title="Dinner"
-                                            footer={
-                                                <div>
-                                                    {secondaryMealPlan.day3 ? (
-                                                        <div className="flex items-start justify-between flex-col ">
-                                                            {"Calories: " + secondaryMealPlan.day3.totalCalories}
-                                                        </div>
-                                                    ) : <div> </div>}
-                                                </div>
-                                            }
-                                            completed={true}
-                                        >
-                                            <div className="mt-1  w-full mb-1">
-                                                {secondaryMealPlan.day3 ? (
-                                                    <div className="text-xs ">
-                                                        <div className="row">
-                                                            {"Breakfast: "} {secondaryMealPlan.day3.breakfast.item}
-                                                        </div>
-                                                        <hr />
-                                                        <div className="row">
-                                                            {"Lunch: "} {secondaryMealPlan.day3.lunch.item}
-                                                        </div>
-                                                        <hr />
-                                                        <div className="row">
-                                                            {"Dinner: "} {secondaryMealPlan.day3.dinner.item}
-                                                        </div>
-                                                        <hr />
-                                                        <div className="row">
-                                                            {"Snack: "} {secondaryMealPlan.day3.snack.item}
-                                                        </div>
-                                                    </div>
-                                                ) : (
-                                                    <p></p>
-                                                )}
-                                            </div>
-                                        </PlanCard>
-                                        <PlanCard
-                                            title="Snack"
-                                            footer={
-                                                <div>
-                                                    {secondaryMealPlan.day4 ? (
-                                                        <div className="flex items-start justify-between flex-col ">
-                                                            {"Calories: " + secondaryMealPlan.day4.totalCalories}
-                                                        </div>
-                                                    ) : <div> </div>}
-                                                </div>
-                                            }
-                                            completed={true}
-                                        >
-                                            <div className="mt-1  w-full mb-1">
-                                                {secondaryMealPlan.day4 ? (
-                                                    <div className="text-xs ">
-                                                        <div className="row">
-                                                            {"Breakfast: "} {secondaryMealPlan.day4.breakfast.item}
-                                                        </div>
-                                                        <hr />
-                                                        <div className="row">
-                                                            {"Lunch: "} {secondaryMealPlan.day4.lunch.item}
-                                                        </div>
-                                                        <hr />
-                                                        <div className="row">
-                                                            {"Dinner: "} {secondaryMealPlan.day4.dinner.item}
-                                                        </div>
-                                                        <hr />
-                                                        <div className="row">
-                                                            {"Snack: "} {secondaryMealPlan.day4.snack.item}
-                                                        </div>
-                                                    </div>
-                                                ) : (
-                                                    <p></p>
-                                                )}
-                                            </div>
-                                        </PlanCard>
-                                        <GhostCard />
-                                    </>
-                                ) : <></>
-                            ) : primaryMealPlan && tertiaryMealPlan && secondaryMealPlan ?
-                                (<>
                                     <PlanCard
                                         title="Breakfast"
                                         footer={
@@ -833,11 +576,82 @@ export default function HomePageGenerator() {
                                                     <div className="row">
                                                         {breakfast.breakfast.title}
                                                     </div>
+
                                                 </div>
                                             ) : (
                                                 <p></p>
                                             )}
+                                        </div>
+                                    </PlanCard>
+                                    <PlanCard
+                                        title="Lunch"
+                                        footer={
+                                            <div>
+                                                {primaryMealPlan.day2 ? (
+                                                    <div className="flex items-start justify-between flex-col ">
+                                                        {"Calories: " + primaryMealPlan.day2.totalCalories}
+                                                    </div>
+                                                ) : <div> </div>}
+                                            </div>
+                                        }
+                                        completed={true}
+                                    >
+                                        <div className="mt-1  w-full mb-1">
+                                            {primaryMealPlan.day2 ? (
+                                                <div className="text-xs ">
+                                                    <div className="row">
+                                                        {"Breakfast: "} {primaryMealPlan.day2.breakfast.item}
+                                                    </div>
+                                                    <hr />
+                                                    <div className="row">
+                                                        {"Lunch: "} {primaryMealPlan.day2.lunch.item}
+                                                    </div>
+                                                    <hr />
+                                                    <div className="row">
+                                                        {"Dinner: "} {primaryMealPlan.day2.dinner.item}
+                                                    </div>
+                                                    <hr />
+                                                    <div className="row">
+                                                        {"Snack: "} {primaryMealPlan.day2.snack.item}
+                                                    </div>
+                                                </div>
+                                            ) : (
+                                                <p></p>
+                                            )}
+                                        </div>
+                                    </PlanCard>
+                                    <GhostCard />
+                                    <GhostCard />
+                                    <GhostCard />
+                                </>
+                            ) : <></>
+                        ) : tertiaryIsLoading ? (
+                            secondaryMealPlan && primaryMealPlan ? (
+                                <>
+                                    <PlanCard
+                                        title="Breakfast"
+                                        footer={
+                                            <div>
+                                                {primaryMealPlan.day1 ? (
+                                                    <div className="flex items-start justify-between flex-col ">
+                                                        {"Calories: " + primaryMealPlan.day1.totalCalories}
+                                                    </div>
+                                                ) : <div> </div>}
+                                            </div>
+                                        }
+                                        completed={true}
+                                    >
+                                        <div className="mt-1  w-full mb-1">
+                                            {primaryMealPlan.day1 ? (
+                                                <div className="text-xs ">
+                                                    <div className="row">
+                                                        {breakfast.breakfast.title}
+                                                    </div>
 
+                                                </div>
+                                            ) : (
+                                                <p></p>
+                                            )}
                                         </div>
                                     </PlanCard>
                                     <PlanCard
@@ -931,7 +745,7 @@ export default function HomePageGenerator() {
                                             {secondaryMealPlan.day4 ? (
                                                 <div className="text-xs ">
                                                     <div className="row">
-                                                        {"Breakfast: Scrambled eggs"}
+                                                        {"Breakfast: "} {secondaryMealPlan.day4.breakfast.item}
                                                     </div>
                                                     <hr />
                                                     <div className="row">
@@ -951,48 +765,190 @@ export default function HomePageGenerator() {
                                             )}
                                         </div>
                                     </PlanCard>
-                                    <PlanCard
-                                        title="Friday"
-                                        footer={
-                                            <div>
-                                                {tertiaryMealPlan.day5 ? (
-                                                    <div className="flex items-start justify-between flex-col ">
-                                                        {"Calories: " + tertiaryMealPlan.day5.totalCalories}
-                                                    </div>
-                                                ) : <div> </div>}
-                                            </div>
-                                        }
-                                        completed={true}
-                                    >
-                                        <div className="mt-1  w-full mb-1">
-                                            {tertiaryMealPlan.day5 ? (
-                                                <div className="text-xs ">
-                                                    <div className="row">
-                                                        {"Breakfast: "} {tertiaryMealPlan.day5.breakfast.item}
-                                                    </div>
-                                                    <hr />
-                                                    <div className="row">
-                                                        {"Lunch: "} {tertiaryMealPlan.day5.lunch.item}
-                                                    </div>
-                                                    <hr />
-                                                    <div className="row">
-                                                        {"Dinner: "} {tertiaryMealPlan.day5.dinner.item}
-                                                    </div>
-                                                    <hr />
-                                                    <div className="row">
-                                                        {"Snack: "} {tertiaryMealPlan.day5.snack.item}
-                                                    </div>
-                                                </div>
-                                            ) : (
-                                                <p></p>
-                                            )}
-                                        </div>
-                                    </PlanCard>
+                                    <GhostCard />
                                 </>
-                                ) : <></>
-                            }
-                        </div>
+                            ) : <></>
+                        ) : primaryMealPlan && tertiaryMealPlan && secondaryMealPlan ?
+                            (<>
+                                <PlanCard
+                                    title="Breakfast"
+                                    footer={
+                                        <div>
+                                            {primaryMealPlan.day1 ? (
+                                                <div className="flex items-start justify-between flex-col ">
+                                                    {"Calories: " + primaryMealPlan.day1.totalCalories}
+                                                </div>
+                                            ) : <div> </div>}
+                                        </div>
+                                    }
+                                    completed={true}
+                                >
+                                    <div className="mt-1  w-full mb-1">
+                                        {primaryMealPlan.day1 ? (
+                                            <div className="text-xs ">
+                                                <div className="row">
+                                                    {breakfast.breakfast.title}
+                                                </div>
+                                            </div>
+                                        ) : (
+                                            <p></p>
+                                        )}
+
+                                    </div>
+                                </PlanCard>
+                                <PlanCard
+                                    title="Lunch"
+                                    footer={
+                                        <div>
+                                            {primaryMealPlan.day2 ? (
+                                                <div className="flex items-start justify-between flex-col ">
+                                                    {"Calories: " + primaryMealPlan.day2.totalCalories}
+                                                </div>
+                                            ) : <div> </div>}
+                                        </div>
+                                    }
+                                    completed={true}
+                                >
+                                    <div className="mt-1  w-full mb-1">
+                                        {primaryMealPlan.day2 ? (
+                                            <div className="text-xs ">
+                                                <div className="row">
+                                                    {"Breakfast: "} {primaryMealPlan.day2.breakfast.item}
+                                                </div>
+                                                <hr />
+                                                <div className="row">
+                                                    {"Lunch: "} {primaryMealPlan.day2.lunch.item}
+                                                </div>
+                                                <hr />
+                                                <div className="row">
+                                                    {"Dinner: "} {primaryMealPlan.day2.dinner.item}
+                                                </div>
+                                                <hr />
+                                                <div className="row">
+                                                    {"Snack: "} {primaryMealPlan.day2.snack.item}
+                                                </div>
+                                            </div>
+                                        ) : (
+                                            <p></p>
+                                        )}
+                                    </div>
+                                </PlanCard>
+                                <PlanCard
+                                    title="Dinner"
+                                    footer={
+                                        <div>
+                                            {secondaryMealPlan.day3 ? (
+                                                <div className="flex items-start justify-between flex-col ">
+                                                    {"Calories: " + secondaryMealPlan.day3.totalCalories}
+                                                </div>
+                                            ) : <div> </div>}
+                                        </div>
+                                    }
+                                    completed={true}
+                                >
+                                    <div className="mt-1  w-full mb-1">
+                                        {secondaryMealPlan.day3 ? (
+                                            <div className="text-xs ">
+                                                <div className="row">
+                                                    {"Breakfast: "} {secondaryMealPlan.day3.breakfast.item}
+                                                </div>
+                                                <hr />
+                                                <div className="row">
+                                                    {"Lunch: "} {secondaryMealPlan.day3.lunch.item}
+                                                </div>
+                                                <hr />
+                                                <div className="row">
+                                                    {"Dinner: "} {secondaryMealPlan.day3.dinner.item}
+                                                </div>
+                                                <hr />
+                                                <div className="row">
+                                                    {"Snack: "} {secondaryMealPlan.day3.snack.item}
+                                                </div>
+                                            </div>
+                                        ) : (
+                                            <p></p>
+                                        )}
+                                    </div>
+                                </PlanCard>
+                                <PlanCard
+                                    title="Snack"
+                                    footer={
+                                        <div>
+                                            {secondaryMealPlan.day4 ? (
+                                                <div className="flex items-start justify-between flex-col ">
+                                                    {"Calories: " + secondaryMealPlan.day4.totalCalories}
+                                                </div>
+                                            ) : <div> </div>}
+                                        </div>
+                                    }
+                                    completed={true}
+                                >
+                                    <div className="mt-1  w-full mb-1">
+                                        {secondaryMealPlan.day4 ? (
+                                            <div className="text-xs ">
+                                                <div className="row">
+                                                    {"Breakfast: Scrambled eggs"}
+                                                </div>
+                                                <hr />
+                                                <div className="row">
+                                                    {"Lunch: "} {secondaryMealPlan.day4.lunch.item}
+                                                </div>
+                                                <hr />
+                                                <div className="row">
+                                                    {"Dinner: "} {secondaryMealPlan.day4.dinner.item}
+                                                </div>
+                                                <hr />
+                                                <div className="row">
+                                                    {"Snack: "} {secondaryMealPlan.day4.snack.item}
+                                                </div>
+                                            </div>
+                                        ) : (
+                                            <p></p>
+                                        )}
+                                    </div>
+                                </PlanCard>
+                                <PlanCard
+                                    title="Friday"
+                                    footer={
+                                        <div>
+                                            {tertiaryMealPlan.day5 ? (
+                                                <div className="flex items-start justify-between flex-col ">
+                                                    {"Calories: " + tertiaryMealPlan.day5.totalCalories}
+                                                </div>
+                                            ) : <div> </div>}
+                                        </div>
+                                    }
+                                    completed={true}
+                                >
+                                    <div className="mt-1  w-full mb-1">
+                                        {tertiaryMealPlan.day5 ? (
+                                            <div className="text-xs ">
+                                                <div className="row">
+                                                    {"Breakfast: "} {tertiaryMealPlan.day5.breakfast.item}
+                                                </div>
+                                                <hr />
+                                                <div className="row">
+                                                    {"Lunch: "} {tertiaryMealPlan.day5.lunch.item}
+                                                </div>
+                                                <hr />
+                                                <div className="row">
+                                                    {"Dinner: "} {tertiaryMealPlan.day5.dinner.item}
+                                                </div>
+                                                <hr />
+                                                <div className="row">
+                                                    {"Snack: "} {tertiaryMealPlan.day5.snack.item}
+                                                </div>
+                                            </div>
+                                        ) : (
+                                            <p></p>
+                                        )}
+                                    </div>
+                                </PlanCard>
+                            </>
+                            ) : <></>
+                        }
                     </div>
+
                     : <></>
                 }
             </div>
