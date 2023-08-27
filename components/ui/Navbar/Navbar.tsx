@@ -22,33 +22,30 @@ export default async function Navbar() {
   }
 
   return (
-    <nav className={s.root}>
-      <a href="#skip" className="sr-only focus:not-sr-only">
-        Skip to content
-      </a>
-      <div className="mx-auto max-w-6xl px-6">
-        <div className="flex justify-between align-center flex-row py-4 md:py-6 relative">
-          <div className="flex flex-1 items-center">
-            <Link href="/" >
-              <Image className="h-[40px] md:h-[50px]" src={logo.src} alt="logo" />
-            </Link>
-
-          </div>
 
 
-          <div className="flex flex-1 items-center justify-end space-x-8">
-            <Link
-              href="/signin"
-              className="group flex rounded-md px-4 py-2 text-[13px] font-semibold transition-all items-center justify-center bg-[#f5f7f9] text-[#1E2B3A] no-underline active:scale-95 scale-100 duration-75"
-              style={{
-                boxShadow: "0 1px 1px #0c192714, 0 1px 3px #0c192724",
-              }}
-            >
-              Get Started
-            </Link>
-          </div>
-        </div>
+
+    <header className="sticky top-0 z-50 flex items-center justify-between w-full h-16 px-4 border-b shrink-0 bg-gradient-to-b from-background/10 via-background/50 to-background/80 backdrop-blur-xl">
+      <div className="flex items-center">
+        <Link href="/" rel="nofollow">
+          <Image className="h-[32px] pl-4 sm:pl-6 md:h-[42px]" src={logo.src} alt="logo" />
+        </Link>
+
       </div>
-    </nav >
+      <div className="flex items-center pr-4 sm:pr-6 justify-end space-x-2">
+        {session?.user ? (
+          <UserMenu user={session.user} />
+        ) : (
+          <a
+            href="/signin"
+            target="_blank"
+            className={cn(buttonVariants())}
+          >
+            <span className="">Login</span>
+          </a>
+        )}
+
+      </div>
+    </header >
   );
 };
