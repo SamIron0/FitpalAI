@@ -6,6 +6,7 @@ import {
 } from '@/app/supabase-server';
 import Link from 'next/link';
 import ChatWindow from '../components/ChatWindow';
+import HomePageGenerator from '../components/HomePageGenerator';
 import mealIcon from '../meal-icon.png';
 
 export default async function PricingPage() {
@@ -43,12 +44,12 @@ export default async function PricingPage() {
 
               <div className="h-1/2 relative ">
                 <p className="pl-6 text-white absolute bottom-0">
-                  Introducing Fitpal
+                  Introducing Fitpal Planner
                 </p>
               </div>
               <div className="h-1/2 relative">
                 <p className=" pl-6 absolute top-0 text-gray-600">
-                  Click to join the waitlist
+                  Create account to customize
                 </p>
               </div>
             </div>
@@ -62,6 +63,9 @@ export default async function PricingPage() {
 
         </div>
       </div>
+
+      <HomePageGenerator />
+
     </div>
   );
 }

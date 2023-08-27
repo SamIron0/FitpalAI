@@ -1,4 +1,4 @@
-'use clent';
+'use client';
 import { ReactNode, useState, useEffect } from 'react';
 import Textarea from 'react-textarea-autosize'
 import { cn } from '@/lib/utils'
@@ -252,7 +252,7 @@ const saveMealPlan = async (mealplan: MealPlan | undefined) => {
 };
 
 
-export function EmptyScreen() {
+export default function HomePageGenerator() {
   const [secondaryMealPlan, setSecondaryMealPlan] = useState<MealPlan>();
   const [tertiaryMealPlan, setTertiaryMealPlan] = useState<MealPlan>();
   const [mealPlan, setMealPlan] = useState<MealPlan>();
