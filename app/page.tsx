@@ -31,7 +31,7 @@ export default async function PricingPage() {
         </div>
       </div>
 
-      <div className="bg-black pb-12 px-8">
+      <div className="bg-black pb-6 px-8">
         <div className="rounded-full pill-bg flex items-center border w-md h-20 border-gray-600 max-w-md mx-auto ">
           <Link
             href="/waitlist"
@@ -63,7 +63,7 @@ export default async function PricingPage() {
 
         </div>
       </div>
-      <div className='p-3 bg-black pb-12 mt-6'>
+      <div className='p-3 bg-[#18181A] pb-6 mt-6'>
         <HomePageGenerator />
       </div>
     </div>
