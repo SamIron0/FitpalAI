@@ -193,7 +193,7 @@ function PlanCard({ title, footer, children, completed }: Props) {
 
 function GhostCard() {
   return (
-    <div role="status" className="w-full p-4 mb-6 space-y-4 h-[250px] border border-gray-200 divide-y divide-gray-200 rounded shadow animate-pulse dark:divide-gray-700 md:p-6 dark:border-gray-700">
+    <div role="status" className="w-full p-4 mb-6 space-y-4 h-[250px] border border-[#232325] bg-[#0D0D0E] divide-y divide-gray-200 rounded shadow animate-pulse dark:divide-gray-700 md:p-6 dark:border-gray-700">
       <div className="flex items-center justify-between">
         <div>
           <div className="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5"></div>
