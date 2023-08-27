@@ -399,7 +399,7 @@ export default function HomePageGenerator() {
                     <input
                       value={calories}
                       onChange={(e) => setCalories(e.target.value)}
-                      className=" px-2 ml-6 bg-transparent border-[1px] border-gray-200 sm:h-[35px] h-[35px] text-md  sm:w-[320px] w-[220px] rounded-md "
+                      className=" px-2 ml-6 bg-transparent border-[1px] border-[#232325] sm:h-[35px] h-[35px] text-md  sm:w-[320px] w-[220px] rounded-md "
                       placeholder="Calories" />
                   </div>
                 </div>
@@ -407,7 +407,7 @@ export default function HomePageGenerator() {
                   <div className="relative flex items-center inline-flex">
                     <p className="text-md"> in </p>
 
-                    <select className=" ml-6 px-2 bg-transparent border-[1px] border-gray-200  text-md sm:w-[320px] w-[220px] h-[35px] rounded-md">
+                    <select className=" ml-6 px-2 bg-transparent border-[1px] border-[#232325]  text-md sm:w-[320px] w-[220px] h-[35px] rounded-md">
                       <option value="1">1 meal</option>
                       <option value="2">2 meals</option>
                       <option value="3">3 meals</option>
@@ -421,7 +421,7 @@ export default function HomePageGenerator() {
                     <textarea
                       value={ingredients}
                       onChange={(e) => setIngredients(e.target.value)}
-                      className=" px-2 ml-6 bg-transparent border-[1px] border-gray-200 sm:h-[35px] h-[35px] text-md  sm:w-[320px] w-[220px] rounded-md "
+                      className=" px-2 ml-6 bg-transparent border-[1px] border-[#232325] sm:h-[35px] h-[35px] text-md  sm:w-[320px] w-[220px] rounded-md "
                       placeholder="Ingredients"
                       rows={3}
                     />
@@ -478,7 +478,7 @@ export default function HomePageGenerator() {
                     <input
                       value={calories}
                       onChange={(e) => setCalories(e.target.value)}
-                      className=" px-2 ml-6 bg-transparent border-[1px] border-gray-200 sm:h-[35px] h-[35px] text-md  sm:w-[320px] w-[220px] rounded-md "
+                      className=" px-2 ml-6 bg-transparent border-[1px] border-[#232325] sm:h-[35px] h-[35px] text-md  sm:w-[320px] w-[220px] rounded-md "
                       placeholder="Calories" />
                   </div>
                 </div>
@@ -486,7 +486,7 @@ export default function HomePageGenerator() {
                   <div className="relative flex items-center inline-flex">
                     <p className="text-md"> in </p>
 
-                    <select className=" ml-6 px-2 bg-transparent border-[1px] border-gray-200  text-md sm:w-[320px] w-[220px] h-[35px] rounded-md">
+                    <select className=" ml-6 px-2 bg-transparent border-[1px] border-[#232325] text-md sm:w-[320px] w-[220px] h-[35px] rounded-md">
                       <option value="1">1 course</option>
                       <option value="2">2 courses</option>
                       <option value="3">3 courses</option>
@@ -500,7 +500,7 @@ export default function HomePageGenerator() {
                     <textarea
                       value={ingredients}
                       onChange={(e) => setIngredients(e.target.value)}
-                      className=" px-2 ml-6 bg-transparent border-[1px] border-gray-200 sm:h-[35px] h-[35px] text-md  sm:w-[320px] w-[220px] rounded-md "
+                      className=" px-2 ml-6 bg-transparent border-[1px] border-[#232325] sm:h-[35px] h-[35px] text-md  sm:w-[320px] w-[220px] rounded-md "
                       placeholder="Ingredients"
                       rows={3}
                     />
