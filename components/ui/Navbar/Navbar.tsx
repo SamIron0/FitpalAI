@@ -41,7 +41,7 @@ export default async function Navbar() {
             target="_blank"
             className={cn(buttonVariants())}
           >
-            <span className="">Login</span>
+            <span className="">Get Started</span>
           </a>
         )}
 
