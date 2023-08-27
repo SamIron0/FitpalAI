@@ -4,6 +4,7 @@ import Link from 'next/link';
 //import { createServerSupabaseClient } from '@/app/supabase-server';
 
 import Logo from '@/components/icons/Logo';
+import { UserMenu } from '@/components/user-menu'
 
 import s from './Navbar.module.css';
 import logo from "../../../logo.png";
