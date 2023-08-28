@@ -245,7 +245,7 @@ export default function HomePageGenerator() {
     const [primaryMealPlan, setPrimaryMealPlan] = useState<MealPlan>();
     const [breakfastIsLoading, setBreakfastIsLoading] = useState(false)
     const [lunchIsLoading, setLunchIsLoading] = useState(false)
-    const [dinnerfastIsLoading, setDinnerIsLoading] = useState(false)
+    const [dinnerIsLoading, setDinnerIsLoading] = useState(false)
     const [snack1IsLoading, setSnack1IsLoading] = useState(false)
     const [snack2IsLoading, setSnack2IsLoading] = useState(false)
 
