@@ -271,7 +271,7 @@ export default function HomePageGenerator() {
             console.log("hurray")
             try {
                 // get the number of meals
-                if (numOfMeals === 1) {
+                if (numOfMeals === "1") {
                     const response = await fetch(`/api/generate?number=${0}&userLocation=${region}&mealCount=${numOfMeals}&calorieCount=${calories}&ingredients=${ingredients}`);
                 }
             } catch {
