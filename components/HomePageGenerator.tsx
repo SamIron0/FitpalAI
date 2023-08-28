@@ -255,7 +255,7 @@ export default function HomePageGenerator() {
     const [tertiaryIsLoading, setTertiaryIsLoading] = useState(false)
     const [calories, setCalories] = useState("")
     const [ingredients, setIngredients] = useState("")
-    const [numOfMeals, setNumOfMeals] = useState()
+    const [numOfMeals, setNumOfMeals] = useState(1)
     const [generationType, setGenerationType] = useState('create')
 
     const [showSecondBox, setShowSecondBox] = useState('false')
@@ -266,12 +266,13 @@ export default function HomePageGenerator() {
         setSelectedMeal(event.target.value);
     };
     const fetchData = async (sectionNumber: string | number) => {
-        console.log(numOfMeals)
+        console.log("meals:" + numOfMeals)
         if (generationType == 'create') {
+            console.log("hurray")
             try {
                 // get the number of meals
-                if (numOfMeals == '1 meal') {
-                    const response = await fetch(`/api/generate?number=${0}&userLocation=${region}&mealCount=${numOfMeals}&calorieCount=${calories}&userLocation=${region}`);
+                if (numOfMeals === 1) {
+                    const response = await fetfch(`/api/generate?number=${0}&userLocation=${region}&mealCount=${numOfMeals}&calorieCount=${calories}&userLocation=${region}`);
                 }
             } catch {
 
@@ -400,8 +401,7 @@ export default function HomePageGenerator() {
                                         <p className="text-md"> in </p>
 
                                         <select
-                                            value={selectedMeal}
-                                            onChange={handleMealChange}
+                                            onChange={e => setNumOfMeals(e.target.value)}
                                             className=" ml-6 px-2 bg-transparent border-[1px] border-gray-200  text-md sm:w-[320px] w-[220px] h-[35px] rounded-md">
                                             <option value="1">1 meal</option>
                                             <option value="2">2 meals</option>
