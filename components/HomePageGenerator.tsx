@@ -248,6 +248,7 @@ export default function HomePageGenerator() {
     const [dinnerIsLoading, setDinnerIsLoading] = useState(false)
     const [snack1IsLoading, setSnack1IsLoading] = useState(false)
     const [snack2IsLoading, setSnack2IsLoading] = useState(false)
+    const [snack3IsLoading, setSnack3IsLoading] = useState(false)
 
     const [breakfast, setBreakfast] = useState<Meal>(testMeal);
     const [lunch, setLunch] = useState<Meal>(testMeal);
@@ -264,74 +265,128 @@ export default function HomePageGenerator() {
     const [ingredients, setIngredients] = useState("")
     const [numOfMeals, setNumOfMeals] = useState("1")
     const [generationType, setGenerationType] = useState('create')
+    const [allergies, setAllergies] = useState('')
 
     const [showSecondBox, setShowSecondBox] = useState('false')
     const [recipeLoading, setRecipeLoading] = useState('false')
     const [selectedMeal, setSelectedMeal] = useState("1");
+    const [calorieData, setCalorieData] = useState("");
 
     const handleMealChange = (event: any) => {
         setSelectedMeal(event.target.value);
     };
-    const fetchData = async (sectionNumber: string | number) => {
+
+    const getBreakfast = () => {
+        let breakfastResponse = await fetch(`/api/generateBreakfast?calories=${calorieData}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
+        const breakfastData = await response.json();
+        setBreakfast(breakfastData.plan);
+        setBreakfastIsLoading(false);
+    }
+    const getLunch = () => {
+        let lunchResponse = await fetch(`/api/generateLunch?calories=${calorieData}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
+        const lunchData = await response.json();
+        setLunch(lunchData.plan);
+        setLunchIsLoading(false);
+    }
+    const getDinner = () => {
+        let dinnerResponse = await fetch(`/api/generateDinner?calories=${calorieData}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
+        const dinnerData = await response.json();
+        setDinner(dinnerData.plan);
+        setDinnerIsLoading(false);
+    }
+    const getSnack = (snackNumber: any) => {
+        let lunchResponse = await fetch(`/api/generateSnack?calories=${calorieData}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
+        const snackData = await response.json();
+        if (snackNumber === 1) {
+            setSnack1(snackData.plan);
+            setSnack1Loading(false);
+
+        }
+        if (snackNumber === 2) {
+            setSnack1(snackData.plan);
+            setSnack2Loading(false);
+
+        }
+        if (snackNumber === 3) {
+            setSnack1(snackData.plan);
+            setSnack3Loading(false);
+
+        }
+    }
+
+    const fetchData = async () => {
         console.log("meals:" + numOfMeals)
         if (generationType == 'create') {
-            //console.log("hurray")
-            setBreakfastIsLoading(true);
-            setLunchIsLoading(true);
-            //setDinnerIsLoading(true);
-            setSnack1IsLoading(true);
-            setSnack2IsLoading(true);
 
-            try {
-                // get dinner only
-                if (numOfMeals === "1") {
-                    const response = await fetch(`/api/generate?number=${1}&userLocation=${region}&mealCount=${numOfMeals}&calorieCount=${calories}&ingredients=${ingredients}`);
-                }
-                // breakfast dinner
-                else if(numOfMeals === "2"){
-
-                } //breakfast lunch and dinner
-                else if(numOfMeals === "3"){
-
-                }
-                //
-                else if(numOfMeals === "4"){
-
-                }
-                else if(numOfMeals === "5"){
-
-                }
-                
-            } catch {
-
+            // if user entered a calorie count
+            if (calories != "") {
+                let breakDown = await fetch(`/api/getCalorieBreakDown?totalCalories=${calories}&numOfMeals=${numOfMeals}`);
+                setCalorieData(await breakDown.json());
             }
-        }
-        //console.log(region); // Now this will show the updated value of region
-        setPrimaryIsLoading(true);
-        setSecondaryIsLoading(true);
-        setTertiaryIsLoading(true);
-        try {
-            // setLoading(true);
-            let response = await fetch(`/api/generate?number=${sectionNumber}&userLocation=${region}`);
-            const primaryData = await response.json();
-            setPrimaryMealPlan(primaryData.plan);
-            setPrimaryIsLoading(false);
+            try {
+                if (numOfMeals == 1) {
+                    setDinnerIsLoading(true);
+                }
 
-            sectionNumber = "2";
-            response = await fetch(`/api/generate?number=${sectionNumber}&userLocation=${region}`);
-            const secondaryData = await response.json();
-            setSecondaryMealPlan(secondaryData.plan);
-            setSecondaryIsLoading(false);
+                if (numOfMeals == 2) {
+                    setLunchIsLoading(true);
+                    setDinnerIsLoading(true);
+                    Promise.all([getLunch(), getDinner()])
+                        .catch((error) => {
+                            console.error('Error:', error);
+                        });
+                }
 
-            sectionNumber = "3";
-            response = await fetch(`/api/generate?number=${sectionNumber}&userLocation=${region}`);
-            const tertiaryData = await response.json();
-            setTertiaryMealPlan(tertiaryData.plan);
-            setTertiaryIsLoading(false);
+                if (numOfMeals == 3) {
+                    setBreakfastIsLoading(true);
+                    setLunchIsLoading(true);
+                    setDinnerIsLoading(true);
+                    Promise.all([getBreakfast(), getLunch(), getDinner()])
+                        .catch((error) => {
+                            console.error('Error:', error);
+                        });
+                }
+
+                if (numOfMeals == 4) {
+                    setBreakfastIsLoading(true);
+                    setLunchIsLoading(true);
+                    setDinnerIsLoading(true);
+                    setSnack1IsLoading(true);
+                    Promise.all([getBreakfast(), getLunch(), getDinner(), getSnack(1)])
+                        .catch((error) => {
+                            console.error('Error:', error);
+                        });
+                }
+
+                if (numOfMeals == 5) {
+                    setBreakfastIsLoading(true);
+                    setLunchIsLoading(true);
+                    setDinnerIsLoƒading(true);
+                    setSnack1IsLoading(true);
+                    setSnack2IsLoading(true);
+                    Promise.all([getBreakfast(), getLunch(), getDinner(), getSnack(1), getSnack(2)])
+                        .catch((error) => {
+                            console.error('Error:', error);
+                        });
+                }
 
 
-        } catch (error) {
-            console.log(error);
+                if (numOfMeals == 6) {
+                    setBreakfastIsLoading(true);
+                    setLunchIsLoading(true);
+                    setDinnerIsLoading(true);
+                    setSnack1IsLoading(true);
+                    setSnack2IsLoading(true);
+                    Promise.all([getBreakfast(), getLunch(), getDinner(), getSnack(1), getSnack(2), getSnack(3)])
+                        .catch((error) => {
+                            console.error('Error:', error);
+                        });
+                }
+
+
+            } catch {
+                console.log(error);
+            }
         }
     };
 
@@ -407,7 +462,7 @@ export default function HomePageGenerator() {
                             onSubmit={(e) => {
                                 e.preventDefault();
                                 setShowSecondBox('true')
-                                fetchData(1)
+                                fetchData()
                                     .catch(error => {
                                         // Handle error here
                                     })
@@ -435,6 +490,8 @@ export default function HomePageGenerator() {
                                             <option value="2">2 meals</option>
                                             <option value="3">3 meals</option>
                                             <option value="4">4 meals</option>
+                                            <option value="5">5 meals</option>
+                                            <option value="6">6 meals</option>
                                         </select>
                                     </div>
                                 </div>
@@ -487,8 +544,7 @@ export default function HomePageGenerator() {
                             onSubmit={(e) => {
                                 e.preventDefault();
                                 setShowSecondBox('true')
-                                fetchData(1)
-
+                                fetchData()
                                     .catch(error => {
                                         // Handle error here
                                     })
@@ -602,6 +658,13 @@ export default function HomePageGenerator() {
 
                         ) : null}
                         {snack2IsLoading ? (
+
+                            <div>
+                                <GhostCard />
+                            </div>
+
+                        ) : null}
+                        {snack3IsLoading ? (
 
                             <div>
                                 <GhostCard />
