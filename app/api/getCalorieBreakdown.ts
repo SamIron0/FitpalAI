@@ -39,7 +39,7 @@ const handler: NextApiHandler = async (req, res) => {
             "breakfast": 0,
             "lunch": 0,
             "dinner": 0,
-            "snack": 0,
+            "snack1": 0,
         }
     }`
     } else if (numOfMeals === 5) {
@@ -47,20 +47,20 @@ const handler: NextApiHandler = async (req, res) => {
         "breakdown": {
             "breakfast": 0,
             "lunch": 0,
-            "snack": 0,
+            "snack1": 0,
             "dinner": 0,
-            "snack": 0
+            "snack2": 0
         }
     }`
     } else if (numOfMeals === 6) {
         breakDownjson = `{
         "breakdown": {
             "breakfast": 0,
-            "snack": 0,
+            "snack1": 0,
             "lunch": 0,
-            "snack": 0,
+            "snack2": 0,
             "dinner": 0,
-            "snack": 0,
+            "snack3": 0,
         }
     }`
     }

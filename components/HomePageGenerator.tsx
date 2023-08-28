@@ -277,37 +277,40 @@ export default function HomePageGenerator() {
     };
 
     const getBreakfast = async () => {
-        let breakfastResponse = await fetch(`/api/generateBreakfast?calories=${calorieData}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
+        let breakfastResponse = await fetch(`/api/generateBreakfast?calories=${calorieData.breakDown.breakfast}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
         const breakfastData = await response.json();
         setBreakfast(breakfastData.plan);
         setBreakfastIsLoading(false);
     }
     const getLunch = async () => {
-        let lunchResponse = await fetch(`/api/generateLunch?calories=${calorieData}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
+        let lunchResponse = await fetch(`/api/generateLunch?calories=${calorieData.breakDown.lunch}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
         const lunchData = await response.json();
         setLunch(lunchData.plan);
         setLunchIsLoading(false);
     }
     const getDinner = async () => {
-        let dinnerResponse = await fetch(`/api/generateDinner?calories=${calorieData}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
+        let dinnerResponse = await fetch(`/api/generateDinner?calories=${calorieData.breakDown.dinner}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
         const dinnerData = await response.json();
         setDinner(dinnerData.plan);
         setDinnerIsLoading(false);
     }
     const getSnack = async (snackNumber: any) => {
-        let lunchResponse = await fetch(`/api/generateSnack?calories=${calorieData}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
-        const snackData = await response.json();
         if (snackNumber === 1) {
+            let lunchResponse = await fetch(`/api/generateSnack?calories=${calorieData.breakDown.snack1}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
+            const snackData = await response.json();
             setSnack1(snackData.plan);
             setSnack1Loading(false);
-
         }
         if (snackNumber === 2) {
+            let lunchResponse = await fetch(`/api/generateSnack?calories=${calorieData.breakDown.snack2}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
+            const snackData = await response.json();
             setSnack1(snackData.plan);
             setSnack2Loading(false);
 
         }
         if (snackNumber === 3) {
+            let lunchResponse = await fetch(`/api/generateSnack?calories=${calorieData.breakDown.snack3}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
+            const snackData = await response.json();
             setSnack1(snackData.plan);
             setSnack3Loading(false);
 
