@@ -42,7 +42,7 @@ interface MealPlan {
     };
 }
 interface Meal {
-    [mealType: string]: { // breakfast, lunch, ...
+    [mealType: string]: {
         title: string;
         ingredients: string;
         instructions: string;
@@ -250,7 +250,7 @@ export default function HomePageGenerator() {
     const [snack2IsLoading, setSnack2IsLoading] = useState(false)
     const [snack3IsLoading, setSnack3IsLoading] = useState(false)
 
-    const [breakfast, setBreakfast] = useState<Meal>(testMeal);
+    const [breakfast, setBreakfast] = useState<Meal>(null);
     const [lunch, setLunch] = useState<Meal>(testMeal);
     const [dinner, setDinner] = useState<Meal>(testMeal);
     const [snack1, setSnack1] = useState<Meal>(testMeal);
@@ -638,7 +638,21 @@ export default function HomePageGenerator() {
                                 <GhostCard />
                             </div>
 
+                        ) : breakfast ? (
+                            <PlanCard
+                                title="Breakfast"
+                                footer={
+                                    <div className="flex items-start justify-between flex-col ">
+                                        {breakfast.meal.calories}
+                                    </div>
 
+                                }
+                                completed={true}
+                            >
+                                <div className="mt-1  w-full mb-1">
+                                    {breakfast.meal.title}
+                                </div>
+                            </PlanCard>
                         ) : null}
                         {lunchIsLoading ? (
 
