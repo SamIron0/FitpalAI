@@ -375,7 +375,7 @@ export default function HomePageGenerator() {
 
                     {generationType === 'mealplan'
                         ? <form
-                            onStubmit={(e) => {
+                            onSubmit={(e) => {
                                 e.preventDefault();
                                 setShowSecondBox('true')
                                 fetchData(1)
