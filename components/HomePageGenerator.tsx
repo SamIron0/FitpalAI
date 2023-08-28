@@ -406,7 +406,7 @@ export default function HomePageGenerator() {
                                             <option value="1">1 meal</option>
                                             <option value="2">2 meals</option>
                                             <option value="3">3 meals</option>
-                                            <option value="3">4 meals</option>
+                                            <option value="4">4 meals</option>
                                         </select>
                                     </div>
                                 </div>
@@ -546,13 +546,11 @@ export default function HomePageGenerator() {
                                 (
                                     <div>
                                         <GhostCard />
-                                        <GhostCard />
                                     </div>
                                 ) :
                                 numOfMeals == "2" ?
                                     (
                                         <div>
-                                            <GhostCard />
                                             <GhostCard />
                                             <GhostCard />
                                         </div>
