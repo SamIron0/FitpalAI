@@ -280,12 +280,12 @@ export default function HomePageGenerator() {
             lunchIsLoading('true');
             dinnerIsLoading('true');
             snack1IsLoading('true');
-            snnack2IsLoading('true');
+            snack2IsLoading('true');
 
             try {
                 // get the number of meals
                 if (numOfMeals === "1") {
-                    const response = await fetch(`/api/generate?number=${0}&userLocation=${region}&mealCount=${numOfMeals}&calorieCount=${calories}&ingredients=${ingredients}`);
+                    const response = await fetch(`/api/generate?number=${1}&userLocation=${region}&mealCount=${numOfMeals}&calorieCount=${calories}&ingredients=${ingredients}`);
                 }
             } catch {
 
