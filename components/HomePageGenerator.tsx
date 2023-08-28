@@ -266,12 +266,12 @@ export default function HomePageGenerator() {
         setSelectedMeal(event.target.value);
     };
     const fetchData = async (sectionNumber: string | number) => {
-
+        console.log(numOfMeals)
         if (generationType == 'create') {
             try {
                 // get the number of meals
                 if (numOfMeals == '1 meal') {
-                    const response = await fetch(`/api/generate?number=${0}&userLocation=${region}`);
+                    const response = await fetch(`/api/generate?number=${0}&userLocation=${region}&mealCount=${numOfMeals}&calorieCount=${calories}&userLocation=${region}`);
                 }
             } catch {
 
