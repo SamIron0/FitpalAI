@@ -255,7 +255,7 @@ export default function HomePageGenerator() {
     const [tertiaryIsLoading, setTertiaryIsLoading] = useState(false)
     const [calories, setCalories] = useState("")
     const [ingredients, setIngredients] = useState("")
-    const [numOfMeals, setNumOfMeals] = useState(1)
+    const [numOfMeals, setNumOfMeals] = useState("1")
     const [generationType, setGenerationType] = useState('create')
 
     const [showSecondBox, setShowSecondBox] = useState('false')
@@ -272,7 +272,7 @@ export default function HomePageGenerator() {
             try {
                 // get the number of meals
                 if (numOfMeals === 1) {
-                    const response = await fetch(`/api/generate?number=${0}&userLocation=${region}&mealCount=${numOfMeals}&calorieCount=${calories}&ingredients=${region}`);
+                    const response = await fetch(`/api/generate?number=${0}&userLocation=${region}&mealCount=${numOfMeals}&calorieCount=${calories}&ingredients=${ingredients}`);
                 }
             } catch {
 
