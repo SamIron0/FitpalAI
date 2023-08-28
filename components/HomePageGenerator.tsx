@@ -174,14 +174,14 @@ function PlanCard({ title, footer, children, completed }: Props) {
     return (
         <div className={`w-full mb-6 h-[250px] p-0.5 rounded-md flex-shrink-0 flex-grow-0 ${bgColor}`}>
             <div className="bg-black  h-full w-full  rounded-md m-auto">
-                <div className='w-full h-full overflow-hidden p-4 flex flex-col rounded-md  '>
-                    <div className=" flex-1 overflow-y-scroll h-17/20pt55g ">
+                <div className='w-full h-full p-4 flex flex-col rounded-md  '>
+                    <div className=" flex-1 justify-left w-8.5/10 h-17/20pt55g ">
                         <h1 className="text-l font-medium">{title}</h1>
                         <div className="" >
                             {children}
                         </div>
                     </div>
-                    <div className="h-3/20 border-zinc-700 bg-zinc-900 p-2 text-zinc-500 rounded-b-md">
+                    <div className="h-3/20 justify-right border-zinc-700 p-2 text-zinc-500 rounded-b-md">
                         {footer}
                     </div>
                 </div>
