@@ -276,11 +276,11 @@ export default function HomePageGenerator() {
         console.log("meals:" + numOfMeals)
         if (generationType == 'create') {
             //console.log("hurray")
-            setBreakfastIsLoading('true');
-            setLunchIsLoading('true');
-            //setDinnerIsLoading('true');
-            setSnack1IsLoading('true');
-            setSnack2IsLoading('true');
+            setBreakfastIsLoading(true);
+            setLunchIsLoading(true);
+            //setDinnerIsLoading(true);
+            setSnack1IsLoading(true);
+            setSnack2IsLoading(true);
 
             try {
                 // get dinner only
