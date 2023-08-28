@@ -201,7 +201,7 @@ function GhostCard() {
                 </div>
                 <div className="h-2.5 bg-gray-300 rounded-full dark:bg-gray-700 w-12"></div>
             </div>
-            
+
         </div>
     );
 
@@ -256,16 +256,23 @@ export default function HomePageGenerator() {
     const [calories, setCalories] = useState("")
     const [ingredients, setIngredients] = useState("")
     const [numOfMeals, setNumOfMeals] = useState()
-    const [generationType, setGenerationType] = useState('mealplan')
+    const [generationType, setGenerationType] = useState('create')
 
     const [showSecondBox, setShowSecondBox] = useState('false')
     const [recipeLoading, setRecipeLoading] = useState('false')
+    const [selectedMeal, setSelectedMeal] = useState("1");
 
+    const handleMealChange = (event) => {
+        setSelectedMeal(event.target.value);
+    };
     const fetchData = async (sectionNumber: string | number) => {
 
-        if (generationType == 'recipe') {
+        if (generationType == 'create') {
             try {
-                let response = await fetch(`/api/generate?number=${0}&userLocation=${region}`);
+
+                // get the number of meals
+                if (numOfMeals == '1 meal')
+                    let response = await fetch(`/api/generate?number=${0}&userLocation=${region}`);
 
             } catch {
 
@@ -393,7 +400,10 @@ export default function HomePageGenerator() {
                                     <div className="relative flex items-center inline-flex">
                                         <p className="text-md"> in </p>
 
-                                        <select className=" ml-6 px-2 bg-transparent border-[1px] border-[#232325]  text-md sm:w-[320px] w-[220px] h-[35px] rounded-md">
+                                        <select
+                                            value={selectedMeal}
+                                            onChange={handleMealChange}
+                                            className=" ml-6 px-2 bg-transparent border-[1px] border-gray-200  text-md sm:w-[320px] w-[220px] h-[35px] rounded-md">
                                             <option value="1">1 meal</option>
                                             <option value="2">2 meals</option>
                                             <option value="3">3 meals</option>
