@@ -1,6 +1,6 @@
 
 import { NextApiHandler } from 'next'
-import  OpenAIApi from "openai"
+import  OpenAI from "openai"
 import Configuration from "openai"
 
 const openai = new OpenAIApi(new Configuration({ apiKey: process.env.OPENAI_API_KEY }));
