@@ -352,9 +352,9 @@ export default function HomePageGenerator() {
                 <div className="rounded-lg border border-[#232325] bg-[#0D0D0E] mt-10 p-6">
                     <div className=" relative  w-full flex justify-center h-[45px]  bg-zinc-900 rounded-lg p-0.5 flex border border-zinc-800">
                         <button
-                            onClick={() => setGenerationType('mealplan')}
+                            onClick={() => setGenerationType('create')}
                             type="button"
-                            className={`${generationType === 'mealplan'
+                            className={`${generationType === 'create'
                                 ? 'relative w-1/2 bg-zinc-700 border-zinc-800 shadow-sm text-white'
                                 : 'ml-0.5 relative w-1/2 border border-transparent text-zinc-400'
                                 } rounded-md m-1 text-sm font-medium whitespace-nowrap focus:outline-none focus:z-10  sm:px-8`}
@@ -362,9 +362,9 @@ export default function HomePageGenerator() {
                             Create
                         </button>
                         <button
-                            onClick={() => setGenerationType('recipe')}
+                            onClick={() => setGenerationType('settings')}
                             type="button"
-                            className={`${generationType === 'recipe'
+                            className={`${generationType === 'settings'
                                 ? 'relative w-1/2 bg-zinc-700 border-zinc-800 shadow-sm text-white'
                                 : 'ml-0.5 relative w-1/2 border border-transparent text-zinc-400'
                                 } rounded-md m-1  text-sm font-medium whitespace-nowrap focus:outline-none focus:z-10  sm:px-8`}
@@ -373,7 +373,7 @@ export default function HomePageGenerator() {
                         </button>
                     </div>
 
-                    {generationType === 'mealplan'
+                    {generationType === 'create'
                         ? <form
                             onSubmit={(e) => {
                                 e.preventDefault();
