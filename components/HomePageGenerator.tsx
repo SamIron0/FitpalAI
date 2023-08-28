@@ -276,25 +276,25 @@ export default function HomePageGenerator() {
         setSelectedMeal(event.target.value);
     };
 
-    const getBreakfast = () => {
+    const getBreakfast = async () => {
         let breakfastResponse = await fetch(`/api/generateBreakfast?calories=${calorieData}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
         const breakfastData = await response.json();
         setBreakfast(breakfastData.plan);
         setBreakfastIsLoading(false);
     }
-    const getLunch = () => {
+    const getLunch = async () => {
         let lunchResponse = await fetch(`/api/generateLunch?calories=${calorieData}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
         const lunchData = await response.json();
         setLunch(lunchData.plan);
         setLunchIsLoading(false);
     }
-    const getDinner = () => {
+    const getDinner = async () => {
         let dinnerResponse = await fetch(`/api/generateDinner?calories=${calorieData}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
         const dinnerData = await response.json();
         setDinner(dinnerData.plan);
         setDinnerIsLoading(false);
     }
-    const getSnack = (snackNumber: any) => {
+    const getSnack = async (snackNumber: any) => {
         let lunchResponse = await fetch(`/api/generateSnack?calories=${calorieData}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
         const snackData = await response.json();
         if (snackNumber === 1) {
@@ -325,7 +325,11 @@ export default function HomePageGenerator() {
             }
             try {
                 if (numOfMeals == 1) {
-                    setDinnerIsLoading(true);
+                    setBreakfastIsLoading(true);
+                    Promise.all([getBreakfast(), getLunch(), getDinner()])
+                        .catch((error) => {
+                            console.error('Error:', error);
+                        });
                 }
 
                 if (numOfMeals == 2) {
