@@ -13,8 +13,12 @@ const handler: NextApiHandler = async (req, res) => {
         return res.status(405).json({ message: 'Method Not Allowed' });
     }
 
-    
-    if (numOfMeals === 2) {
+    if (numOfMeals === 1) {
+        breakDownjson = `{
+        "breakdown": {
+            "breakfast": 0,
+        }
+    }`} else if (numOfMeals === 2) {
         breakDownjson = `{
         "breakdown": {
             "lunch": 0,
