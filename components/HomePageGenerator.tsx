@@ -278,7 +278,7 @@ export default function HomePageGenerator() {
             //console.log("hurray")
             setBreakfastIsLoading('true');
             setLunchIsLoading('true');
-            setDinnerIsLoading('true');
+            //setDinnerIsLoading('true');
             setSnack1IsLoading('true');
             setSnack2IsLoading('true');
 
