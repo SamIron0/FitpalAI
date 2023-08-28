@@ -276,17 +276,32 @@ export default function HomePageGenerator() {
         console.log("meals:" + numOfMeals)
         if (generationType == 'create') {
             //console.log("hurray")
-            breakfastIsLoading('true');
-            lunchIsLoading('true');
-            dinnerIsLoading('true');
-            snack1IsLoading('true');
-            snack2IsLoading('true');
+            setBreakfastIsLoading('true');
+            setLunchIsLoading('true');
+            setDinnerIsLoading('true');
+            setSnack1IsLoading('true');
+            setSnack2IsLoading('true');
 
             try {
-                // get the number of meals
+                // get dinner only
                 if (numOfMeals === "1") {
                     const response = await fetch(`/api/generate?number=${1}&userLocation=${region}&mealCount=${numOfMeals}&calorieCount=${calories}&ingredients=${ingredients}`);
                 }
+                // breakfast dinner
+                else if(numOfMeals === "2"){
+
+                } //breakfast lunch and dinner
+                else if(numOfMeals === "3"){
+
+                }
+                //
+                else if(numOfMeals === "4"){
+
+                }
+                else if(numOfMeals === "5"){
+
+                }
+                
             } catch {
 
             }
