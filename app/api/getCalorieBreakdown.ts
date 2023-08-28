@@ -16,7 +16,7 @@ const handler: NextApiHandler = async (req, res) => {
     if (numOfMeals === 1) {
         breakDownjson = `{
         "breakdown": {
-            "breakfast": 0,
+            "dinner": 0,
         }
     }`} else if (numOfMeals === 2) {
         breakDownjson = `{
