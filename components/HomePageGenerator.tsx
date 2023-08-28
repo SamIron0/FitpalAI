@@ -272,7 +272,7 @@ export default function HomePageGenerator() {
             try {
                 // get the number of meals
                 if (numOfMeals === 1) {
-                    const response = await fetfch(`/api/generate?number=${0}&userLocation=${region}&mealCount=${numOfMeals}&calorieCount=${calories}&userLocation=${region}`);
+                    const response = await fetch(`/api/generate?number=${0}&userLocation=${region}&mealCount=${numOfMeals}&calorieCount=${calories}&ingredients=${region}`);
                 }
             } catch {
 
