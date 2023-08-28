@@ -269,10 +269,9 @@ export default function HomePageGenerator() {
 
         if (generationType == 'create') {
             try {
-
                 // get the number of meals
                 if (numOfMeals == '1 meal')
-                    let response = await fetch(`/api/generate?number=${0}&userLocation=${region}`);
+                    const response = await fetch(`/api/generate?number=${0}&userLocation=${region}`);
 
             } catch {
 
