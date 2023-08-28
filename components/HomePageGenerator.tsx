@@ -262,7 +262,7 @@ export default function HomePageGenerator() {
     const [recipeLoading, setRecipeLoading] = useState('false')
     const [selectedMeal, setSelectedMeal] = useState("1");
 
-    const handleMealChange = (event) => {
+    const handleMealChange = (event: any) => {
         setSelectedMeal(event.target.value);
     };
     const fetchData = async (sectionNumber: string | number) => {
@@ -375,7 +375,7 @@ export default function HomePageGenerator() {
 
                     {generationType === 'mealplan'
                         ? <form
-                            onSubmit={(e) => {
+                            onStubmit={(e) => {
                                 e.preventDefault();
                                 setShowSecondBox('true')
                                 fetchData(1)
