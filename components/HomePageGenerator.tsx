@@ -181,7 +181,7 @@ function PlanCard({ title, footer, children, completed }: Props) {
                             {children}
                         </div>
                     </div>
-                    <div className="h-3/20 justify-right border-zinc-700 p-2 text-zinc-500 rounded-b-md">
+                    <div className="h-3/20 flex items-center justify-center border-zinc-700 p-2 text-zinc-500 rounded-b-md">
                         {footer}
                     </div>
                 </div>

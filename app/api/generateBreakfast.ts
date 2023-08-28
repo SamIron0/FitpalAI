@@ -1,6 +1,5 @@
 
 import { NextApiHandler } from 'next'
-import { Configuration, OpenAIApi } from "openai";
 import OpenAI from "openai";
 
 const openai = new OpenAI({
