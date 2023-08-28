@@ -542,12 +542,49 @@ export default function HomePageGenerator() {
                     ?
                     <div className="mt-6">
                         {primaryIsLoading ? (
-                            <>
-                                <GhostCard />
-                                <GhostCard />
-                                <GhostCard />
-                                <GhostCard />
-                            </>
+                            numOfMeals == "1" ?
+                                (
+                                    <div>
+                                        <GhostCard />
+                                        <GhostCard />
+                                    </div>
+                                ) :
+                                numOfMeals == "2" ?
+                                    (
+                                        <div>
+                                            <GhostCard />
+                                            <GhostCard />
+                                            <GhostCard />
+                                        </div>
+                                    ) :
+                                    numOfMeals == "3" ?
+                                        (
+                                            <div>
+                                                <GhostCard />
+                                                <GhostCard />
+                                                <GhostCard />
+                                            </div>
+                                        ) :
+                                        numOfMeals == "4" ?
+                                            (
+                                                <div>
+                                                    <GhostCard />
+                                                    <GhostCard />
+                                                    <GhostCard />
+                                                    <GhostCard />
+                                                </div>
+                                            ) :
+                                            numOfMeals == "5" ?
+                                                (
+                                                    <div>
+                                                        <GhostCard />
+                                                        <GhostCard />
+                                                        <GhostCard />
+                                                        <GhostCard />
+                                                        <GhostCard />
+                                                    </div>
+                                                ) : null
+
                         ) : secondaryIsLoading ? (
                             primaryMealPlan ? (
                                 <>
