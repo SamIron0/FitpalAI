@@ -1,9 +1,9 @@
 
 import { NextApiHandler } from 'next'
-import  OpenAI from "openai"
+import OpenAI from "openai"
 import Configuration from "openai"
 
-const openai = new OpenAIApi(new Configuration({ apiKey: process.env.OPENAI_API_KEY }));
+const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
 const handler: NextApiHandler = async (req, res) => {
     if (req.method !== 'GET') {
@@ -12,8 +12,8 @@ const handler: NextApiHandler = async (req, res) => {
 
     const { calories, ingredients, userLocation, allergies } = req.query;
     // const days = calories === "3" ? "day5" : number === "2" ? "day3,day4" : "day1,day2";
-    const userQuery = calories ?  `Could you please provide a detailed lunch recipe title utilising ${ingredients} that falls within ${calories.breakdown.breakfast} calories? The meals should reflect a variety of cuisines and flavor profiles suitable for a user based in ${userLocation}. Also, ensure that each meal offers balanced nutrients. Kindly deliver the response in the following JSON format: { {title: string}, ingredients: string })`
-    : `Could you please provide a detailed lunch recipe title utilising ${ingredients}? The meals should reflect a variety of cuisines and flavor profiles suitable for a user based in ${userLocation}. Also, ensure that each meal offers balanced nutrients. Kindly deliver the response in the following JSON format: { {title: string}, ingredients: string })`
+    const userQuery = calories ? `Could you please provide a detailed lunch recipe title utilising ${ingredients} that falls within ${calories.breakdown.breakfast} calories? The meals should reflect a variety of cuisines and flavor profiles suitable for a user based in ${userLocation}. Also, ensure that each meal offers balanced nutrients. Kindly deliver the response in the following JSON format: { {title: string}, ingredients: string })`
+        : `Could you please provide a detailed lunch recipe title utilising ${ingredients}? The meals should reflect a variety of cuisines and flavor profiles suitable for a user based in ${userLocation}. Also, ensure that each meal offers balanced nutrients. Kindly deliver the response in the following JSON format: { {title: string}, ingredients: string })`
     try {
         const chatResponse = await openai.createChatCompletion({
             model: "gpt-3.5-turbo",
