@@ -670,7 +670,7 @@ export default function HomePageGenerator() {
                                 <GhostCard />
                             </div>
 
-                        ) : breakfast && breakfast.meal? (
+                        ) : breakfast && breakfast.meal ? (
                             <PlanCard
                                 title="Breakfast"
                                 footer={
@@ -693,6 +693,21 @@ export default function HomePageGenerator() {
                             </div>
 
 
+                        ) : lunch && lunch.meal ? (
+                            <PlanCard
+                                title="Dinner"
+                                footer={
+                                    <div className="flex items-start justify-between flex-col ">
+                                        {lunch.meal.calories}
+                                    </div>
+
+                                }
+                                completed={true}
+                            >
+                                <div className="mt-1  w-full mb-1">
+                                    {lunch.meal.title}
+                                </div>
+                            </PlanCard>
                         ) : null}
                         {dinnerIsLoading ? (
 
@@ -701,7 +716,7 @@ export default function HomePageGenerator() {
                             </div>
 
 
-                        ) : dinner ? (
+                        ) : dinner && dinner.meal ? (
                             <PlanCard
                                 title="Dinner"
                                 footer={
@@ -713,7 +728,7 @@ export default function HomePageGenerator() {
                                 completed={true}
                             >
                                 <div className="mt-1  w-full mb-1">
-                                    {breakfast.meal.title}
+                                    {dinner.meal.title}
                                 </div>
                             </PlanCard>
                         ) : null}
@@ -724,6 +739,21 @@ export default function HomePageGenerator() {
                             </div>
 
 
+                        ) : snack1 && snack1.meal ? (
+                            <PlanCard
+                                title="Dinner"
+                                footer={
+                                    <div className="flex items-start justify-between flex-col ">
+                                        {snack1.meal.calories}
+                                    </div>
+
+                                }
+                                completed={true}
+                            >
+                                <div className="mt-1  w-full mb-1">
+                                    {snack1.meal.title}
+                                </div>
+                            </PlanCard>
                         ) : null}
                         {snack2IsLoading ? (
 
@@ -731,6 +761,21 @@ export default function HomePageGenerator() {
                                 <GhostCard />
                             </div>
 
+                        ) : snack2 && snack2.meal ? (
+                            <PlanCard
+                                title="Dinner"
+                                footer={
+                                    <div className="flex items-start justify-between flex-col ">
+                                        {snack2.meal.calories}
+                                    </div>
+
+                                }
+                                completed={true}
+                            >
+                                <div className="mt-1  w-full mb-1">
+                                    {snack2.meal.title}
+                                </div>
+                            </PlanCard>
                         ) : null}
                         {snack3IsLoading ? (
 
@@ -738,6 +783,21 @@ export default function HomePageGenerator() {
                                 <GhostCard />
                             </div>
 
+                        ) : snack3 && snack3.meal? (
+                        <PlanCard
+                            title="Dinner"
+                            footer={
+                                <div className="flex items-start justify-between flex-col ">
+                                    {snack3.meal.calories}
+                                </div>
+
+                            }
+                            completed={true}
+                        >
+                            <div className="mt-1  w-full mb-1">
+                                {snack3.meal.title}
+                            </div>
+                        </PlanCard>
                         ) : null}
 
 
