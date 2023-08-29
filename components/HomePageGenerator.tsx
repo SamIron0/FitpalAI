@@ -268,16 +268,7 @@ export default function HomePageGenerator() {
     const [showSecondBox, setShowSecondBox] = useState('false')
     const [recipeLoading, setRecipeLoading] = useState('false')
     const [selectedMeal, setSelectedMeal] = useState("1");
-    const [calorieData, setCalorieData] = useState({
-        breakdown: {
-            breakfast: 0,
-            snack1: 0,
-            lunch: 0,
-            snack2: 0,
-            dinner: 0,
-            snack3: 0,
-        }
-    });
+    const [calorieData, setCalorieData] = useState({});
     const myRef = useRef<HTMLDivElement>(null);
 
     const scrollToRef = () => {
