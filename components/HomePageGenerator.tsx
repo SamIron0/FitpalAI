@@ -254,6 +254,7 @@ export default function HomePageGenerator() {
     const [dinner, setDinner] = useState<Meal>(testMeal);
     const [snack1, setSnack1] = useState<Meal>(testMeal);
     const [snack2, setSnack2] = useState<Meal>(testMeal);
+    const [snack3, setSnack3] = useState<Meal>(testMeal);
     const [location, setLocation] = useState<Geolocation>();
     const [region, setRegion] = useState("");
     const [locationFetched, setLocationFetched] = useState(false); // New state variable
