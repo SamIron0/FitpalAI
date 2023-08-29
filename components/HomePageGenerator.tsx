@@ -280,7 +280,7 @@ export default function HomePageGenerator() {
     });
     const myRef = useRef<HTMLDivElement>(null);
 
-    const scrollToRef= () => {
+    const scrollToRef = () => {
         if (myRef.current) {
             myRef.current.scrollIntoView({ behavior: 'smooth' });
         }
@@ -508,9 +508,9 @@ export default function HomePageGenerator() {
                             onSubmit={(e) => {
                                 e.preventDefault();
                                 setShowSecondBox('true')
+                                resetMeals()
                                 fetchData()
-                                shiftFocus()
-
+                                scrollToRef()
                             }}
                             className="flex pt-6 flex-col w-6/10  items-center">
                             <div className='flex flex-col justify-end'>
@@ -589,9 +589,9 @@ export default function HomePageGenerator() {
                             onSubmit={(e) => {
                                 e.preventDefault();
                                 setShowSecondBox('true')
+                                resetMeals()
                                 fetchData()
                                 scrollToRef()
-                                resetMeals()
                             }}
                             className="flex py-6 flex-col w-6/10  items-center">
                             <div className='flex flex-col justify-end'>
