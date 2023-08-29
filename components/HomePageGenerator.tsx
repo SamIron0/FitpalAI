@@ -270,14 +270,15 @@ export default function HomePageGenerator() {
     const [showSecondBox, setShowSecondBox] = useState('false')
     const [recipeLoading, setRecipeLoading] = useState('false')
     const [selectedMeal, setSelectedMeal] = useState("1");
-    const [calorieData, setCalorieData] = useState(null);
+    const [calorieData, setCalorieData] = useState();
 
+    const myRef = createRef(); // Creating a reference
     const handleMealChange = (event: any) => {
         setSelectedMeal(event.target.value);
     };
 
     const getBreakfast = async () => {
-        let breakfastResponse = await fetch(`/api/generateBreakfast?calories=${calorieData?.breakDown.breakfast}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
+        let breakfastResponse = await fetch(`/api/generateBreakfast?calories=${calorieData?.breakDown?.breakfast}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
         const breakfastData = await response.json();
         setBreakfast(breakfastData.plan);
         setBreakfastIsLoading(false);
@@ -470,6 +471,8 @@ export default function HomePageGenerator() {
                                 e.preventDefault();
                                 setShowSecondBox('true')
                                 fetchData()
+                                myRef.current.focus()
+
                                     .catch(error => {
                                         // Handle error here
                                     })
@@ -551,6 +554,7 @@ export default function HomePageGenerator() {
                             onSubmit={(e) => {
                                 e.preventDefault();
                                 setShowSecondBox('true')
+                                myRef.current.focus()
                                 fetchData()
                                     .catch(error => {
                                         // Handle error here
@@ -664,7 +668,7 @@ export default function HomePageGenerator() {
                         ) : null}
                         {dinnerIsLoading ? (
 
-                            <div>
+                            <div ref={myRef}>
                                 <GhostCard />
                             </div>
 
