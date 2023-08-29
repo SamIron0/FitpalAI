@@ -308,8 +308,8 @@ export default function HomePageGenerator() {
     }
     const getDinner = async () => {
         console.log(calorieData.breakdown)
-        let dinnerCalories = calorieData ? calorieData.breakdown.dinner : 0;
-
+        //let dinnerCalories = calorieData ? calorieData.breakdown.dinner : 0;
+        let dinnerCalories = calorieData?.breakdown?.dinner || 0;
         let dinnerResponse = await fetch(`/api/generateDinner?calories=${dinnerCalories}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
         const dinnerData = await dinnerResponse.json();
         setDinner(dinnerData.plan);
