@@ -362,7 +362,7 @@ export default function HomePageGenerator() {
                     }
 
                 }
-                gotCalories ? setCalorieData(await getCalorieData()) : null;
+                setCalorieData(await getCalorieData());
                 //console.log(calorieData)
 
 
