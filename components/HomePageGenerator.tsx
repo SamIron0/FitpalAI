@@ -404,6 +404,7 @@ export default function HomePageGenerator() {
                     setDinnerIsLoading(true);
                     setSnack1IsLoading(true);
                     setSnack2IsLoading(true);
+                    setSnack3IsLoading(true);
                     Promise.all([getBreakfast(), getLunch(), getDinner(), getSnack(1), getSnack(2), getSnack(3)])
                         .catch((error) => {
                             console.error('Error:', error);
