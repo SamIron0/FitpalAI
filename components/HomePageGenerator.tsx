@@ -344,18 +344,20 @@ export default function HomePageGenerator() {
         if (generationType == 'create') {
 
             // if user entered a calorie count
-            if (calories != "") {
-                let breakDown = await fetch(`/api/getCalorieBreakdown?totalCalories=${calories}&numOfMeals=${numOfMeals}`);
-                setCalorieData((await breakDown.json()).text);
-                console.log(calorieData)
-            }
+
             try {
+                if (calories != "") {
+                    let breakDown = await fetch(`/api/getCalorieBreakdown?totalCalories=${calories}&numOfMeals=${numOfMeals}`);
+                    setCalorieData((await breakDown.json()).text);
+                    console.log(calorieData.breakDown)
+                }
                 if (numOfMeals === "1") {
                     setBreakfastIsLoading(true);
-                    Promise.all([getDinner()])
-                        .catch((error) => {
-                            console.error('Error:', error);
-                        });
+                    try {
+                        await Promise.all([getDinner()]);
+                    } catch (error) {
+                        console.error('Error:', error);
+                    }
                 }
 
                 if (numOfMeals === "2") {
@@ -686,7 +688,7 @@ export default function HomePageGenerator() {
                         ) : null}
                         {dinnerIsLoading ? (
 
-                            <div  ref={myRef}>
+                            <div ref={myRef}>
                                 <GhostCard />
                             </div>
 
