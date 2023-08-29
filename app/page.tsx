@@ -15,7 +15,6 @@ export default async function PricingPage() {
     getActiveProductsWithPrices(),
     getSubscription()
   ]);
-
   return (
     <div className='h-screen bg-black'>
       <div className="mx-auto py-8 sm:pt-32 px-4 sm:px-6 lg:px-8">
@@ -26,8 +25,7 @@ export default async function PricingPage() {
         </div>
         <div>
           <p className="mt-9 mb-9 text-l text-gray-500 text-center sm:text-2xl max-w-3xl sm:max-w-2xl m-auto">
-            Your tailored health and fitness companion. Personalized mealplans, real-time tracking, and support.
-          </p>
+            FitpalAI lets you create and customize personalized meals based on your preferences, budget and what you already have in stock. Reach your nutritional goals with your new pal  </p>
         </div>
       </div>
 
