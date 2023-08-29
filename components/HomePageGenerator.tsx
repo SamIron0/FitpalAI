@@ -346,80 +346,83 @@ export default function HomePageGenerator() {
             // if user entered a calorie count
 
             try {
-                let breakDown = await fetch(`/api/getCalorieBreakdown?totalCalories=${calories}&numOfMeals=${numOfMeals}`);
-                (await breakDown.json()).text.then(text => {
-                    setCalorieData(text);
-                    console.log("here")
-                    console.log(calorieData.breakdown.dinner)
-                    console.log(calorieData.breakdown)
-                    console.log(calorieData)
+                if (calories !== "") {
+                    const getCalorieData = async () => {
+                        const breakDown = await fetch(`/api/getCalorieBreakdown?totalCalories=${calories}&numOfMeals=${numOfMeals}`);
+                        const data = await breakDown.json();
 
-                    if (numOfMeals === "1") {
-                        setDinnerIsLoading(true);
-                        try {
-                            Promise.all([getDinner()]);
-                        } catch (error) {
+                        return data.text;
+                    }
+                    setCalorieData(await getCalorieData());
+                    console.log(data)
+
+                }
+
+                if (numOfMeals === "1") {
+                    setBreakfastIsLoading(true);
+                    try {
+                        await Promise.all([getDinner()]);
+                    } catch (error) {
+                        console.error('Error:', error);
+                    }
+                }
+
+
+                if (numOfMeals === "2") {
+                    setLunchIsLoading(true);
+                    setDinnerIsLoading(true);
+                    await Promise.all([getLunch(), getDinner()])
+                        .catch((error) => {
                             console.error('Error:', error);
-                        }
-                    }
+                        });
+                }
 
-                    if (numOfMeals === "2") {
-                        setLunchIsLoading(true);
-                        setDinnerIsLoading(true);
-                        await Promise.all([getLunch(), getDinner()])
-                            .catch((error) => {
-                                console.error('Error:', error);
-                            });
-                    }
+                if (numOfMeals === "3") {
+                    setBreakfastIsLoading(true);
+                    setLunchIsLoading(true);
+                    setDinnerIsLoading(true);
+                    await Promise.all([getBreakfast(), getLunch(), getDinner()])
+                        .catch((error) => {
+                            console.error('Error:', error);
+                        });
+                }
 
-                    if (numOfMeals === "3") {
-                        setBreakfastIsLoading(true);
-                        setLunchIsLoading(true);
-                        setDinnerIsLoading(true);
-                        await Promise.all([getBreakfast(), getLunch(), getDinner()])
-                            .catch((error) => {
-                                console.error('Error:', error);
-                            });
-                    }
+                if (numOfMeals === "4") {
+                    setBreakfastIsLoading(true);
+                    setLunchIsLoading(true);
+                    setDinnerIsLoading(true);
+                    setSnack1IsLoading(true);
+                    await Promise.all([getBreakfast(), getLunch(), getDinner(), getSnack(1)])
+                        .catch((error) => {
+                            console.error('Error:', error);
+                        });
+                }
 
-                    if (numOfMeals === "4") {
-                        setBreakfastIsLoading(true);
-                        setLunchIsLoading(true);
-                        setDinnerIsLoading(true);
-                        setSnack1IsLoading(true);
-                        await Promise.all([getBreakfast(), getLunch(), getDinner(), getSnack(1)])
-                            .catch((error) => {
-                                console.error('Error:', error);
-                            });
-                    }
-
-                    if (numOfMeals === "5") {
-                        setBreakfastIsLoading(true);
-                        setLunchIsLoading(true);
-                        setDinnerIsLoading(true);
-                        setSnack1IsLoading(true);
-                        setSnack2IsLoading(true);
-                        await Promise.all([getBreakfast(), getLunch(), getDinner(), getSnack(1), getSnack(2)])
-                            .catch((error) => {
-                                console.error('Error:', error);
-                            });
-                    }
+                if (numOfMeals === "5") {
+                    setBreakfastIsLoading(true);
+                    setLunchIsLoading(true);
+                    setDinnerIsLoading(true);
+                    setSnack1IsLoading(true);
+                    setSnack2IsLoading(true);
+                    await Promise.all([getBreakfast(), getLunch(), getDinner(), getSnack(1), getSnack(2)])
+                        .catch((error) => {
+                            console.error('Error:', error);
+                        });
+                }
 
 
-                    if (numOfMeals === '6') {
-                        setBreakfastIsLoading(true);
-                        setLunchIsLoading(true);
-                        setDinnerIsLoading(true);
-                        setSnack1IsLoading(true);
-                        setSnack2IsLoading(true);
-                        setSnack3IsLoading(true);
-                        await Promise.all([getBreakfast(), getLunch(), getDinner(), getSnack(1), getSnack(2), getSnack(3)])
-                            .catch((error) => {
-                                console.error('Error:', error);
-                            });
-                    }
-                });
-
+                if (numOfMeals === '6') {
+                    setBreakfastIsLoading(true);
+                    setLunchIsLoading(true);
+                    setDinnerIsLoading(true);
+                    setSnack1IsLoading(true);
+                    setSnack2IsLoading(true);
+                    setSnack3IsLoading(true);
+                    await Promise.all([getBreakfast(), getLunch(), getDinner(), getSnack(1), getSnack(2), getSnack(3)])
+                        .catch((error) => {
+                            console.error('Error:', error);
+                        });
+                }
             } catch {
             }
         }
@@ -497,9 +500,8 @@ export default function HomePageGenerator() {
                             onSubmit={(e) => {
                                 e.preventDefault();
                                 setShowSecondBox('true')
-                                shiftFocus()
-
                                 fetchData()
+                                shiftFocus()
 
                             }}
                             className="flex pt-6 flex-col w-6/10  items-center">
@@ -580,9 +582,10 @@ export default function HomePageGenerator() {
                                 e.preventDefault();
                                 setShowSecondBox('true')
                                 fetchData()
-                                myRef.current?.focus()
+                                const shiftFocus = () => {
+                                    myRef.current?.focus();
 
-
+                                }
 
                             }}
                             className="flex py-6 flex-col w-6/10  items-center">
