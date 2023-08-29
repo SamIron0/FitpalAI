@@ -351,6 +351,7 @@ export default function HomePageGenerator() {
     }
 
     const fetchData = async () => {
+
         if (generationType == 'create') {
             let gotCalories = false;
             // if user entered a calorie count
@@ -370,7 +371,9 @@ export default function HomePageGenerator() {
 
 
                 if (numOfMeals === "1") {
-                    setBreakfastIsLoading(true);
+                    setDinnerIsLoading(true);
+                    scrollToRef()
+
                     Promise.all([getDinner()]);
 
                 }
@@ -509,8 +512,8 @@ export default function HomePageGenerator() {
                                 e.preventDefault();
                                 setShowSecondBox('true')
                                 resetMeals()
+                              
                                 fetchData()
-                                scrollToRef()
                             }}
                             className="flex pt-6 flex-col w-6/10  items-center">
                             <div className='flex flex-col justify-end'>
