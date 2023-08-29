@@ -279,7 +279,7 @@ export default function HomePageGenerator() {
             snack3: 0,
         }
     });
-    const myRef = useRef(); // Creating a reference
+    const myRef = useRef(null);
     const handleMealChange = (event: any) => {
         setSelectedMeal(event.target.value);
     };
@@ -335,7 +335,7 @@ export default function HomePageGenerator() {
 
         }
     }
-    const shiftFocus = async () => {
+    const shiftFocus = () => {
         if (myRef.current !== undefined && myRef.current !== null) {
             myRef.current.focus()
         }
