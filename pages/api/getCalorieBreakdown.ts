@@ -16,19 +16,19 @@ const handler: NextApiHandler = async (req, res) => {
     }
 
     if (numOfMeals === "1") {
-        breakDownjson = `{
+        breakDownJson = `{
         "breakdown": {
             "dinner": 0,
         }
     }`} else if (numOfMeals === '2') {
-        breakDownjson = `{
+        breakDownJson = `{
         "breakdown": {
             "lunch": 0,
             "dinner": 0,
         }
     }`
     } else if (numOfMeals === "3") {
-        breakDownjson = `{
+        breakDownJson = `{
         "breakdown": {
             "breakfast": 0,
             "lunch": 0,
@@ -36,7 +36,7 @@ const handler: NextApiHandler = async (req, res) => {
         }
     }`
     } else if (numOfMeals === "4") {
-        breakDownjson = `{
+        breakDownJson = `{
         "breakdown": {
             "breakfast": 0,
             "lunch": 0,
@@ -45,7 +45,7 @@ const handler: NextApiHandler = async (req, res) => {
         }
     }`
     } else if (numOfMeals === "5") {
-        breakDownjson = `{
+        breakDownJson = `{
         "breakdown": {
             "breakfast": 0,
             "lunch": 0,
@@ -55,7 +55,7 @@ const handler: NextApiHandler = async (req, res) => {
         }
     }`
     } else if (numOfMeals === '6') {
-        breakDownjson = `{
+        breakDownJson = `{
         "breakdown": {
             "breakfast": 0,
             "snack1": 0,
