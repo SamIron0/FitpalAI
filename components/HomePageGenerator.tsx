@@ -488,7 +488,7 @@ export default function HomePageGenerator() {
                                 e.preventDefault();
                                 setShowSecondBox('true')
                                 fetchData()
-                                myRef.current.focus()
+                                myRef.current?.focus()
 
                                     .catch(error => {
                                         // Handle error here
