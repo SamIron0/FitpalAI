@@ -388,7 +388,7 @@ export default function HomePageGenerator() {
                 if (numOfMeals === "5") {
                     setBreakfastIsLoading(true);
                     setLunchIsLoading(true);
-                    setDinnerIsLoƒading(true);
+                    setDinnerIsLoading(true);
                     setSnack1IsLoading(true);
                     setSnack2IsLoading(true);
                     Promise.all([getBreakfast(), getLunch(), getDinner(), getSnack(1), getSnack(2)])
