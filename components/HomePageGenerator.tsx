@@ -279,6 +279,12 @@ export default function HomePageGenerator() {
         }
     });
     const myRef = useRef<HTMLDivElement>(null);
+
+    const scrollToRef= () => {
+        if (myRef.current) {
+            myRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
     const handleMealChange = (event: any) => {
         setSelectedMeal(event.target.value);
     };
@@ -342,10 +348,6 @@ export default function HomePageGenerator() {
             setSnack3IsLoading(false);
 
         }
-    }
-    const shiftFocus = () => {
-        myRef.current?.focus();
-
     }
 
     const fetchData = async () => {
@@ -588,9 +590,7 @@ export default function HomePageGenerator() {
                                 e.preventDefault();
                                 setShowSecondBox('true')
                                 fetchData()
-                                const shiftFocus = () => {
-                                    myRef.current?.focus();
-                                }
+                                scrollToRef()
                                 resetMeals()
                             }}
                             className="flex py-6 flex-col w-6/10  items-center">
@@ -716,7 +716,7 @@ export default function HomePageGenerator() {
                         ) : null}
                         {dinnerIsLoading ? (
 
-                            <div ref={myRef} tabIndex={-1}>
+                            <div ref={myRef} >
                                 <GhostCard />
                             </div>
 
