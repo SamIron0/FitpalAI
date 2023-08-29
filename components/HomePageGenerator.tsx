@@ -346,7 +346,7 @@ export default function HomePageGenerator() {
 
             // if user entered a calorie count
             if (calories != "") {
-                let breakDown = await fetch(`/api/getCalorieBreakDown?totalCalories=${calories}&numOfMeals=${numOfMeals}`);
+                let breakDown = await fetch(`/api/getCalorieBreakdown?totalCalories=${calories}&numOfMeals=${numOfMeals}`);
                 setCalorieData(await breakDown.json());
             }
             try {
