@@ -346,78 +346,80 @@ export default function HomePageGenerator() {
             // if user entered a calorie count
 
             try {
-                if (calories != "") {
-                    let breakDown = await fetch(`/api/getCalorieBreakdown?totalCalories=${calories}&numOfMeals=${numOfMeals}`);
-                    setCalorieData((await breakDown.json()).text);
+                let breakDown = await fetch(`/api/getCalorieBreakdown?totalCalories=${calories}&numOfMeals=${numOfMeals}`);
+                (await breakDown.json()).text.then(text => {
+                    setCalorieData(text);
                     console.log("here")
                     console.log(calorieData.breakdown.dinner)
                     console.log(calorieData.breakdown)
                     console.log(calorieData)
-                }
-                if (numOfMeals === "1") {
-                    setBreakfastIsLoading(true);
-                    try {
-                        await Promise.all([getDinner()]);
-                    } catch (error) {
-                        console.error('Error:', error);
+
+                    if (numOfMeals === "1") {
+                        setDinnerIsLoading(true);
+                        try {
+                            Promise.all([getDinner()]);
+                        } catch (error) {
+                            console.error('Error:', error);
+                        }
                     }
-                }
 
-                if (numOfMeals === "2") {
-                    setLunchIsLoading(true);
-                    setDinnerIsLoading(true);
-                    await Promise.all([getLunch(), getDinner()])
-                        .catch((error) => {
-                            console.error('Error:', error);
-                        });
-                }
+                    if (numOfMeals === "2") {
+                        setLunchIsLoading(true);
+                        setDinnerIsLoading(true);
+                        await Promise.all([getLunch(), getDinner()])
+                            .catch((error) => {
+                                console.error('Error:', error);
+                            });
+                    }
 
-                if (numOfMeals === "3") {
-                    setBreakfastIsLoading(true);
-                    setLunchIsLoading(true);
-                    setDinnerIsLoading(true);
-                    await Promise.all([getBreakfast(), getLunch(), getDinner()])
-                        .catch((error) => {
-                            console.error('Error:', error);
-                        });
-                }
+                    if (numOfMeals === "3") {
+                        setBreakfastIsLoading(true);
+                        setLunchIsLoading(true);
+                        setDinnerIsLoading(true);
+                        await Promise.all([getBreakfast(), getLunch(), getDinner()])
+                            .catch((error) => {
+                                console.error('Error:', error);
+                            });
+                    }
 
-                if (numOfMeals === "4") {
-                    setBreakfastIsLoading(true);
-                    setLunchIsLoading(true);
-                    setDinnerIsLoading(true);
-                    setSnack1IsLoading(true);
-                    await Promise.all([getBreakfast(), getLunch(), getDinner(), getSnack(1)])
-                        .catch((error) => {
-                            console.error('Error:', error);
-                        });
-                }
+                    if (numOfMeals === "4") {
+                        setBreakfastIsLoading(true);
+                        setLunchIsLoading(true);
+                        setDinnerIsLoading(true);
+                        setSnack1IsLoading(true);
+                        await Promise.all([getBreakfast(), getLunch(), getDinner(), getSnack(1)])
+                            .catch((error) => {
+                                console.error('Error:', error);
+                            });
+                    }
 
-                if (numOfMeals === "5") {
-                    setBreakfastIsLoading(true);
-                    setLunchIsLoading(true);
-                    setDinnerIsLoading(true);
-                    setSnack1IsLoading(true);
-                    setSnack2IsLoading(true);
-                    await Promise.all([getBreakfast(), getLunch(), getDinner(), getSnack(1), getSnack(2)])
-                        .catch((error) => {
-                            console.error('Error:', error);
-                        });
-                }
+                    if (numOfMeals === "5") {
+                        setBreakfastIsLoading(true);
+                        setLunchIsLoading(true);
+                        setDinnerIsLoading(true);
+                        setSnack1IsLoading(true);
+                        setSnack2IsLoading(true);
+                        await Promise.all([getBreakfast(), getLunch(), getDinner(), getSnack(1), getSnack(2)])
+                            .catch((error) => {
+                                console.error('Error:', error);
+                            });
+                    }
 
 
-                if (numOfMeals === '6') {
-                    setBreakfastIsLoading(true);
-                    setLunchIsLoading(true);
-                    setDinnerIsLoading(true);
-                    setSnack1IsLoading(true);
-                    setSnack2IsLoading(true);
-                    setSnack3IsLoading(true);
-                    await Promise.all([getBreakfast(), getLunch(), getDinner(), getSnack(1), getSnack(2), getSnack(3)])
-                        .catch((error) => {
-                            console.error('Error:', error);
-                        });
-                }
+                    if (numOfMeals === '6') {
+                        setBreakfastIsLoading(true);
+                        setLunchIsLoading(true);
+                        setDinnerIsLoading(true);
+                        setSnack1IsLoading(true);
+                        setSnack2IsLoading(true);
+                        setSnack3IsLoading(true);
+                        await Promise.all([getBreakfast(), getLunch(), getDinner(), getSnack(1), getSnack(2), getSnack(3)])
+                            .catch((error) => {
+                                console.error('Error:', error);
+                            });
+                    }
+                });
+
             } catch {
             }
         }
@@ -495,8 +497,9 @@ export default function HomePageGenerator() {
                             onSubmit={(e) => {
                                 e.preventDefault();
                                 setShowSecondBox('true')
-                                fetchData()
                                 shiftFocus()
+
+                                fetchData()
 
                             }}
                             className="flex pt-6 flex-col w-6/10  items-center">
@@ -577,10 +580,9 @@ export default function HomePageGenerator() {
                                 e.preventDefault();
                                 setShowSecondBox('true')
                                 fetchData()
-                                const shiftFocus = () => {
-                                    myRef.current?.focus();
+                                myRef.current?.focus()
 
-                                }
+
 
                             }}
                             className="flex py-6 flex-col w-6/10  items-center">
@@ -696,6 +698,21 @@ export default function HomePageGenerator() {
                             </div>
 
 
+                        ) : dinner ? (
+                            <PlanCard
+                                title="Dinner"
+                                footer={
+                                    <div className="flex items-start justify-between flex-col ">
+                                        {dinner.meal.calories}
+                                    </div>
+
+                                }
+                                completed={true}
+                            >
+                                <div className="mt-1  w-full mb-1">
+                                    {breakfast.meal.title}
+                                </div>
+                            </PlanCard>
                         ) : null}
                         {snack1IsLoading ? (
 
