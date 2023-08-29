@@ -336,6 +336,11 @@ export default function HomePageGenerator() {
 
         }
     }
+    const shiftFocus = async () => {
+        if (myRef.current) {
+            myRef.current?.focus()
+        }
+    }
 
     const fetchData = async () => {
         console.log("meals:" + numOfMeals)
@@ -488,8 +493,7 @@ export default function HomePageGenerator() {
                                 e.preventDefault();
                                 setShowSecondBox('true')
                                 fetchData()
-                                myRef.current?.focus()
-
+                                shiftFocus()
                                     .catch(error => {
                                         // Handle error here
                                     })
@@ -720,7 +724,7 @@ export default function HomePageGenerator() {
                     : <></>
                 }
             </div>
-        </div>
+        </div >
     )
 }
 
