@@ -270,7 +270,7 @@ export default function HomePageGenerator() {
     const [showSecondBox, setShowSecondBox] = useState('false')
     const [recipeLoading, setRecipeLoading] = useState('false')
     const [selectedMeal, setSelectedMeal] = useState("1");
-    const [calorieData, setCalorieData] = useState();
+    const [calorieData, setCalorieData] = useState({});
 
     const myRef = createRef(); // Creating a reference
     const handleMealChange = (event: any) => {
