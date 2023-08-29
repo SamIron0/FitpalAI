@@ -301,7 +301,7 @@ export default function HomePageGenerator() {
         let breakfastCalories = calorieData ? calorieData.breakdown.breakfast : 0;
         let breakfastResponse = await fetch(`/api/generateBreakfast?calories=${breakfastCalories}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
         const breakfastData = await breakfastResponse.json();
-        setBreakfast(breakfastData.plan);
+        setBreakfast(breakfastData.meal);
         setBreakfastIsLoading(false);
     }
     const getLunch = async () => {
@@ -309,7 +309,7 @@ export default function HomePageGenerator() {
 
         let lunchResponse = await fetch(`/api/generateLunch?calories=${lunchCalories}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
         const lunchData = await lunchResponse.json();
-        setLunch(lunchData.plan);
+        setLunch(lunchData.meal);
         setLunchIsLoading(false);
     }
     const getDinner = async () => {
@@ -318,7 +318,7 @@ export default function HomePageGenerator() {
         let dinnerCalories = calorieData?.breakdown?.dinner || 0;
         let dinnerResponse = await fetch(`/api/generateDinner?calories=${dinnerCalories}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
         const dinnerData = await dinnerResponse.json();
-        setDinner(dinnerData.plan);
+        setDinner(dinnerData.meal);
         setDinnerIsLoading(false);
     }
     const getSnack = async (snackNumber: any) => {
@@ -327,7 +327,7 @@ export default function HomePageGenerator() {
 
             let snack1Response = await fetch(`/api/generateSnack1?calories=${snack1Calories}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
             const snackData = await snack1Response.json();
-            setSnack1(snackData.plan);
+            setSnack1(snackData.meal);
             setSnack1IsLoading(false);
         }
         if (snackNumber === 2) {
@@ -335,7 +335,7 @@ export default function HomePageGenerator() {
 
             let snack2Response = await fetch(`/api/generateSnack2?calories=${snack2Calories}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
             const snackData = await snack2Response.json();
-            setSnack2(snackData.plan);
+            setSnack2(snackData.meal);
             setSnack2IsLoading(false);
 
         }
@@ -344,7 +344,7 @@ export default function HomePageGenerator() {
 
             let snack3Response = await fetch(`/api/generateSnack3?calories=${snack3Calories}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
             const snackData = await snack3Response.json();
-            setSnack3(snackData.plan);
+            setSnack3(snackData.meal);
             setSnack3IsLoading(false);
 
         }
@@ -684,14 +684,14 @@ export default function HomePageGenerator() {
                                 title="Breakfast"
                                 footer={
                                     <div className="flex items-start justify-between flex-col ">
-                                        {breakfast.meal.calories}
+                                        {breakfast.calories}
                                     </div>
 
                                 }
                                 completed={true}
                             >
                                 <div className="mt-1  w-full mb-1">
-                                    {breakfast.meal.title}
+                                    {breakfast.title}
                                 </div>
                             </PlanCard>
                         ) : null}
@@ -707,14 +707,14 @@ export default function HomePageGenerator() {
                                 title="Lunch"
                                 footer={
                                     <div className="flex items-start justify-between flex-col ">
-                                        {lunch.meal.calories}
+                                        {lunch.calories}
                                     </div>
 
                                 }
                                 completed={true}
                             >
                                 <div className="mt-1  w-full mb-1">
-                                    {lunch.meal.title}
+                                    {lunch.title}
                                 </div>
                             </PlanCard>
                         ) : null}
@@ -725,100 +725,96 @@ export default function HomePageGenerator() {
                                 </div>
 
                             </>
-                        ) : null}
-                    </div>
-
-
                         ) : dinner && dinner.meal ? (
-                <PlanCard
-                    title="Dinner"
-                    footer={
-                        <div className="flex items-start justify-between flex-col ">
-                            {dinner.meal.calories}
-                        </div>
+                            <PlanCard
+                                title="Dinner"
+                                footer={
+                                    <div className="flex items-start justify-between flex-col ">
+                                        {dinner.calories}
+                                    </div>
 
-                    }
-                    completed={true}
-                >
-                    <div className="mt-1  w-full mb-1">
-                        {dinner.meal.title}
-                    </div>
-                </PlanCard>
+                                }
+                                completed={true}
+                            >
+                                <div className="mt-1  w-full mb-1">
+                                    {dinner.title}
+                                </div>
+                            </PlanCard>
                         ) : null}
-                {snack1IsLoading ? (
+                        {snack1IsLoading ? (
 
-                    <div>
-                        <GhostCard />
-                    </div>
-
-
-                ) : snack1 && snack1.meal ? (
-                    <PlanCard
-                        title="Snack1"
-                        footer={
-                            <div className="flex items-start justify-between flex-col ">
-                                {snack1.meal.calories}
+                            <div>
+                                <GhostCard />
                             </div>
 
-                        }
-                        completed={true}
-                    >
-                        <div className="mt-1  w-full mb-1">
-                            {snack1.meal.title}
-                        </div>
-                    </PlanCard>
-                ) : null}
-                {snack2IsLoading ? (
 
-                    <div>
-                        <GhostCard />
-                    </div>
+                        ) : snack1 && snack1.meal ? (
+                            <PlanCard
+                                title="Snack1"
+                                footer={
+                                    <div className="flex items-start justify-between flex-col ">
+                                        {snack1.calories}
+                                    </div>
 
-                ) : snack2 && snack2.meal ? (
-                    <PlanCard
-                        title="Snack2"
-                        footer={
-                            <div className="flex items-start justify-between flex-col ">
-                                {snack2.meal.calories}
+                                }
+                                completed={true}
+                            >
+                                <div className="mt-1  w-full mb-1">
+                                    {snack1.title}
+                                </div>
+                            </PlanCard>
+                        ) : null}
+                        {snack2IsLoading ? (
+
+                            <div>
+                                <GhostCard />
                             </div>
 
-                        }
-                        completed={true}
-                    >
-                        <div className="mt-1  w-full mb-1">
-                            {snack2.meal.title}
-                        </div>
-                    </PlanCard>
-                ) : null}
-                {snack3IsLoading ? (
+                        ) : snack2 && snack2.meal ? (
+                            <PlanCard
+                                title="Snack2"
+                                footer={
+                                    <div className="flex items-start justify-between flex-col ">
+                                        {snack2.calories}
+                                    </div>
 
-                    <div>
-                        <GhostCard />
-                    </div>
+                                }
+                                completed={true}
+                            >
+                                <div className="mt-1  w-full mb-1">
+                                    {snack2.title}
+                                </div>
+                            </PlanCard>
+                        ) : null}
+                        {snack3IsLoading ? (
 
-                ) : snack3 && snack3.meal ? (
-                    <PlanCard
-                        title="Snack3"
-                        footer={
-                            <div className="flex items-start justify-between flex-col ">
-                                {snack3.meal.calories}
+                            <div>
+                                <GhostCard />
                             </div>
 
-                        }
-                        completed={true}
-                    >
-                        <div className="mt-1  w-full mb-1">
-                            {snack3.meal.title}
-                        </div>
-                    </PlanCard>
-                ) : null}
+                        ) : snack3 && snack3.meal ? (
+                            <PlanCard
+                                title="Snack3"
+                                footer={
+                                    <div className="flex items-start justify-between flex-col ">
+                                        {snack3.calories}
+                                    </div>
+
+                                }
+                                completed={true}
+                            >
+                                <div className="mt-1  w-full mb-1">
+                                    {snack3.title}
+                                </div>
+                            </PlanCard>
+                        ) : null}
 
 
-            </div>
+                    </div>
 
-            : <></>
+                    : <></>
                 }
-        </div>
+            </div>
         </div >
     )
 }
