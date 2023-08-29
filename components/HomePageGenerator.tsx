@@ -354,7 +354,7 @@ export default function HomePageGenerator() {
                         return data.text;
                     }
                     setCalorieData(await getCalorieData());
-                    console.log(data)
+                    console.log(calorieData)
 
                 }
 
