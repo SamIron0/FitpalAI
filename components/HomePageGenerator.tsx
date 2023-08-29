@@ -174,13 +174,13 @@ function PlanCard({ title, footer, children, completed }: Props) {
         <div className={`w-full mb-6 h-[250px] p-0.5 rounded-md flex-shrink-0 flex-grow-0 ${bgColor}`}>
             <div className="bg-black  h-full w-full  rounded-md m-auto">
                 <div className='w-full h-full p-4 flex rounded-md  '>
-                    <div className=" flex-1 justify-start w-8.5/10 h-17/20pt55g ">
+                    <div className=" flex-1 w-8.5/10 h-17/20pt55g ">
                         <h1 className="text-l font-medium">{title}</h1>
                         <div className="" >
                             {children}
                         </div>
                     </div>
-                    <div className="h-3/20 w-1.5/10 flex items-center justify-center border-zinc-700 p-2 text-zinc-500 rounded-b-md">
+                    <div className="h-3/20 w-1.5/10 flex-1 items-center justify-center border-zinc-700 p-2 text-zinc-500 rounded-b-md">
                         {footer}
                     </div>
                 </div>
@@ -350,21 +350,21 @@ export default function HomePageGenerator() {
 
     const fetchData = async () => {
         if (generationType == 'create') {
-
+            let gotCalories = false;
             // if user entered a calorie count
-
             try {
-                if (calories !== "") {
-                    const getCalorieData = async () => {
+                const getCalorieData = async () => {
+                    if (calories !== "") {
                         const breakDown = await fetch(`/api/getCalorieBreakdown?totalCalories=${calories}&numOfMeals=${numOfMeals}`);
                         const data = await breakDown.json();
-
                         return data.text;
+                        gotCalories = true;
                     }
-                    setCalorieData(await getCalorieData());
-                    //console.log(calorieData)
 
                 }
+                gotCalories ? setCalorieData(await getCalorieData()) : null;
+                //console.log(calorieData)
+
 
                 if (numOfMeals === "1") {
                     setBreakfastIsLoading(true);
@@ -443,7 +443,7 @@ export default function HomePageGenerator() {
             if (res.status === 200) { // valid response
                 const data = await res.json();
                 setRegion(data.location.region_name);
-                console.log(data.location.region_name);
+                // console.log(data.location.region_name);
                 setLocationFetched(true); // Mark location as fetched
             } else {
                 console.error("An error occurred while fetching the location");
