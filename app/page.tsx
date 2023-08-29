@@ -20,12 +20,12 @@ export default async function PricingPage() {
     <div className='h-screen bg-black'>
       <div className="mx-auto py-8 sm:pt-32 px-4 sm:px-6 lg:px-8">
         <div className="mt-8 align-center ">
-          <p className="text-4xl font-extrabold text-white text-center sm:text-6xl  m-auto">
+          <p className="text-4xl font-extrabold text-white text-center sm:text-6xl max-w-xl m-auto">
             The most <span className="blue-gradient-text">customizable</span> meal generator
           </p>
         </div>
         <div>
-          <p className="mt-9 mb-14 text-l text-gray-500 text-center sm:text-2xl max-w-2xl m-auto">
+          <p className="mt-9 mb-9 text-l text-gray-500 text-center sm:text-2xl max-w-2xl m-auto">
             Your tailored health and fitness companion. Personalized mealplans, real-time tracking, and support.
           </p>
         </div>
