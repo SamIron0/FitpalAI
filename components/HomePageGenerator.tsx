@@ -336,7 +336,7 @@ export default function HomePageGenerator() {
                 setCalorieData(await breakDown.json());
             }
             try {
-                if (numOfMeals === 1) {
+                if (numOfMeals === "1") {
                     setBreakfastIsLoading(true);
                     Promise.all([getBreakfast(), getLunch(), getDinner()])
                         .catch((error) => {
@@ -344,7 +344,7 @@ export default function HomePageGenerator() {
                         });
                 }
 
-                if (numOfMeals === 2) {
+                if (numOfMeals === "2") {
                     setLunchIsLoading(true);
                     setDinnerIsLoading(true);
                     Promise.all([getLunch(), getDinner()])
@@ -353,7 +353,7 @@ export default function HomePageGenerator() {
                         });
                 }
 
-                if (numOfMeals === 3) {
+                if (numOfMeals === "3") {
                     setBreakfastIsLoading(true);
                     setLunchIsLoading(true);
                     setDinnerIsLoading(true);
@@ -363,7 +363,7 @@ export default function HomePageGenerator() {
                         });
                 }
 
-                if (numOfMeals === 4) {
+                if (numOfMeals === "4") {
                     setBreakfastIsLoading(true);
                     setLunchIsLoading(true);
                     setDinnerIsLoading(true);
@@ -374,7 +374,7 @@ export default function HomePageGenerator() {
                         });
                 }
 
-                if (numOfMeals === 5) {
+                if (numOfMeals === "5") {
                     setBreakfastIsLoading(true);
                     setLunchIsLoading(true);
                     setDinnerIsLoƒading(true);
@@ -387,7 +387,7 @@ export default function HomePageGenerator() {
                 }
 
 
-                if (numOfMeals === 6) {
+                if (numOfMeals === '6') {
                     setBreakfastIsLoading(true);
                     setLunchIsLoading(true);
                     setDinnerIsLoading(true);
