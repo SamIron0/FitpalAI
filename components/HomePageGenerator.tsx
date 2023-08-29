@@ -372,8 +372,6 @@ export default function HomePageGenerator() {
 
                 if (numOfMeals === "1") {
                     setDinnerIsLoading(true);
-                    scrollToRef()
-
                     Promise.all([getDinner()]);
 
                 }
@@ -477,6 +475,11 @@ export default function HomePageGenerator() {
             setMealPlan(combinedPlan);
         }
     }, [primaryMealPlan, secondaryMealPlan, tertiaryMealPlan]);
+    useEffect(() => {
+        if (dinnerIsLoading && myRef.current) {
+            scrollToRef();
+        }
+    }, [dinnerIsLoading]);
 
     return (
         <div>
@@ -512,7 +515,7 @@ export default function HomePageGenerator() {
                                 e.preventDefault();
                                 setShowSecondBox('true')
                                 resetMeals()
-                              
+
                                 fetchData()
                             }}
                             className="flex pt-6 flex-col w-6/10  items-center">
@@ -718,102 +721,106 @@ export default function HomePageGenerator() {
                             </PlanCard>
                         ) : null}
                         {dinnerIsLoading ? (
+                            <>
+                                <div ref={myRef}>
+                                    <GhostCard />
+                                </div>
 
-                            <div ref={myRef} >
-                                <GhostCard />
-                            </div>
+                            </>
+                        ) : null}
+                    </div>
 
 
                         ) : dinner && dinner.meal ? (
-                            <PlanCard
-                                title="Dinner"
-                                footer={
-                                    <div className="flex items-start justify-between flex-col ">
-                                        {dinner.meal.calories}
-                                    </div>
+                <PlanCard
+                    title="Dinner"
+                    footer={
+                        <div className="flex items-start justify-between flex-col ">
+                            {dinner.meal.calories}
+                        </div>
 
-                                }
-                                completed={true}
-                            >
-                                <div className="mt-1  w-full mb-1">
-                                    {dinner.meal.title}
-                                </div>
-                            </PlanCard>
+                    }
+                    completed={true}
+                >
+                    <div className="mt-1  w-full mb-1">
+                        {dinner.meal.title}
+                    </div>
+                </PlanCard>
                         ) : null}
-                        {snack1IsLoading ? (
+                {snack1IsLoading ? (
 
-                            <div>
-                                <GhostCard />
-                            </div>
-
-
-                        ) : snack1 && snack1.meal ? (
-                            <PlanCard
-                                title="Snack1"
-                                footer={
-                                    <div className="flex items-start justify-between flex-col ">
-                                        {snack1.meal.calories}
-                                    </div>
-
-                                }
-                                completed={true}
-                            >
-                                <div className="mt-1  w-full mb-1">
-                                    {snack1.meal.title}
-                                </div>
-                            </PlanCard>
-                        ) : null}
-                        {snack2IsLoading ? (
-
-                            <div>
-                                <GhostCard />
-                            </div>
-
-                        ) : snack2 && snack2.meal ? (
-                            <PlanCard
-                                title="Snack2"
-                                footer={
-                                    <div className="flex items-start justify-between flex-col ">
-                                        {snack2.meal.calories}
-                                    </div>
-
-                                }
-                                completed={true}
-                            >
-                                <div className="mt-1  w-full mb-1">
-                                    {snack2.meal.title}
-                                </div>
-                            </PlanCard>
-                        ) : null}
-                        {snack3IsLoading ? (
-
-                            <div>
-                                <GhostCard />
-                            </div>
-
-                        ) : snack3 && snack3.meal ? (
-                            <PlanCard
-                                title="Snack3"
-                                footer={
-                                    <div className="flex items-start justify-between flex-col ">
-                                        {snack3.meal.calories}
-                                    </div>
-
-                                }
-                                completed={true}
-                            >
-                                <div className="mt-1  w-full mb-1">
-                                    {snack3.meal.title}
-                                </div>
-                            </PlanCard>
-                        ) : null}
-
-
+                    <div>
+                        <GhostCard />
                     </div>
 
-                    : <></>
-                }
+
+                ) : snack1 && snack1.meal ? (
+                    <PlanCard
+                        title="Snack1"
+                        footer={
+                            <div className="flex items-start justify-between flex-col ">
+                                {snack1.meal.calories}
+                            </div>
+
+                        }
+                        completed={true}
+                    >
+                        <div className="mt-1  w-full mb-1">
+                            {snack1.meal.title}
+                        </div>
+                    </PlanCard>
+                ) : null}
+                {snack2IsLoading ? (
+
+                    <div>
+                        <GhostCard />
+                    </div>
+
+                ) : snack2 && snack2.meal ? (
+                    <PlanCard
+                        title="Snack2"
+                        footer={
+                            <div className="flex items-start justify-between flex-col ">
+                                {snack2.meal.calories}
+                            </div>
+
+                        }
+                        completed={true}
+                    >
+                        <div className="mt-1  w-full mb-1">
+                            {snack2.meal.title}
+                        </div>
+                    </PlanCard>
+                ) : null}
+                {snack3IsLoading ? (
+
+                    <div>
+                        <GhostCard />
+                    </div>
+
+                ) : snack3 && snack3.meal ? (
+                    <PlanCard
+                        title="Snack3"
+                        footer={
+                            <div className="flex items-start justify-between flex-col ">
+                                {snack3.meal.calories}
+                            </div>
+
+                        }
+                        completed={true}
+                    >
+                        <div className="mt-1  w-full mb-1">
+                            {snack3.meal.title}
+                        </div>
+                    </PlanCard>
+                ) : null}
+
+
             </div>
+
+            : <></>
+                }
+        </div>
         </div >
     )
 }
