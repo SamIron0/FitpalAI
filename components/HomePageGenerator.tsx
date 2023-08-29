@@ -373,7 +373,6 @@ export default function HomePageGenerator() {
                     Promise.all([getDinner()]);
                 }
 
-
                 if (numOfMeals === "2") {
                     setLunchIsLoading(true);
                     setDinnerIsLoading(true);
