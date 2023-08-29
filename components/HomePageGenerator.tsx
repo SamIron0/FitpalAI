@@ -410,10 +410,7 @@ export default function HomePageGenerator() {
                             console.error('Error:', error);
                         });
                 }
-
-
             } catch {
-                console.log(error);
             }
         }
     };
