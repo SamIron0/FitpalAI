@@ -20,8 +20,8 @@ export default async function PricingPage() {
     <div className='h-screen bg-black'>
       <div className="mx-auto py-8 sm:pt-32 px-4 sm:px-6 lg:px-8">
         <div className="mt-8 sm:align-center ">
-          <p className="text-7xl font-extrabold text-white sm:text-center sm:text-8xl  m-auto">
-            Track. <span className="blue-gradient-text">Learn.</span> Improve.
+          <p className="text-3xl font-extrabold text-white sm:text-center sm:text-5xl  m-auto">
+            The most <span className="blue-gradient-text">customizable</span> meal generator
           </p>
         </div>
         <div>

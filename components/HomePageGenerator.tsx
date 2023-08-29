@@ -369,11 +369,8 @@ export default function HomePageGenerator() {
 
                 if (numOfMeals === "1") {
                     setBreakfastIsLoading(true);
-                    try {
-                        await Promise.all([getDinner()]);
-                    } catch (error) {
-                        console.error('Error:', error);
-                    }
+                    Promise.all([getDinner()]);
+
                 }
 
 
