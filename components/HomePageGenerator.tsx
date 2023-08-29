@@ -315,7 +315,7 @@ export default function HomePageGenerator() {
             let snack1Response = await fetch(`/api/generateSnack?calories=${snack1Calories}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
             const snackData = await snack1Response.json();
             setSnack1(snackData.plan);
-            setSnack1Loading(false);
+            setSnack1IsLoading(false);
         }
         if (snackNumber === 2) {
             let breakfastCalories = calorieData.breakdown ? calorieData.breakdown.snack2 : 0;
@@ -323,7 +323,7 @@ export default function HomePageGenerator() {
             let snack2Response = await fetch(`/api/generateSnack?calories=${snack2Calories}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
             const snackData = await snack2Response.json();
             setSnack2(snackData.plan);
-            setSnack2Loading(false);
+            setSnack2IsLoading(false);
 
         }
         if (snackNumber === 3) {
@@ -332,7 +332,7 @@ export default function HomePageGenerator() {
             let snack3Response = await fetch(`/api/generateSnack?calories=${snack3Calories}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
             const snackData = await snack3Response.json();
             setSnack3(snackData.plan);
-            setSnack3Loading(false);
+            setSnack3IsLoading(false);
 
         }
     }
