@@ -300,6 +300,7 @@ export default function HomePageGenerator() {
         setLunchIsLoading(false);
     }
     const getDinner = async () => {
+        console.log(calorieData.breakdown )
         let dinnerCalories = calorieData.breakdown ? calorieData.breakdown.dinner : 0;
 
         let dinnerResponse = await fetch(`/api/generateDinner?calories=${dinnerCalories}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
@@ -354,7 +355,7 @@ export default function HomePageGenerator() {
                         return data.text;
                     }
                     setCalorieData(await getCalorieData());
-                    console.log(calorieData)
+                    //console.log(calorieData)
 
                 }
 
