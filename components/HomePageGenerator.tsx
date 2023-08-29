@@ -337,7 +337,7 @@ export default function HomePageGenerator() {
     }
     const shiftFocus = async () => {
         if (myRef.current) {
-            myRef.current?.focus()
+            myRef.current.focus()
         }
     }
 
