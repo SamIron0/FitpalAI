@@ -272,7 +272,7 @@ export default function HomePageGenerator() {
     const [selectedMeal, setSelectedMeal] = useState("1");
     const [calorieData, setCalorieData] = useState({});
 
-    const myRef = createRef(); // Creating a reference
+    const myRef = React.createRef(); // Creating a reference
     const handleMealChange = (event: any) => {
         setSelectedMeal(event.target.value);
     };
