@@ -1,5 +1,5 @@
 'use client';
-import { ReactNode, useState, useEffect } from 'react';
+import { ReactNode, useState, useEffect, createRef } from 'react';
 import Textarea from 'react-textarea-autosize'
 import { cn } from '@/lib/utils'
 import { ExternalLink } from '@/components/external-link'
@@ -272,7 +272,7 @@ export default function HomePageGenerator() {
     const [selectedMeal, setSelectedMeal] = useState("1");
     const [calorieData, setCalorieData] = useState({});
 
-    const myRef = React.createRef(); // Creating a reference
+    const myRef = createRef(); // Creating a reference
     const handleMealChange = (event: any) => {
         setSelectedMeal(event.target.value);
     };
