@@ -287,7 +287,7 @@ export default function HomePageGenerator() {
     const getBreakfast = async () => {
         let breakfastCalories = calorieData.breakdown ? calorieData.breakdown.breakfast : 0;
         let breakfastResponse = await fetch(`/api/generateBreakfast?calories=${breakfastCalories}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
-        const breakfastData = await response.json();
+        const breakfastData = await breakfastResponse.json();
         setBreakfast(breakfastData.plan);
         setBreakfastIsLoading(false);
     }/*
