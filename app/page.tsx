@@ -25,7 +25,7 @@ export default async function PricingPage() {
           </p>
         </div>
         <div>
-          <p className="mt-9 mb-9 text-l text-gray-500 text-center sm:text-2xl max-w-2xl m-auto">
+          <p className="mt-9 mb-9 text-l text-gray-500 text-center sm:text-2xl max-w-3xl sm:max-w-2xl m-auto">
             Your tailored health and fitness companion. Personalized mealplans, real-time tracking, and support.
           </p>
         </div>
