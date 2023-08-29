@@ -279,7 +279,7 @@ export default function HomePageGenerator() {
             snack3: 0,
         }
     });
-    const myRef = useRef(); // Creating a reference
+    const myRef = React.createRef<HTMLInputElement>();
     const handleMealChange = (event: any) => {
         setSelectedMeal(event.target.value);
     };
