@@ -55,8 +55,7 @@ interface Meal {
     };
 }
 const testMeal: Meal = {
-    "breakfast": {
-
+    "meal": {
         title: "oatmeal",
         ingredients: "1 cup oatmeal, 2 cups water, pinch of salt, 2 tablespoon honey, 1/2 cup blueberries",
         instructions: "Bring the water to a boil. Stir in the oatmeal and a pinch of salt. Reduce the heat to a simmer and cook for 10-15 minutes, or until the oatmeal is your desired thickness. Stir in the honey and top with blueberries.",
@@ -278,11 +277,13 @@ export default function HomePageGenerator() {
     };
 
     const getBreakfast = async () => {
-        let breakfastResponse = await fetch(`/api/generateBreakfast?calories=${calorieData?.breakDown?.breakfast}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
+        let breakfastCalories = calorieData.breakdown ? calorieData.breakdown.breakfast : 0;
+
+        let breakfastResponse = await fetch(`/api/generateBreakfast?calories=${breakfastCalories}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
         const breakfastData = await response.json();
         setBreakfast(breakfastData.plan);
         setBreakfastIsLoading(false);
-    }
+    }/*
     const getLunch = async () => {
         let lunchResponse = await fetch(`/api/generateLunch?calories=${calorieData.breakDown.lunch}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
         const lunchData = await response.json();
@@ -316,7 +317,7 @@ export default function HomePageGenerator() {
             setSnack3Loading(false);
 
         }
-    }
+    }*/
 
     const fetchData = async () => {
         console.log("meals:" + numOfMeals)
