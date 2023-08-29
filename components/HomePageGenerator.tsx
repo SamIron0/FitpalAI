@@ -357,8 +357,9 @@ export default function HomePageGenerator() {
                     if (calories !== "") {
                         const breakDown = await fetch(`/api/getCalorieBreakdown?totalCalories=${calories}&numOfMeals=${numOfMeals}`);
                         const data = await breakDown.json();
-                        return data.text;
                         gotCalories = true;
+
+                        return data.text;
                     }
 
                 }
