@@ -269,8 +269,16 @@ export default function HomePageGenerator() {
     const [showSecondBox, setShowSecondBox] = useState('false')
     const [recipeLoading, setRecipeLoading] = useState('false')
     const [selectedMeal, setSelectedMeal] = useState("1");
-    const [calorieData, setCalorieData] = useState({});
-
+    const [calorieData, setCalorieData] = useState({
+        breakdown: {
+            breakfast: 0,
+            snack1: 0,
+            lunch: 0,
+            snack2: 0,
+            dinner: 0,
+            snack3: 0,
+        }
+    });
     const myRef = createRef(); // Creating a reference
     const handleMealChange = (event: any) => {
         setSelectedMeal(event.target.value);
@@ -278,7 +286,6 @@ export default function HomePageGenerator() {
 
     const getBreakfast = async () => {
         let breakfastCalories = calorieData.breakdown ? calorieData.breakdown.breakfast : 0;
-
         let breakfastResponse = await fetch(`/api/generateBreakfast?calories=${breakfastCalories}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
         const breakfastData = await response.json();
         setBreakfast(breakfastData.plan);
