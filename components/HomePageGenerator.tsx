@@ -311,7 +311,7 @@ export default function HomePageGenerator() {
         if (snackNumber === 1) {
             let snack1Calories = calorieData.breakdown ? calorieData.breakdown.snack1 : 0;
 
-            let snack1Response = await fetch(`/api/generateSnack?calories=${snack1Calories}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
+            let snack1Response = await fetch(`/api/generateSnack1?calories=${snack1Calories}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
             const snackData = await snack1Response.json();
             setSnack1(snackData.plan);
             setSnack1IsLoading(false);
@@ -319,7 +319,7 @@ export default function HomePageGenerator() {
         if (snackNumber === 2) {
             let snack2Calories = calorieData.breakdown ? calorieData.breakdown.snack2 : 0;
 
-            let snack2Response = await fetch(`/api/generateSnack?calories=${snack2Calories}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
+            let snack2Response = await fetch(`/api/generateSnack2?calories=${snack2Calories}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
             const snackData = await snack2Response.json();
             setSnack2(snackData.plan);
             setSnack2IsLoading(false);
@@ -328,7 +328,7 @@ export default function HomePageGenerator() {
         if (snackNumber === 3) {
             let snack3Calories = calorieData.breakdown ? calorieData.breakdown.snack3 : 0;
 
-            let snack3Response = await fetch(`/api/generateSnack?calories=${snack3Calories}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
+            let snack3Response = await fetch(`/api/generateSnack3?calories=${snack3Calories}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
             const snackData = await snack3Response.json();
             setSnack3(snackData.plan);
             setSnack3IsLoading(false);
@@ -349,6 +349,7 @@ export default function HomePageGenerator() {
                 if (calories != "") {
                     let breakDown = await fetch(`/api/getCalorieBreakdown?totalCalories=${calories}&numOfMeals=${numOfMeals}`);
                     setCalorieData((await breakDown.json()).text);
+                    console.log("here")
                     console.log(calorieData.breakdown.dinner)
                     console.log(calorieData.breakdown)
                     console.log(calorieData)
@@ -690,7 +691,7 @@ export default function HomePageGenerator() {
                         ) : null}
                         {dinnerIsLoading ? (
 
-                            <div ref={myRef}>
+                            <div ref={myRef} tabIndex={-1}>
                                 <GhostCard />
                             </div>
 
