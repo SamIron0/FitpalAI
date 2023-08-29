@@ -15,19 +15,19 @@ const handler: NextApiHandler = async (req, res) => {
         return res.status(405).json({ message: 'Method Not Allowed' });
     }
 
-    if (numOfMeals === 1) {
+    if (numOfMeals === "1") {
         breakDownjson = `{
         "breakdown": {
             "dinner": 0,
         }
-    }`} else if (numOfMeals === 2) {
+    }`} else if (numOfMeals === '2') {
         breakDownjson = `{
         "breakdown": {
             "lunch": 0,
             "dinner": 0,
         }
     }`
-    } else if (numOfMeals === 3) {
+    } else if (numOfMeals === "3") {
         breakDownjson = `{
         "breakdown": {
             "breakfast": 0,
@@ -35,7 +35,7 @@ const handler: NextApiHandler = async (req, res) => {
             "dinner": 0,
         }
     }`
-    } else if (numOfMeals === 4) {
+    } else if (numOfMeals === "4") {
         breakDownjson = `{
         "breakdown": {
             "breakfast": 0,
@@ -44,7 +44,7 @@ const handler: NextApiHandler = async (req, res) => {
             "snack1": 0,
         }
     }`
-    } else if (numOfMeals === 5) {
+    } else if (numOfMeals === "5") {
         breakDownjson = `{
         "breakdown": {
             "breakfast": 0,
@@ -54,7 +54,7 @@ const handler: NextApiHandler = async (req, res) => {
             "snack2": 0
         }
     }`
-    } else if (numOfMeals === 6) {
+    } else if (numOfMeals === '6') {
         breakDownjson = `{
         "breakdown": {
             "breakfast": 0,
