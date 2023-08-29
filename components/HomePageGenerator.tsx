@@ -313,7 +313,7 @@ export default function HomePageGenerator() {
         setLunchIsLoading(false);
     }
     const getDinner = async () => {
-        console.log(calorieData.breakdown)
+        console.log(calorieData?.breakdown)
         //let dinnerCalories = calorieData ? calorieData.breakdown.dinner : 0;
         let dinnerCalories = calorieData?.breakdown?.dinner || 0;
         let dinnerResponse = await fetch(`/api/generateDinner?calories=${dinnerCalories}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
@@ -373,7 +373,6 @@ export default function HomePageGenerator() {
                 if (numOfMeals === "1") {
                     setDinnerIsLoading(true);
                     Promise.all([getDinner()]);
-
                 }
 
 
@@ -597,7 +596,6 @@ export default function HomePageGenerator() {
                                 setShowSecondBox('true')
                                 resetMeals()
                                 fetchData()
-                                scrollToRef()
                             }}
                             className="flex py-6 flex-col w-6/10  items-center">
                             <div className='flex flex-col justify-end'>
