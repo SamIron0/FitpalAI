@@ -236,7 +236,6 @@ const saveMealPlan = async (mealplan: MealPlan | undefined) => {
     //return data;
 };
 
-
 export default function HomePageGenerator() {
     const [secondaryMealPlan, setSecondaryMealPlan] = useState<MealPlan>();
     const [tertiaryMealPlan, setTertiaryMealPlan] = useState<MealPlan>();
