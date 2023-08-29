@@ -20,8 +20,8 @@ const handler: NextApiHandler = async (req, res) => {
             model: "gpt-3.5-turbo",
             messages: [{ role: "user", content: userQuery }],
         });
-        const text = chatCompletion.data.choices[0].message.content;
-        //const text = chatResponse.data.choices[0].message?.content;
+        //const text = chatCompletion.data.choices[0].message.content;
+        const text = chatResponse.data.choices[0].message.content;
 
         if (typeof text !== 'string') {
             return res.status(500).json({ message: 'API Error' });
