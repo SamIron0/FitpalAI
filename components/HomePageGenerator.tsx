@@ -270,14 +270,14 @@ export default function HomePageGenerator() {
     const [showSecondBox, setShowSecondBox] = useState('false')
     const [recipeLoading, setRecipeLoading] = useState('false')
     const [selectedMeal, setSelectedMeal] = useState("1");
-    const [calorieData, setCalorieData] = useState("");
+    const [calorieData, setCalorieData] = useState(null);
 
     const handleMealChange = (event: any) => {
         setSelectedMeal(event.target.value);
     };
 
     const getBreakfast = async () => {
-        let breakfastResponse = await fetch(`/api/generateBreakfast?calories=${calorieData.breakDown.breakfast}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
+        let breakfastResponse = await fetch(`/api/generateBreakfast?calories=${calorieData?.breakDown.breakfast}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
         const breakfastData = await response.json();
         setBreakfast(breakfastData.plan);
         setBreakfastIsLoading(false);
