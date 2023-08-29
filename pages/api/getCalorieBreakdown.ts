@@ -1,8 +1,10 @@
 
 import { NextApiHandler } from 'next'
-import { Configuration, OpenAIApi } from "openai";
+import OpenAI from "openai";
 
-const openai = new OpenAIApi(new Configuration({ apiKey: process.env.OPENAI_API_KEY }));
+const openai = new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY,
+});
 
 const handler: NextApiHandler = async (req, res) => {
     const { totalCalories, numOfMeals } = req.query;
@@ -68,11 +70,11 @@ const handler: NextApiHandler = async (req, res) => {
     const userQuery = `Generate a breakdown of ${totalCalories} calories distributed amongst different meals. Respond only in JSON format as follows: ${breakDownJson}`;
 
     try {
-        const chatResponse = await openai.createChatCompletion({
+        const chatResponse = await openai.chat.completions.create({
             model: "gpt-3.5-turbo",
             messages: [{ role: "user", content: userQuery }],
         });
-        const text = chatResponse.data.choices[0].message?.content;
+        const text = chatResponse.data.choices[0].message.content;
 
         if (typeof text !== 'string') {
             return res.status(500).json({ message: 'API Error' });
