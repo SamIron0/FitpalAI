@@ -492,7 +492,7 @@ export default function HomePageGenerator() {
                                 setShowSecondBox('true')
                                 fetchData()
                                 shiftFocus()
-                                   
+
                             }}
                             className="flex pt-6 flex-col w-6/10  items-center">
                             <div className='flex flex-col justify-end'>
@@ -571,11 +571,12 @@ export default function HomePageGenerator() {
                             onSubmit={(e) => {
                                 e.preventDefault();
                                 setShowSecondBox('true')
-                                myRef.current.focus()
                                 fetchData()
-                                    .catch(error => {
-                                        // Handle error here
-                                    })
+                                const shiftFocus = () => {
+                                    myRef.current?.focus();
+
+                                }
+
                             }}
                             className="flex py-6 flex-col w-6/10  items-center">
                             <div className='flex flex-col justify-end'>
