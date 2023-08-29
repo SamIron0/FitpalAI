@@ -82,6 +82,8 @@ const handler: NextApiHandler = async (req, res) => {
 
         return res.status(200).json({ breakDownJson });
     } catch (error) {
+        console.log(error)
+        console.log("noop");
     }
 }
 
