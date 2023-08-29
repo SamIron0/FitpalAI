@@ -14,48 +14,8 @@ const handler: NextApiHandler = async (req, res) => {
     if (req.method !== 'GET') {
         return res.status(405).json({ message: 'Method Not Allowed' });
     }
-
-    if (numOfMeals === "1") {
-        breakDownJson = `{
-        "breakdown": {
-            "dinner": number,
-        }
-    }`} else if (numOfMeals === '2') {
-        breakDownJson = `{
-        "breakdown": {
-            "lunch": number,
-            "dinner": number,
-        }
-    }`
-    } else if (numOfMeals === "3") {
-        breakDownJson = `{
-        "breakdown": {
-            "breakfast": number,
-            "lunch": number,
-            "dinner": number,
-        }
-    }`
-    } else if (numOfMeals === "4") {
-        breakDownJson = `{
-        "breakdown": {
-            "breakfast": number,
-            "lunch": number,
-            "dinner": number,
-            "snack1": number,
-        }
-    }`
-    } else if (numOfMeals === "5") {
-        breakDownJson = `{
-        "breakdown": {
-            "breakfast": 0,
-            "lunch": 0,
-            "snack1": 0,
-            "dinner": 0,
-            "snack2": 0
-        }
-    }`
-    } else if (numOfMeals === '6') {
-        breakDownJson = `{
+    let days = ""
+    breakDownJson = `{
         "breakdown": {
             "breakfast": 0,
             "snack1": 0,
@@ -65,10 +25,26 @@ const handler: NextApiHandler = async (req, res) => {
             "snack3": 0,
         }
     }`
-    }
-    
+    if (numOfMeals === "1") {
+        days = `dinner (everything else remains at 0)`
+    } else if (numOfMeals === '2') {
+        days = `lunch,dinner (everything else remains at 0)`
 
-    const userQuery = `Generate a breakdown of ${totalCalories} calories  according to given json. Respond only in JSON format as follows: ${breakDownJson} and remove any newline characters that might occur`;
+    } else if (numOfMeals === "3") {
+        days = `breakfast,lunch,dinner (everything else remains at 0)`
+
+    } else if (numOfMeals === "4") {
+        days = `breakfast,lunch,dinner,snack1 ( snack2 and snack3 remain at 0)`
+
+    } else if (numOfMeals === "5") {
+        days = `breakfast,lunch,dinner,snack1, snack2 (snack3 remains at 0)`
+
+    } else if (numOfMeals === '6') {
+        days = `breakfast,lunch,dinner,snack1, snack2, snack3`
+    }
+
+
+    const userQuery = `Generate a breakdown of ${totalCalories} calories spread accross ${days}. Respond only in JSON format as follows: ${breakDownJson}.`;
 
     try {
         const chatResponse = await openai.chat.completions.create({
