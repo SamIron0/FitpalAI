@@ -18,7 +18,7 @@ const handler: NextApiHandler = async (req, res) => {
     if (numOfMeals === "1") {
         breakDownJson = `{
         "breakdown": {
-            "dinner": 0,
+            "dinner": number,
         }
     }`} else if (numOfMeals === '2') {
         breakDownJson = `{
@@ -67,7 +67,7 @@ const handler: NextApiHandler = async (req, res) => {
     }`
     }
 
-    const userQuery = `Generate a breakdown of ${totalCalories} calories distributed amongst different meals. Respond only in JSON format as follows: ${breakDownJson}`;
+    const userQuery = `Generate a breakdown of ${totalCalories} calories distributed amongst different meals. Respond only in JSON format as follows: ${breakDownJson} and remove any newline characters that might occur`;
 
     try {
         const chatResponse = await openai.chat.completions.create({
@@ -80,7 +80,7 @@ const handler: NextApiHandler = async (req, res) => {
             return res.status(500).json({ message: 'API Error' });
         }
 
-        return res.status(200).json({ breakDownJson });
+        return res.status(200).json({ totalCalories });
     } catch (error) {
         console.log(error)
         console.log("noop");
