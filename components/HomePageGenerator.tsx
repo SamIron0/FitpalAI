@@ -308,7 +308,6 @@ export default function HomePageGenerator() {
         setDinnerIsLoading(false);
     }
     const getSnack = async (snackNumber: any) => {
-
         if (snackNumber === 1) {
             let snack1Calories = calorieData.breakdown ? calorieData.breakdown.snack1 : 0;
 
