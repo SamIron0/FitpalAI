@@ -350,6 +350,7 @@ export default function HomePageGenerator() {
                     let breakDown = await fetch(`/api/getCalorieBreakdown?totalCalories=${calories}&numOfMeals=${numOfMeals}`);
                     setCalorieData((await breakDown.json()).text);
                     console.log(calorieData.breakdown.dinner)
+                    console.log(calorieData)
                 }
                 if (numOfMeals === "1") {
                     setBreakfastIsLoading(true);
