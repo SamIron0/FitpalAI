@@ -18,30 +18,30 @@ const handler: NextApiHandler = async (req, res) => {
     if (numOfMeals === "1") {
         breakDownJson = `{
         "breakdown": {
-            "dinner": 0,
+            "dinner": number,
         }
     }`} else if (numOfMeals === '2') {
         breakDownJson = `{
         "breakdown": {
-            "lunch": 0,
-            "dinner": 0,
+            "lunch": number,
+            "dinner": number,
         }
     }`
     } else if (numOfMeals === "3") {
         breakDownJson = `{
         "breakdown": {
-            "breakfast": 0,
-            "lunch": 0,
-            "dinner": 0,
+            "breakfast": number,
+            "lunch": number,
+            "dinner": number,
         }
     }`
     } else if (numOfMeals === "4") {
         breakDownJson = `{
         "breakdown": {
-            "breakfast": 0,
-            "lunch": 0,
-            "dinner": 0,
-            "snack1": 0,
+            "breakfast": number,
+            "lunch": number,
+            "dinner": number,
+            "snack1": number,
         }
     }`
     } else if (numOfMeals === "5") {
@@ -84,7 +84,6 @@ const handler: NextApiHandler = async (req, res) => {
         return res.status(200).json({ breakDownJson });
     } catch (error) {
         console.log(error)
-        console.log("noop");
     }
 }
 
