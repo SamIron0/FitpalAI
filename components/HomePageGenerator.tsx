@@ -670,7 +670,7 @@ export default function HomePageGenerator() {
                                 <GhostCard />
                             </div>
 
-                        ) : breakfast ? (
+                        ) : breakfast && breakfast.meal? (
                             <PlanCard
                                 title="Breakfast"
                                 footer={
