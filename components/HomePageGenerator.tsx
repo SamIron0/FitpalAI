@@ -264,7 +264,6 @@ export default function HomePageGenerator() {
     const [numOfMeals, setNumOfMeals] = useState("1")
     const [generationType, setGenerationType] = useState('create')
     const [allergies, setAllergies] = useState('')
-
     const [showSecondBox, setShowSecondBox] = useState('false')
     const [recipeLoading, setRecipeLoading] = useState('false')
     const [selectedMeal, setSelectedMeal] = useState("1");
