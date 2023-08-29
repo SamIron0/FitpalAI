@@ -1,5 +1,5 @@
 'use client';
-import { ReactNode, useState, useEffect, useRef } from 'react';
+import React, { ReactNode, useState, useEffect, useRef } from 'react';
 import Textarea from 'react-textarea-autosize'
 import { cn } from '@/lib/utils'
 import { ExternalLink } from '@/components/external-link'
@@ -279,7 +279,7 @@ export default function HomePageGenerator() {
             snack3: 0,
         }
     });
-    const myRef = useRef(null);
+    const myRef = useRef<HTMLDivElement>(null);
     const handleMealChange = (event: any) => {
         setSelectedMeal(event.target.value);
     };
@@ -336,9 +336,8 @@ export default function HomePageGenerator() {
         }
     }
     const shiftFocus = () => {
-        if (myRef.current !== undefined && myRef.current !== null) {
-            myRef.current.focus()
-        }
+        myRef.current?.focus();
+
     }
 
     const fetchData = async () => {
