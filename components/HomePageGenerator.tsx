@@ -492,9 +492,7 @@ export default function HomePageGenerator() {
                                 setShowSecondBox('true')
                                 fetchData()
                                 shiftFocus()
-                                    .catch(error => {
-                                        // Handle error here
-                                    })
+                                   
                             }}
                             className="flex pt-6 flex-col w-6/10  items-center">
                             <div className='flex flex-col justify-end'>
