@@ -81,7 +81,7 @@ const handler: NextApiHandler = async (req, res) => {
             return res.status(500).json({ message: 'API Error' });
         }
 
-        return res.status(200).json({ breakDownJson });
+        return res.status(200).json({ text });
     } catch (error) {
         console.log(error)
     }
