@@ -686,7 +686,7 @@ export default function HomePageGenerator() {
                         ) : null}
                         {dinnerIsLoading ? (
 
-                            <div tabIndex="0" ref={myRef}>
+                            <div  ref={myRef}>
                                 <GhostCard />
                             </div>
 
