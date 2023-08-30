@@ -193,28 +193,81 @@ export default function HomePageGenerator() {
         setSnack2(null)
         setSnack3(null)
     }
-    const getBreakfast = async () => {
-        let breakfastCalories = calorieData?.breakfast || 0;
-        if (breakfastCalories > 0) {
+    const getBreakfast = async (dinnerCalories: any) => {
+        if (breakfastCalories != null) {
+            let gotCalories = false
 
-            let breakfastResponse = await fetch(`/api/generateBreakfast?calories=${breakfastCalories}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
-            const breakfastData = await breakfastResponse.json();
-            setBreakfast(breakfastData.meal);
-            setBreakfastIsLoading(false);
+            while (!gotCalories) {
+                try {
+                    let breakfastResponse = await fetch(`/api/generateBreakfast?calories=${breakfastCalories.text?.dinner}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
+                    const breakfastData = await breakfastResponse.json();
+                    if (breakfastData.meal) {
+                        setBreakfast(breakfastData.meal);
+                        setBreakfastIsLoading(false);
+                        gotCalories = true;
+
+                    }
+                } catch (error) {
+                    console.error(`Retrying due to ${error}`);
+                }
+            }
+        } else {
+            let gotCalories = false
+
+            while (!gotCalories) {
+                try {
+                    let breakfastResponse = await fetch(`/api/generateBreakfast?ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
+                    const breakfastData = await breakfastResponse.json();
+                    if (breakfastData.meal) {
+                        setBreakfast(breakfastData.meal);
+                        setBreakfastIsLoading(false);
+                        gotCalories = true;
+
+                    }
+                } catch (error) {
+                    console.error(`Retrying due to ${error}`);
+                }
+            }
         }
     }
-    const getLunch = async () => {
-        let lunchCalories = calorieData?.lunch || 0;
-        if (lunchCalories > 0) {
+    const getLunch = async (lunchCalories: any) => {
+        if (lunchCalories != null) {
+            let gotCalories = false
 
-            let lunchResponse = await fetch(`/api/generateLunch?calories=${lunchCalories}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
-            const lunchData = await lunchResponse.json();
-            setLunch(lunchData.meal);
-            setLunchIsLoading(false);
+            while (!gotCalories) {
+                try {
+                    let lunchResponse = await fetch(`/api/generateLunch?calories=${lunchCalories.text?.dinner}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
+                    const lunchData = await lunchResponse.json();
+                    if (lunchData.meal) {
+                        setLunch(lunchData.meal);
+                        setLunchIsLoading(false);
+                        gotCalories = true;
+
+                    }
+                } catch (error) {
+                    console.error(`Retrying due to ${error}`);
+                }
+            }
+        } else {
+            let gotCalories = false
+
+            while (!gotCalories) {
+                try {
+                    let lunchResponse = await fetch(`/api/generateLunch?ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
+                    const lunchData = await lunchResponse.json();
+                    if (lunchData.meal) {
+                        setLunch(lunchData.meal);
+                        setLunchIsLoading(false);
+                        gotCalories = true;
+
+                    }
+                } catch (error) {
+                    console.error(`Retrying due to ${error}`);
+                }
+            }
         }
     }
     const getDinner = async (dinnerCalories: any) => {
-        console.log(dinnerCalories)
         if (dinnerCalories != null) {
             let gotCalories = false
 
@@ -252,31 +305,120 @@ export default function HomePageGenerator() {
     }
     const getSnack = async (snackNumber: any) => {
         if (snackNumber === 1) {
-            let snack1Calories = calorieData?.snack1 || 0;
-            if (snack1Calories > 0) {
-                let snack1Response = await fetch(`/api/generateSnack1?calories=${snack1Calories}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
-                const snackData = await snack1Response.json();
-                setSnack1(snackData.meal);
-                setSnack1IsLoading(false);
+            const getSnack1 = async (snack1Calories: any) => {
+                if (snack1Calories != null) {
+                    let gotCalories = false
+
+                    while (!gotCalories) {
+                        try {
+                            let snack1Response = await fetch(`/api/generateSnack?calories=${snack1Calories.text?.dinner}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
+                            const snack1Data = await snack1Response.json();
+                            if (snack1Data.meal) {
+                                setSnack1(snack1Data.meal);
+                                setSnack1IsLoading(false);
+                                gotCalories = true;
+
+                            }
+                        } catch (error) {
+                            console.error(`Retrying due to ${error}`);
+                        }
+                    }
+                } else {
+                    let gotCalories = false
+
+                    while (!gotCalories) {
+                        try {
+                            let snack1Response = await fetch(`/api/generateSnack?ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
+                            const snack1Data = await snack1Response.json();
+                            if (snack1Data.meal) {
+                                setSnack1(snack1Data.meal);
+                                setSnack1IsLoading(false);
+                                gotCalories = true;
+
+                            }
+                        } catch (error) {
+                            console.error(`Retrying due to ${error}`);
+                        }
+                    }
+                }
             }
         }
         if (snackNumber === 2) {
-            let snack2Calories = calorieData?.snack2 || 0;
-            if (snack2Calories > 0) {
-                let snack2Response = await fetch(`/api/generateSnack2?calories=${snack2Calories}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
-                const snackData = await snack2Response.json();
-                setSnack2(snackData.meal);
-                setSnack2IsLoading(false);
+            const getSnack2 = async (snack2Calories: any) => {
+                if (snack2Calories != null) {
+                    let gotCalories = false
+
+                    while (!gotCalories) {
+                        try {
+                            let snack2Response = await fetch(`/api/generateSnack?calories=${snack2Calories.text?.dinner}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
+                            const snack2Data = await snack2Response.json();
+                            if (snack2Data.meal) {
+                                setSnack2(dinnerData.meal);
+                                setSnac2IsLoading(false);
+                                gotCalories = true;
+
+                            }
+                        } catch (error) {
+                            console.error(`Retrying due to ${error}`);
+                        }
+                    }
+                } else {
+                    let gotCalories = false
+
+                    while (!gotCalories) {
+                        try {
+                            let snack2Response = await fetch(`/api/generateSnack?ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
+                            const snack2Data = await snack2Response.json();
+                            if (snack2Data.meal) {
+                                setSnack2(snack2Data.meal);
+                                setSnack2IsLoading(false);
+                                gotCalories = true;
+
+                            }
+                        } catch (error) {
+                            console.error(`Retrying due to ${error}`);
+                        }
+                    }
+                }
             }
         }
         if (snackNumber === 3) {
-            let snack3Calories = calorieData?.snack3 || 0;
+            const getSnack3 = async (snack3Calories: any) => {
+                if (snack3Calories != null) {
+                    let gotCalories = false
 
-            if (snack3Calories > 0) {
-                let snack3Response = await fetch(`/api/generateSnack3?calories=${snack3Calories}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
-                const snackData = await snack3Response.json();
-                setSnack3(snackData.meal);
-                setSnack3IsLoading(false);
+                    while (!gotCalories) {
+                        try {
+                            let snack3Response = await fetch(`/api/generateSnack?calories=${snack3Calories.text?.dinner}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
+                            const snack3Data = await snack3Response.json();
+                            if (snack3Data.meal) {
+                                setSnack3(dinnerData.meal);
+                                setSnack3IsLoading(false);
+                                gotCalories = true;
+
+                            }
+                        } catch (error) {
+                            console.error(`Retrying due to ${error}`);
+                        }
+                    }
+                } else {
+                    let gotCalories = false
+
+                    while (!gotCalories) {
+                        try {
+                            let snack3Response = await fetch(`/api/generateSnack?ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
+                            const snack3Data = await snack1Response.json();
+                            if (snack1Data.meal) {
+                                setSnack3(snack3Data.meal);
+                                setSnack3IsLoading(false);
+                                gotCalories = true;
+
+                            }
+                        } catch (error) {
+                            console.error(`Retrying due to ${error}`);
+                        }
+                    }
+                }
             }
         }
     }
@@ -556,8 +698,8 @@ export default function HomePageGenerator() {
                                 </svg>
                             </button>
                         </form>
-                        : 
-                         <form
+                        :
+                        <form
                             onSubmit={(e) => {
                                 e.preventDefault();
                                 setShowSecondBox('true')
@@ -658,7 +800,7 @@ export default function HomePageGenerator() {
                                 completed={true}
                             >
                                 <div className="mt-1  w-full mb-1">
-                                    <p>{`${breakfast.calories}`}</p>
+                                    <p>{`${breakfast.title}`}</p>
                                 </div>
                             </PlanCard>
                         ) : null}
@@ -681,7 +823,7 @@ export default function HomePageGenerator() {
                                 completed={true}
                             >
                                 <div className="mt-1  w-full mb-1">
-                                    <p>{`${lunch.calories}`}</p>
+                                    <p>{`${lunch.title}`}</p>
                                 </div>
                             </PlanCard>
                         ) : null}
@@ -727,7 +869,7 @@ export default function HomePageGenerator() {
                                 completed={true}
                             >
                                 <div className="mt-1  w-full mb-1">
-                                    <p>{`${snack1.calories}`}</p>
+                                    <p>{`${snack1.title}`}</p>
                                 </div>
                             </PlanCard>
                         ) : null}
@@ -749,7 +891,7 @@ export default function HomePageGenerator() {
                                 completed={true}
                             >
                                 <div className="mt-1  w-full mb-1">
-                                    <p>{`${snack2.calories}`}</p>
+                                    <p>{`${snack2.title}`}</p>
                                 </div>
                             </PlanCard>
                         ) : null}
@@ -771,7 +913,7 @@ export default function HomePageGenerator() {
                                 completed={true}
                             >
                                 <div className="mt-1  w-full mb-1">
-                                    <p>{`${snack3.calories}`}</p>
+                                    <p>{`${snack3.title}`}</p>
                                 </div>
                             </PlanCard>
                         ) : null}
