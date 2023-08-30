@@ -28,7 +28,6 @@ export default async function PricingPage() {
             FitpalAI lets you create and customize personalized meals based on your preferences, budget and what you already have in stock. Reach your nutritional goals with your new pal  </p>
         </div>
       </div>
-
       <div className="bg-black pb-6 px-8">
         <div className="rounded-full border-[#232325] bg-[#0D0D0E] flex items-center border w-md h-20  max-w-md mx-auto ">
           <Link
