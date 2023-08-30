@@ -34,11 +34,11 @@ export default async function Navbar() {
         </Link>
 
       </div>
-      <div className="flex items-center pr-3 sm:pr-6 justify-end space-x-2">
+      <div className="flex items-center pr-3 sm:pr-24 justify-end space-x-2">
         
           <Link
             href="/signin"
-            className="group flex rounded-md sm:pr-24 py-2 text-[13px] font-semibold transition-all items-center justify-center bg-[#f5f7f9] text-[#1E2B3A] no-underline active:scale-95 scale-100 duration-75"
+            className="group flex rounded-md px-4 py-2 text-[13px] font-semibold transition-all items-center justify-center bg-[#f5f7f9] text-[#1E2B3A] no-underline active:scale-95 scale-100 duration-75"
             style={{
               boxShadow: "0 1px 1px #0c192714, 0 1px 3px #0c192724",
             }}
