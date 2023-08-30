@@ -12,8 +12,24 @@ const handler: NextApiHandler = async (req, res) => {
     }
 
     const { calories, ingredients, userLocation, allergies } = req.query;
-    const userQuery = calories ? `Could you please provide a detailed lunch recipe title - utilising ${ingredients} - that falls within ${calories} calories? The meals may reflect a variety of cuisines and flavor profiles suitable for a user based in ${userLocation}. Kindly deliver the response in the following JSON format: { {title: string}, ingredients: string })`
-        : `Could you please provide a detailed dinner recipe title utilising ${ingredients}? The meals should reflect a variety of cuisines and flavor profiles suitable for a user based in ${userLocation}. Kindly deliver the response in the following JSON format: { {title: string}, ingredients: string })`
+    const userQuery = calories ? `Could you please provide a detailed lunch recipe title - utilising ${ingredients} - that falls within ${calories} calories? The meals may reflect a variety of cuisines and flavor profiles suitable for a user based in ${userLocation}. Kindly deliver the response in the following JSON format: { title: string;
+        ingredients: string;
+        instructions: string;
+        macros: {
+            protein: string;
+            carbs: string;
+            fats: string;
+        };
+        calories: string;)`
+        : `Could you please provide a detailed dinner recipe title utilising ${ingredients}? The meals should reflect a variety of cuisines and flavor profiles suitable for a user based in ${userLocation}. Kindly deliver the response in the following JSON format: {title: string;
+            ingredients: string;
+            instructions: string;
+            macros: {
+                protein: string;
+                carbs: string;
+                fats: string;
+            };
+            calories: string;)`
     try {
         const chatResponse = await openai.chat.completions.create({
             model: "gpt-3.5-turbo",

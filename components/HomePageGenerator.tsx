@@ -631,7 +631,7 @@ export default function HomePageGenerator() {
                                 <GhostCard />
                             </div>
 
-                        ) : breakfast && breakfast.meal ? (
+                        ) : breakfast ? (
                             <PlanCard
                                 title="Breakfast"
                                 footer={
@@ -654,7 +654,7 @@ export default function HomePageGenerator() {
                             </div>
 
 
-                        ) : lunch && lunch.meal ? (
+                        ) : lunch ? (
                             <PlanCard
                                 title="Lunch"
                                 footer={
@@ -677,7 +677,7 @@ export default function HomePageGenerator() {
                                 </div>
 
                             </>
-                        ) : dinner && dinner.meal ? (
+                        ) : dinner ? (
                             <PlanCard
                                 title="Dinner"
                                 footer={
@@ -700,7 +700,7 @@ export default function HomePageGenerator() {
                             </div>
 
 
-                        ) : snack1 && snack1.meal ? (
+                        ) : snack1 ? (
                             <PlanCard
                                 title="Snack1"
                                 footer={
@@ -722,7 +722,7 @@ export default function HomePageGenerator() {
                                 <GhostCard />
                             </div>
 
-                        ) : snack2 && snack2.meal ? (
+                        ) : snack2 ? (
                             <PlanCard
                                 title="Snack2"
                                 footer={
@@ -744,7 +744,7 @@ export default function HomePageGenerator() {
                                 <GhostCard />
                             </div>
 
-                        ) : snack3 && snack3.meal ? (
+                        ) : snack3 ? (
                             <PlanCard
                                 title="Snack3"
                                 footer={
