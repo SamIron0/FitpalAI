@@ -384,7 +384,7 @@ export default function HomePageGenerator() {
 
                 if (numOfMeals === "1") {
                     setDinnerIsLoading(true);
-                    await Promise.all([getDinner(calorieData)]);
+                    await Promise.all([getDinner(calorieData.text)]);
                 }
 
                 if (numOfMeals === "2") {
