@@ -697,7 +697,7 @@ export default function HomePageGenerator() {
                             </button>
                         </form>
                         :
-                        <div className="flex flex-col h-[276px] w-6/10 justify-center items-center">
+                        <div className="flex flex-col h-[276px] pt-6 pb-3 w-6/10 justify-center items-center">
                             <p>Get access to all customization options</p>
                             <Link
                                 href="/signin"
