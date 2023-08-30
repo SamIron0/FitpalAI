@@ -70,10 +70,10 @@ function PlanCard({ title, footer, children, completed }: Props) {
     const bgColor = completed ? "bg-zinc-700" : "bg-zinc-700";
 
     return (
-        <div role="status" className="w-full text-sm px-4 py-4 mb-6 space-y-4 border border-[#232325] bg-[#0D0D0E] divide-y divide-gray-200 rounded shadow dark:divide-gray-700  dark:border-gray-700">
+        <div role="status" className="w-full text-sm px-4 py-3 mb-6 space-y-4 border border-[#232325] bg-[#0D0D0E] divide-y divide-gray-200 rounded shadow dark:divide-gray-700  dark:border-gray-700">
             <div className="flex w-full items-center justify-between">
                 <div className="pr-2" >
-                    <div className='mb-1.5 text-[#006eff] font-bold'>  {title} </div>
+                    <div className='mb-1 text-[#006eff] font-bold'>  {title} </div>
                     {children}
                 </div>
                 <div className='text-sm flex-shrink-0'> {footer} </div>
@@ -697,7 +697,7 @@ export default function HomePageGenerator() {
                             </button>
                         </form>
                         :
-                        <div className="flex flex-col h-[276px] pt-6 pb-3 w-6/10 justify-center items-center">
+                        <div className="flex flex-col h-[276px] pt-6 pb-6 w-6/10 justify-center items-center">
                             <p>Get access to all customization options</p>
                             <Link
                                 href="/signin"
