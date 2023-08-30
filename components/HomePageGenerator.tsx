@@ -354,7 +354,7 @@ export default function HomePageGenerator() {
                             const snack2Data = await snack2Response.json();
                             if (snack2Data.meal) {
                                 setSnack2(snack2Data.meal);
-                                setSnac2IsLoading(false);
+                                setSnack2IsLoading(false);
                                 gotCalories = true;
 
                             }
