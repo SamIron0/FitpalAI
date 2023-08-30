@@ -303,7 +303,7 @@ export default function HomePageGenerator() {
             }
         }
     }
-    const getSnack = async (snackNumber: any, snackCalories) => {
+    const getSnack = async (snackNumber: any, snackCalories:any ) => {
         if (snackNumber === 1) {
             const getSnack1 = async () => {
                 if (snackCalories != null) {
