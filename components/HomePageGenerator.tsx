@@ -419,7 +419,7 @@ export default function HomePageGenerator() {
                 if (numOfMeals === "2") {
                     setLunchIsLoading(true);
                     setDinnerIsLoading(true);
-                    await Promise.all([getLunch(), getDinner()])
+                    await Promise.all([getLunch(), getDinner(calorieData.textv)])
                         .catch((error) => {
                             console.error('Error:', error);
                         });
@@ -429,7 +429,7 @@ export default function HomePageGenerator() {
                     setBreakfastIsLoading(true);
                     setLunchIsLoading(true);
                     setDinnerIsLoading(true);
-                    await Promise.all([getBreakfast(), getLunch(), getDinner()])
+                    await Promise.all([getBreakfast(), getLunch(), getDinner(calorieData.text)])
                         .catch((error) => {
                             console.error('Error:', error);
                         });
@@ -440,7 +440,7 @@ export default function HomePageGenerator() {
                     setLunchIsLoading(true);
                     setDinnerIsLoading(true);
                     setSnack1IsLoading(true);
-                    await Promise.all([getBreakfast(), getLunch(), getDinner(), getSnack(1)])
+                    await Promise.all([getBreakfast(), getLunch(), getDinner(calorieData.text), getSnack(1)])
                         .catch((error) => {
                             console.error('Error:', error);
                         });
@@ -452,7 +452,7 @@ export default function HomePageGenerator() {
                     setDinnerIsLoading(true);
                     setSnack1IsLoading(true);
                     setSnack2IsLoading(true);
-                    await Promise.all([getBreakfast(), getLunch(), getDinner(), getSnack(1), getSnack(2)])
+                    await Promise.all([getBreakfast(), getLunch(), getDinner(calorieData.text), getSnack(1), getSnack(2)])
                         .catch((error) => {
                             console.error('Error:', error);
                         });
