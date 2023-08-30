@@ -397,26 +397,32 @@ export default function HomePageGenerator() {
                     setSnack3IsLoading(true);
                 }
                 const getCalorieData = async () => {
-                    if (calories !== "") {
-                        const breakDown = await fetch(`/api/getCalorieBreakdown?totalCalories=${calories}&numOfMeals=${numOfMeals}`);
-                        calorieData = await breakDown.json();
-                        gotCalories = true;
+                    let gotCalories = false
+                    while (!gotCalories) {
+                        try {
+                            if (calories !== "") {
+                                const breakDown = await fetch(`/api/getCalorieBreakdown?totalCalories=${calories}&numOfMeals=${numOfMeals}`);
+                                calorieData = await breakDown.json();
+                                gotCalories = true;
 
-                        return calorieData.text;
+                                return calorieData.text;
+                            }
+                        } catch (error) {
+                            console.error(`Retrying due to ${error}`);
+                        }
                     }
-
                 }
-                setCalorieData(await getCalorieData());
+                await getCalorieData();
 
                 if (numOfMeals === "1") {
                     setDinnerIsLoading(true);
-                    await Promise.all([getDinner(calorieData.text)]);
+                    await Promise.all([getDinner(calorieData)]);
                 }
 
                 if (numOfMeals === "2") {
                     setLunchIsLoading(true);
                     setDinnerIsLoading(true);
-                    await Promise.all([getLunch(), getDinner(calorieData.textv)])
+                    await Promise.all([getLunch(), getDinner(calorieData)])
                         .catch((error) => {
                             console.error('Error:', error);
                         });
@@ -426,7 +432,7 @@ export default function HomePageGenerator() {
                     setBreakfastIsLoading(true);
                     setLunchIsLoading(true);
                     setDinnerIsLoading(true);
-                    await Promise.all([getBreakfast(), getLunch(), getDinner(calorieData.text)])
+                    await Promise.all([getBreakfast(), getLunch(), getDinner(calorieData)])
                         .catch((error) => {
                             console.error('Error:', error);
                         });
@@ -437,7 +443,7 @@ export default function HomePageGenerator() {
                     setLunchIsLoading(true);
                     setDinnerIsLoading(true);
                     setSnack1IsLoading(true);
-                    await Promise.all([getBreakfast(), getLunch(), getDinner(calorieData.text), getSnack(1)])
+                    await Promise.all([getBreakfast(), getLunch(), getDinner(calorieData), getSnack(1)])
                         .catch((error) => {
                             console.error('Error:', error);
                         });
@@ -449,7 +455,7 @@ export default function HomePageGenerator() {
                     setDinnerIsLoading(true);
                     setSnack1IsLoading(true);
                     setSnack2IsLoading(true);
-                    await Promise.all([getBreakfast(), getLunch(), getDinner(calorieData.text), getSnack(1), getSnack(2)])
+                    await Promise.all([getBreakfast(), getLunch(), getDinner(calorieData), getSnack(1), getSnack(2)])
                         .catch((error) => {
                             console.error('Error:', error);
                         });
@@ -463,7 +469,7 @@ export default function HomePageGenerator() {
                     setSnack1IsLoading(true);
                     setSnack2IsLoading(true);
                     setSnack3IsLoading(true);
-                    await Promise.all([getBreakfast(), getLunch(), getDinner(), getSnack(1), getSnack(2), getSnack(3)])
+                    await Promise.all([getBreakfast(), getLunch(), getDinner(calorieData), getSnack(1), getSnack(2), getSnack(3)])
                         .catch((error) => {
                             console.error('Error:', error);
                         });
