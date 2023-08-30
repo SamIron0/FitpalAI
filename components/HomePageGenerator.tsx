@@ -71,11 +71,11 @@ function PlanCard({ title, footer, children, completed }: Props) {
     return (
         <div role="status" className="w-full text-sm px-4 py-4 mb-6 space-y-4 border border-[#232325] bg-[#0D0D0E] divide-y divide-gray-200 rounded shadow dark:divide-gray-700  dark:border-gray-700">
             <div className="flex w-full items-center justify-between">
-                <div className="w-6/10" >
+                <div className="" >
                     <div className='mb-1.5 text-[#006eff] text-bold'>  {title} </div>
                     {children}
                 </div>
-                <div className='w-[60px] text-sm'> {footer} </div>
+                <div className='text-sm flex-shrink-0'> {footer} </div>
 
             </div>
 
