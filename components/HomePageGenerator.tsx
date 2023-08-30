@@ -72,7 +72,7 @@ function PlanCard({ title, footer, children, completed }: Props) {
         <div role="status" className="w-full text-md p-4 mb-6 space-y-4 border border-[#232325] bg-[#0D0D0E] divide-y divide-gray-200 rounded shadow dark:divide-gray-700 md:p-6 dark:border-gray-700">
             <div className="flex items-center justify-between">
                 <div>
-                    <div className='mb-2.5'>  {title} </div>
+                    <div className='mb-2.5 text-semi-bold'>  {title} </div>
                     {children}
                 </div>
                 <div className='ml-2 text-sm'> {footer} </div>
@@ -463,14 +463,14 @@ export default function HomePageGenerator() {
                             Create
                         </button>
                         <button
-                            onClick={() => setGenerationType('settings')}
+                            onClick={() => setGenerationType('customize')}
                             type="button"
-                            className={`${generationType === 'settings'
+                            className={`${generationType === 'customize'
                                 ? 'relative w-1/2 bg-zinc-700 border-zinc-800 shadow-sm text-white'
                                 : 'ml-0.5 relative w-1/2 border border-transparent text-zinc-400'
                                 } rounded-md m-1  text-sm font-medium whitespace-nowrap focus:outline-none focus:z-10  sm:px-8`}
                         >
-                            Settings
+                            Customize
                         </button>
                     </div>
 
@@ -501,7 +501,7 @@ export default function HomePageGenerator() {
 
                                         <select
                                             onChange={e => setNumOfMeals(e.target.value)}
-                                            className=" ml-6 px-2 bg-transparent border-[1px] border-gray-200  text-md sm:w-[320px] w-[220px] h-[35px] rounded-md">
+                                            className=" ml-6 px-2 bg-transparent border-[1px]  border-[#232325]  text-md sm:w-[320px] w-[220px] h-[35px] rounded-md">
                                             <option value="1">1 meal</option>
                                             <option value="2">2 meals</option>
                                             <option value="3">3 meals</option>
@@ -556,7 +556,8 @@ export default function HomePageGenerator() {
                                 </svg>
                             </button>
                         </form>
-                        : <form
+                        : 
+                         <form
                             onSubmit={(e) => {
                                 e.preventDefault();
                                 setShowSecondBox('true')
