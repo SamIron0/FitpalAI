@@ -697,16 +697,37 @@ export default function HomePageGenerator() {
                             </button>
                         </form>
                         :
-                        <div className="flex flex-col h-[615px] w-6/10 justify-center items-center">
+                        <div className="flex flex-col h-[276px] w-6/10 justify-center items-center">
                             <p>Get access to all customization options</p>
                             <Link
                                 href="/signin"
-                                className="group flex rounded-md px-4 py-2 text-[13px] font-semibold transition-all items-center justify-center bg-[#f5f7f9] text-[#1E2B3A] no-underline active:scale-95 scale-100 duration-75"
+                                className="group flex rounded-md px-4 mt-3 py-2 text-[13px] font-semibold transition-all items-center justify-center bg-[#f5f7f9] text-[#1E2B3A] no-underline active:scale-95 scale-100 duration-75"
                                 style={{
                                     boxShadow: "0 1px 1px #0c192714, 0 1px 3px #0c192724",
                                 }}
                             >
-                                I'm ready
+                                 <span className="text-md"> I'm ready </span>
+                                <svg
+                                    className="w-5 h-5"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        d="M13.75 6.75L19.25 12L13.75 17.25"
+                                        stroke="#1E2B3A"
+                                        strokeWidth="1.5"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                    />
+                                    <path
+                                        d="M19 12H4.75"
+                                        stroke="#1E2B3A"
+                                        strokeWidth="1.5"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                    />
+                                </svg>
                             </Link>
                         </div>
                     }
