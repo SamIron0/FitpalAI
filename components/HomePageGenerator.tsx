@@ -367,20 +367,21 @@ export default function HomePageGenerator() {
 
         if (generationType == 'create') {
             let gotCalories = false;
+            let data = null;
             // if user entered a calorie count
             try {
                 const getCalorieData = async () => {
                     if (calories !== "") {
                         const breakDown = await fetch(`/api/getCalorieBreakdown?totalCalories=${calories}&numOfMeals=${numOfMeals}`);
-                        const data = await breakDown.json();
+                        data = await breakDown.json();
                         gotCalories = true;
-                        console.log(data.text)
 
                         return data.text;
                     }
 
                 }
                 setCalorieData(await getCalorieData());
+                console.log(data)
 
                 if (numOfMeals === "1") {
                     setDinnerIsLoading(true);
