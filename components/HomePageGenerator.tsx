@@ -42,7 +42,7 @@ interface MealPlan {
     };
 }interface Meal {
     title: string;
-    ingredients: string[];
+    ingredients: string;
     instructions?: string;
     macros?: {
         protein: string;
