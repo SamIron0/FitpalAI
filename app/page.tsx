@@ -24,7 +24,7 @@ export default async function PricingPage() {
           </p>
         </div>
         <div>
-          <p className="mt-9 mb-9 px-4 text-l text-gray-500 text-center sm:text-2xl max-w-3xl sm:max-w-2xl m-auto">
+          <p className="mt-9 mb-9 px-4 text-l text-gray-500 text-center sm:text-xl max-w-3xl sm:max-w-2xl m-auto">
             FitpalAI lets you create and customize personalized meals based on your preferences, budget and what you already have in stock. Reach your nutritional goals with your new pal  </p>
         </div>
       </div>
@@ -39,7 +39,7 @@ export default async function PricingPage() {
             </div>
             <div className="w-11/20 flex justify-center items-center sm:pl-4 flex w-full flex-col">
 
-              <p className=" text-white absolute">
+              <p className=" text-white text-md absolute">
                 Introducing FitpalAI- Create account
               </p>
 
