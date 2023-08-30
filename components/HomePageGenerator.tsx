@@ -40,19 +40,16 @@ interface MealPlan {
         };
         totalCalories: string;
     };
-}
-interface Meal {
-    [mealType: string]: {
-        title: string;
-        ingredients: string;
-        instructions: string;
-        macros: {
-            protein: string;
-            carbs: string;
-            fats: string;
-        };
-        calories: string;
+}interface Meal {
+    title: string;
+    ingredients: string[];
+    instructions?: string;
+    macros?: {
+        protein: string;
+        carbs: string;
+        fats: string;
     };
+    calories?: string;
 }
 const testMeal: Meal = {
     "meal": {
@@ -320,8 +317,8 @@ export default function HomePageGenerator() {
         console.log(dinnerCalories)
         //let dinnerCalories = calorieData ? calorieData.breakdown.dinner : 0;
         //let dinnerCalories = calorieData?.breakdown?.dinner || 0;
-        if (dinnerCalories > 0) {
-            let dinnerResponse = await fetch(`/api/generateDinner?calories=${dinnerCalories.breakdown.dinner}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
+        if (dinnerCalories != null) {
+            let dinnerResponse = await fetch(`/api/generateDinner?calories=${dinnerCalories.text?.breakdown?.dinner}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
             const dinnerData = await dinnerResponse.json();
             setDinner(dinnerData.meal);
             setDinnerIsLoading(false);
