@@ -370,6 +370,35 @@ export default function HomePageGenerator() {
             let calorieData = null;
             // if user entered a calorie count
             try {
+                if (numOfMeals === "1") {
+                    setDinnerIsLoading(true);
+                }
+                else if (numOfMeals === "2") {
+                    setLunchIsLoading(true);
+                    setDinnerIsLoading(true);
+                } else if (numOfMeals === "3") {
+                    setBreakfastIsLoading(true);
+                    setLunchIsLoading(true);
+                    setDinnerIsLoading(true);
+                } else if (numOfMeals === "4") {
+                    setBreakfastIsLoading(true);
+                    setLunchIsLoading(true);
+                    setDinnerIsLoading(true);
+                    setSnack1IsLoading(true);
+                } else if (numOfMeals === "5") {
+                    setBreakfastIsLoading(true);
+                    setLunchIsLoading(true);
+                    setDinnerIsLoading(true);
+                    setSnack1IsLoading(true);
+                    setSnack2IsLoading(true);
+                } else if (numOfMeals === "6") {
+                    setBreakfastIsLoading(true);
+                    setLunchIsLoading(true);
+                    setDinnerIsLoading(true);
+                    setSnack1IsLoading(true);
+                    setSnack2IsLoading(true);
+                    setSnack3IsLoading(true);
+                }
                 const getCalorieData = async () => {
                     if (calories !== "") {
                         const breakDown = await fetch(`/api/getCalorieBreakdown?totalCalories=${calories}&numOfMeals=${numOfMeals}`);
