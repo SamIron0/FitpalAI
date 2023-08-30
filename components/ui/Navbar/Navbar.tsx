@@ -28,7 +28,7 @@ export default async function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 flex items-center justify-between w-full h-16 pl-2 border-[#232325] border-b shrink-0 bg-gradient-to-b from-background/10 via-background/50 to-background/80 backdrop-blur-xl">
-      <div className="flex pl-3 sm:pl-6 items-center">
+      <div className="flex pl-3 sm:pl-24 items-center">
         <Link href="/" rel="nofollow">
           <Image className="h-[32px]  md:h-[42px]" src={logo.src} alt="logo" />
         </Link>
@@ -38,7 +38,7 @@ export default async function Navbar() {
         
           <Link
             href="/signin"
-            className="group flex rounded-md px-4 py-2 text-[13px] font-semibold transition-all items-center justify-center bg-[#f5f7f9] text-[#1E2B3A] no-underline active:scale-95 scale-100 duration-75"
+            className="group flex rounded-md sm:pr-24 py-2 text-[13px] font-semibold transition-all items-center justify-center bg-[#f5f7f9] text-[#1E2B3A] no-underline active:scale-95 scale-100 duration-75"
             style={{
               boxShadow: "0 1px 1px #0c192714, 0 1px 3px #0c192724",
             }}
