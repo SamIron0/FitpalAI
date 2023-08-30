@@ -344,7 +344,7 @@ export default function HomePageGenerator() {
         }
         if (snackNumber === 2) {
             let snack2Calories = calorieData?.breakdown?.snack2 || 0;
-            if (snack1Calories > 0) {
+            if (snack2Calories > 0) {
                 let snack2Response = await fetch(`/api/generateSnack2?calories=${snack2Calories}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
                 const snackData = await snack2Response.json();
                 setSnack2(snackData.meal);
