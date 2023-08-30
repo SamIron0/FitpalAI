@@ -274,7 +274,7 @@ export default function HomePageGenerator() {
             "lunch": 0,
             "snack2": 0,
             "dinner": 0,
-            "snack3": 0,
+            "snack3": 0
         }
     });
     const myRef = useRef<HTMLDivElement>(null);
