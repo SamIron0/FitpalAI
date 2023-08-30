@@ -43,7 +43,7 @@ jh
 .blue-gradient-text {
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-image: linear-gradient(to right, rgb(0, 112, 255), #baffdc);
+  background-image: linear-gradient(to right, #006eff, #baffdc);
 }
 .pill-bg { 
   background-image: linear-gradient(to right, black, rgb(12, 12, 12));
