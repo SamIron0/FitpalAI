@@ -67,24 +67,23 @@ const testMeal: Meal = {
 function PlanCard({ title, footer, children, completed }: Props) {
 
     const bgColor = completed ? "bg-zinc-700" : "bg-zinc-700";
+
     return (
-        <div className={`w-full mb-6 h-[250px] p-0.5 rounded-md flex-shrink-0 flex-grow-0 ${bgColor}`}>
-            <div className="bg-black  h-full w-full  rounded-md m-auto">
-                <div className='w-full h-full p-4 flex rounded-md  '>
-                    <div className=" flex-1 w-8.5/10 h-17/20pt55g ">
-                        <h1 className="text-l font-medium">{title}</h1>
-                        <div className="" >
-                            {children}
-                        </div>
-                    </div>
-                    <div className="h-3/20 w-1.5/10 flex-1 items-center justify-center border-zinc-700 p-2 text-zinc-500 rounded-b-md">
-                        {footer}
-                    </div>
+        <div role="status" className="w-full p-4 mb-6 space-y-4 border border-[#232325] bg-[#0D0D0E] divide-y divide-gray-200 rounded shadow animate-pulse dark:divide-gray-700 md:p-6 dark:border-gray-700">
+            <div className="flex items-center justify-between">
+                <div>
+                    <div className='mb-2.5'>  {title} </div>
+                    {children}
                 </div>
+                {footer}
             </div>
 
         </div>
     );
+
+
+
+
 } // PlanCard
 
 function GhostCard() {
@@ -689,7 +688,7 @@ export default function HomePageGenerator() {
                                 completed={true}
                             >
                                 <div className="mt-1  w-full mb-1">
-                                    <p>{`${dinner.calories}`}</p>
+                                    <p>{`${dinner.title}`}</p>
                                 </div>
                             </PlanCard>
                         ) : null}
