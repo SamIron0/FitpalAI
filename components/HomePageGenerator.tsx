@@ -695,7 +695,7 @@ export default function HomePageGenerator() {
                                 title="Breakfast"
                                 footer={
                                     <div className="flex items-start justify-between flex-col ">
-                                        {breakfast.calories}
+                                        <p>{breakfast.calories}</p>
                                     </div>
 
                                 }
