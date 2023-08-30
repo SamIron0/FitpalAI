@@ -321,7 +321,7 @@ export default function HomePageGenerator() {
             setDinner(dinnerData.meal);
             setDinnerIsLoading(false);
         } else {
-            dinnerResponse = await fetch(`/api/generateDinner?ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
+            let dinnerResponse = await fetch(`/api/generateDinner?ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
             const dinnerData = await dinnerResponse.json();
             setDinner(dinnerData.meal);
             setDinnerIsLoading(false);
