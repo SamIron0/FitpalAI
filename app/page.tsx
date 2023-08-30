@@ -33,7 +33,7 @@ export default async function PricingPage() {
           <Link
             href="/waitlist"
             className="flex p-3 w-full">
-            <div className="w-1/4 flex justify-center ">
+            <div className="w-1/4 flex pl-3 ">
               <div className="circle-div"><img src={mealIcon.src} alt="meal image" />
               </div>
             </div>
