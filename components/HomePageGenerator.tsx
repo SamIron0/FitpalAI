@@ -702,7 +702,7 @@ export default function HomePageGenerator() {
                                 completed={true}
                             >
                                 <div className="mt-1  w-full mb-1">
-                                    {breakfast.title}
+                                    <p>{`${breakfast.calories}`}</p>
                                 </div>
                             </PlanCard>
                         ) : null}
@@ -718,14 +718,14 @@ export default function HomePageGenerator() {
                                 title="Lunch"
                                 footer={
                                     <div className="flex items-start justify-between flex-col ">
-                                        {lunch.calories}
+                                        <p>{`${lunch.calories}`}</p>
                                     </div>
 
                                 }
                                 completed={true}
                             >
                                 <div className="mt-1  w-full mb-1">
-                                    {lunch.title}
+                                    <p>{`${lunch.calories}`}</p>
                                 </div>
                             </PlanCard>
                         ) : null}
@@ -741,14 +741,14 @@ export default function HomePageGenerator() {
                                 title="Dinner"
                                 footer={
                                     <div className="flex items-start justify-between flex-col ">
-                                        {dinner.calories}
+                                        <p>{`${dinner.calories}`}</p>
                                     </div>
 
                                 }
                                 completed={true}
                             >
                                 <div className="mt-1  w-full mb-1">
-                                    {dinner.title}
+                                    <p>{`${dinner.calories}`}</p>
                                 </div>
                             </PlanCard>
                         ) : null}
@@ -764,14 +764,14 @@ export default function HomePageGenerator() {
                                 title="Snack1"
                                 footer={
                                     <div className="flex items-start justify-between flex-col ">
-                                        {snack1.calories}
+                                        <p>{`${snack1.calories}`}</p>
                                     </div>
 
                                 }
                                 completed={true}
                             >
                                 <div className="mt-1  w-full mb-1">
-                                    {snack1.title}
+                                    <p>{`${snack1.calories}`}</p>
                                 </div>
                             </PlanCard>
                         ) : null}
@@ -786,14 +786,14 @@ export default function HomePageGenerator() {
                                 title="Snack2"
                                 footer={
                                     <div className="flex items-start justify-between flex-col ">
-                                        {snack2.calories}
+                                        <p>{`${snack2.calories}`}</p>
                                     </div>
 
                                 }
                                 completed={true}
                             >
                                 <div className="mt-1  w-full mb-1">
-                                    {snack2.title}
+                                    <p>{`${snack2.calories}`}</p>
                                 </div>
                             </PlanCard>
                         ) : null}
@@ -808,14 +808,14 @@ export default function HomePageGenerator() {
                                 title="Snack3"
                                 footer={
                                     <div className="flex items-start justify-between flex-col ">
-                                        {snack3.calories}
+                                        <p>{`${snack3.calories}`}</p>
                                     </div>
 
                                 }
                                 completed={true}
                             >
                                 <div className="mt-1  w-full mb-1">
-                                    {snack3.title}
+                                    <p>{`${snack3.calories}`}</p>
                                 </div>
                             </PlanCard>
                         ) : null}
