@@ -69,8 +69,8 @@ function PlanCard({ title, footer, children, completed }: Props) {
     const bgColor = completed ? "bg-zinc-700" : "bg-zinc-700";
 
     return (
-        <div role="status" className="w-full text-sm px-4 py-3 sm:py-1.5 sm:px-3 mb-6 space-y-4 border border-[#232325] bg-[#0D0D0E] divide-y divide-gray-200 rounded shadow dark:divide-gray-700  dark:border-gray-700">
-            <div className="flex items-center justify-between">
+        <div role="status" className="w-full text-sm px-4 py-4 mb-6 space-y-4 border border-[#232325] bg-[#0D0D0E] divide-y divide-gray-200 rounded shadow dark:divide-gray-700  dark:border-gray-700">
+            <div className="flex w-full items-center justify-between">
                 <div className="w-7/10" >
                     <div className='mb-1.5 text-[#006eff] text-bold'>  {title} </div>
                     {children}
@@ -801,6 +801,28 @@ export default function HomePageGenerator() {
                                 </div>
                             </PlanCard>
                         ) : null}
+                        {snack3IsLoading ? (
+
+                            <div>
+                                <GhostCard />
+                            </div>
+
+                        ) : snack3 ? (
+                            <PlanCard
+                                title="Snack"
+                                footer={
+                                    <div className="flex items-start justify-between flex-col ">
+                                        <p>{`${snack3.calories} cals`}</p>
+                                    </div>
+
+                                }
+                                completed={true}
+                            >
+                                <div className="mt-1  w-full mb-1">
+                                    <p>{`${snack3.title}`}</p>
+                                </div>
+                            </PlanCard>
+                        ) : null}
                         {lunchIsLoading ? (
 
                             <div>
@@ -821,6 +843,29 @@ export default function HomePageGenerator() {
                             >
                                 <div className="mt-1  w-full mb-1">
                                     <p>{`${lunch.title}`}</p>
+                                </div>
+                            </PlanCard>
+                        ) : null}
+                        {snack1IsLoading ? (
+
+                            <div>
+                                <GhostCard />
+                            </div>
+
+
+                        ) : snack1 ? (
+                            <PlanCard
+                                title="Snack"
+                                footer={
+                                    <div className="flex items-start justify-between flex-col ">
+                                        <p>{`${snack1.calories} cals`}</p>
+                                    </div>
+
+                                }
+                                completed={true}
+                            >
+                                <div className="mt-1  w-full mb-1">
+                                    <p>{`${snack1.title}`}</p>
                                 </div>
                             </PlanCard>
                         ) : null}
@@ -847,29 +892,7 @@ export default function HomePageGenerator() {
                                 </div>
                             </PlanCard>
                         ) : null}
-                        {snack1IsLoading ? (
 
-                            <div>
-                                <GhostCard />
-                            </div>
-
-
-                        ) : snack1 ? (
-                            <PlanCard
-                                title="Snack1"
-                                footer={
-                                    <div className="flex items-start justify-between flex-col ">
-                                        <p>{`${snack1.calories} cals`}</p>
-                                    </div>
-
-                                }
-                                completed={true}
-                            >
-                                <div className="mt-1  w-full mb-1">
-                                    <p>{`${snack1.title}`}</p>
-                                </div>
-                            </PlanCard>
-                        ) : null}
                         {snack2IsLoading ? (
 
                             <div>
@@ -878,7 +901,7 @@ export default function HomePageGenerator() {
 
                         ) : snack2 ? (
                             <PlanCard
-                                title="Snack2"
+                                title="Snack"
                                 footer={
                                     <div className="flex items-start justify-between flex-col ">
                                         <p>{`${snack2.calories} cals`}</p>
@@ -892,28 +915,7 @@ export default function HomePageGenerator() {
                                 </div>
                             </PlanCard>
                         ) : null}
-                        {snack3IsLoading ? (
 
-                            <div>
-                                <GhostCard />
-                            </div>
-
-                        ) : snack3 ? (
-                            <PlanCard
-                                title="Snack3"
-                                footer={
-                                    <div className="flex items-start justify-between flex-col ">
-                                        <p>{`${snack3.calories} cals`}</p>
-                                    </div>
-
-                                }
-                                completed={true}
-                            >
-                                <div className="mt-1  w-full mb-1">
-                                    <p>{`${snack3.title}`}</p>
-                                </div>
-                            </PlanCard>
-                        ) : null}
 
 
                     </div>
