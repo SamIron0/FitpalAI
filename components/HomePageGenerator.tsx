@@ -52,18 +52,15 @@ interface MealPlan {
     calories?: string;
 }
 const testMeal: Meal = {
-    "meal": {
-        title: "oatmeal",
-        ingredients: "1 cup oatmeal, 2 cups water, pinch of salt, 2 tablespoon honey, 1/2 cup blueberries",
-        instructions: "Bring the water to a boil. Stir in the oatmeal and a pinch of salt. Reduce the heat to a simmer and cook for 10-15 minutes, or until the oatmeal is your desired thickness. Stir in the honey and top with blueberries.",
-        macros: {
-            protein: "5g",
-            carbs: "54g",
-            fats: "3g"
-        },
-        calories: "250"
-    }
-
+    title: "oatmeal",
+    ingredients: "1 cup oatmeal, 2 cups water, pinch of salt, 2 tablespoon honey, 1/2 cup blueberries",
+    instructions: "Bring the water to a boil. Stir in the oatmeal and a pinch of salt. Reduce the heat to a simmer and cook for 10-15 minutes, or until the oatmeal is your desired thickness. Stir in the honey and top with blueberries.",
+    macros: {
+        protein: "5g",
+        carbs: "54g",
+        fats: "3g"
+    },
+    calories: "250"
 }
 
 const testPlan: MealPlan = {
