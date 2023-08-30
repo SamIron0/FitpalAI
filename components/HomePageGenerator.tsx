@@ -69,13 +69,14 @@ function PlanCard({ title, footer, children, completed }: Props) {
     const bgColor = completed ? "bg-zinc-700" : "bg-zinc-700";
 
     return (
-        <div role="status" className="w-full p-4 mb-6 space-y-4 border border-[#232325] bg-[#0D0D0E] divide-y divide-gray-200 rounded shadow animate-pulse dark:divide-gray-700 md:p-6 dark:border-gray-700">
+        <div role="status" className="w-full text-md p-4 mb-6 space-y-4 border border-[#232325] bg-[#0D0D0E] divide-y divide-gray-200 rounded shadow dark:divide-gray-700 md:p-6 dark:border-gray-700">
             <div className="flex items-center justify-between">
                 <div>
                     <div className='mb-2.5'>  {title} </div>
                     {children}
                 </div>
-                {footer}
+                <div className='ml-2 text-sm'> {footer} </div>
+
             </div>
 
         </div>
@@ -163,16 +164,16 @@ export default function HomePageGenerator() {
     const [showSecondBox, setShowSecondBox] = useState('false')
     const [recipeLoading, setRecipeLoading] = useState('false')
     const [selectedMeal, setSelectedMeal] = useState("1");
-    const [calorieData, setCalorieData] = useState({
-        "breakdown": {
+    const [calorieData, setCalorieData] = useState(
+        {
             "breakfast": 0,
             "snack1": 0,
             "lunch": 0,
             "snack2": 0,
             "dinner": 0,
             "snack3": 0
-        }
-    });
+
+        });
     const myRef = useRef<HTMLDivElement>(null);
 
     const scrollToRef = () => {
@@ -193,7 +194,7 @@ export default function HomePageGenerator() {
         setSnack3(null)
     }
     const getBreakfast = async () => {
-        let breakfastCalories = calorieData?.breakdown?.breakfast || 0;
+        let breakfastCalories = calorieData?.breakfast || 0;
         if (breakfastCalories > 0) {
 
             let breakfastResponse = await fetch(`/api/generateBreakfast?calories=${breakfastCalories}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
@@ -203,7 +204,7 @@ export default function HomePageGenerator() {
         }
     }
     const getLunch = async () => {
-        let lunchCalories = calorieData?.breakdown?.lunch || 0;
+        let lunchCalories = calorieData?.lunch || 0;
         if (lunchCalories > 0) {
 
             let lunchResponse = await fetch(`/api/generateLunch?calories=${lunchCalories}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
@@ -219,7 +220,7 @@ export default function HomePageGenerator() {
 
             while (!gotCalories) {
                 try {
-                    let dinnerResponse = await fetch(`/api/generateDinner?calories=${dinnerCalories.text?.breakdown?.dinner}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
+                    let dinnerResponse = await fetch(`/api/generateDinner?calories=${dinnerCalories.text?.dinner}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
                     const dinnerData = await dinnerResponse.json();
                     if (dinnerData.meal) {
                         setDinner(dinnerData.meal);
@@ -337,6 +338,7 @@ export default function HomePageGenerator() {
 
                 if (numOfMeals === "1") {
                     setDinnerIsLoading(true);
+                    console.log(calorieData)
                     await Promise.all([getDinner(calorieData)]);
                 }
 
@@ -525,7 +527,7 @@ export default function HomePageGenerator() {
 
                             <button
                                 type="submit"
-                                className="group w-8.5/10 h-[39px] mt-6 sm:w-[220px] rounded-md px-4 py-2 text-[13px] font-semibold transition-all flex items-center justify-center bg-[#f5f7f9] text-[#1E2B3A] no-underline active:scale-95 scale-100 duration-75"
+                                className="group w-3/4 h-[39px] mt-6 sm:w-[220px] rounded-md px-4 py-2 text-[13px] font-semibold transition-all flex items-center justify-center bg-[#f5f7f9] text-[#1E2B3A] no-underline active:scale-95 scale-100 duration-75"
                                 style={{
                                     boxShadow: "0 1px 1px #0c192714, 0 1px 3px #0c192724",
                                 }}
@@ -694,7 +696,7 @@ export default function HomePageGenerator() {
                                 title="Dinner"
                                 footer={
                                     <div className="flex items-start justify-between flex-col ">
-                                        <p>{`${dinner.calories}`}</p>
+                                        <p>{`${dinner.calories} cals`}</p>
                                     </div>
 
                                 }

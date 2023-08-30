@@ -16,14 +16,12 @@ const handler: NextApiHandler = async (req, res) => {
     }
     let days = ""
     breakDownJson = `{
-        "breakdown": {
-            "breakfast": 0,
-            "snack1": 0,
-            "lunch": 0,
-            "snack2": 0,
-            "dinner": 0,
-            "snack3": 0,
-        }
+        breakfast: 0,
+            snack1: 0,
+            lunch: 0,
+            snack2: 0,
+            dinner: 0,
+            snack3: 0,
     }`
     if (numOfMeals === "1") {
         days = `dinner (everything else remains at 0)`
