@@ -29,7 +29,7 @@ export default async function PricingPage() {
         </div>
       </div>
       <div className="bg-black pb-6 px-8">
-        <div className="rounded-full border-[#232325] bg-[#0D0D0E] flex items-center border w-md h-20  max-w-md mx-auto ">
+        <div className="rounded-full border-[#232325] bg-[#0D0D0E] flex items-center border w-md h-12  max-w-md mx-auto ">
           <Link
             href="/waitlist"
             className="flex p-3 w-full">
