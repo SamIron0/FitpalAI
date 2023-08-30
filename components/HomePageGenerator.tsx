@@ -63,104 +63,7 @@ const testMeal: Meal = {
     calories: "250"
 }
 
-const testPlan: MealPlan = {
-    "day1": {
-        breakfast: {
-            item: "Oatmeal",
-            calories: "150"
-        },
-        lunch: {
-            item: "Grilled Chicken Salad",
-            calories: "350"
-        },
-        dinner: {
-            item: "Steamed Salmon with veggies",
-            calories: "450"
-        },
-        snack: {
-            item: "Green Smoothie",
-            calories: "200"
-        },
-        totalCalories: "1150"
-    },
 
-    "day2": {
-        breakfast: {
-            item: "Oatmeal",
-            calories: "150"
-        },
-        lunch: {
-            item: "Grilled Chicken Salad",
-            calories: "350"
-        },
-        dinner: {
-            item: "Steamed Salmon with veggies",
-            calories: "450"
-        },
-        snack: {
-            item: "Green Smoothie",
-            calories: "200"
-        },
-        totalCalories: "1150"
-    },
-    "day3": {
-        breakfast: {
-            item: "Oatmeal",
-            calories: "150"
-        },
-        lunch: {
-            item: "Grilled Chicken Salad",
-            calories: "350"
-        },
-        dinner: {
-            item: "Steamed Salmon with veggies",
-            calories: "450"
-        },
-        snack: {
-            item: "Green Smoothie",
-            calories: "200"
-        },
-        totalCalories: "1150"
-    },
-    "day4": {
-        breakfast: {
-            item: "Oatmeal",
-            calories: "150"
-        },
-        lunch: {
-            item: "Grilled Chicken Salad",
-            calories: "350"
-        },
-        dinner: {
-            item: "Steamed Salmon with veggies",
-            calories: "450"
-        },
-        snack: {
-            item: "Green Smoothie",
-            calories: "200"
-        },
-        totalCalories: "1150"
-    },
-    "day5": {
-        breakfast: {
-            item: "Oatmeal",
-            calories: "150"
-        },
-        lunch: {
-            item: "Grilled Chicken Salad",
-            calories: "350"
-        },
-        dinner: {
-            item: "Steamed Salmon with veggies",
-            calories: "450"
-        },
-        snack: {
-            item: "Green Smoothie",
-            calories: "200"
-        },
-        totalCalories: "1150"
-    }
-}
 function PlanCard({ title, footer, children, completed }: Props) {
 
     const bgColor = completed ? "bg-zinc-700" : "bg-zinc-700";
@@ -312,18 +215,26 @@ export default function HomePageGenerator() {
     }
     const getDinner = async (dinnerCalories: any) => {
         console.log(dinnerCalories)
-        //let dinnerCalories = calorieData ? calorieData.breakdown.dinner : 0;
-        //let dinnerCalories = calorieData?.breakdown?.dinner || 0;
         if (dinnerCalories != null) {
-            let dinnerResponse = await fetch(`/api/generateDinner?calories=${dinnerCalories.text?.breakdown?.dinner}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
-            const dinnerData = await dinnerResponse.json();
-            setDinner(dinnerData.meal);
-            setDinnerIsLoading(false);
+            do {
+                let dinnerResponse = await fetch(`/api/generateDinner?calories=${dinnerCalories.text?.breakdown?.dinner}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
+                const dinnerData = await dinnerResponse.json();
+                if (dinnerData.meal) {
+                    setDinner(dinnerData.meal);
+                    setDinnerIsLoading(false);
+                    break;
+                }
+            } while (true);
         } else {
-            let dinnerResponse = await fetch(`/api/generateDinner?ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
-            const dinnerData = await dinnerResponse.json();
-            setDinner(dinnerData.meal);
-            setDinnerIsLoading(false);
+            do {
+                let dinnerResponse = await fetch(`/api/generateDinner?ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
+                const dinnerData = await dinnerResponse.json();
+                if (dinnerData.meal) {
+                    setDinner(dinnerData.meal);
+                    setDinnerIsLoading(false);
+                    break;
+                }
+            } while (true);
         }
     }
     const getSnack = async (snackNumber: any) => {
