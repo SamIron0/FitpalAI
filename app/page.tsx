@@ -33,11 +33,11 @@ export default async function PricingPage() {
           <Link
             href="/waitlist"
             className="flex p-3 w-full">
-            <div className="w-1/4 flex justify-start pl-2 ">
+            <div className="w-1/4 flex justify-start pl-0.5 ">
               <div className="circle-div"><img src={mealIcon.src} alt="meal image" />
               </div>
             </div>
-            <div className="w-11/20 flex justify-center items-center flex w-full flex-col">
+            <div className="w-11/20 flex justify-center items-center pl-1 flex w-full flex-col">
 
               <p className=" text-white text-md absolute">
                 Introducing FitpalAI - Create account
