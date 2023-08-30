@@ -316,12 +316,12 @@ export default function HomePageGenerator() {
             setLunchIsLoading(false);
         }
     }
-    const getDinner = async (dinnerCalories) => {
+    const getDinner = async (dinnerCalories: any) => {
         console.log(dinnerCalories)
         //let dinnerCalories = calorieData ? calorieData.breakdown.dinner : 0;
         //let dinnerCalories = calorieData?.breakdown?.dinner || 0;
         if (dinnerCalories > 0) {
-            let dinnerResponse = await fetch(`/api/generateDinner?calories=${dinnerCalories}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
+            let dinnerResponse = await fetch(`/api/generateDinner?calories=${dinnerCalories.breakdown.dinner}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
             const dinnerData = await dinnerResponse.json();
             setDinner(dinnerData.meal);
             setDinnerIsLoading(false);
