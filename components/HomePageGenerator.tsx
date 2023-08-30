@@ -71,8 +71,8 @@ function PlanCard({ title, footer, children, completed }: Props) {
     return (
         <div role="status" className="w-full text-sm px-4 py-4 mb-6 space-y-4 border border-[#232325] bg-[#0D0D0E] divide-y divide-gray-200 rounded shadow dark:divide-gray-700  dark:border-gray-700">
             <div className="flex w-full items-center justify-between">
-                <div className="" >
-                    <div className='mb-1.5 text-[#006eff] text-bold'>  {title} </div>
+                <div className="pr-2" >
+                    <div className='mb-1.5 text-[#006eff] font-bold'>  {title} </div>
                     {children}
                 </div>
                 <div className='text-sm flex-shrink-0'> {footer} </div>
@@ -696,83 +696,18 @@ export default function HomePageGenerator() {
                             </button>
                         </form>
                         :
-                        <form
-                            onSubmit={(e) => {
-                                e.preventDefault();
-                                setShowSecondBox('true')
-                                resetMeals()
-                                fetchData()
-                            }}
-                            className="flex py-6 flex-col w-6/10  items-center">
-                            <div className='flex flex-col justify-end'>
-                                <div className='my-5 ml-auto'>
-                                    <div className="relative flex items-center inline-flex">
-                                        <p> I want to eat</p>
-                                        <input
-                                            value={calories}
-                                            onChange={(e) => setCalories(e.target.value)}
-                                            className=" px-2 ml-6 bg-transparent border-[1px] border-[#232325] sm:h-[35px] h-[35px] text-md  sm:w-[320px] w-[220px] rounded-md "
-                                            placeholder="Calories" />
-                                    </div>
-                                </div>
-                                <div className=' ml-auto mb-5'>
-                                    <div className="relative flex items-center inline-flex">
-                                        <p className="text-md"> in </p>
-
-                                        <select className=" ml-6 px-2 bg-transparent border-[1px] border-[#232325] text-md sm:w-[320px] w-[220px] h-[35px] rounded-md">
-                                            <option value="1">1 course</option>
-                                            <option value="2">2 courses</option>
-                                            <option value="3">3 courses</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div className=' mb-6'>
-                                    <div className="relative flex items-center inline-flex">
-                                        <p> Include these</p>
-                                        <textarea
-                                            value={ingredients}
-                                            onChange={(e) => setIngredients(e.target.value)}
-                                            className=" px-2 ml-6 bg-transparent border-[1px] border-[#232325] sm:h-[35px] h-[35px] text-md  sm:w-[320px] w-[220px] rounded-md "
-                                            placeholder="Ingredients"
-                                            rows={3}
-                                        />
-                                    </div>
-                                </div>
-                            </div>
-
-                            <button
-                                type="submit"
-
-                                className="group mt-6 w-[375.9px] h-[39px] sm:w-[220px] rounded-md px-4 py-2 text-[13px] font-semibold transition-all flex items-center justify-center bg-[#f5f7f9] text-[#1E2B3A] no-underline active:scale-95 scale-100 duration-75"
+                        <div className="flex w-6/10 justfy-center items-center">
+                            <p>Get access to all customization options</p>
+                            <Link
+                                href="/signin"
+                                className="group flex rounded-md px-4 py-2 text-[13px] font-semibold transition-all items-center justify-center bg-[#f5f7f9] text-[#1E2B3A] no-underline active:scale-95 scale-100 duration-75"
                                 style={{
                                     boxShadow: "0 1px 1px #0c192714, 0 1px 3px #0c192724",
                                 }}
                             >
-                                <span className="text-md"> Save </span>
-                                <svg
-                                    className="w-5 h-5"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <path
-                                        d="M13.75 6.75L19.25 12L13.75 17.25"
-                                        stroke="#1E2B3A"
-                                        strokeWidth="1.5"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                    />
-                                    <path
-                                        d="M19 12H4.75"
-                                        stroke="#1E2B3A"
-                                        strokeWidth="1.5"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                    />
-                                </svg>
-                            </button>
-                        </form>
+                                I'm ready
+                            </Link>
+                        </div>
                     }
                 </div>
 
@@ -789,9 +724,7 @@ export default function HomePageGenerator() {
                             <PlanCard
                                 title="Breakfast"
                                 footer={
-                                    <div className="flex items-start justify-between flex-col ">
-                                        <p>{`${breakfast.calories} cals`}</p>
-                                    </div>
+                                    <p>{`${breakfast.calories} cals`}</p>
 
                                 }
                                 completed={true}
@@ -811,9 +744,7 @@ export default function HomePageGenerator() {
                             <PlanCard
                                 title="Snack"
                                 footer={
-                                    <div className="flex items-start justify-between flex-col ">
-                                        <p>{`${snack3.calories} cals`}</p>
-                                    </div>
+                                    <p>{`${snack3.calories} cals`}</p>
 
                                 }
                                 completed={true}
@@ -834,9 +765,7 @@ export default function HomePageGenerator() {
                             <PlanCard
                                 title="Lunch"
                                 footer={
-                                    <div className="flex items-start justify-between flex-col ">
-                                        <p>{`${lunch.calories} cals`}</p>
-                                    </div>
+                                    <p>{`${lunch.calories} cals`}</p>
 
                                 }
                                 completed={true}
@@ -857,9 +786,7 @@ export default function HomePageGenerator() {
                             <PlanCard
                                 title="Snack"
                                 footer={
-                                    <div className="flex items-start justify-between flex-col ">
-                                        <p>{`${snack1.calories} cals`}</p>
-                                    </div>
+                                    <p>{`${snack1.calories} cals`}</p>
 
                                 }
                                 completed={true}
@@ -901,9 +828,7 @@ export default function HomePageGenerator() {
                             <PlanCard
                                 title="Snack"
                                 footer={
-                                    <div className="flex items-start justify-between flex-col ">
-                                        <p>{`${snack2.calories} cals`}</p>
-                                    </div>
+                                    <p>{`${snack2.calories} cals`}</p>
 
                                 }
                                 completed={true}
