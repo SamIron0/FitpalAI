@@ -315,16 +315,17 @@ export default function HomePageGenerator() {
         console.log(calorieData?.breakdown)
         //let dinnerCalories = calorieData ? calorieData.breakdown.dinner : 0;
         let dinnerCalories = calorieData?.breakdown?.dinner || 0;
-        if(dinnerCalories>0){
-            let dinnerResponse = await fetch(`/api/generateDinner?calories=${dinnerCalories}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
-
-        }else{
-            let dinnerResponse = await fetch(`/api/generateDinner?ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
-
+        if (dinnerCalories > 0) {
+            dinnerResponse = await fetch(`/api/generateDinner?calories=${dinnerCalories}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
+            const dinnerData = await dinnerResponse.json();
+            setDinner(dinnerData.meal);
+            setDinnerIsLoading(false);
+        } else {
+            dinnerResponse = await fetch(`/api/generateDinner?ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
+            const dinnerData = await dinnerResponse.json();
+            setDinner(dinnerData.meal);
+            setDinnerIsLoading(false);
         }
-        const dinnerData = await dinnerResponse.json();
-        setDinner(dinnerData.meal);
-        setDinnerIsLoading(false);
     }
     const getSnack = async (snackNumber: any) => {
         if (snackNumber === 1) {
