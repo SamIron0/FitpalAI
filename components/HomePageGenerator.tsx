@@ -316,7 +316,7 @@ export default function HomePageGenerator() {
         //let dinnerCalories = calorieData ? calorieData.breakdown.dinner : 0;
         let dinnerCalories = calorieData?.breakdown?.dinner || 0;
         if (dinnerCalories > 0) {
-            dinnerResponse = await fetch(`/api/generateDinner?calories=${dinnerCalories}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
+            let dinnerResponse = await fetch(`/api/generateDinner?calories=${dinnerCalories}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
             const dinnerData = await dinnerResponse.json();
             setDinner(dinnerData.meal);
             setDinnerIsLoading(false);
