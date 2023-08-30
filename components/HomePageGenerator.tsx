@@ -380,7 +380,7 @@ export default function HomePageGenerator() {
 
                 }
                 setCalorieData(await getCalorieData());
-                //console.log(calorieData)
+                console.log(calorieData)
 
                 if (numOfMeals === "1") {
                     setDinnerIsLoading(true);
