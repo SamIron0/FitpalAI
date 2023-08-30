@@ -75,7 +75,7 @@ function PlanCard({ title, footer, children, completed }: Props) {
                     <div className='mb-1.5 text-[#006eff] text-bold'>  {title} </div>
                     {children}
                 </div>
-                <div className='w-4/10 text-sm'> {footer} </div>
+                <div className='w-[60px] text-sm'> {footer} </div>
 
             </div>
 
