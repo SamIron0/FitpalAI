@@ -29,11 +29,11 @@ export default async function PricingPage() {
         </div>
       </div>
       <div className="bg-black pb-6 px-8">
-        <div className="rounded-full border-[#232325] bg-[#0D0D0E] flex items-center border w-md h-12  sm:w-[390px] mx-auto ">
+        <div className="rounded-full border-[#232325] bg-[#0D0D0E] flex items-center border  h-12  w-[370px] mx-auto ">
           <Link
             href="/waitlist"
             className="flex p-3 w-full ">
-            <div className="w-1/4 flex justify-start pr-0.5 ">
+            <div className="w-1/4 flex justify-start pl-0.5 pr-0.5 ">
               <div className="circle-div"><img src={mealIcon.src} alt="meal image" />
               </div>
             </div>
