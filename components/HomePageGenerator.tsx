@@ -3,6 +3,7 @@ import React, { ReactNode, useState, useEffect, useRef } from 'react';
 import Textarea from 'react-textarea-autosize'
 import { cn } from '@/lib/utils'
 import { ExternalLink } from '@/components/external-link'
+import Link from 'next/link';
 
 interface Props {
     title: string;
