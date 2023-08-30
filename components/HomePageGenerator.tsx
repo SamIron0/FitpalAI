@@ -398,18 +398,19 @@ export default function HomePageGenerator() {
                 }
                 const getCalorieData = async () => {
                     let gotCalories = false
+
                     while (!gotCalories) {
                         try {
                             if (calories !== "") {
                                 const breakDown = await fetch(`/api/getCalorieBreakdown?totalCalories=${calories}&numOfMeals=${numOfMeals}`);
                                 calorieData = await breakDown.json();
                                 gotCalories = true;
-
-                                return calorieData.text;
                             }
                         } catch (error) {
                             console.error(`Retrying due to ${error}`);
                         }
+                        return "";
+
                     }
                 }
                 await getCalorieData();
