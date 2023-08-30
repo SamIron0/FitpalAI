@@ -37,18 +37,12 @@ export default async function PricingPage() {
               <div className="circle-div"><img src={mealIcon.src} alt="meal image" />
               </div>
             </div>
-            <div className="w-11/20 sm:pl-4 flex w-full flex-col">
+            <div className="w-11/20 flex justify-center items-center sm:pl-4 flex w-full flex-col">
 
-              <div className="h-1/2 relative ">
-                <p className="pl-6 text-white absolute bottom-0">
-                  Introducing Fitpal Planner
+                <p className=" text-white absolute">
+                  Introducing FitpalAI- Create account 
                 </p>
-              </div>
-              <div className="h-1/2 relative">
-                <p className=" pl-6 absolute top-0 text-gray-600">
-                  Create account to customize
-                </p>
-              </div>
+             
             </div>
             <div className=" flex items-center justify-center w-1/5 ">
               <svg className="w-3 h-3 text-white hover:text-blue-500 text-dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 8 14">
