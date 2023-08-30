@@ -880,9 +880,7 @@ export default function HomePageGenerator() {
                             <PlanCard
                                 title="Dinner"
                                 footer={
-                                    <div className="flex items-start justify-between flex-col ">
-                                        <p>{`${dinner.calories} cals`}</p>
-                                    </div>
+                                    <p className="w-full">{`${dinner.calories} cals`}</p>
 
                                 }
                                 completed={true}
