@@ -316,10 +316,10 @@ export default function HomePageGenerator() {
             setLunchIsLoading(false);
         }
     }
-    const getDinner = async () => {
-        console.log(calorieData?.breakdown)
+    const getDinner = async (dinnerCalories) => {
+        console.log(dinnerCalories)
         //let dinnerCalories = calorieData ? calorieData.breakdown.dinner : 0;
-        let dinnerCalories = calorieData?.breakdown?.dinner || 0;
+        //let dinnerCalories = calorieData?.breakdown?.dinner || 0;
         if (dinnerCalories > 0) {
             let dinnerResponse = await fetch(`/api/generateDinner?calories=${dinnerCalories}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
             const dinnerData = await dinnerResponse.json();
@@ -367,7 +367,7 @@ export default function HomePageGenerator() {
 
         if (generationType == 'create') {
             let gotCalories = false;
-            let data = null;
+            let calorieData = null;
             // if user entered a calorie count
             try {
                 const getCalorieData = async () => {
@@ -381,11 +381,10 @@ export default function HomePageGenerator() {
 
                 }
                 setCalorieData(await getCalorieData());
-                console.log(data)
 
                 if (numOfMeals === "1") {
                     setDinnerIsLoading(true);
-                    await Promise.all([getDinner()]);
+                    await Promise.all([getDinner(calorieData)]);
                 }
 
                 if (numOfMeals === "2") {
