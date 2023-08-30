@@ -353,7 +353,7 @@ export default function HomePageGenerator() {
                             let snack2Response = await fetch(`/api/generateSnack?calories=${snackCalories.text?.dinner}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
                             const snack2Data = await snack2Response.json();
                             if (snack2Data.meal) {
-                                setSnack2(dinnerData.meal);
+                                setSnack2(snack2Data.meal);
                                 setSnac2IsLoading(false);
                                 gotCalories = true;
 
@@ -487,7 +487,7 @@ export default function HomePageGenerator() {
                 if (numOfMeals === "2") {
                     setLunchIsLoading(true);
                     setDinnerIsLoading(true);
-                    await Promise.all([getLunch(), getDinner(calorieData)])
+                    await Promise.all([getLunch(calorieData), getDinner(calorieData)])
                         .catch((error) => {
                             console.error('Error:', error);
                         });
@@ -497,7 +497,7 @@ export default function HomePageGenerator() {
                     setBreakfastIsLoading(true);
                     setLunchIsLoading(true);
                     setDinnerIsLoading(true);
-                    await Promise.all([getBreakfast(), getLunch(), getDinner(calorieData)])
+                    await Promise.all([getBreakfast(calorieData), getLunch(calorieData), getDinner(calorieData)])
                         .catch((error) => {
                             console.error('Error:', error);
                         });
@@ -508,7 +508,7 @@ export default function HomePageGenerator() {
                     setLunchIsLoading(true);
                     setDinnerIsLoading(true);
                     setSnack1IsLoading(true);
-                    await Promise.all([getBreakfast(), getLunch(), getDinner(calorieData), getSnack(1)])
+                    await Promise.all([getBreakfast(calorieData), getLunch(calorieData), getDinner(calorieData), getSnack(1,calorieData)])
                         .catch((error) => {
                             console.error('Error:', error);
                         });
@@ -520,7 +520,7 @@ export default function HomePageGenerator() {
                     setDinnerIsLoading(true);
                     setSnack1IsLoading(true);
                     setSnack2IsLoading(true);
-                    await Promise.all([getBreakfast(), getLunch(), getDinner(calorieData), getSnack(1), getSnack(2)])
+                    await Promise.all([getBreakfast(calorieData), getLunch(calorieData), getDinner(calorieData), getSnack(1,calorieData), getSnack(2,calorieData)])
                         .catch((error) => {
                             console.error('Error:', error);
                         });
@@ -534,7 +534,7 @@ export default function HomePageGenerator() {
                     setSnack1IsLoading(true);
                     setSnack2IsLoading(true);
                     setSnack3IsLoading(true);
-                    await Promise.all([getBreakfast(), getLunch(), getDinner(calorieData), getSnack(1), getSnack(2), getSnack(3)])
+                    await Promise.all([getBreakfast(calorieData), getLunch(calorieData), getDinner(calorieData), getSnack(1,calorieData), getSnack(2,calorieData), getSnack(3,calorieData)])
                         .catch((error) => {
                             console.error('Error:', error);
                         });
