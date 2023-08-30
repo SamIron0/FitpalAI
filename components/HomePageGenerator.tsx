@@ -215,25 +215,38 @@ export default function HomePageGenerator() {
     const getDinner = async (dinnerCalories: any) => {
         console.log(dinnerCalories)
         if (dinnerCalories != null) {
-            do {
-                let dinnerResponse = await fetch(`/api/generateDinner?calories=${dinnerCalories.text?.breakdown?.dinner}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
-                const dinnerData = await dinnerResponse.json();
-                if (dinnerData.meal) {
-                    setDinner(dinnerData.meal);
-                    setDinnerIsLoading(false);
-                    break;
+            let gotCalories = false
+
+            while (!gotCalories) {
+                try {
+                    let dinnerResponse = await fetch(`/api/generateDinner?calories=${dinnerCalories.text?.breakdown?.dinner}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
+                    const dinnerData = await dinnerResponse.json();
+                    if (dinnerData.meal) {
+                        setDinner(dinnerData.meal);
+                        setDinnerIsLoading(false);
+                        gotCalories = true;
+
+                    }
+                } catch (error) {
+                    console.error(`Retrying due to ${error}`);
                 }
-            } while (true);
+            }
         } else {
-            do {
-                let dinnerResponse = await fetch(`/api/generateDinner?ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
-                const dinnerData = await dinnerResponse.json();
-                if (dinnerData.meal) {
-                    setDinner(dinnerData.meal);
-                    setDinnerIsLoading(false);
-                    break;
+            let gotCalories = false
+
+            while (!gotCalories) {
+                try {
+                    let dinnerResponse = await fetch(`/api/generateDinner?ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
+                    const dinnerData = await dinnerResponse.json();
+                    if (dinnerData.meal) {
+                        setDinner(dinnerData.meal);
+                        setDinnerIsLoading(false);
+                        gotCalories = true;
+                    }
+                } catch (error) {
+                    console.error(`Retrying due to ${error}`);
                 }
-            } while (true);
+            }
         }
     }
     const getSnack = async (snackNumber: any) => {
