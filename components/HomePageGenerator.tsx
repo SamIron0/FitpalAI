@@ -252,7 +252,7 @@ export default function HomePageGenerator() {
     }
     const getSnack = async (snackNumber: any) => {
         if (snackNumber === 1) {
-            let snack1Calories = calorieData?.breakdown?.snack1 || 0;
+            let snack1Calories = calorieData?.snack1 || 0;
             if (snack1Calories > 0) {
                 let snack1Response = await fetch(`/api/generateSnack1?calories=${snack1Calories}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
                 const snackData = await snack1Response.json();
@@ -261,7 +261,7 @@ export default function HomePageGenerator() {
             }
         }
         if (snackNumber === 2) {
-            let snack2Calories = calorieData?.breakdown?.snack2 || 0;
+            let snack2Calories = calorieData?.snack2 || 0;
             if (snack2Calories > 0) {
                 let snack2Response = await fetch(`/api/generateSnack2?calories=${snack2Calories}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
                 const snackData = await snack2Response.json();
@@ -270,7 +270,7 @@ export default function HomePageGenerator() {
             }
         }
         if (snackNumber === 3) {
-            let snack3Calories = calorieData?.breakdown?.snack3 || 0;
+            let snack3Calories = calorieData?.snack3 || 0;
 
             if (snack3Calories > 0) {
                 let snack3Response = await fetch(`/api/generateSnack3?calories=${snack3Calories}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
