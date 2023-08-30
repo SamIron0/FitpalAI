@@ -407,7 +407,7 @@ export default function HomePageGenerator() {
                     while (!gotCalories) {
                         try {
                             let snack3Response = await fetch(`/api/generateSnack?ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
-                            const snack3Data = await snack1Response.json();
+                            const snack3Data = await snack3Response.json();
                             if (snack1Data.meal) {
                                 setSnack3(snack3Data.meal);
                                 setSnack3IsLoading(false);
