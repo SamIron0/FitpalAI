@@ -616,7 +616,7 @@ export default function HomePageGenerator() {
                                 </div>
                                 <div className='h-4 text-white'>
                                     <img
-                                        src="/sparkle-star.svg"
+                                        src="/sparkle-star.png"
                                         alt="star"
                                         className=""
                                     /> </div>
