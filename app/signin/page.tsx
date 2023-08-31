@@ -12,11 +12,14 @@ export default async function SignIn() {
 
     //redirect(`https://plan.fitpalai.com`);
   }
-
   return (
     <div className="flex justify-center height-screen-helper">
       <div className="flex flex-col justify-between max-w-lg p-3 m-auto w-80 ">
-
+        <img
+          src={logo.src}
+           alt="logo"
+           className='h-12 mb-9 '
+          ></img>
         <AuthUI />
       </div>
     </div>
