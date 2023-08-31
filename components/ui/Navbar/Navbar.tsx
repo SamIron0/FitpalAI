@@ -12,7 +12,7 @@ import {
   getSession,
 } from '@/app/supabase-server';
 
-export default function Navbar() {
+export default async function Navbar() {
   //const router = useRouter();
 
   //const supabase = createServerSupabaseClient();
