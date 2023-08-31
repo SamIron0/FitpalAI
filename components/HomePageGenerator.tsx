@@ -611,14 +611,14 @@ export default function HomePageGenerator() {
                                 } rounded-md m-1  text-sm font-medium whitespace-nowrap focus:outline-none focus:z-10  sm:px-8`}
                         >
                             <div className="flex ">
-                                <div className="pr-1" >
+                                <div className="pl-2" >
                                     Customize
                                 </div>
                                 <div className='h-4 text-white'>
                                     <img
                                         src="/sparkle-star.png"
                                         alt="star"
-                                        className=""
+                                        className="h-4"
                                     /> </div>
 
                             </div>

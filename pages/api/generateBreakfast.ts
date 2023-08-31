@@ -11,8 +11,7 @@ const handler: NextApiHandler = async (req, res) => {
         return res.status(405).json({ message: 'Method Not Allowed' });
     }
     const { calories, ingredients, userLocation, allergies } = req.query;
-    const userQuery = calories ? `Could you please provide a detailed breakfast recipe  - optionally utilising ${ingredients} - that falls very close to or is exactly ${calories} calories? The breakfast may reflect a variety of cuisines and flavor profiles. You may consider that the user lives in ${userLocation}, so suggest a breakfast that is commonly eaten in that region. Kindly deliver the response in the following JSON format: { title: string;
-        ingredients: string; calories: number}
+    const userQuery = calories ? `Please provide a common breakfast recipe, with ${calories} calories. I have ${ingredients} in my pantry. Please consider pantry ingredients that are commonly used in breakfast recipes, staying within a 10 calorie range of the total. Deliver in JSON format: {title: string; ingredients: string; calories: number}"
        `
         : `Could you please provide a detailed breakfast recipe title optionally utilising ${ingredients}? The meals should reflect a variety of cuisines and flavor profiles suitable for a user based in ${userLocation}. Kindly deliver the response in the following JSON format: {title: string;
             ingredients: string;calories: number}`
