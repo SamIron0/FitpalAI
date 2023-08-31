@@ -610,15 +610,15 @@ export default function HomePageGenerator() {
                                 : 'ml-0.5 relative w-1/2 border border-transparent text-zinc-400'
                                 } rounded-md m-1  text-sm font-medium whitespace-nowrap focus:outline-none focus:z-10  sm:px-8`}
                         >
-                            <div className="flex justify-center ">
+                            <div className="flex justify-center items-center">
                                 <div className="pr-1" >
                                     Customize
                                 </div>
-                                <div className='h-8 pt-0.5 text-white'>
+                                <div className='h-6 text-white'>
                                     <img
                                         src="/sparkle-star.png"
                                         alt="star"
-                                        className="h-8"
+                                        className="h-6"
                                     /> </div>
 
                             </div>
