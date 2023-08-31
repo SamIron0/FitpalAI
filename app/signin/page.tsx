@@ -1,7 +1,7 @@
 import { getSession } from '@/app/supabase-server';
 import AuthUI from './AuthUI';
 import { redirect } from 'next/navigation';
-import Logo from '@/components/icons/Logo';
+//import Logo from '@/components/icons/Logo';
 //import logo from "../../../logo.png";
 
 export default async function SignIn() {
@@ -18,7 +18,7 @@ export default async function SignIn() {
         <img
           src="/logo.svg"
            alt="logo"
-           className='h-18 mb-9 '
+           className='h-12 mb-6 '
           ></img>
         <AuthUI />
       </div>
