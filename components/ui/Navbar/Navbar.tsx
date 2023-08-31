@@ -27,11 +27,14 @@ export default async function Navbar() {
   }
 
   return (
-    
+
     <header className="sticky top-0 z-50 flex items-center justify-between w-full h-16 pl-2 border-[#232325] border-b shrink-0 bg-gradient-to-b from-background/10 via-background/50 to-background/80 backdrop-blur-xl">
       <div className="flex pl-3 md:pl-48 items-center">
         <Link href="/" rel="nofollow">
-          <Image className="h-[32px]  md:h-[42px]" src={logo.src} alt="logo" />
+          <img className="h-[36px]  md:h-[42px]"
+            src="/logo.svg"
+            alt="logo"
+          ></img>
         </Link>
 
       </div>
