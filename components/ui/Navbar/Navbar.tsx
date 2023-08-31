@@ -19,7 +19,7 @@ export default function Navbar() {
   //const {
   //data: { user }
   //} = await supabase.auth.getUser(); 
-  const session = await getSession();
+  //const session = await getSession();
 
 
   function handleButtonClick(): void {
