@@ -45,10 +45,25 @@ export default function RootLayout({
   children
 }: PropsWithChildren) {
   return (
-    <>
+    <Html>
+      <Head>
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-39N664CG65">
+        </script>
+        <script dangerouslySetInnerHTML={
+          {
+            __html: `
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'G-39N664CG65');
+              `
+          }
+        } />
+      </Head>
       <body className="bg-black loading">
         <SupabaseProvider>
-          {/* @ts-expect-error */}
           <Navbar />
           <main
             id="skip"
@@ -59,6 +74,7 @@ export default function RootLayout({
           <Analytics />
         </SupabaseProvider>
       </body>
-    </>
+      <NextScript />
+    </Html>
   );
 }
