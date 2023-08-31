@@ -610,7 +610,7 @@ export default function HomePageGenerator() {
                                 : 'ml-0.5 relative w-1/2 border border-transparent text-zinc-400'
                                 } rounded-md m-1  text-sm font-medium whitespace-nowrap focus:outline-none focus:z-10  sm:px-8`}
                         >
-                            <div className="flex justify-center items-center">
+                            <div className="flex justify-center pl-0.5 items-center">
                                 <div className="pr-1" >
                                     Customize
                                 </div>
