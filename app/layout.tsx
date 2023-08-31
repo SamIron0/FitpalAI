@@ -4,7 +4,6 @@ import Navbar from '@/components/ui/Navbar';
 import { PropsWithChildren } from 'react';
 import 'styles/main.css';
 import { Analytics } from '@vercel/analytics/react';
-import { Html, Head, Main, NextScript } from 'next/document';
 
 const meta = {
   title: 'Fitpal AI',
@@ -46,8 +45,8 @@ export default function RootLayout({
   children
 }: PropsWithChildren) {
   return (
-    <Html>
-      <Head>
+    <>
+      <head>
         <script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-39N664CG65">
@@ -61,10 +60,11 @@ export default function RootLayout({
                 gtag('config', 'G-39N664CG65');
               `
           }
-        } />
-      </Head>
+        } ></script>
+      </head>
       <body className="bg-black loading">
         <SupabaseProvider>
+          {/* @ts-expect-error */}
           <Navbar />
           <main
             id="skip"
@@ -75,7 +75,6 @@ export default function RootLayout({
           <Analytics />
         </SupabaseProvider>
       </body>
-      <NextScript />
-    </Html>
+    </>
   );
 }
