@@ -16,7 +16,7 @@ export default async function PricingPage() {
     getSubscription()
   ]);
   return (
-    <div className='h-full bg-black'>
+    <div className=' bg-black'>
       <div className="mx-auto py-8 sm:pt-12 px-4 sm:px-6 lg:px-8">
         <div className="mt-8 align-center ">
           <p className="text-5xl font-extrabold text-white text-center sm:text-7xl max-w-2xl m-auto">
