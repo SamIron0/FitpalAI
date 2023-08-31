@@ -5,15 +5,15 @@ import GitHub from '@/components/icons/GitHub';
 
 export default function Footer() {
   return (
-    <footer className="mx-auto max-w-[1920px] px-6 bg-zinc-900">
+    <footer className="mx-auto max-w-[1920px] px-4 bg-zinc-900">
      
       <div className="flex items-center justify-between py-6 space-y-4 flex-row bg-zinc-900">
         <div>
           <span>
             &copy; {new Date().getFullYear()} FitpalAI. </span>
         </div>
-        <div className="flex items-center">
-          <a href="https://twitter.com" aria-label="twitter link">
+        <div className="">
+          <a className="" href="https://twitter.com" aria-label="twitter link">
             <img
               src="/x-logo.svg"
               alt="twitter"
