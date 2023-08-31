@@ -610,7 +610,20 @@ export default function HomePageGenerator() {
                                 : 'ml-0.5 relative w-1/2 border border-transparent text-zinc-400'
                                 } rounded-md m-1  text-sm font-medium whitespace-nowrap focus:outline-none focus:z-10  sm:px-8`}
                         >
-                            Customize
+                            <div className="flex ">
+                                <div className="pr-1" >
+                                    Customize
+                                </div>
+                                <div className=''>
+                                    <img
+                                        src="/sparkle-star.svg"
+                                        alt="star"
+                                        className=""
+                                    /> </div>
+
+                            </div>
+
+
                         </button>
                     </div>
 
@@ -706,7 +719,7 @@ export default function HomePageGenerator() {
                                     boxShadow: "0 1px 1px #0c192714, 0 1px 3px #0c192724",
                                 }}
                             >
-                                 <span className="text-md"> I'm ready </span>
+                                <span className="text-md"> I'm ready </span>
                                 <svg
                                     className="w-5 h-5"
                                     viewBox="0 0 24 24"
