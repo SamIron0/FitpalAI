@@ -4,6 +4,7 @@ import Navbar from '@/components/ui/Navbar';
 import { PropsWithChildren } from 'react';
 import 'styles/main.css';
 import { Analytics } from '@vercel/analytics/react';
+import Document, { Html, Head, Main, NextScript } from 'next/document';
 
 const meta = {
   title: 'Fitpal AI',
