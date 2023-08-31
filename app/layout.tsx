@@ -71,8 +71,9 @@ export default function RootLayout({
             className="min-h-[calc(100dvh-4rem)] md:min-h[calc(100dvh-5rem)]"
           >
             {children}
-            <Footer/>
           </main>
+          <Footer/>
+
           <Analytics />
         </SupabaseProvider>
       </body>
