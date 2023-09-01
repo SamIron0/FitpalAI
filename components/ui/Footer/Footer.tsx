@@ -12,7 +12,7 @@ export default function Footer() {
           <span>
             &copy; {new Date().getFullYear()} FitpalAI. </span>
         </div>
-        <div className="">
+        <div className="flex items-center">
           <a className="" href="https://twitter.com" aria-label="twitter link">
             <img
               src="/x-logo.svg"
