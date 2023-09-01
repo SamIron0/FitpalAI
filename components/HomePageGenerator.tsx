@@ -467,11 +467,12 @@ export default function HomePageGenerator() {
                                 calorieData = await breakDown.json();
                                 gotCalories = true;
                             }
+                            else {
+                                return "";
+                            }
                         } catch (error) {
                             console.error(`Retrying due to ${error}`);
                         }
-                        return "";
-
                     }
                 }
                 await getCalorieData();
