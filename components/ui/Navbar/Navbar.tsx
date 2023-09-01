@@ -28,8 +28,8 @@ export default async function Navbar() {
 
   return (
 
-    <header className="sticky top-0 z-50 flex items-center justify-between w-full h-16 pl-2 border-[#232325] border-b shrink-0 bg-gradient-to-b from-background/10 via-background/50 to-background/80 backdrop-blur-xl">
-      <div className="flex pl-3 md:pl-48 items-center">
+    <header className="sticky top-0 z-50 flex items-center justify-between w-full h-16  border-[#232325] border-b shrink-0 bg-gradient-to-b from-background/10 via-background/50 to-background/80 backdrop-blur-xl">
+      <div className="flex pl-3 pt-0.5 lg:pl-48 items-center">
         <Link href="/" rel="nofollow">
           <img className="h-[110px]  md:h-[120px]"
             src="/logo.svg"
