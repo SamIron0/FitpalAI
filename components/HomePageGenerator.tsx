@@ -470,9 +470,9 @@ export default function HomePageGenerator() {
                         } catch (error) {
                             console.error(`Retrying due to ${error}`);
                         }
+                        return "";
 
                     }
-                    return "";
                 }
                 await getCalorieData();
 
