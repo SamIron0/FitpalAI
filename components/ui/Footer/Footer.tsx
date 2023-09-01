@@ -7,7 +7,7 @@ export default function Footer() {
   return (
     <footer className="mx-auto max-w-[1920px] px-4 bg-zinc-900">
      
-      <div className="flex items-center justify-between py-3 space-y-4 flex-row bg-zinc-900">
+      <div className="flex items-center justify-between py-2 space-y-2 flex-row bg-zinc-900">
         <div>
           <span>
             &copy; {new Date().getFullYear()} FitpalAI. </span>
