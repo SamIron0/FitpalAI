@@ -200,7 +200,7 @@ export default function HomePageGenerator() {
 
             while (!gotCalories) {
                 try {
-                    let breakfastResponse = await fetch(`/api/generateBreakfast?calories=${breakfastCalories.text?.dinner}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
+                    let breakfastResponse = await fetch(`/api/generateBreakfast?calories=${breakfastCalories.text?.breakfast}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
                     const breakfastData = await breakfastResponse.json();
                     if (breakfastData.meal) {
                         setBreakfast(breakfastData.meal);
@@ -237,7 +237,7 @@ export default function HomePageGenerator() {
 
             while (!gotCalories) {
                 try {
-                    let lunchResponse = await fetch(`/api/generateLunch?calories=${lunchCalories.text?.dinner}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
+                    let lunchResponse = await fetch(`/api/generateLunch?calories=${lunchCalories.text?.lunch}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
                     const lunchData = await lunchResponse.json();
                     if (lunchData.meal) {
                         setLunch(lunchData.meal);
@@ -311,7 +311,7 @@ export default function HomePageGenerator() {
 
                 while (!gotCalories) {
                     try {
-                        let snack1Response = await fetch(`/api/generateSnack?calories=${snackCalories.text?.dinner}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
+                        let snack1Response = await fetch(`/api/generateSnack?calories=${snackCalories.text?.snack1}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
                         const snack1Data = await snack1Response.json();
                         if (snack1Data.meal) {
                             setSnack1(snack1Data.meal);
@@ -349,7 +349,7 @@ export default function HomePageGenerator() {
 
                 while (!gotCalories) {
                     try {
-                        let snack2Response = await fetch(`/api/generateSnack?calories=${snackCalories.text?.dinner}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
+                        let snack2Response = await fetch(`/api/generateSnack?calories=${snackCalories.text?.snack2}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
                         const snack2Data = await snack2Response.json();
                         if (snack2Data.meal) {
                             setSnack2(snack2Data.meal);
@@ -387,7 +387,7 @@ export default function HomePageGenerator() {
 
                 while (!gotCalories) {
                     try {
-                        let snack3Response = await fetch(`/api/generateSnack?calories=${snackCalories.text?.dinner}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
+                        let snack3Response = await fetch(`/api/generateSnack?calories=${snackCalories.text?.snack3}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
                         const snack3Data = await snack3Response.json();
                         if (snack3Data.meal) {
                             setSnack3(snack3Data.meal);
