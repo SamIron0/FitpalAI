@@ -293,8 +293,8 @@ export default function HomePageGenerator() {
                 try {
                     let dinnerResponse = await fetch(`/api/generateDinner?ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
                     const dinnerData = await dinnerResponse.json();
-                    if (dinnerData.meal) {
-                        setDinner(dinnerData.meal && typeof dinnerData.meal.title === 'string');
+                    if (dinnerData.meal && typeof dinnerData.meal.title === 'string') {
+                        setDinner(dinnerData.meal );
                         setDinnerIsLoading(false);
                         gotCalories = true;
                     }
