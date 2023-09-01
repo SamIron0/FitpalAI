@@ -638,17 +638,17 @@ export default function HomePageGenerator() {
                             }}
                             className="flex pt-6 flex-col w-6/10  items-center">
                             <div className='flex flex-col justify-end'>
-                                <div className='my-5 ml-auto'>
+                                <div className='my-4 ml-auto'>
                                     <div className="relative flex items-center inline-flex">
                                         <p> I want to eat</p>
                                         <input
                                             value={calories}
                                             onChange={(e) => setCalories(e.target.value)}
                                             className=" px-2 ml-6 bg-transparent border-[1px] border-[#232325] sm:h-[35px] h-[35px] text-md  sm:w-[320px] w-[220px] rounded-md "
-                                            placeholder="Calories" />
+                                            placeholder="e.g 2500" />
                                     </div>
                                 </div>
-                                <div className=' ml-auto mb-5'>
+                                <div className=' ml-auto mb-4'>
                                     <div className="relative flex items-center inline-flex">
                                         <p className="text-md"> in </p>
 
@@ -664,20 +664,29 @@ export default function HomePageGenerator() {
                                         </select>
                                     </div>
                                 </div>
-                                <div className=' mb-6'>
+                                <div className=' mb-4'>
                                     <div className="relative flex items-center inline-flex">
                                         <p> Include these</p>
-                                        <textarea
+                                        <input
                                             value={ingredients}
                                             onChange={(e) => setIngredients(e.target.value)}
                                             className=" px-2 ml-6 bg-transparent border-[1px] border-[#232325] sm:h-[35px] h-[35px] text-md  sm:w-[320px] w-[220px] rounded-md "
                                             placeholder="Ingredients"
-                                            rows={3}
                                         />
                                     </div>
                                 </div>
                             </div>
-
+                            <div className=' mb-6'>
+                                <div className="relative flex items-center inline-flex">
+                                    <p> I'm allergic to</p>
+                                    <input
+                                        value={ingredients}
+                                        onChange={(e) => setIngredients(e.target.value)}
+                                        className=" px-2 ml-6 bg-transparent border-[1px] border-[#232325] sm:h-[35px] h-[35px] text-md  sm:w-[320px] w-[220px] rounded-md "
+                                        placeholder="e.g shellfish, nuts"
+                                    />
+                                </div>
+                            </div>
                             <button
                                 type="submit"
                                 className="group w-3/4 h-[39px] mt-6 sm:w-[220px] rounded-md px-4 py-2 text-[13px] font-semibold transition-all flex items-center justify-center bg-[#f5f7f9] text-[#1E2B3A] no-underline active:scale-95 scale-100 duration-75"
