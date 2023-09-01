@@ -11,12 +11,11 @@ const handler: NextApiHandler = async (req, res) => {
         return res.status(405).json({ message: 'Method Not Allowed' });
     }
     const { calories, ingredients, userLocation, allergies } = req.query;
-    const userQuery = calories ? `Could you please provide a detailed snack recipe title - utilising ${ingredients} - that falls within ${calories} calories? The meals may reflect a variety of cuisines and flavor profiles suitable for a user based in ${userLocation}. Kindly deliver the response in the following JSON format: { title: string;
-        ingredients: string; calories: number}
-       `
-        : `Could you please provide a detailed snack recipe title utilising ${ingredients}? The meals should reflect a variety of cuisines and flavor profiles suitable for a user based in ${userLocation}. Kindly deliver the response in the following JSON format: {title: string;
-            ingredients: string;calories: number}`
-    try {
+    const userQuery = calories ? ingredients != "" ? allergy != "" ? `Step 1: I have ${ingredients}  in my pantry but im very willing to buy more ingredients, out of those, select only the ones most commonly used to make snack. Step 2: Please select one common popular snack recipe with ${calories} calories based on already existing cookbook articles that may or may not contain some of the pantry ingredients, Staying within a 5 calorie range of the total. . I am allergic to ${allergy}. Deliver in JSON format: {title: string;  calories: number}`
+        : `Step 1: I have ${ingredients}  in my pantry but im very willing to buy more ingredients, out of those, select only the ones most commonly used to make snack. Step 2: Please select one common popular snack recipe with ${calories} calories based on already existing cookbook articles that may or may not contain some of the pantry ingredients, Staying within a 5 calorie range of the total. Deliver in JSON format: {title: string;  calories: number}`
+        : `Please select one common popular snack recipe with ${calories} calories based on already existing cookbook articles, Staying within a 5 calorie range of the total. Deliver in JSON format: {title: string; calories: number}`
+        : `Please select one common popular snack recipe based on already existing cookbook articles. Deliver in JSON format: {title: string; calories: number}`
+try {
         const chatResponse = await openai.chat.completions.create({
             model: "gpt-3.5-turbo",
             messages: [{ role: "user", content: userQuery }],
