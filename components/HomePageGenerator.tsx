@@ -276,7 +276,7 @@ export default function HomePageGenerator() {
                 try {
                     let dinnerResponse = await fetch(`/api/generateDinner?calories=${dinnerCalories.text?.dinner}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
                     const dinnerData = await dinnerResponse.json();
-                    if (dinnerData.meal) {
+                    if (dinnerData.meal && dinnerData.meal.title != undefined) {
                         setDinner(dinnerData.meal);
                         setDinnerIsLoading(false);
                         gotCalories = true;
@@ -470,9 +470,9 @@ export default function HomePageGenerator() {
                         } catch (error) {
                             console.error(`Retrying due to ${error}`);
                         }
-                        return "";
 
                     }
+                    return "";
                 }
                 await getCalorieData();
 
