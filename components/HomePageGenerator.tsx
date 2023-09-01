@@ -590,7 +590,7 @@ export default function HomePageGenerator() {
         <div>
 
             <div className="mx-auto mb-14 max-w-2xl px-1">
-                <div className="rounded-lg border border-[#232325] bg-[#0D0D0E] mt-10 p-6">
+                <div className="rounded-lg border border-[#232325] bg-[#0D0D0E] mt-10 pb-3 pt-6">
                     <div className=" relative  w-full flex justify-center h-[45px]  bg-zinc-900 rounded-lg p-0.5 flex border border-zinc-800">
                         <button
                             onClick={() => setGenerationType('create')}
@@ -671,7 +671,7 @@ export default function HomePageGenerator() {
                                             value={ingredients}
                                             onChange={(e) => setIngredients(e.target.value)}
                                             className=" px-2 ml-6 bg-transparent border-[1px] border-[#232325] sm:h-[35px] h-[35px] text-md  sm:w-[320px] w-[220px] rounded-md "
-                                            placeholder="Ingredients"
+                                            placeholder="e.g beef, bell peppers"
                                         />
                                     </div>
                                 </div>
@@ -680,8 +680,8 @@ export default function HomePageGenerator() {
                                 <div className="relative flex items-center inline-flex">
                                     <p> I'm allergic to</p>
                                     <input
-                                        value={ingredients}
-                                        onChange={(e) => setIngredients(e.target.value)}
+                                        value={allergies}
+                                        onChange={(e) => setAllergies(e.target.value)}
                                         className=" px-2 ml-6 bg-transparent border-[1px] border-[#232325] sm:h-[35px] h-[35px] text-md  sm:w-[320px] w-[220px] rounded-md "
                                         placeholder="e.g shellfish, nuts"
                                     />
@@ -719,7 +719,7 @@ export default function HomePageGenerator() {
                             </button>
                         </form>
                         :
-                        <div className="flex flex-col h-[276px] pt-6 pb-6 w-6/10 justify-center items-center">
+                        <div className="flex flex-col h-[300px] pt-6 pb-6 w-6/10 justify-center items-center">
                             <p>Get access to all customization options</p>
                             <Link
                                 href="/signin"
