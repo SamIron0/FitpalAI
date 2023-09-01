@@ -11,11 +11,8 @@ const handler: NextApiHandler = async (req, res) => {
         return res.status(405).json({ message: 'Method Not Allowed' });
     }
     const { calories, ingredients, userLocation, allergies } = req.query;
-    const userQuery = calories ? `Could you please provide a detailed lunch recipe title - utilising ${ingredients} - that falls within ${calories} calories? The meals may reflect a variety of cuisines and flavor profiles suitable for a user based in ${userLocation}. Kindly deliver the response in the following JSON format: { title: string;
-        ingredients: string; calories: number}
-       `
-        : `Could you please provide a detailed lunch recipe title utilising ${ingredients}? The meals should reflect a variety of cuisines and flavor profiles suitable for a user based in ${userLocation}. Kindly deliver the response in the following JSON format: {title: string;
-            ingredients: string;calories: number}`
+    const userQuery = calories ? `Step 1: I have ${ingredients}  in my pantry but im very willing to buy more ingredients, out of those, select only the ones most commonly used to make lunch. Step 2: Please select a common popular lunch recipe with ${calories} calories based on already existing cookbook articles that may or may not contain some of the pantry ingredients, Staying within a 5 calorie range of the total. Deliver in JSON format: {title: string; ingredients: string; calories: number}`
+        : `Step 1: I have ${ingredients}  in my pantry but im very willing to buy more ingredients, out of those, select only the ones most commonly used to make lunch. Step 2: Please select a common popular lunch recipe based on already existing cookbook articles that may or may not contain some of the pantry ingredients. Deliver in JSON format: {title: string; ingredients: string; calories: number}`
     try {
         const chatResponse = await openai.chat.completions.create({
             model: "gpt-3.5-turbo",
