@@ -591,7 +591,7 @@ export default function HomePageGenerator() {
 
             <div className="mx-auto mb-14 max-w-2xl px-1">
                 <div className="rounded-lg border border-[#232325] bg-[#0D0D0E] mt-10 pb-3 pt-6">
-                    <div className=" relative  w-7/10 flex justify-center h-[45px]  bg-zinc-900 rounded-lg p-0.5 flex border border-zinc-800">
+                    <div className=" relative  mx-10 flex justify-center h-[45px]  bg-zinc-900 rounded-lg p-0.5 flex border border-zinc-800">
                         <button
                             onClick={() => setGenerationType('create')}
                             type="button"
