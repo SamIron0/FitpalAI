@@ -24,12 +24,12 @@ const handler: NextApiHandler = async (req, res) => {
             snack3: 0,
     }`
     if (numOfMeals === "1") {
-        days = `dinner (everything else remains at 0)`
+        days = `dinner (lunch,dinner, breakfast,snack1, snack2, snack3 remain at 0)`
     } else if (numOfMeals === '2') {
-        days = `lunch,dinner (everything else remains at 0)`
+        days = `lunch,dinner ( breakfast,snack1, snack2, snack3 remain at 0)`
 
     } else if (numOfMeals === "3") {
-        days = `breakfast,lunch,dinner (everything else remains at 0)`
+        days = `breakfast,lunch,dinner (snack1, snack2, snack3 remain at 0)`
 
     } else if (numOfMeals === "4") {
         days = `breakfast,lunch,dinner,snack1 ( snack2 and snack3 remain at 0)`
