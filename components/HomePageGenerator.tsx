@@ -202,7 +202,7 @@ export default function HomePageGenerator() {
                 try {
                     let breakfastResponse = await fetch(`/api/generateBreakfast?calories=${breakfastCalories.text?.breakfast}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
                     const breakfastData = await breakfastResponse.json();
-                    if (breakfastData.meal && breakfastData.meal.title != undefined) {
+                    if (breakfastData.meal && typeof breakfastData.meal.title === 'string') {
                         setBreakfast(breakfastData.meal);
                         setBreakfastIsLoading(false);
                         gotCalories = true;
@@ -219,7 +219,7 @@ export default function HomePageGenerator() {
                 try {
                     let breakfastResponse = await fetch(`/api/generateBreakfast?ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
                     const breakfastData = await breakfastResponse.json();
-                    if (breakfastData.meal && breakfastData.meal.title != undefined) {
+                    if (breakfastData.meal && typeof breakfastData.meal.title === 'string') {
                         setBreakfast(breakfastData.meal);
                         setBreakfastIsLoading(false);
                         gotCalories = true;
@@ -239,7 +239,7 @@ export default function HomePageGenerator() {
                 try {
                     let lunchResponse = await fetch(`/api/generateLunch?calories=${lunchCalories.text?.lunch}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
                     const lunchData = await lunchResponse.json();
-                    if (lunchData.meal && lunchData.meal.title != undefined) {
+                    if (lunchData.meal && typeof lunchData.meal.title === 'string') {
                         setLunch(lunchData.meal);
                         setLunchIsLoading(false);
                         gotCalories = true;
@@ -256,7 +256,7 @@ export default function HomePageGenerator() {
                 try {
                     let lunchResponse = await fetch(`/api/generateLunch?ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
                     const lunchData = await lunchResponse.json();
-                    if (lunchData.meal && lunchData.meal.title != undefined) {
+                    if (lunchData.meal && typeof lunchData.meal.title === 'string') {
                         setLunch(lunchData.meal);
                         setLunchIsLoading(false);
                         gotCalories = true;
@@ -276,7 +276,7 @@ export default function HomePageGenerator() {
                 try {
                     let dinnerResponse = await fetch(`/api/generateDinner?calories=${dinnerCalories.text?.dinner}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
                     const dinnerData = await dinnerResponse.json();
-                    if (dinnerData.meal && dinnerData.meal.title != undefined) {
+                    if (dinnerData.meal && typeof dinnerData.meal.title === 'string') {
                         setDinner(dinnerData.meal);
                         setDinnerIsLoading(false);
                         gotCalories = true;
@@ -294,7 +294,7 @@ export default function HomePageGenerator() {
                     let dinnerResponse = await fetch(`/api/generateDinner?ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
                     const dinnerData = await dinnerResponse.json();
                     if (dinnerData.meal) {
-                        setDinner(dinnerData.meal && dinnerData.meal.title != undefined);
+                        setDinner(dinnerData.meal && typeof dinnerData.meal.title === 'string');
                         setDinnerIsLoading(false);
                         gotCalories = true;
                     }
@@ -313,7 +313,7 @@ export default function HomePageGenerator() {
                     try {
                         let snack1Response = await fetch(`/api/generateSnack?calories=${snackCalories.text?.snack1}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
                         const snack1Data = await snack1Response.json();
-                        if (snack1Data.meal && snack1Data.meal.title != undefined) {
+                        if (snack1Data.meal && typeof snack1Data.meal.title === 'string') {
                             setSnack1(snack1Data.meal);
                             setSnack1IsLoading(false);
                             gotCalories = true;
@@ -330,7 +330,7 @@ export default function HomePageGenerator() {
                     try {
                         let snack1Response = await fetch(`/api/generateSnack?ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
                         const snack1Data = await snack1Response.json();
-                        if (snack1Data.meal  && snack1Data.meal.title != undefined) {
+                        if (snack1Data.meal && typeof snack1Data.meal.title === 'string') {
                             setSnack1(snack1Data.meal);
                             setSnack1IsLoading(false);
                             gotCalories = true;
@@ -351,7 +351,7 @@ export default function HomePageGenerator() {
                     try {
                         let snack2Response = await fetch(`/api/generateSnack?calories=${snackCalories.text?.snack2}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
                         const snack2Data = await snack2Response.json();
-                        if (snack2Data.meal  && snack2Data.meal.title != undefined) {
+                        if (snack2Data.meal  && typeof snack2Data.meal.title === 'string') {
                             setSnack2(snack2Data.meal);
                             setSnack2IsLoading(false);
                             gotCalories = true;
@@ -368,7 +368,7 @@ export default function HomePageGenerator() {
                     try {
                         let snack2Response = await fetch(`/api/generateSnack?ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
                         const snack2Data = await snack2Response.json();
-                        if (snack2Data.meal   && snack2Data.meal.title != undefined) {
+                        if (snack2Data.meal   && typeof snack2Data.meal.title === 'string') {
                             setSnack2(snack2Data.meal);
                             setSnack2IsLoading(false);
                             gotCalories = true;
@@ -389,7 +389,7 @@ export default function HomePageGenerator() {
                     try {
                         let snack3Response = await fetch(`/api/generateSnack?calories=${snackCalories.text?.snack3}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
                         const snack3Data = await snack3Response.json();
-                        if (snack3Data.meal  && snack3Data.meal.title != undefined) {
+                        if (snack3Data.meal  && typeof snack3Data.meal.title === 'string') {
                             setSnack3(snack3Data.meal);
                             setSnack3IsLoading(false);
                             gotCalories = true;
@@ -406,7 +406,7 @@ export default function HomePageGenerator() {
                     try {
                         let snack3Response = await fetch(`/api/generateSnack?ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`);
                         const snack3Data = await snack3Response.json();
-                        if (snack3Data.meal  && snack3Data.meal.title != undefined) {
+                        if (snack3Data.meal  && typeof snack3Data.meal.title === 'string') {
                             setSnack3(snack3Data.meal);
                             setSnack3IsLoading(false);
                             gotCalories = true;
