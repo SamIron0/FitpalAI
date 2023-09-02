@@ -7,7 +7,6 @@ import {
 import Link from 'next/link';
 import ChatWindow from '../components/ChatWindow';
 import HomePageGenerator from '../components/HomePageGenerator';
-import Pricing from '../components/Pricing';
 import mealIcon from '../meal-icon.png';
 
 export default async function PricingPage() {
