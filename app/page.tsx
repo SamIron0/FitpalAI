@@ -57,7 +57,7 @@ export default async function PricingPage() {
       </div>
       <div className='p-3 bg-black pb-6 mt-6'>
         <HomePageGenerator />
-        <Subscription/>
+        <Pricing/>
       </div>
     </div>
   );
