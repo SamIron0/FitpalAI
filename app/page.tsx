@@ -7,6 +7,7 @@ import {
 import Link from 'next/link';
 import ChatWindow from '../components/ChatWindow';
 import HomePageGenerator from '../components/HomePageGenerator';
+import Subscription from '../components/Subscription';
 import mealIcon from '../meal-icon.png';
 
 export default async function PricingPage() {
@@ -56,6 +57,7 @@ export default async function PricingPage() {
       </div>
       <div className='p-3 bg-black pb-6 mt-6'>
         <HomePageGenerator />
+        <Subscription/>
       </div>
     </div>
   );

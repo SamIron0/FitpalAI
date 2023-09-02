@@ -18,7 +18,7 @@ export default async function SignIn() {
         <img
           src="/logo.svg"
            alt="logo"
-           className='h-[160px] mb-2 '
+           className='h-[130px] '
           ></img>
         <AuthUI />
       </div>
