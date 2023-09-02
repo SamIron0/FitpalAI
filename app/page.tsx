@@ -9,7 +9,7 @@ import ChatWindow from '../components/ChatWindow';
 import HomePageGenerator from '../components/HomePageGenerator';
 import mealIcon from '../meal-icon.png';
 
-export default async function PricingPage() {
+export default async function HomePage() {
   const [session, products, subscription] = await Promise.all([
     getSession(),
     getActiveProductsWithPrices(),
