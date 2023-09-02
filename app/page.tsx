@@ -15,6 +15,7 @@ export default async function PricingPage() {
     getActiveProductsWithPrices(),
     getSubscription()
   ]);
+
   return (
     <div className=' bg-black'>
       <div className="mx-auto py-8 sm:pt-12 px-4 sm:px-6 lg:px-8">
@@ -56,7 +57,12 @@ export default async function PricingPage() {
       </div>
       <div className='p-3 bg-black pb-6 mt-6'>
         <HomePageGenerator />
-        <Pricing/>
+        <Pricing
+          session={session}
+          user={session?.user}
+          products={products}
+          subscription={subscription}
+        />
       </div>
     </div>
   );
