@@ -12,4 +12,5 @@ export const stripe = new Stripe(
       version: '0.1.0'
     }
   }
+  
 );

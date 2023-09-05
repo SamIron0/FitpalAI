@@ -56,6 +56,12 @@ export default async function PricingPage() {
       </div>
       <div className='p-3 bg-black pb-6 mt-6'>
         <HomePageGenerator />
+        <Pricing
+          session={session}
+          user={session?.user}
+          products={products}
+          subscription={subscription}
+        />
       </div>
     </div>
   );
