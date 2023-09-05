@@ -20,11 +20,11 @@ const relevantEvents = new Set([
 ]);
 export async function POST(req: Request) {
   if (req) {
-    const body = await buffer(req);
+    const body = await buffer(req.body);
     const sig = req.headers.get('stripe-signature');
     const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
     let event: Stripe.Event;
-    const rawBody = JSON.patse(body.toString());
+    const rawBody = JSON.parse(body.toString());
 
     try {
       if (!sig || !webhookSecret) return;
