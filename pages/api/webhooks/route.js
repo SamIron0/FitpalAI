@@ -38,6 +38,7 @@ app.post('/webhook', express.raw({type: 'application/json'}), (request, response
     case 'product.created':
       const productCreated = event.data.object;
       // Then define and call a function to handle the event product.created
+      console.log("goood");
       break;
     // ... handle other event types
     default:
