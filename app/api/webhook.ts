@@ -1,5 +1,3 @@
-
-app.listen(4242, () => console.log('Running on port 4242'));
 import Stripe from 'stripe';
 import { stripe } from '@/utils/stripe';
 import {
@@ -22,14 +20,14 @@ const relevantEvents = new Set([
 ]);
 export async function POST(req: Request) {
   //const body = await req.text();
-  const sig = headers().get('Stripe-Signature') as string;
+  const sig = req.headers['stripe-signature'] as string;
   const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
   let event: Stripe.Event;
-  const rawBody = await buffer(req.rawBody);
+  const rawBody = await buffer(req);
 
   try {
     if (!sig || !webhookSecret) return;
-    event = stripe.webhooks.constructEvent(rawBody.toString(), sig, webhookSecret);
+    event = stripe.webhooks.constructEvent(rawBody, sig, webhookSecret);
   } catch (err: any) {
     console.log(`❌ Error message: ${err.message}`);
     return new Response(`Webhook Error: ${err.message}`, { status: 400 });
