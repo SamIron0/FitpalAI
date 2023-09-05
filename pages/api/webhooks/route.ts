@@ -7,6 +7,7 @@ import {
 } from '@/utils/supabase-admin';
 import { headers } from 'next/headers';
 import { buffer } from 'micro';
+import { NextApiRequest } from 'next';
 
 const relevantEvents = new Set([
   'product.created',
@@ -18,7 +19,7 @@ const relevantEvents = new Set([
   'customer.subscription.updated',
   'customer.subscription.deleted'
 ]);
-export async function POST(req: Request) {
+export async function POST(req: NextApiRequest) {
   //const body = await req.text();
   const sig = headers().get('Stripe-Signature') as string;
   const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
