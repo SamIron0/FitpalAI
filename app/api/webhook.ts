@@ -19,15 +19,15 @@ const relevantEvents = new Set([
   'customer.subscription.deleted'
 ]);
 export async function POST(req: Request) {
-  //const body = await req.text();
-  const sig = req.headers['stripe-signature'] as string;
+  const body = await req.text();
+  const sig = headers().get('Stripe-Signature') as string;
   const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
   let event: Stripe.Event;
-  const rawBody = await buffer(req);
+  //const rawBody = await buffer(req);
 
   try {
     if (!sig || !webhookSecret) return;
-    event = stripe.webhooks.constructEvent(rawBody, sig, webhookSecret);
+    event = stripe.webhooks.constructEvent(body, sig, webhookSecret);
   } catch (err: any) {
     console.log(`❌ Error message: ${err.message}`);
     return new Response(`Webhook Error: ${err.message}`, { status: 400 });
