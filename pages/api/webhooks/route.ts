@@ -7,7 +7,6 @@ import {
 } from '@/utils/supabase-admin';
 import { headers } from 'next/headers';
 import { buffer } from 'micro';
-import { NextApiRequest } from 'next';
 
 const relevantEvents = new Set([
   'product.created',
@@ -19,12 +18,12 @@ const relevantEvents = new Set([
   'customer.subscription.updated',
   'customer.subscription.deleted'
 ]);
-export async function POST(req: NextApiRequest) {
+export async function POST(req: Request) {
   //const body = await req.text();
   const sig = headers().get('Stripe-Signature') as string;
   const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
   let event: Stripe.Event;
-  const rawBody = await buffer(req);
+  const rawBody = await buffer(req.rawBody);
 
   try {
     if (!sig || !webhookSecret) return;
