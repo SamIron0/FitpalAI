@@ -6,6 +6,7 @@ import {
   manageSubscriptionStatusChange
 } from '@/utils/supabase-admin';
 import { headers } from 'next/headers';
+import { buffer } from 'micro';
 
 const relevantEvents = new Set([
   'product.created',
