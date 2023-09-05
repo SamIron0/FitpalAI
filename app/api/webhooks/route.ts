@@ -18,7 +18,7 @@ const relevantEvents = new Set([
   'customer.subscription.updated',
   'customer.subscription.deleted'
 ]);
-export async function POST(req) {
+export async function POST(req: any) {
   if (req) {
     const body = await buffer(req);
     const sig = headers().get('Stripe-Signature') as string;
