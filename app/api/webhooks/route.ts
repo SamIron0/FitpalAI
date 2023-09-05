@@ -19,7 +19,7 @@ const relevantEvents = new Set([
   'customer.subscription.deleted'
 ]);
 export async function POST(req: Request) {
-  if (req) {
+  if (req && req.body) {
     const body = await buffer(req.body);
     const sig = req.headers.get('stripe-signature');
     const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
