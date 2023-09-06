@@ -11,7 +11,7 @@ const handler: NextApiHandler = async (req, res) => {
         return res.status(405).json({ message: 'Method Not Allowed' });
     }
     const { calories, ingredients, userLocation, allergy } = req.query;
-    let userQuery;
+    let userQuery ;
 
     if (calories && ingredients !== "" && allergy !== "") {
         userQuery = `I have ${ingredients} in my pantry, out of those, note only the ones most commonly used to make dinner. Please select one common popular dinner recipe with ${calories} calories based on already existing cookbook articles that may or may not have some of the pantry ingredients listed as an ingredient of the dinner recipe, Staying within a 5 calorie range of the total. Do not include anything that contains ${allergy}.The person cooking is located in ${userLocation}. Deliver in JSON format: {title: string; calories: number}`;
@@ -24,11 +24,13 @@ const handler: NextApiHandler = async (req, res) => {
     }else if (allergy !== "" ) {
         userQuery = ` Please select one common popular dinner recipe based on already existing cookbook articles that may or may not have some of the pantry ingredients listed as an ingredient of the dinner recipe. Do not include anything that contains ${allergy}.The person cooking is located in ${userLocation}. Deliver in JSON format: {title: string; calories: number}`;
     } else if (ingredients !== "") {
-        userQuery = ` I have ${ingredients}  in my pantry, out of those, select only the ones most commonly used to make dinner. Please select one common popular dinner recipe that may or may not have some of the pantry ingredients listed as an ingredient of the dinner recipe.The person cooking is located in ${userLocation}. Deliver in JSON format: {title: string; calories: number}`;
-
+        userQuery = ` I have ${ingredients}  in my pantry, out of those, select only the ones most commonly used to make dinner. Please select one common popular dinner recipe that may or may not have some of the pantry ingredients listed as an ingredient of the dinner recipe.The person cooking is located in ${userLocation}. Deliver in JSON format: {title: string; calories: number}`
     }
     else if (calories) {
         userQuery = ` Please select one common popular dinner recipe with ${calories} calories based on already existing cookbook articles that may or may not have some of the pantry ingredients listed as an ingredient of the dinner recipe, Staying within a 5 calorie range of the total.The person cooking is located in ${userLocation}. Deliver in JSON format: {title: string; calories: number}`;
+    }
+    else{
+        userQuery = ` Please select one common popular dinner recipe based on already existing cookbook articles that may or may not have some of the pantry ingredients listed as an ingredient of the dinner recipe.The person cooking is located in ${userLocation}. Deliver in JSON format: {title: string; calories: number}`;
 
     }
     
