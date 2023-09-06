@@ -15,23 +15,22 @@ const handler: NextApiHandler = async (req, res) => {
 
     if (calories && ingredients !== "" && allergy !== "") {
         userQuery = `I have ${ingredients} in my pantry, out of those, note only the ones most commonly used to make dinner. Please select one common popular dinner recipe with ${calories} calories based on already existing cookbook articles that may or may not have some of the pantry ingredients listed as an ingredient of the dinner recipe, Staying within a 5 calorie range of the total. Do not include anything that contains ${allergy}.The person cooking is located in ${userLocation}. Deliver in JSON format: {title: string; calories: number}`;
-    } else if (calories && ingredients !== "") {
+    } else if (calories && ingredients !== ""  && allergy === "") {
         userQuery = `Step 1: I have ${ingredients}  in my pantry, out of those, select only the ones most commonly used to make dinner. Please select one common popular dinner recipe with ${calories} calories based on already existing cookbook articles that may or may not have some of the pantry ingredients listed as an ingredient of the dinner recipe, Staying within a 5 calorie range of the total. Deliver in JSON format: {title: string; calories: number}`;
-    } else if (calories && allergy !== "") {
+    } else if (calories && allergy !== "" && ingredients === "") {
         userQuery = ` Please select one common popular dinner recipe with ${calories} calories based on already existing cookbook articles that may or may not have some of the pantry ingredients listed as an ingredient of the dinner recipe, Staying within a 5 calorie range of the total. Do not include anything that contains ${allergy}.The person cooking is located in ${userLocation}. Deliver in JSON format: {title: string; calories: number}`;
-    }else if (allergy !== "" && ingredients !== "") {
+    }else if (allergy !== "" && ingredients !== "" && !calories) {
         userQuery = ` I have ${ingredients}  in my pantry, out of those, select only the ones most commonly used to make dinner. Please select one common popular dinner recipe based on already existing cookbook articles that may or may not have some of the pantry ingredients listed as an ingredient of the dinner recipe. Do not include anything that contains ${allergy}.The person cooking is located in ${userLocation}. Deliver in JSON format: {title: string; calories: number}`;
-    }else if (allergy !== "" ) {
+    }else if (allergy !== "" && ingredients === "" && !calories) {
         userQuery = ` Please select one common popular dinner recipe based on already existing cookbook articles that may or may not have some of the pantry ingredients listed as an ingredient of the dinner recipe. Do not include anything that contains ${allergy}.The person cooking is located in ${userLocation}. Deliver in JSON format: {title: string; calories: number}`;
-    } else if (ingredients !== "") {
+    } else if (ingredients !== "" && allergy === "" && !calories) {
         userQuery = ` I have ${ingredients}  in my pantry, out of those, select only the ones most commonly used to make dinner. Please select one common popular dinner recipe that may or may not have some of the pantry ingredients listed as an ingredient of the dinner recipe.The person cooking is located in ${userLocation}. Deliver in JSON format: {title: string; calories: number}`
     }
-    else if (calories) {
+    else if (calories && allergy === "" && ingredients === "") {
         userQuery = ` Please select one common popular dinner recipe with ${calories} calories based on already existing cookbook articles that may or may not have some of the pantry ingredients listed as an ingredient of the dinner recipe, Staying within a 5 calorie range of the total.The person cooking is located in ${userLocation}. Deliver in JSON format: {title: string; calories: number}`;
     }
     else{
         userQuery = ` Please select one common popular dinner recipe based on already existing cookbook articles that may or may not have some of the pantry ingredients listed as an ingredient of the dinner recipe.The person cooking is located in ${userLocation}. Deliver in JSON format: {title: string; calories: number}`;
-
     }
     
 
