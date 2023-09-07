@@ -20,6 +20,7 @@ export default function SupabaseProvider({
   const [supabase] = useState(() => createPagesBrowserClient());
   const router = useRouter();
 
+  
   useEffect(() => {
     const {
       data: { subscription }
