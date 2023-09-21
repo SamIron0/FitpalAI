@@ -24,7 +24,7 @@ function waitlist() {
   const saveWaitListContact = async (userName: string, userEmail: string) => {
     try {
       const { data } = await getData({
-        url: '/api/create-checkout-session',
+        url: '/api/save-waitlist-contact',
         data: { userName, userEmail }
       });
       showMessage();

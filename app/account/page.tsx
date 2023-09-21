@@ -1,66 +1,66 @@
-import ManageSubscriptionButton from './ManageSubscriptionButton';
+import ManageSubscriptionButton from "./ManageSubscriptionButton";
 import {
   getSession,
   getUserDetails,
-  getSubscription
-} from '@/app/supabase-server';
-import Button from '@/components/ui/Button';
-import { Database } from '@/types_db';
-import { createServerActionClient } from '@supabase/auth-helpers-nextjs';
-import { revalidatePath } from 'next/cache';
-import { cookies } from 'next/headers';
-import Link from 'next/link';
-import { redirect } from 'next/navigation';
-import { ReactNode } from 'react';
+  getSubscription,
+} from "@/app/supabase-server";
+import Button from "@/components/ui/Button";
+import { Database } from "@/types_db";
+import { createServerActionClient } from "@supabase/auth-helpers-nextjs";
+import { revalidatePath } from "next/cache";
+import { cookies } from "next/headers";
+import Link from "next/link";
+import { redirect } from "next/navigation";
+import { ReactNode } from "react";
 
 export default async function Account() {
   const [session, userDetails, subscription] = await Promise.all([
     getSession(),
     getUserDetails(),
-    getSubscription()
+    getSubscription(),
   ]);
 
   const user = session?.user;
 
   if (!session) {
-    return redirect('/signin');
+    return redirect("/signin");
   }
 
   const subscriptionPrice =
     subscription &&
-    new Intl.NumberFormat('en-US', {
-      style: 'currency',
+    new Intl.NumberFormat("en-US", {
+      style: "currency",
       currency: subscription?.prices?.currency!,
-      minimumFractionDigits: 0
+      minimumFractionDigits: 0,
     }).format((subscription?.prices?.unit_amount || 0) / 100);
 
   const updateName = async (formData: FormData) => {
-    'use server';
+    "use server";
 
-    const newName = formData.get('name') as string;
+    const newName = formData.get("name") as string;
     const supabase = createServerActionClient<Database>({ cookies });
     const session = await getSession();
     const user = session?.user;
     const { error } = await supabase
-      .from('users')
+      .from("users")
       .update({ full_name: newName })
-      .eq('id', user?.id);
+      .eq("id", user?.id);
     if (error) {
       console.log(error);
     }
-    revalidatePath('/account');
+    revalidatePath("/account");
   };
 
   const updateEmail = async (formData: FormData) => {
-    'use server';
+    "use server";
 
-    const newEmail = formData.get('email') as string;
+    const newEmail = formData.get("email") as string;
     const supabase = createServerActionClient<Database>({ cookies });
     const { error } = await supabase.auth.updateUser({ email: newEmail });
     if (error) {
       console.log(error);
     }
-    revalidatePath('/account');
+    revalidatePath("/account");
   };
 
   return (
@@ -81,9 +81,9 @@ export default async function Account() {
           description={
             subscription
               ? `You are currently on the ${subscription?.prices?.products?.name} plan.`
-              : 'You are not currently subscribed to any plan.'
+              : "You are not currently subscribed to any plan."
           }
-          footer={<ManageSubscriptionButton session={session} />}
+          footer={<></>}
         >
           <div className="mt-8 mb-4 text-xl font-semibold">
             {subscription ? (
@@ -117,7 +117,7 @@ export default async function Account() {
                 type="text"
                 name="name"
                 className="w-1/2 p-3 rounded-md bg-zinc-800"
-                defaultValue={userDetails?.full_name ?? ''}
+                defaultValue={userDetails?.full_name ?? ""}
                 placeholder="Your name"
                 maxLength={64}
               />
@@ -150,7 +150,7 @@ export default async function Account() {
                 type="text"
                 name="email"
                 className="w-1/2 p-3 rounded-md bg-zinc-800"
-                defaultValue={user ? user.email : ''}
+                defaultValue={user ? user.email : ""}
                 placeholder="Your email"
                 maxLength={64}
               />
@@ -177,7 +177,6 @@ function Card({ title, description, footer, children }: Props) {
         <p className="text-zinc-300">{description}</p>
         {children}
       </div>
-      
     </div>
   );
 }
