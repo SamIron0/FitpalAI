@@ -1,4 +1,3 @@
-import Pricing from '@/components/Pricing';
 import {
   getSession,
   getSubscription,
