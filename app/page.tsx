@@ -30,7 +30,7 @@ export default async function PricingPage() {
       <div className="bg-black pb-6 px-8">
         <div className="rounded-full border-[#232325] bg-[#0D0D0E] flex items-center border  h-12  sm:w-[370px] w-[358px] mx-auto ">
           <Link
-            href="/signin"
+            href="/waitlist"
             className="flex p-3 w-full ">
             <div className="w-1/4 flex justify-start pl-0.5 pr-0.5 ">
               <div className="circle-div"><img src={mealIcon.src} alt="meal image" />
@@ -39,7 +39,7 @@ export default async function PricingPage() {
             <div className="w-11/20 flex justify-center items-center pl-1 flex w-full flex-col">
 
               <p className=" text-white text-sm absolute">
-                Introducing FitpalAI - Create account
+                Introducing FitpalAI - Join Waitlist
               </p>
 
             </div>
