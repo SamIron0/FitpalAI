@@ -60,8 +60,6 @@ export default function RootLayout({ children }: PropsWithChildren) {
       </head>
       <body className="bg-black  loading">
         <SupabaseProvider>
-          {/* @ts-expect-error */}
-          <Navbar />
           <main
             id="skip"
             className="min-h-[calc(100dvh-4rem)] md:min-h[calc(100dvh-5rem)]"
