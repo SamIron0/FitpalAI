@@ -113,8 +113,8 @@ export default async function PricingPage() {
         </div>
       ) : (
         <>
-          <div class="rounded-r bg-gray-900 xl:hidden flex justify-between w-full p-6 items-center ">
-            <div class="flex justify-between  items-center space-x-3">
+          <div className="rounded-r bg-gray-900 xl:hidden flex justify-between w-full p-6 items-center ">
+            <div className="flex justify-between  items-center space-x-3">
               <svg
                 width="34"
                 height="34"
@@ -127,17 +127,20 @@ export default async function PricingPage() {
                   fill="white"
                 />
               </svg>
-              <p class="text-2xl leading-6 text-white">OvonRueden</p>
+              <p className="text-2xl leading-6 text-white">OvonRueden</p>
             </div>
-            <div aria-label="toggler" class="flex justify-center items-center">
+            <div
+              aria-label="toggler"
+              className="flex justify-center items-center"
+            >
               <button
                 aria-label="open"
                 id="open"
                 onclick="showNav(true)"
-                class="hidden focus:outline-none focus:ring-2"
+                className="hidden focus:outline-none focus:ring-2"
               >
                 <svg
-                  class=""
+                  className=""
                   width="24"
                   height="24"
                   viewBox="0 0 24 24"
@@ -171,10 +174,10 @@ export default async function PricingPage() {
                 aria-label="close"
                 id="close"
                 onclick="showNav(true)"
-                class=" focus:outline-none focus:ring-2"
+                className=" focus:outline-none focus:ring-2"
               >
                 <svg
-                  class=""
+                  className=""
                   width="24"
                   height="24"
                   viewBox="0 0 24 24"
@@ -201,9 +204,9 @@ export default async function PricingPage() {
           </div>
           <div
             id="Main"
-            class="xl:rounded-r transform  xl:translate-x-0  ease-in-out transition duration-500 flex justify-start items-start h-full  w-full sm:w-64 bg-gray-900 flex-col"
+            className="xl:rounded-r transform  xl:translate-x-0  ease-in-out transition duration-500 flex justify-start items-start h-full  w-full sm:w-64 bg-gray-900 flex-col"
           >
-            <div class="hidden xl:flex justify-start p-6 items-center space-x-3">
+            <div className="hidden xl:flex justify-start p-6 items-center space-x-3">
               <svg
                 width="34"
                 height="34"
@@ -216,12 +219,12 @@ export default async function PricingPage() {
                   fill="white"
                 />
               </svg>
-              <p class="text-2xl leading-6 text-white">OvonRueden</p>
+              <p className="text-2xl leading-6 text-white">OvonRueden</p>
             </div>
-            <div class="mt-6 flex flex-col justify-start items-center  pl-4 w-full border-gray-600 border-b space-y-3 pb-5 ">
-              <button class="flex jusitfy-start items-center space-x-6 w-full  focus:outline-none  focus:text-indigo-400  text-white rounded ">
+            <div className="mt-6 flex flex-col justify-start items-center  pl-4 w-full border-gray-600 border-b space-y-3 pb-5 ">
+              <button className="flex jusitfy-start items-center space-x-6 w-full  focus:outline-none  focus:text-indigo-400  text-white rounded ">
                 <svg
-                  class="fill-stroke "
+                  className="fill-stroke "
                   width="24"
                   height="24"
                   viewBox="0 0 24 24"
@@ -257,11 +260,11 @@ export default async function PricingPage() {
                     stroke-linejoin="round"
                   />
                 </svg>
-                <p class="text-base leading-4 ">Dashboard</p>
+                <p className="text-base leading-4 ">Dashboard</p>
               </button>
-              <button class="flex jusitfy-start items-center w-full  space-x-6 focus:outline-none text-white focus:text-indigo-400   rounded ">
+              <button className="flex jusitfy-start items-center w-full  space-x-6 focus:outline-none text-white focus:text-indigo-400   rounded ">
                 <svg
-                  class="fill-stroke"
+                  className="fill-stroke"
                   width="24"
                   height="24"
                   viewBox="0 0 24 24"
@@ -283,18 +286,18 @@ export default async function PricingPage() {
                     stroke-linejoin="round"
                   />
                 </svg>
-                <p class="text-base leading-4 ">Users</p>
+                <p className="text-base leading-4 ">Users</p>
               </button>
             </div>
-            <div class="flex flex-col justify-start items-center   px-6 border-b border-gray-600 w-full  ">
+            <div className="flex flex-col justify-start items-center   px-6 border-b border-gray-600 w-full  ">
               <button
                 onclick="showMenu1(true)"
-                class="focus:outline-none focus:text-indigo-400 text-left  text-white flex justify-between items-center w-full py-5 space-x-14  "
+                className="focus:outline-none focus:text-indigo-400 text-left  text-white flex justify-between items-center w-full py-5 space-x-14  "
               >
-                <p class="text-sm leading-5  uppercase">Profile Overview</p>
+                <p className="text-sm leading-5  uppercase">Profile Overview</p>
                 <svg
                   id="icon1"
-                  class="transform"
+                  className="transform"
                   width="24"
                   height="24"
                   viewBox="0 0 24 24"
@@ -312,11 +315,11 @@ export default async function PricingPage() {
               </button>
               <div
                 id="menu1"
-                class="flex justify-start  flex-col w-full md:w-auto items-start pb-1 "
+                className="flex justify-start  flex-col w-full md:w-auto items-start pb-1 "
               >
-                <button class="flex justify-start items-center space-x-6 hover:text-white focus:bg-gray-700 focus:text-white hover:bg-gray-700 text-gray-400 rounded px-3 py-2  w-full md:w-52">
+                <button className="flex justify-start items-center space-x-6 hover:text-white focus:bg-gray-700 focus:text-white hover:bg-gray-700 text-gray-400 rounded px-3 py-2  w-full md:w-52">
                   <svg
-                    class="fill-stroke"
+                    className="fill-stroke"
                     width="24"
                     height="24"
                     viewBox="0 0 24 24"
@@ -331,9 +334,9 @@ export default async function PricingPage() {
                       stroke-linejoin="round"
                     />
                   </svg>
-                  <p class="text-base leading-4  ">Messages</p>
+                  <p className="text-base leading-4  ">Messages</p>
                 </button>
-                <button class="flex justify-start items-center space-x-6 hover:text-white focus:bg-gray-700 focus:text-white hover:bg-gray-700 text-gray-400 rounded px-3 py-2  w-full md:w-52">
+                <button className="flex justify-start items-center space-x-6 hover:text-white focus:bg-gray-700 focus:text-white hover:bg-gray-700 text-gray-400 rounded px-3 py-2  w-full md:w-52">
                   <svg
                     width="24"
                     height="24"
@@ -370,9 +373,9 @@ export default async function PricingPage() {
                       stroke-linejoin="round"
                     />
                   </svg>
-                  <p class="text-base leading-4  ">Security</p>
+                  <p className="text-base leading-4  ">Security</p>
                 </button>
-                <button class="flex justify-start items-center space-x-6 hover:text-white focus:bg-gray-700 focus:text-white hover:bg-gray-700 text-gray-400 rounded px-3 py-2 w-full md:w-52">
+                <button className="flex justify-start items-center space-x-6 hover:text-white focus:bg-gray-700 focus:text-white hover:bg-gray-700 text-gray-400 rounded px-3 py-2 w-full md:w-52">
                   <svg
                     width="24"
                     height="24"
@@ -444,9 +447,9 @@ export default async function PricingPage() {
                       stroke-linejoin="round"
                     />
                   </svg>
-                  <p class="text-base leading-4  ">Settings</p>
+                  <p className="text-base leading-4  ">Settings</p>
                 </button>
-                <button class="flex justify-start items-center space-x-6 hover:text-white focus:bg-gray-700 focus:text-white hover:bg-gray-700 text-gray-400 rounded px-3 py-2  w-full md:w-52">
+                <button className="flex justify-start items-center space-x-6 hover:text-white focus:bg-gray-700 focus:text-white hover:bg-gray-700 text-gray-400 rounded px-3 py-2  w-full md:w-52">
                   <svg
                     width="24"
                     height="24"
@@ -469,9 +472,9 @@ export default async function PricingPage() {
                       stroke-linejoin="round"
                     />
                   </svg>
-                  <p class="text-base leading-4  ">Notifications</p>
+                  <p className="text-base leading-4  ">Notifications</p>
                 </button>
-                <button class="flex justify-start items-center space-x-6 hover:text-white focus:bg-gray-700 focus:text-white hover:bg-gray-700 text-gray-400 rounded px-3 py-2  w-full md:w-52">
+                <button className="flex justify-start items-center space-x-6 hover:text-white focus:bg-gray-700 focus:text-white hover:bg-gray-700 text-gray-400 rounded px-3 py-2  w-full md:w-52">
                   <svg
                     width="24"
                     height="24"
@@ -501,9 +504,9 @@ export default async function PricingPage() {
                       stroke-linejoin="round"
                     />
                   </svg>
-                  <p class="text-base leading-4  ">Passwords</p>
+                  <p className="text-base leading-4  ">Passwords</p>
                 </button>
-                <button class="flex justify-start items-center space-x-6 hover:text-white focus:bg-gray-700 focus:text-white hover:bg-gray-700 text-gray-400 rounded px-3 py-2  w-full md:w-52">
+                <button className="flex justify-start items-center space-x-6 hover:text-white focus:bg-gray-700 focus:text-white hover:bg-gray-700 text-gray-400 rounded px-3 py-2  w-full md:w-52">
                   <svg
                     width="24"
                     height="24"
@@ -533,19 +536,19 @@ export default async function PricingPage() {
                       stroke-linejoin="round"
                     />
                   </svg>
-                  <p class="text-base leading-4  ">Goals</p>
+                  <p className="text-base leading-4  ">Goals</p>
                 </button>
               </div>
             </div>
-            <div class="flex flex-col justify-start items-center   px-6 border-b border-gray-600 w-full  ">
+            <div className="flex flex-col justify-start items-center   px-6 border-b border-gray-600 w-full  ">
               <button
                 onclick="showMenu2(true)"
-                class="focus:outline-none focus:text-indigo-400  text-white flex justify-between items-center w-full py-5 space-x-14  "
+                className="focus:outline-none focus:text-indigo-400  text-white flex justify-between items-center w-full py-5 space-x-14  "
               >
-                <p class="text-sm leading-5 uppercase">VENDORS</p>
+                <p className="text-sm leading-5 uppercase">VENDORS</p>
                 <svg
                   id="icon2"
-                  class="transform rotate-180"
+                  className="transform rotate-180"
                   width="24"
                   height="24"
                   viewBox="0 0 24 24"
@@ -561,10 +564,10 @@ export default async function PricingPage() {
                   />
                 </svg>
               </button>
-              <div class="hidden flex justify-start flex-col items-start pb-5 ">
-                <button class="flex justify-start items-center space-x-6 hover:text-white focus:bg-gray-700 focus:text-white hover:bg-gray-700 text-gray-400 rounded px-3 py-2  w-full md:w-52">
+              <div className="hidden flex justify-start flex-col items-start pb-5 ">
+                <button className="flex justify-start items-center space-x-6 hover:text-white focus:bg-gray-700 focus:text-white hover:bg-gray-700 text-gray-400 rounded px-3 py-2  w-full md:w-52">
                   <svg
-                    class="fill-stroke"
+                    className="fill-stroke"
                     width="24"
                     height="24"
                     viewBox="0 0 24 24"
@@ -579,9 +582,9 @@ export default async function PricingPage() {
                       stroke-linejoin="round"
                     />
                   </svg>
-                  <p class="text-base leading-4  ">Messages</p>
+                  <p className="text-base leading-4  ">Messages</p>
                 </button>
-                <button class="flex justify-start items-center space-x-6 hover:text-white focus:bg-gray-700 focus:text-white hover:bg-gray-700 text-gray-400 rounded px-3 py-2  w-full md:w-52">
+                <button className="flex justify-start items-center space-x-6 hover:text-white focus:bg-gray-700 focus:text-white hover:bg-gray-700 text-gray-400 rounded px-3 py-2  w-full md:w-52">
                   <svg
                     width="24"
                     height="24"
@@ -618,9 +621,9 @@ export default async function PricingPage() {
                       stroke-linejoin="round"
                     />
                   </svg>
-                  <p class="text-base leading-4  ">Security</p>
+                  <p className="text-base leading-4  ">Security</p>
                 </button>
-                <button class="flex justify-start items-center space-x-6 hover:text-white focus:bg-gray-700 focus:text-white hover:bg-gray-700 text-gray-400 rounded px-3 py-2 w-full md:w-52">
+                <button className="flex justify-start items-center space-x-6 hover:text-white focus:bg-gray-700 focus:text-white hover:bg-gray-700 text-gray-400 rounded px-3 py-2 w-full md:w-52">
                   <svg
                     width="24"
                     height="24"
@@ -692,9 +695,9 @@ export default async function PricingPage() {
                       stroke-linejoin="round"
                     />
                   </svg>
-                  <p class="text-base leading-4  ">Settings</p>
+                  <p className="text-base leading-4  ">Settings</p>
                 </button>
-                <button class="flex justify-start items-center space-x-6 hover:text-white focus:bg-gray-700 focus:text-white hover:bg-gray-700 text-gray-400 rounded px-3 py-2  w-full md:w-52">
+                <button className="flex justify-start items-center space-x-6 hover:text-white focus:bg-gray-700 focus:text-white hover:bg-gray-700 text-gray-400 rounded px-3 py-2  w-full md:w-52">
                   <svg
                     width="24"
                     height="24"
@@ -717,9 +720,9 @@ export default async function PricingPage() {
                       stroke-linejoin="round"
                     />
                   </svg>
-                  <p class="text-base leading-4  ">Notifications</p>
+                  <p className="text-base leading-4  ">Notifications</p>
                 </button>
-                <button class="flex justify-start items-center space-x-6 hover:text-white focus:bg-gray-700 focus:text-white hover:bg-gray-700 text-gray-400 rounded px-3 py-2  w-full md:w-52">
+                <button className="flex justify-start items-center space-x-6 hover:text-white focus:bg-gray-700 focus:text-white hover:bg-gray-700 text-gray-400 rounded px-3 py-2  w-full md:w-52">
                   <svg
                     width="24"
                     height="24"
@@ -749,9 +752,9 @@ export default async function PricingPage() {
                       stroke-linejoin="round"
                     />
                   </svg>
-                  <p class="text-base leading-4  ">Passwords</p>
+                  <p className="text-base leading-4  ">Passwords</p>
                 </button>
-                <button class="flex justify-start items-center space-x-6 hover:text-white focus:bg-gray-700 focus:text-white hover:bg-gray-700 text-gray-400 rounded px-3 py-2  w-full md:w-52">
+                <button className="flex justify-start items-center space-x-6 hover:text-white focus:bg-gray-700 focus:text-white hover:bg-gray-700 text-gray-400 rounded px-3 py-2  w-full md:w-52">
                   <svg
                     width="24"
                     height="24"
@@ -781,19 +784,19 @@ export default async function PricingPage() {
                       stroke-linejoin="round"
                     />
                   </svg>
-                  <p class="text-base leading-4  ">Goals</p>
+                  <p className="text-base leading-4  ">Goals</p>
                 </button>
               </div>
             </div>
-            <div class="flex flex-col justify-between items-center h-full pb-6   px-6  w-full  space-y-32 ">
+            <div className="flex flex-col justify-between items-center h-full pb-6   px-6  w-full  space-y-32 ">
               <button
                 onclick="showMenu3(true)"
-                class="focus:outline-none focus:text-indigo-400  text-white flex justify-between items-center w-full py-5 space-x-14  "
+                className="focus:outline-none focus:text-indigo-400  text-white flex justify-between items-center w-full py-5 space-x-14  "
               >
-                <p class="text-sm leading-5  uppercase">SERVICES</p>
+                <p className="text-sm leading-5  uppercase">SERVICES</p>
                 <svg
                   id="icon3"
-                  class="rotate-180 transform"
+                  className="rotate-180 transform"
                   width="24"
                   height="24"
                   viewBox="0 0 24 24"
@@ -809,10 +812,10 @@ export default async function PricingPage() {
                   />
                 </svg>
               </button>
-              <div class="hidden flex justify-start flex-col items-start pb-5 ">
-                <button class="flex justify-start items-center space-x-6 hover:text-white focus:bg-gray-700 focus:text-white hover:bg-gray-700 text-gray-400 rounded px-3 py-2  w-52">
+              <div className="hidden flex justify-start flex-col items-start pb-5 ">
+                <button className="flex justify-start items-center space-x-6 hover:text-white focus:bg-gray-700 focus:text-white hover:bg-gray-700 text-gray-400 rounded px-3 py-2  w-52">
                   <svg
-                    class="fill-stroke"
+                    className="fill-stroke"
                     width="24"
                     height="24"
                     viewBox="0 0 24 24"
@@ -827,9 +830,9 @@ export default async function PricingPage() {
                       stroke-linejoin="round"
                     />
                   </svg>
-                  <p class="text-base leading-4  ">Messages</p>
+                  <p className="text-base leading-4  ">Messages</p>
                 </button>
-                <button class="flex justify-start items-center space-x-6 hover:text-white focus:bg-gray-700 focus:text-white hover:bg-gray-700 text-gray-400 rounded px-3 py-2  w-52">
+                <button className="flex justify-start items-center space-x-6 hover:text-white focus:bg-gray-700 focus:text-white hover:bg-gray-700 text-gray-400 rounded px-3 py-2  w-52">
                   <svg
                     width="24"
                     height="24"
@@ -866,9 +869,9 @@ export default async function PricingPage() {
                       stroke-linejoin="round"
                     />
                   </svg>
-                  <p class="text-base leading-4  ">Security</p>
+                  <p className="text-base leading-4  ">Security</p>
                 </button>
-                <button class="flex justify-start items-center space-x-6 hover:text-white focus:bg-gray-700 focus:text-white hover:bg-gray-700 text-gray-400 rounded px-3 py-2 w-52">
+                <button className="flex justify-start items-center space-x-6 hover:text-white focus:bg-gray-700 focus:text-white hover:bg-gray-700 text-gray-400 rounded px-3 py-2 w-52">
                   <svg
                     width="24"
                     height="24"
@@ -940,9 +943,9 @@ export default async function PricingPage() {
                       stroke-linejoin="round"
                     />
                   </svg>
-                  <p class="text-base leading-4  ">Settings</p>
+                  <p className="text-base leading-4  ">Settings</p>
                 </button>
-                <button class="flex justify-start items-center space-x-6 hover:text-white focus:bg-gray-700 focus:text-white hover:bg-gray-700 text-gray-400 rounded px-3 py-2  w-52">
+                <button className="flex justify-start items-center space-x-6 hover:text-white focus:bg-gray-700 focus:text-white hover:bg-gray-700 text-gray-400 rounded px-3 py-2  w-52">
                   <svg
                     width="24"
                     height="24"
@@ -965,9 +968,9 @@ export default async function PricingPage() {
                       stroke-linejoin="round"
                     />
                   </svg>
-                  <p class="text-base leading-4  ">Notifications</p>
+                  <p className="text-base leading-4  ">Notifications</p>
                 </button>
-                <button class="flex justify-start items-center space-x-6 hover:text-white focus:bg-gray-700 focus:text-white hover:bg-gray-700 text-gray-400 rounded px-3 py-2  w-52">
+                <button className="flex justify-start items-center space-x-6 hover:text-white focus:bg-gray-700 focus:text-white hover:bg-gray-700 text-gray-400 rounded px-3 py-2  w-52">
                   <svg
                     width="24"
                     height="24"
@@ -997,9 +1000,9 @@ export default async function PricingPage() {
                       stroke-linejoin="round"
                     />
                   </svg>
-                  <p class="text-base leading-4  ">Passwords</p>
+                  <p className="text-base leading-4  ">Passwords</p>
                 </button>
-                <button class="flex justify-start items-center space-x-6 hover:text-white focus:bg-gray-700 focus:text-white hover:bg-gray-700 text-gray-400 rounded px-3 py-2  w-52">
+                <button className="flex justify-start items-center space-x-6 hover:text-white focus:bg-gray-700 focus:text-white hover:bg-gray-700 text-gray-400 rounded px-3 py-2  w-52">
                   <svg
                     width="24"
                     height="24"
@@ -1029,29 +1032,29 @@ export default async function PricingPage() {
                       stroke-linejoin="round"
                     />
                   </svg>
-                  <p class="text-base leading-4  ">Goals</p>
+                  <p className="text-base leading-4  ">Goals</p>
                 </button>
               </div>
-              <div class=" flex justify-between items-center w-full">
-                <div class="flex justify-center items-center  space-x-2">
+              <div className=" flex justify-between items-center w-full">
+                <div className="flex justify-center items-center  space-x-2">
                   <div>
                     <img
-                      class="rounded-full"
+                      className="rounded-full"
                       src="https://i.ibb.co/L1LQtBm/Ellipse-1.png"
                       alt="avatar"
                     />
                   </div>
-                  <div class="flex justify-start flex-col items-start">
-                    <p class="cursor-pointer text-sm leading-5 text-white">
+                  <div className="flex justify-start flex-col items-start">
+                    <p className="cursor-pointer text-sm leading-5 text-white">
                       Alexis Enache
                     </p>
-                    <p class="cursor-pointer text-xs leading-3 text-gray-300">
+                    <p className="cursor-pointer text-xs leading-3 text-gray-300">
                       alexis81@gmail.com
                     </p>
                   </div>
                 </div>
                 <svg
-                  class="cursor-pointer"
+                  className="cursor-pointer"
                   width="24"
                   height="24"
                   viewBox="0 0 24 24"
