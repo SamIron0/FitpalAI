@@ -45,7 +45,7 @@ export default async function Home() {
                       <img src={mealIcon.src} alt="meal image" />
                     </div>
                   </div>
-                  <div className="w-11/20 flex justify-center items-center pl-1 flex w-full flex-col">
+                  <div className="w-11/20 justify-center items-center pl-1 flex w-full flex-col">
                     <p className=" text-white text-sm absolute">
                       Introducing FitpalAI - Join Waitlist
                     </p>
