@@ -5,7 +5,7 @@ interface Props {
 }
 export default function SuggestionPill({ icon, caption, onclick }: Props) {
   return (
-    <span
+    <button
       onClick={() => {
         onclick;
       }}
@@ -15,6 +15,6 @@ export default function SuggestionPill({ icon, caption, onclick }: Props) {
         {icon}
         <p className="pl-0.5 flex-nowrap">{caption}</p>
       </div>
-    </span>
+    </button>
   );
 }
