@@ -1,5 +1,3 @@
-'use client';
-
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Navbar from './Navbar';
@@ -11,15 +9,27 @@ import Container from '../Container';
 import GhostCard from '../GhostCard';
 import { TbRefresh } from 'react-icons/tb';
 import ResultBox from '../ResultBox';
+import styles from './your-styles.module.css'; // Import your CSS styles
 
 interface DashBoardProps {
   user: User | null;
 }
+
 const DashBoard = ({ user }: DashBoardProps) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [completed, setComopleted] = useState<boolean>(false);
-
+  const [completed, setCompleted] = useState<boolean>(false);
   const [calories, setCalories] = useState('');
+  const [darkMode, setDarkMode] = useState(true); // State to toggle dark mode
+
+  // Function to toggle dark mode
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+  };
+
+  // Apply dark mode styles conditionally
+  const DashContainer = `flex w-full justify-center ${
+    darkMode ? 'bg-dark-bg-pattern' : 'bg-zinc-900'
+  } h-screen overflow-hidden`;
 
   function renderGhostCards() {
     const ghostCards = [];
@@ -37,9 +47,14 @@ const DashBoard = ({ user }: DashBoardProps) => {
     }
     return results;
   }
+
   return (
-    <div className="flex w-full justify-center  bg-zinc-900 h-screen overflow-hidden">
-      <div className="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
+    <div className={DashContainer}>
+      <div
+        className={`relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden ${
+          darkMode ? styles.darkMode : ''
+        }`}
+      >
         <div className="p-5 w-full mb-5 border-b items-center pl-5 text-2xl text-semibold  border-zinc-800">
           Welcome back, Samuel
         </div>
