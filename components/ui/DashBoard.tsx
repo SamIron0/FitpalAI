@@ -1,4 +1,5 @@
 'use client';
+
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Navbar from './Navbar';
@@ -10,27 +11,15 @@ import Container from '../Container';
 import GhostCard from '../GhostCard';
 import { TbRefresh } from 'react-icons/tb';
 import ResultBox from '../ResultBox';
-import styles from './your-styles.module.css'; // Import your CSS styles
 
 interface DashBoardProps {
   user: User | null;
 }
-
 const DashBoard = ({ user }: DashBoardProps) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [completed, setCompleted] = useState<boolean>(false);
+  const [completed, setComopleted] = useState<boolean>(false);
+
   const [calories, setCalories] = useState('');
-  const [darkMode, setDarkMode] = useState(true); // State to toggle dark mode
-
-  // Function to toggle dark mode
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-  };
-
-  // Apply dark mode styles conditionally
-  const DashContainer = `flex w-full justify-center ${
-    darkMode ? 'bg-dark-bg-pattern' : 'bg-zinc-900'
-  } h-screen overflow-hidden`;
 
   function renderGhostCards() {
     const ghostCards = [];
@@ -48,14 +37,9 @@ const DashBoard = ({ user }: DashBoardProps) => {
     }
     return results;
   }
-
   return (
-    <div className={DashContainer}>
-      <div
-        className={`relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden ${
-          darkMode ? styles.darkMode : ''
-        }`}
-      >
+    <div className="flex w-full justify-center  bg-zinc-900 h-screen overflow-hidden absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]">
+      <div className="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
         <div className="p-5 w-full mb-5 border-b items-center pl-5 text-2xl text-semibold  border-zinc-800">
           Welcome back, Samuel
         </div>
@@ -118,7 +102,7 @@ const DashBoard = ({ user }: DashBoardProps) => {
                 <div className="flex justify-startƒ">
                   <TbRefresh className="w-10 h-10" />
 
-                  <button className="inline-flex mx-2 items-center justify-center w-10 h-10 mr-2 text-blue-100 transition-colors duration-150 bg-blue-500 rounded-lg focus:shadow-outline hover:bg-indigo-800">
+                  <button className="inline-flex mx-2 items-center justify-center w-10 h-10 mr-2 text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800">
                     <svg className="w-4 h-4 fill-current" viewBox="0 0 20 20">
                       <path
                         d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
