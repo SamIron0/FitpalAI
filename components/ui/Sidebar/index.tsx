@@ -58,7 +58,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
             href="/pantry"
             className="p-1.5 focus:outline-nones transition-colors duration-200 rounded-lg text-gray-200 hover:bg-gray-800 "
           >
-            <MdKitchen height={24} width={24} color="white" />
+            <MdKitchen height={40} width={40} color="white" />
           </a>
 
           <a
