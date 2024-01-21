@@ -11,6 +11,7 @@ import Container from '../Container';
 import GhostCard from '../GhostCard';
 import { TbRefresh } from 'react-icons/tb';
 import ResultBox from '../ResultBox';
+
 interface DashBoardProps {
   user: User | null;
 }
