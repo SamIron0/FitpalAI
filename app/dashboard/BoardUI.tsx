@@ -7,11 +7,42 @@ import GhostCard from '../../components/GhostCard';
 import { TbRefresh } from 'react-icons/tb';
 import ResultBox from '../../components/ResultBox';
 import SuggestionPill from '../../components/SuggestionPill';
+import { MealPlan } from '@/types';
 
-export default function BoardUI() {
+function BoardUI() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [completed, setCompleted] = useState<boolean>(false);
+  const [mealplan, setMealPlan] = useState<MealPlan | undefined>(undefined);
+  const saveMealPlan = async () => {
+    // save meal plan to supabase
+    // console.log('Preparing to save meal plan');
+    setIsLoading(true);
+    if (mealplan) {
+      console.log('Saving meal plan');
 
+      const url = '/api/save-meal-plan';
+      const body = { mealplan };
+      const options = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body)
+      };
+
+      const response = await fetch(url, options);
+      const data = await response.json();
+
+      const meal:  MealPlan = data.mealplan
+      if (!response.ok) {
+        throw new Error(
+          data?.error?.message ?? 'An error occurred while saving meal plan.'
+        );
+      }
+      setIsLoading(false);
+    }
+    //return data;
+  };
   function renderGhostCards() {
     const ghostCards = [];
     for (let i = 0; i < 10; i++) {
@@ -26,20 +57,22 @@ export default function BoardUI() {
       const response = await fetch(
         'https://1ni3q9uo0h.execute-api.us-east-1.amazonaws.com/final',
         {
-          method: 'GET',
+          method: 'POST',
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify({})
+          body: JSON.stringify({
+            input: input
+          })
         }
       );
       const result = await response.json();
-      setIsLoading(false);
       if (response.ok) {
         const responseBody = JSON.parse(result.body);
       } else {
         console.log(result);
       }
+      setIsLoading(false);
     } catch (error) {
       console.log(error);
     }
@@ -81,12 +114,14 @@ export default function BoardUI() {
                 <div className="relative">
                   <input
                     value={input}
+                    disabled={isLoading}
                     onChange={(e) => setInput(e.target.value)}
                     className=" px-2 w-full h-[60px] focus:outline-none bg-zinc-900 border-[1px] border-[#232325] text-md rounded-md "
                     placeholder="Ask your pal"
                   />
                   <button
                     type="submit"
+                    disabled={isLoading}
                     className=" absolute end-2.5 bottom-2.5 focus:outline-none font-medium rounded-lg text-sm px-4 py-2 inline-flex items-center justify-start pl-2 p7 overflow-hidden  text-blue-500 transition-all duration-150 ease-in-out bg-gray-50 group"
                   >
                     <span className="absolute bottom-0 left-0 w-full h-1 transition-all duration-150 ease-in-out bg-blue-500 group-hover:h-full"></span>
@@ -116,7 +151,7 @@ export default function BoardUI() {
             </div>
             {!isLoading && !completed && (
               <div className="pb-24">
-                <span className="px-2 mb-2">Try</span>
+                <span className="px-2 pr-3 mb-2">Try</span>
                 <SuggestionPill
                   onclick={() => {
                     onPillClick('Make me a plan for dinner');
@@ -144,10 +179,17 @@ export default function BoardUI() {
             <Container>
               <div className="flex w-full justify-between">
                 <div className="flex ">
-                  <button className="inline-flex mx-1 items-center justify-center w-10 h-10 mr-2 text-zinc-900 transition-colors duration-150 bg-gray-200 rounded-lg focus:shadow-outline hover:bg-gray-400">
+                  <button
+                    disabled={isLoading}
+                    className="inline-flex mx-1 items-center justify-center w-10 h-10 mr-2 text-zinc-900 transition-colors duration-150 bg-gray-200 rounded-lg focus:shadow-outline hover:bg-gray-400"
+                  >
                     <TbRefresh className="w-4 h-14" />
                   </button>
-                  <button className="inline-flex mx-1 items-center justify-center w-10 h-10 mr-2 text-indigo-100 transition-colors duration-150 bg-blue-500 rounded-lg focus:shadow-outline hover:bg-blue-700">
+                  <button
+                    disabled={isLoading}
+                    onClick={() => saveMealPlan()}
+                    className="inline-flex mx-1 items-center justify-center w-10 h-10 mr-2 text-indigo-100 transition-colors duration-150 bg-blue-500 rounded-lg focus:shadow-outline hover:bg-blue-700"
+                  >
                     <svg className="w-4 h-4 fill-current" viewBox="0 0 20 20">
                       <path
                         d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
@@ -168,3 +210,5 @@ export default function BoardUI() {
     </div>
   );
 }
+
+export default BoardUI;
