@@ -3,13 +3,8 @@ import React, { ReactNode, useState, useEffect, useRef } from 'react';
 import Textarea from 'react-textarea-autosize';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
-
-interface Props {
-  title: string;
-  footer?: ReactNode;
-  children: ReactNode;
-  completed: boolean;
-}
+import GhostCard from './GhostCard';
+import ResultBox from './ResultBox';
 
 //let this represent the location of the user
 type Geolocation = {
@@ -65,42 +60,6 @@ const testMeal: Meal = {
   },
   calories: '250'
 };
-
-function PlanCard({ title, footer, children, completed }: Props) {
-  const bgColor = completed ? 'bg-zinc-700' : 'bg-zinc-700';
-
-  return (
-    <div
-      role="status"
-      className="w-full text-sm px-4 py-3 mb-3 space-y-4 border border-[#232325] bg-[#0D0D0E] divide-y divide-gray-200 rounded shadow dark:divide-gray-700  dark:border-gray-700"
-    >
-      <div className="flex w-full items-center justify-between">
-        <div className="pr-2">
-          <div className="mb-1 text-[#006eff] font-bold"> {title} </div>
-          {children}
-        </div>
-        <div className="text-sm flex-shrink-0"> {footer} </div>
-      </div>
-    </div>
-  );
-} // PlanCard
-
-export function GhostCard() {
-  return (
-    <div
-      role="status"
-      className="w-full p-4 mb-3 space-y-4 border border-[#232325] bg-[#0D0D0E] divide-y divide-gray-200 rounded animate-pulse   shadow dark:divide-gray-700 md:p-6 dark:border-gray-700"
-    >
-      <div className="flex items-center justify-between">
-        <div>
-          <div className="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5"></div>
-          <div className="w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700"></div>
-        </div>
-        <div className="h-2.5 bg-gray-300 rounded-full dark:bg-gray-700 w-12"></div>
-      </div>
-    </div>
-  );
-} // PlanCard
 
 const saveMealPlan = async (mealplan: MealPlan | undefined) => {
   // save meal plan to supabase
@@ -787,7 +746,7 @@ export default function HomePageGenerator() {
                 <GhostCard />
               </div>
             ) : breakfast ? (
-              <PlanCard
+              <ResultBox
                 title="Breakfast"
                 footer={<p>{`${breakfast.calories} cals`}</p>}
                 completed={true}
@@ -795,14 +754,14 @@ export default function HomePageGenerator() {
                 <div className="mt-1  w-full mb-1">
                   <p>{`${breakfast.title}`}</p>
                 </div>
-              </PlanCard>
+              </ResultBox>
             ) : null}
             {snack3IsLoading ? (
               <div>
                 <GhostCard />
               </div>
             ) : snack3 ? (
-              <PlanCard
+              <ResultBox
                 title="Snack"
                 footer={<p>{`${snack3.calories} cals`}</p>}
                 completed={true}
@@ -810,14 +769,14 @@ export default function HomePageGenerator() {
                 <div className="mt-1  w-full mb-1">
                   <p>{`${snack3.title}`}</p>
                 </div>
-              </PlanCard>
+              </ResultBox>
             ) : null}
             {lunchIsLoading ? (
               <div>
                 <GhostCard />
               </div>
             ) : lunch ? (
-              <PlanCard
+              <ResultBox
                 title="Lunch"
                 footer={<p>{`${lunch.calories} cals`}</p>}
                 completed={true}
@@ -825,14 +784,14 @@ export default function HomePageGenerator() {
                 <div className="mt-1  w-full mb-1">
                   <p>{`${lunch.title}`}</p>
                 </div>
-              </PlanCard>
+              </ResultBox>
             ) : null}
             {snack1IsLoading ? (
               <div>
                 <GhostCard />
               </div>
             ) : snack1 ? (
-              <PlanCard
+              <ResultBox
                 title="Snack"
                 footer={<p>{`${snack1.calories} cals`}</p>}
                 completed={true}
@@ -840,7 +799,7 @@ export default function HomePageGenerator() {
                 <div className="mt-1  w-full mb-1">
                   <p>{`${snack1.title}`}</p>
                 </div>
-              </PlanCard>
+              </ResultBox>
             ) : null}
             {dinnerIsLoading ? (
               <>
@@ -849,7 +808,7 @@ export default function HomePageGenerator() {
                 </div>
               </>
             ) : dinner ? (
-              <PlanCard
+              <ResultBox
                 title="Dinner"
                 footer={<p className="w-full">{`${dinner.calories} cals`}</p>}
                 completed={true}
@@ -857,7 +816,7 @@ export default function HomePageGenerator() {
                 <div className="mt-1  w-full mb-1">
                   <p>{`${dinner.title}`}</p>
                 </div>
-              </PlanCard>
+              </ResultBox>
             ) : null}
 
             {snack2IsLoading ? (
@@ -865,7 +824,7 @@ export default function HomePageGenerator() {
                 <GhostCard />
               </div>
             ) : snack2 ? (
-              <PlanCard
+              <ResultBox
                 title="Snack"
                 footer={<p>{`${snack2.calories} cals`}</p>}
                 completed={true}
@@ -873,7 +832,7 @@ export default function HomePageGenerator() {
                 <div className="mt-1  w-full mb-1">
                   <p>{`${snack2.title}`}</p>
                 </div>
-              </PlanCard>
+              </ResultBox>
             ) : null}
           </div>
         ) : (

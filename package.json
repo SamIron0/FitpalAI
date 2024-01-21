@@ -28,6 +28,7 @@
     "openai": "^4.3.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^5.0.1",
     "react-merge-refs": "^2.0.2",
     "react-textarea-autosize": "^8.5.3",
     "resend": "^0.17.1",
