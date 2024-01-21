@@ -1,18 +1,11 @@
+import { Meal } from '@/types';
 import { ReactNode } from 'react';
 
 interface Props {
-  title: string;
-  footer?: ReactNode;
-  children?: ReactNode;
-  completed?: boolean;
+  meal?: Meal;
 }
-export default function ResultBox({
-  title,
-  footer,
-  children,
-  completed
-}: Props) {
-  const bgColor = completed ? 'bg-zinc-700' : 'bg-zinc-700';
+export default function ResultBox({ meal }: Props) {
+  //const bgColor = completed ? 'bg-zinc-700' : 'bg-zinc-700';
 
   return (
     <div
@@ -21,10 +14,14 @@ export default function ResultBox({
     >
       <div className="flex w-full items-center justify-between">
         <div className="pr-2">
-          <div className="mb-1 text-[#006eff] font-bold"> {title} </div>
-          {children}
+          <div className="mb-1 text-gray-200 font-bold"> {meal?.title}</div>
+          <div>
+            {meal?.ingredients?.map((item) => (
+              <div key={item}>{item}</div>
+            ))}
+            {meal?.calories}
+          </div>
         </div>
-        <div className="text-sm flex-shrink-0"> {footer} </div>
       </div>
     </div>
   );

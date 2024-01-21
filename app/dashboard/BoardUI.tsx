@@ -7,7 +7,7 @@ import GhostCard from '../../components/GhostCard';
 import { TbRefresh } from 'react-icons/tb';
 import ResultBox from '../../components/ResultBox';
 import SuggestionPill from '../../components/SuggestionPill';
-import { MealPlan } from '@/types';
+import { Meal, MealPlan } from '@/types';
 
 function BoardUI() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -33,7 +33,7 @@ function BoardUI() {
       const response = await fetch(url, options);
       const data = await response.json();
 
-      const meal:  MealPlan = data.mealplan
+      // const meal:  MealPlan = data.mealplan
       if (!response.ok) {
         throw new Error(
           data?.error?.message ?? 'An error occurred while saving meal plan.'
@@ -69,6 +69,7 @@ function BoardUI() {
       const result = await response.json();
       if (response.ok) {
         const responseBody = JSON.parse(result.body);
+        setMealPlan(responseBody);
       } else {
         console.log(result);
       }
@@ -77,14 +78,19 @@ function BoardUI() {
       console.log(error);
     }
   };
-
+  function emptyState() {
+    return (
+      <div className="flex flex-col justify-center items-center h-full">
+        <div className="flex flex-col justify-center items-center h-full"></div>
+      </div>
+    );
+  }
   function renderResultBox() {
-    const results = [];
-    for (let i = 0; i < 5; i++) {
-      results.push(
-        <ResultBox title={'Lunch'} children={undefined} completed={false} />
-      );
-    }
+    const results: any[] = [];
+    mealplan?.meals?.forEach((meal) => {
+      results.push(<ResultBox meal={meal} />);
+    });
+
     return results;
   }
   const [input, setInput] = useState('');
@@ -96,7 +102,7 @@ function BoardUI() {
     <div className="flex w-full justify-center  bg-zinc-900 h-screen overflow-hidden  inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:16px_16px]">
       <div className="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
         <div className="p-4 w-full mb-5 border-b bg-zinc-900 flex items-center pl-5 text-xl text-semibold  border-zinc-800">
-          Welcome back, Samuel
+          Welcome back, Dimitri
         </div>
         <div className=" p-4 w-full flex justify-center md:p-6">
           <div className="flex max-w-3xl flex-col justify-center">
@@ -117,7 +123,7 @@ function BoardUI() {
                     disabled={isLoading}
                     onChange={(e) => setInput(e.target.value)}
                     className=" px-2 w-full h-[60px] focus:outline-none bg-zinc-900 border-[1px] border-[#232325] text-md rounded-md "
-                    placeholder="Ask your pal"
+                    placeholder="Ask a question"
                   />
                   <button
                     type="submit"
@@ -154,24 +160,24 @@ function BoardUI() {
                 <span className="px-2 pr-3 mb-2">Try</span>
                 <SuggestionPill
                   onclick={() => {
-                    onPillClick('Make me a plan for dinner');
+                    onPillClick('What should I make for dinner');
                   }}
                   icon={'🍔'}
-                  caption=" Make me a plan for dinner"
+                  caption="What should I make for dinner "
                 />
                 <SuggestionPill
                   onclick={() => {
-                    onPillClick('Make me a plan for dinner');
+                    onPillClick('Make me a meal plan for the week');
                   }}
                   icon={'🍔'}
-                  caption=" Make me a plan for lunch"
-                />{' '}
+                  caption="Make me a meal plan for the week"
+                />
                 <SuggestionPill
                   onclick={() => {
-                    onPillClick('Make me a plan for dinner');
+                    onPillClick('');
                   }}
                   icon={'🍔'}
-                  caption=" Make me a plan for lunch"
+                  caption=" Make me a cheap recipe for lunch"
                 />
               </div>
             )}
@@ -201,7 +207,11 @@ function BoardUI() {
                 </div>
               </div>
               <div className="pt-4 ">
-                {isLoading ? renderGhostCards() : renderResultBox()}
+                {isLoading
+                  ? renderGhostCards()
+                  : mealplan?.meals && mealplan?.meals?.length > 0
+                  ? renderResultBox()
+                  : emptyState()}
               </div>
             </Container>
           </div>

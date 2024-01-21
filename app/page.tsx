@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import HomePageGenerator from '../components/HomePageGenerator';
 import mealIcon from '../meal-icon.png';
 import Navbar from '@/components/ui/Navbar';
 import Footer from '@/components/ui/Footer';
@@ -61,9 +60,6 @@ export default async function Home() {
                 </div>
               </Link>
             </div>
-          </div>
-          <div className="p-3 bg-black pb-6 mt-6">
-            <HomePageGenerator />
           </div>
         </div>
         <Footer />
