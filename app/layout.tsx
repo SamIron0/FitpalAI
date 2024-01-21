@@ -1,18 +1,20 @@
-import SupabaseProvider from "./supabase-provider";
-import Footer from "@/components/ui/Footer";
-import Navbar from "@/components/ui/Navbar";
-import { PropsWithChildren } from "react";
-import "styles/main.css";
-import { Analytics } from "@vercel/analytics/react";
-
+import SupabaseProvider, { useSupabase } from './supabase-provider';
+import Footer from '@/components/ui/Footer';
+import Navbar from '@/components/ui/Navbar';
+import { PropsWithChildren } from 'react';
+import 'styles/main.css';
+import { Analytics } from '@vercel/analytics/react';
+import Sidebar from '@/components/ui/Sidebar';
+import { useSession } from '@supabase/auth-helpers-react';
+import Head from 'next/head';
 const meta = {
-  title: "Fitpal AI",
-  description: "Meal plans and calorie tracking.",
-  cardImage: "/og.png",
-  robots: "follow, index",
-  favicon: "/favicon.ico",
-  url: "https://fitpalai.com",
-  type: "website",
+  title: 'Fitpal AI',
+  description: 'Meal plans and calorie tracking.',
+  cardImage: '/og.png',
+  robots: 'follow, index',
+  favicon: '/favicon.ico',
+  url: 'https://fitpalai.com',
+  type: 'website'
 };
 
 export const metadata = {
@@ -29,20 +31,22 @@ export const metadata = {
     description: meta.description,
     cardImage: meta.cardImage,
     type: meta.type,
-    site_name: meta.title,
+    site_name: meta.title
   },
   twitter: {
-    card: "summary_large_image",
-    site: "@vercel",
+    card: 'summary_large_image',
+    site: '@vercel',
     title: meta.title,
     description: meta.description,
-    cardImage: meta.cardImage,
-  },
+    cardImage: meta.cardImage
+  }
 };
-export default function RootLayout({ children }: PropsWithChildren) {
+export default async function RootLayout({ children }: PropsWithChildren) {
+  //const session = await useSession();
+ // const user = await supabase.auth.getSession();
   return (
     <>
-      <head>
+      <Head>
         <script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-39N664CG65"
@@ -54,11 +58,11 @@ export default function RootLayout({ children }: PropsWithChildren) {
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
                 gtag('config', 'G-39N664CG65');
-              `,
+              `
           }}
         ></script>
-      </head>
-      <body className="bg-black  loading">
+      </Head>
+      <body className="loading">
         <SupabaseProvider>
           <main
             id="skip"
@@ -66,7 +70,6 @@ export default function RootLayout({ children }: PropsWithChildren) {
           >
             {children}
           </main>
-          <Footer />
 
           <Analytics />
         </SupabaseProvider>

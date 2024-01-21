@@ -5,15 +5,8 @@ import s from "./Navbar.module.css";
 import Image from "next/image";
 import { getSession } from "@/app/supabase-server";
 
-export default async function Navbar() {
-  //const router = useRouter();
-
-  //const supabase = createServerSupabaseClient();
-  //const {
-  //data: { user }
-  //} = await supabase.auth.getUser();
-  //const session = await getSession();
-
+export default function Navbar() {
+ 
   function handleButtonClick(): void {}
 
   return (
