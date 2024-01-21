@@ -7,6 +7,7 @@ import { Analytics } from '@vercel/analytics/react';
 import Sidebar from '@/components/ui/Sidebar';
 import { useSession } from '@supabase/auth-helpers-react';
 import Head from 'next/head';
+import { getSession } from './supabase-server';
 const meta = {
   title: 'Fitpal AI',
   description: 'Meal plans and calorie tracking.',
@@ -42,8 +43,7 @@ export const metadata = {
   }
 };
 export default async function RootLayout({ children }: PropsWithChildren) {
-  //const session = await useSession();
- // const user = await supabase.auth.getSession();
+  const session = await getSession();
   return (
     <>
       <Head>
@@ -68,7 +68,18 @@ export default async function RootLayout({ children }: PropsWithChildren) {
             id="skip"
             className="min-h-[calc(100dvh-4rem)] md:min-h[calc(100dvh-5rem)]"
           >
-            {children}
+            <div>
+              {!session ? (
+                <div className="flex">
+                  <Sidebar /> {children}
+                </div>
+              ) : (
+                <div>
+                  <Navbar />
+                  {children}
+                </div>
+              )}
+            </div>
           </main>
 
           <Analytics />

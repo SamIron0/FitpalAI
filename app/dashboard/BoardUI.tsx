@@ -1,24 +1,16 @@
 'use client';
-
-import { useEffect, useState } from 'react';
-import Link from 'next/link';
-import Navbar from './Navbar';
-import HomePageGenerator from '../HomePageGenerator';
-import { User } from '@supabase/supabase-js';
-import Sidebar from './Sidebar';
-import Header from '../Header';
-import Container from '../Container';
-import GhostCard from '../GhostCard';
+import { useState } from 'react';
+import Sidebar from '../../components/ui/Sidebar';
+import Header from '../../components/Header';
+import Container from '../../components/Container';
+import GhostCard from '../../components/GhostCard';
 import { TbRefresh } from 'react-icons/tb';
-import ResultBox from '../ResultBox';
-import SuggestionPill from '../SuggestionPill';
+import ResultBox from '../../components/ResultBox';
+import SuggestionPill from '../../components/SuggestionPill';
 
-interface DashBoardProps {
-  user: User | null;
-}
-const DashBoard = ({ user }: DashBoardProps) => {
+export default function BoardUI() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [completed, setComopleted] = useState<boolean>(false);
+  const [completed, setCompleted] = useState<boolean>(false);
 
   function renderGhostCards() {
     const ghostCards = [];
@@ -27,6 +19,32 @@ const DashBoard = ({ user }: DashBoardProps) => {
     }
     return ghostCards;
   }
+
+  const fetchData = async () => {
+    setIsLoading(true);
+    try {
+      const response = await fetch(
+        'https://1ni3q9uo0h.execute-api.us-east-1.amazonaws.com/final',
+        {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({})
+        }
+      );
+      const result = await response.json();
+      setIsLoading(false);
+      if (response.ok) {
+        const responseBody = JSON.parse(result.body);
+      } else {
+        console.log(result);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   function renderResultBox() {
     const results = [];
     for (let i = 0; i < 5; i++) {
@@ -40,7 +58,6 @@ const DashBoard = ({ user }: DashBoardProps) => {
 
   const onPillClick = (caption: string) => {
     setInput(caption);
-    //submit form
   };
   return (
     <div className="flex w-full justify-center  bg-zinc-900 h-screen overflow-hidden  inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:16px_16px]">
@@ -50,12 +67,17 @@ const DashBoard = ({ user }: DashBoardProps) => {
         </div>
         <div className=" p-4 w-full flex justify-center md:p-6">
           <div className="flex max-w-3xl flex-col justify-center">
-            <div className="flex w-full  flex-col justify-center pb-6">
+            <div className="flex w-full  flex-col justify-center pb-3">
               <p className="text-4xl flex justify-center pt-12 text-semibold pb-12">
                 Create a Plan
               </p>
 
-              <form>
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  fetchData();
+                }}
+              >
                 <div className="relative">
                   <input
                     value={input}
@@ -65,7 +87,7 @@ const DashBoard = ({ user }: DashBoardProps) => {
                   />
                   <button
                     type="submit"
-                    className=" absolute end-2.5 bottom-2.5 focus:outline-none font-medium rounded-lg text-sm px-4 py-2 inline-flex items-center justify-start pl-2 p7 overflow-hidden  text-blue-500 transition-all duration-150 ease-in-out hover:pr-3 bg-gray-50 group"
+                    className=" absolute end-2.5 bottom-2.5 focus:outline-none font-medium rounded-lg text-sm px-4 py-2 inline-flex items-center justify-start pl-2 p7 overflow-hidden  text-blue-500 transition-all duration-150 ease-in-out bg-gray-50 group"
                   >
                     <span className="absolute bottom-0 left-0 w-full h-1 transition-all duration-150 ease-in-out bg-blue-500 group-hover:h-full"></span>
                     <span className="absolute right-0 pr-2 duration-200 ease-out group-hover:translate-x-0">
@@ -145,5 +167,4 @@ const DashBoard = ({ user }: DashBoardProps) => {
       </div>
     </div>
   );
-};
-export default DashBoard;
+}

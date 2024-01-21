@@ -62,7 +62,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
             />
           </a>
         </nav>
-        <div className="flex flex-col space-y-6">
+        <div className="flex flex-col mb-12 sm:mb-0 space-y-6">
           <a
             href="#"
             className="p-1.5 focus:outline-nones transition-colors duration-200 rounded-lg text-gray-200 bg-zinc-800 "
@@ -88,7 +88,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
             </svg>
           </a>
 
-          <a className='flex justify-center ' href="#">
+          <a className="flex justify-center " href="#">
             <img
               className="object-cover w-8 h-8 rounded-full"
               src="/user-01.png"
