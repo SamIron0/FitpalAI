@@ -1,22 +1,23 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { MdKitchen } from 'react-icons/md';
+import { TbFridge } from 'react-icons/tb';
 interface SidebarProps {
   sidebarOpen?: boolean;
   setSidebarOpen?: (arg: boolean) => void;
 }
-
+import { TiHeartOutline } from 'react-icons/ti';
+import { IoSaveOutline } from 'react-icons/io5';
 const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
   return (
     <>
       <aside className="flex flex-col items-center w-16 h-screen py-8 overflow-y-auto border-r rtl:border-l rtl:border-r-0 bg-black border-black">
         <nav className="flex flex-col flex-1 space-y-6">
           <a href="/">
-            <img className="w-[40ox] h-[40px]" src="/logo-2.svg" alt="" />
+            <img className="w-[37px] h-[37px]" src="/logo-2.svg" alt="" />
           </a>
 
           <a
             href="/dashboard"
-            className="p-1.5 text-gray-200 focus:outline-nones transition-colors duration-200 rounded-lg hover:bg-gray-800 "
+            className="p-1.5 text-gray-200 flex justify-center focus:outline-nones transition-colors duration-200 rounded-lg hover:bg-zinc-800 "
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -36,55 +37,35 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
 
           <a
             href="/plans"
-            className="p-1.5 focus:outline-nones transition-colors duration-200 rounded-lg text-gray-200 hover:bg-gray-800 "
+            className="p-1.5 focus:outline-nones flex justify-center  transition-colors duration-200 rounded-lg text-gray-200 hover:bg-zinc-800 "
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              className="w-6 h-6"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"
-              />
-            </svg>
+            <IoSaveOutline
+              className="w-6 h-6 hover:text-gray-200 "
+              color="white"
+            />
           </a>
 
           <a
             href="/pantry"
-            className="p-1.5 focus:outline-nones transition-colors duration-200 rounded-lg text-gray-200 hover:bg-gray-800 "
+            className="p-1.5 flex justify-center focus:outline-nones transition-colors duration-200 rounded-lg text-gray-200 hover:bg-zinc-800 "
           >
-            <MdKitchen height={40} width={40} color="white" />
+            <TbFridge className="w-6 h-6 hover:text-gray-200 " color="white" />
           </a>
 
           <a
             href="/preferences"
-            className="p-1.5 text-gray-200 focus:outline-nones transition-colors duration-200 rounded-lg  hover:bg-gray-800 "
+            className="p-1.5 text-gray-200 flex justify-center focus:outline-nones transition-colors duration-200 rounded-lg  hover:bg-zinc-800 "
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              className="w-6 h-6"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M3 3v1.5M3 21v-6m0 0l2.77-.693a9 9 0 016.208.682l.108.054a9 9 0 006.086.71l3.114-.732a48.524 48.524 0 01-.005-10.499l-3.11.732a9 9 0 01-6.085-.711l-.108-.054a9 9 0 00-6.208-.682L3 4.5M3 15V4.5"
-              />
-            </svg>
+            <TiHeartOutline
+              className="w-6 h-6 hover:text-gray-200 "
+              color="white"
+            />
           </a>
         </nav>
         <div className="flex flex-col space-y-6">
           <a
             href="#"
-            className="p-1.5 focus:outline-nones transition-colors duration-200 rounded-lg text-gray-200 bg-gray-800 "
+            className="p-1.5 focus:outline-nones transition-colors duration-200 rounded-lg text-gray-200 bg-zinc-800 "
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -107,7 +88,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
             </svg>
           </a>
 
-          <a href="#">
+          <a className='flex justify-center ' href="#">
             <img
               className="object-cover w-8 h-8 rounded-full"
               src="/user-01.png"

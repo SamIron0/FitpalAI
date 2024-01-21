@@ -16,7 +16,7 @@ export default async function Home() {
 
   return (
     <>
-      {!session ? (
+      {session ? (
         <>
           <Navbar />
 
