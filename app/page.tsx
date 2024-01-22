@@ -9,7 +9,7 @@ import { redirect } from 'next/navigation';
 import Container from '@/components/Container';
 export default async function Home() {
   const session = await getSession();
-  if (session) {
+  if (!session) {
     return (
       <>
         <div className=" bg-black h-screen overflow-hidden ">
@@ -63,7 +63,7 @@ export default async function Home() {
             </div>
           </div>
           <div className="w-full pt-12 flex justify-center items-center p-8">
-            <div className="rounded-lg w-full overflow-hidden border-1 border-zinc-600">
+            <div className="rounded-lg w-full border-1 border-zinc-600">
               <img src={'/mockup1.png'} alt="mockup image" />
             </div>
           </div>

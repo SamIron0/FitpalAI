@@ -69,7 +69,7 @@ export default async function RootLayout({ children }: PropsWithChildren) {
             className="min-h-[calc(100dvh-4rem)] md:min-h[calc(100dvh-5rem)]"
           >
             <div>
-              {!session ? (
+              {session ? (
                 <div className="flex">
                   <Sidebar /> {children}
                 </div>
