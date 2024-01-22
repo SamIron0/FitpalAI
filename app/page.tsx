@@ -6,6 +6,7 @@ import Sidebar from '@/components/ui/Sidebar';
 import { getSession } from './supabase-server';
 import { useSupabase } from './supabase-provider';
 import { redirect } from 'next/navigation';
+import Container from '@/components/Container';
 export default async function Home() {
   const session = await getSession();
   if (session) {
@@ -28,7 +29,7 @@ export default async function Home() {
               </p>
             </div>
           </div>
-          <div className="bg-black pb-6 px-8">
+          <div className="pb-6 px-8">
             <div className="rounded-full border-[#232325] bg-[#0D0D0E] flex items-center border  h-12  sm:w-[370px] w-[358px] mx-auto ">
               <Link href="/waitlist" className="flex p-3 w-full ">
                 <div className="w-1/4 flex justify-start pl-0.5 pr-0.5 ">
@@ -59,6 +60,11 @@ export default async function Home() {
                   </svg>
                 </div>
               </Link>
+            </div>
+          </div>
+          <div className="w-full flex justify-center items-center p-8">
+            <div className="rounded-lg w-fullborder-1 border-zinc-600">
+              <img src={'/mockup1.png'} alt="mockup image" />
             </div>
           </div>
         </div>
