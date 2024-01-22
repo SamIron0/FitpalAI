@@ -22,7 +22,7 @@ export default async function Home() {
               </p>
             </div>
             <div>
-              <p className="mt-9 mb-9 px-4 text-l text-gray-500 text-center sm:text-xl max-w-3xl sm:max-w-2xl m-auto">
+              <p className="mt-9 mb-9 px-4 text-l text-zinc-500 text-center sm:text-xl max-w-3xl sm:max-w-2xl m-auto">
                 FitpalAI lets you create and customize personalized meals based
                 on your preferences, budget and what you already have in stock.
                 Reach your nutritional goals with your new pal{' '}
@@ -62,20 +62,20 @@ export default async function Home() {
               </Link>
             </div>
           </div>
-          <div className="w-full sm:px-16 px-8 flex justify-center items-center">
-            <figure className=" rounded-lg border-[1px] border-zinc-600 relative z-[1] max-w-full h-auto shadow-[0_2.75rem_3.5rem_-2rem_rgb(45_55_75_/_20%),_0_0_5rem_-2rem_rgb(45_55_75_/_15%)] dark:shadow-[0_2.75rem_3.5rem_-2rem_rgb(0_0_0_/_20%),_0_0_5rem_-2rem_rgb(0_0_0_/_15%)]">
-              <div className="relative flex items-center  bg-zinc800 rounded-t-lg py-2 px-24 ">
+          <div className="w-full sm:px-24 px-10  flex justify-center items-center">
+            <figure className="border-[1px] rounded-lg border-zinc-700 relative z-[1] max-w-full w-[70rem] h-auto shadow-[0_2.75rem_3.5rem_-2rem_rgb(45_55_75_/_20%),_0_0_5rem_-2rem_rgb(45_55_75_/_15%)] dark:shadow-[0_2.75rem_3.5rem_-2rem_rgb(0_0_0_/_20%),_0_0_5rem_-2rem_rgb(0_0_0_/_15%)]">
+              <div className="relative flex items-center  bg-zinc-800 rounded-t-lg py-2 px-24 dark:bg-zinc-700">
                 <div className="flex space-x-1 absolute top-2/4 start-4 -translate-y-1">
-                  <span className="w-2 h-2 bg-zinc-600 rounded-full dark:bg-gray-600"></span>
-                  <span className="w-2 h-2 bg-zinc-600 rounded-full dark:bg-gray-600"></span>
-                  <span className="w-2 h-2 bg-zinc-600 rounded-full dark:bg-gray-600"></span>
+                  <span className="w-2 h-2 bg-zinc-600 rounded-full dark:bg-zinc-600"></span>
+                  <span className="w-2 h-2 bg-zinc-600 rounded-full dark:bg-zinc-600"></span>
+                  <span className="w-2 h-2 bg-zinc-600 rounded-full dark:bg-zinc-600"></span>
                 </div>
-                <div className="flex justify-center items-center w-full h-full bg-gray-700 text-[.25rem] text-gray-400 rounded-sm sm:text-[.5rem] dark:bg-gray-600 dark:text-gray-400">
+                <div className="flex justify-center items-center w-full h-full bg-zinc-700 text-[.25rem] text-zinc-400 rounded-sm sm:text-[.5rem] dark:bg-gray-600 dark:text-gray-400">
                   www.fitpalai.com
                 </div>
               </div>
 
-              <div className="bg-gray-800 ">
+              <div className="bg-zinc-800 ">
                 <img
                   className="max-w-full h-auto"
                   src="mockup1.png"
@@ -83,7 +83,8 @@ export default async function Home() {
                 />
               </div>
             </figure>
-            <div className='w-full p-5'>
+            <div className='p-5'>
+
 
             </div>
           </div>
