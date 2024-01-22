@@ -12,7 +12,7 @@ export default async function Home() {
   if (!session) {
     return (
       <>
-        <div className=" bg-black h-screen overflow-hidden ">
+        <div className=" bg-black ">
           <div className="mx-auto py-8 sm:pt-12 px-4 sm:px-6 lg:px-8">
             <div className="mt-8 align-center ">
               <p className="text-5xl font-extrabold text-white text-center sm:text-7xl max-w-2xl m-auto">
@@ -62,13 +62,16 @@ export default async function Home() {
               </Link>
             </div>
           </div>
-          <div className="w-full pt-12 flex justify-center items-center p-8">
-            <div className="rounded-lg w-full border-1 border-zinc-600">
+          <div className="w-full p-24 flex justify-center items-center">
+            <div className="rounded-lg overflow-hidden w-full border-[1px] border-zinc-600">
               <img src={'/mockup1.png'} alt="mockup image" />
             </div>
           </div>
+          <div>
+            </ div>
+          <Footer />
+
         </div>
-        <Footer />
       </>
     );
   } else {
