@@ -8,9 +8,8 @@ export default async function SignIn() {
     return redirect("/");
   }
   return (
-    <div className="flex justify-center height-screen-helper">
-      <div className="flex flex-col justify-between max-w-lg p-3 m-auto w-80 ">
-        <img src="/logo.svg" alt="logo" className="h-[160px] mb-2 "></img>
+    <div className="flex bg-black justify-center height-screen-helper">
+      <div className="flex flex-col justify-between pt-3  max-w-lg p-3 m-auto w-80 ">
         <AuthUI />
       </div>
     </div>

@@ -8,6 +8,7 @@ import Sidebar from '@/components/ui/Sidebar';
 import { useSession } from '@supabase/auth-helpers-react';
 import Head from 'next/head';
 import { getSession } from './supabase-server';
+import ToasterProvider from './providers/ToasterProvider';
 const meta = {
   title: 'Fitpal AI',
   description: 'Meal plans and calorie tracking.',
@@ -68,6 +69,8 @@ export default async function RootLayout({ children }: PropsWithChildren) {
             id="skip"
             className="min-h-[calc(100dvh-4rem)] md:min-h[calc(100dvh-5rem)]"
           >
+            <ToasterProvider />
+
             <div>
               {session ? (
                 <div className="flex">

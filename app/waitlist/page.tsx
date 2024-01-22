@@ -4,7 +4,7 @@ import { Resend } from 'resend';
 import { getData } from '@/utils/helpers';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { toast } from 'react-hot-toast';
+import { Toaster, toast } from 'react-hot-toast';
 //const emailKey = process.env.RESEND_KEY;
 function waitlist() {
   const [userName, setUserName] = useState('');
@@ -14,17 +14,15 @@ function waitlist() {
   const [isMounted, setIsMounted] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
 
-  const showMessage = () => {
-    toast.success('Saved!');
-  };
-
   const saveWaitListContact = async (userName: string, userEmail: string) => {
+    const notify = () => toast.success('Saved to waitlist!');
+
     try {
       const { data } = await getData({
         url: '/api/save-waitlist-contact',
         data: { userName, userEmail }
       });
-      showMessage();
+      notify();
       //sendConfirmationEmail();
     } catch (error) {
       return alert((error as Error)?.message);
@@ -44,6 +42,7 @@ function waitlist() {
 
   return (
     <div className="h-screen bg-black">
+      <Toaster />
       <div className="flex items-center jusify-center w-full h-20">
         {showAlert && (
           <div

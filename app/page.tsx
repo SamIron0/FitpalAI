@@ -7,9 +7,9 @@ import { getSession } from './supabase-server';
 import { useSupabase } from './supabase-provider';
 import { redirect } from 'next/navigation';
 import Container from '@/components/Container';
-import {toast} from 'react-hot-toast';
+import { toast } from 'react-hot-toast';
 export default async function Home() {
-  toast.success('Welcome!');
+  //toast.success('Welcome!');
   const session = await getSession();
   if (!session) {
     return (
@@ -24,7 +24,7 @@ export default async function Home() {
               </p>
             </div>
             <div>
-              <p className="mt-9 mb-9 px-4 text-l text-zinc-500 text-center sm:text-xl max-w-3xl sm:max-w-2xl m-auto">
+              <p className="mt-9 mb-9 px-4 text-md sm:text-l text-zinc-500 text-center sm:text-xl max-w-3xl sm:max-w-2xl m-auto">
                 FitpalAI lets you create and customize personalized meals based
                 on your preferences, budget and what you already have in stock.
                 Reach your nutritional goals with your new pal{' '}
@@ -85,6 +85,11 @@ export default async function Home() {
                 />
               </div>
             </figure>
+          </div>
+          <div className="p-3 w-full flex items-center justify-center ">
+            <p className="text-gray-200">
+              The power of the world's best nutritionists at your fingertips.
+            </p>
           </div>
           <Footer />
         </div>
