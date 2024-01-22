@@ -62,8 +62,8 @@ export default async function Home() {
               </Link>
             </div>
           </div>
-          <div className="w-full flex justify-center items-center p-8">
-            <div className="rounded-lg w-fullborder-1 border-zinc-600">
+          <div className="w-full pt-12 flex justify-center items-center p-8">
+            <div className="rounded-lg w-full overflow-hidden border-1 border-zinc-600">
               <img src={'/mockup1.png'} alt="mockup image" />
             </div>
           </div>
