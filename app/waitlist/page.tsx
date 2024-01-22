@@ -29,7 +29,6 @@ function waitlist() {
       return alert((error as Error)?.message);
     }
   };
-
   const sendConfirmationEmail = async () => {
     const resend = new Resend(process.env.RESEND_KEY);
     resend.emails.send({
