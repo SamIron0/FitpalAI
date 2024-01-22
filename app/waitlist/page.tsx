@@ -30,13 +30,15 @@ function waitlist() {
     }
   };
   const sendConfirmationEmail = async () => {
+    console.log('sending');
     const resend = new Resend(process.env.RESEND_KEY);
-    resend.emails.send({
+    const result = await resend.emails.send({
       from: 'samuel@fitpalai.com',
       to: userEmail,
       subject: 'Thank you for joining the fitpal community!',
       react: WaitlistEmailTemplate()
     });
+    console.log(result);
   };
 
   return (
