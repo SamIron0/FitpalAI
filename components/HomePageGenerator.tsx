@@ -1,8 +1,8 @@
-"use client";
-import React, { ReactNode, useState, useEffect, useRef } from "react";
-import Textarea from "react-textarea-autosize";
-import { cn } from "@/lib/utils";
-import Link from "next/link";
+'use client';
+import React, { ReactNode, useState, useEffect, useRef } from 'react';
+import Textarea from 'react-textarea-autosize';
+import { cn } from '@/lib/utils';
+import Link from 'next/link';
 
 interface Props {
   title: string;
@@ -53,21 +53,21 @@ interface Meal {
   calories?: string;
 }
 const testMeal: Meal = {
-  title: "oatmeal",
+  title: 'oatmeal',
   ingredients:
-    "1 cup oatmeal, 2 cups water, pinch of salt, 2 tablespoon honey, 1/2 cup blueberries",
+    '1 cup oatmeal, 2 cups water, pinch of salt, 2 tablespoon honey, 1/2 cup blueberries',
   instructions:
-    "Bring the water to a boil. Stir in the oatmeal and a pinch of salt. Reduce the heat to a simmer and cook for 10-15 minutes, or until the oatmeal is your desired thickness. Stir in the honey and top with blueberries.",
+    'Bring the water to a boil. Stir in the oatmeal and a pinch of salt. Reduce the heat to a simmer and cook for 10-15 minutes, or until the oatmeal is your desired thickness. Stir in the honey and top with blueberries.',
   macros: {
-    protein: "5g",
-    carbs: "54g",
-    fats: "3g",
+    protein: '5g',
+    carbs: '54g',
+    fats: '3g'
   },
-  calories: "250",
+  calories: '250'
 };
 
 function PlanCard({ title, footer, children, completed }: Props) {
-  const bgColor = completed ? "bg-zinc-700" : "bg-zinc-700";
+  const bgColor = completed ? 'bg-zinc-700' : 'bg-zinc-700';
 
   return (
     <div
@@ -104,19 +104,19 @@ function GhostCard() {
 
 const saveMealPlan = async (mealplan: MealPlan | undefined) => {
   // save meal plan to supabase
-  console.log("Preparing to save meal plan");
+  console.log('Preparing to save meal plan');
 
   if (mealplan) {
-    console.log("Saving meal plan");
+    console.log('Saving meal plan');
 
-    const url = "/api/save-meal-plan";
+    const url = '/api/save-meal-plan';
     const body = { mealplan };
     const options = {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json'
       },
-      body: JSON.stringify(body),
+      body: JSON.stringify(body)
     };
 
     const response = await fetch(url, options);
@@ -124,7 +124,7 @@ const saveMealPlan = async (mealplan: MealPlan | undefined) => {
 
     if (!response.ok) {
       throw new Error(
-        data?.error?.message ?? "An error occurred while saving meal plan."
+        data?.error?.message ?? 'An error occurred while saving meal plan.'
       );
     }
   }
@@ -150,32 +150,32 @@ export default function HomePageGenerator() {
   const [snack2, setSnack2] = useState<Meal | null>(null);
   const [snack3, setSnack3] = useState<Meal | null>(null);
   const [location, setLocation] = useState<Geolocation>();
-  const [region, setRegion] = useState("");
+  const [region, setRegion] = useState('');
   const [locationFetched, setLocationFetched] = useState(false); // New state variable
   const [primaryIsLoading, setPrimaryIsLoading] = useState(false);
   const [secondaryIsLoading, setSecondaryIsLoading] = useState(false);
   const [tertiaryIsLoading, setTertiaryIsLoading] = useState(false);
-  const [calories, setCalories] = useState("");
-  const [ingredients, setIngredients] = useState("");
-  const [numOfMeals, setNumOfMeals] = useState("1");
-  const [generationType, setGenerationType] = useState("create");
-  const [allergies, setAllergies] = useState("");
-  const [showSecondBox, setShowSecondBox] = useState("false");
-  const [recipeLoading, setRecipeLoading] = useState("false");
-  const [selectedMeal, setSelectedMeal] = useState("1");
+  const [calories, setCalories] = useState('');
+  const [ingredients, setIngredients] = useState('');
+  const [numOfMeals, setNumOfMeals] = useState('1');
+  const [generationType, setGenerationType] = useState('create');
+  const [allergies, setAllergies] = useState('');
+  const [showSecondBox, setShowSecondBox] = useState('false');
+  const [recipeLoading, setRecipeLoading] = useState('false');
+  const [selectedMeal, setSelectedMeal] = useState('1');
   const [calorieData, setCalorieData] = useState({
     breakfast: 0,
     snack1: 0,
     lunch: 0,
     snack2: 0,
     dinner: 0,
-    snack3: 0,
+    snack3: 0
   });
   const myRef = useRef<HTMLDivElement>(null);
 
   const scrollToRef = () => {
     if (myRef.current) {
-      myRef.current.scrollIntoView({ behavior: "smooth" });
+      myRef.current.scrollIntoView({ behavior: 'smooth' });
     }
   };
   const handleMealChange = (event: any) => {
@@ -190,261 +190,39 @@ export default function HomePageGenerator() {
     setSnack2(null);
     setSnack3(null);
   };
-  const getBreakfast = async (breakfastCalories: any) => {
-    if (breakfastCalories != null) {
-      let gotCalories = false;
+  const getBreakfast = async (breakfastCalories: any) => {};
+  const getLunch = async (lunchCalories: any) => {};
+  const getDinner = async (dinnerCalories: any) => {};
 
-      while (!gotCalories) {
-        try {
-          let breakfastResponse = await fetch(
-            `/api/generateBreakfast?calories=${breakfastCalories.text?.breakfast}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`
-          );
-          const breakfastData = await breakfastResponse.json();
-          if (
-            breakfastData.meal &&
-            typeof breakfastData.meal.title === "string"
-          ) {
-            setBreakfast(breakfastData.meal);
-            setBreakfastIsLoading(false);
-            gotCalories = true;
-          }
-        } catch (error) {
-          console.error(`Retrying due to ${error}`);
-        }
-      }
-    } else {
-      let gotCalories = false;
-
-      while (!gotCalories) {
-        try {
-          let breakfastResponse = await fetch(
-            `/api/generateBreakfast?ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`
-          );
-          const breakfastData = await breakfastResponse.json();
-          if (
-            breakfastData.meal &&
-            typeof breakfastData.meal.title === "string"
-          ) {
-            setBreakfast(breakfastData.meal);
-            setBreakfastIsLoading(false);
-            gotCalories = true;
-          }
-        } catch (error) {
-          console.error(`Retrying due to ${error}`);
-        }
-      }
-    }
-  };
-  const getLunch = async (lunchCalories: any) => {
-    if (lunchCalories != null) {
-      let gotCalories = false;
-
-      while (!gotCalories) {
-        try {
-          let lunchResponse = await fetch(
-            `/api/generateLunch?calories=${lunchCalories.text?.lunch}&ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`
-          );
-          const lunchData = await lunchResponse.json();
-          if (lunchData.meal && typeof lunchData.meal.title === "string") {
-            setLunch(lunchData.meal);
-            setLunchIsLoading(false);
-            gotCalories = true;
-          }
-        } catch (error) {
-          console.error(`Retrying due to ${error}`);
-        }
-      }
-    } else {
-      let gotCalories = false;
-
-      while (!gotCalories) {
-        try {
-          let lunchResponse = await fetch(
-            `/api/generateLunch?ingredients=${ingredients}&userLocation=${region}&allergies=${allergies}`
-          );
-          const lunchData = await lunchResponse.json();
-          if (lunchData.meal && typeof lunchData.meal.title === "string") {
-            setLunch(lunchData.meal);
-            setLunchIsLoading(false);
-            gotCalories = true;
-          }
-        } catch (error) {
-          console.error(`Retrying due to ${error}`);
-        }
-      }
-    }
-  };
-  const getDinner = async (dinnerCalories: any) => {
-    if (dinnerCalories != null) {
-      let gotCalories = false;
-
-      while (!gotCalories) {
-        try {
-          let dinnerResponse = await fetch(`/api`);
-          const dinnerData = await dinnerResponse.json();
-          if (dinnerData.meal && typeof dinnerData.meal.title === "string") {
-            setDinner(dinnerData.meal);
-            setDinnerIsLoading(false);
-            gotCalories = true;
-          }
-        } catch (error) {
-          console.error(`Retrying due to ${error}`);
-        }
-      }
-    } else {
-      let gotCalories = false;
-
-      while (!gotCalories) {
-        try {
-          let dinnerResponse = await fetch(`/api`);
-          const dinnerData = await dinnerResponse.json();
-          if (dinnerData.meal && typeof dinnerData.meal.title === "string") {
-            setDinner(dinnerData.meal);
-            setDinnerIsLoading(false);
-            gotCalories = true;
-          }
-        } catch (error) {
-          console.error(`Retrying due to ${error}`);
-        }
-      }
-    }
-  };
-
-  const getSnack = async (snackNumber: any, snackCalories: any) => {
-    if (snackNumber === 1) {
-      if (snackCalories != null) {
-        let gotCalories = false;
-
-        while (!gotCalories) {
-          try {
-            let snack1Response = await fetch(`/api`);
-            const snack1Data = await snack1Response.json();
-            if (snack1Data.meal && typeof snack1Data.meal.title === "string") {
-              setSnack1(snack1Data.meal);
-              setSnack1IsLoading(false);
-              gotCalories = true;
-            }
-          } catch (error) {
-            console.error(`Retrying due to ${error}`);
-          }
-        }
-      } else {
-        let gotCalories = false;
-
-        while (!gotCalories) {
-          try {
-            let snack1Response = await fetch(`/api/`);
-            const snack1Data = await snack1Response.json();
-            if (snack1Data.meal && typeof snack1Data.meal.title === "string") {
-              setSnack1(snack1Data.meal);
-              setSnack1IsLoading(false);
-              gotCalories = true;
-            }
-          } catch (error) {
-            console.error(`Retrying due to ${error}`);
-          }
-        }
-      }
-    }
-    if (snackNumber === 2) {
-      if (snackCalories != null) {
-        let gotCalories = false;
-
-        while (!gotCalories) {
-          try {
-            let snack2Response = await fetch(`/api/`);
-            const snack2Data = await snack2Response.json();
-            if (snack2Data.meal && typeof snack2Data.meal.title === "string") {
-              setSnack2(snack2Data.meal);
-              setSnack2IsLoading(false);
-              gotCalories = true;
-            }
-          } catch (error) {
-            console.error(`Retrying due to ${error}`);
-          }
-        }
-      } else {
-        let gotCalories = false;
-
-        while (!gotCalories) {
-          try {
-            let snack2Response = await fetch(`/api/`);
-            const snack2Data = await snack2Response.json();
-            if (snack2Data.meal && typeof snack2Data.meal.title === "string") {
-              setSnack2(snack2Data.meal);
-              setSnack2IsLoading(false);
-              gotCalories = true;
-            }
-          } catch (error) {
-            console.error(`Retrying due to ${error}`);
-          }
-        }
-      }
-    }
-    if (snackNumber === 3) {
-      if (snackCalories != null) {
-        let gotCalories = false;
-
-        while (!gotCalories) {
-          try {
-            let snack3Response = await fetch(`/api/`);
-            const snack3Data = await snack3Response.json();
-            if (snack3Data.meal && typeof snack3Data.meal.title === "string") {
-              setSnack3(snack3Data.meal);
-              setSnack3IsLoading(false);
-              gotCalories = true;
-            }
-          } catch (error) {
-            console.error(`Retrying due to ${error}`);
-          }
-        }
-      } else {
-        let gotCalories = false;
-
-        while (!gotCalories) {
-          try {
-            let snack3Response = await fetch(`/api/`);
-            const snack3Data = await snack3Response.json();
-            if (snack3Data.meal && typeof snack3Data.meal.title === "string") {
-              setSnack3(snack3Data.meal);
-              setSnack3IsLoading(false);
-              gotCalories = true;
-            }
-          } catch (error) {
-            console.error(`Retrying due to ${error}`);
-          }
-        }
-      }
-    }
-  };
+  const getSnack = async (snackNumber: any, snackCalories: any) => {};
 
   const fetchData = async () => {
-    if (generationType == "create") {
+    if (generationType == 'create') {
       let gotCalories = false;
       let calorieData = null;
       // if user entered a calorie count
       try {
-        if (numOfMeals === "1") {
+        if (numOfMeals === '1') {
           setDinnerIsLoading(true);
-        } else if (numOfMeals === "2") {
+        } else if (numOfMeals === '2') {
           setLunchIsLoading(true);
           setDinnerIsLoading(true);
-        } else if (numOfMeals === "3") {
+        } else if (numOfMeals === '3') {
           setBreakfastIsLoading(true);
           setLunchIsLoading(true);
           setDinnerIsLoading(true);
-        } else if (numOfMeals === "4") {
+        } else if (numOfMeals === '4') {
           setBreakfastIsLoading(true);
           setLunchIsLoading(true);
           setDinnerIsLoading(true);
           setSnack1IsLoading(true);
-        } else if (numOfMeals === "5") {
+        } else if (numOfMeals === '5') {
           setBreakfastIsLoading(true);
           setLunchIsLoading(true);
           setDinnerIsLoading(true);
           setSnack1IsLoading(true);
           setSnack2IsLoading(true);
-        } else if (numOfMeals === "6") {
+        } else if (numOfMeals === '6') {
           setBreakfastIsLoading(true);
           setLunchIsLoading(true);
           setDinnerIsLoading(true);
@@ -457,14 +235,14 @@ export default function HomePageGenerator() {
 
           while (!gotCalories) {
             try {
-              if (calories !== "") {
+              if (calories !== '') {
                 const breakDown = await fetch(
                   `/api/getCalorieBreakdown?totalCalories=${calories}&numOfMeals=${numOfMeals}`
                 );
                 calorieData = await breakDown.json();
                 gotCalories = true;
               } else {
-                return "";
+                return '';
               }
             } catch (error) {
               console.error(`Retrying due to ${error}`);
@@ -473,37 +251,37 @@ export default function HomePageGenerator() {
         };
         await getCalorieData();
 
-        if (numOfMeals === "1") {
+        if (numOfMeals === '1') {
           setDinnerIsLoading(true);
           console.log(calorieData);
           await Promise.all([getDinner(calorieData)]);
         }
 
-        if (numOfMeals === "2") {
+        if (numOfMeals === '2') {
           setLunchIsLoading(true);
           setDinnerIsLoading(true);
           await Promise.all([
             getLunch(calorieData),
-            getDinner(calorieData),
+            getDinner(calorieData)
           ]).catch((error) => {
-            console.error("Error:", error);
+            console.error('Error:', error);
           });
         }
 
-        if (numOfMeals === "3") {
+        if (numOfMeals === '3') {
           setBreakfastIsLoading(true);
           setLunchIsLoading(true);
           setDinnerIsLoading(true);
           await Promise.all([
             getBreakfast(calorieData),
             getLunch(calorieData),
-            getDinner(calorieData),
+            getDinner(calorieData)
           ]).catch((error) => {
-            console.error("Error:", error);
+            console.error('Error:', error);
           });
         }
 
-        if (numOfMeals === "4") {
+        if (numOfMeals === '4') {
           setBreakfastIsLoading(true);
           setLunchIsLoading(true);
           setDinnerIsLoading(true);
@@ -512,13 +290,13 @@ export default function HomePageGenerator() {
             getBreakfast(calorieData),
             getLunch(calorieData),
             getDinner(calorieData),
-            getSnack(1, calorieData),
+            getSnack(1, calorieData)
           ]).catch((error) => {
-            console.error("Error:", error);
+            console.error('Error:', error);
           });
         }
 
-        if (numOfMeals === "5") {
+        if (numOfMeals === '5') {
           setBreakfastIsLoading(true);
           setLunchIsLoading(true);
           setDinnerIsLoading(true);
@@ -529,13 +307,13 @@ export default function HomePageGenerator() {
             getLunch(calorieData),
             getDinner(calorieData),
             getSnack(1, calorieData),
-            getSnack(2, calorieData),
+            getSnack(2, calorieData)
           ]).catch((error) => {
-            console.error("Error:", error);
+            console.error('Error:', error);
           });
         }
 
-        if (numOfMeals === "6") {
+        if (numOfMeals === '6') {
           setBreakfastIsLoading(true);
           setLunchIsLoading(true);
           setDinnerIsLoading(true);
@@ -548,9 +326,9 @@ export default function HomePageGenerator() {
             getDinner(calorieData),
             getSnack(1, calorieData),
             getSnack(2, calorieData),
-            getSnack(3, calorieData),
+            getSnack(3, calorieData)
           ]).catch((error) => {
-            console.error("Error:", error);
+            console.error('Error:', error);
           });
         }
       } catch {}
@@ -559,7 +337,7 @@ export default function HomePageGenerator() {
 
   const fetchLocation = async () => {
     try {
-      const res = await fetch("/api/getLocation");
+      const res = await fetch('/api/getLocation');
       if (res.status === 200) {
         // valid response
         const data = await res.json();
@@ -567,10 +345,10 @@ export default function HomePageGenerator() {
         // console.log(data.location.region_name);
         setLocationFetched(true); // Mark location as fetched
       } else {
-        console.error("An error occurred while fetching the location");
+        console.error('An error occurred while fetching the location');
       }
     } catch (error) {
-      console.error("An error occurred while fetching the location:", error);
+      console.error('An error occurred while fetching the location:', error);
     }
   };
 
@@ -588,7 +366,7 @@ export default function HomePageGenerator() {
       const combinedPlan: MealPlan = {
         ...primaryMealPlan,
         ...secondaryMealPlan,
-        ...tertiaryMealPlan,
+        ...tertiaryMealPlan
       };
       setMealPlan(combinedPlan);
     }
@@ -605,39 +383,39 @@ export default function HomePageGenerator() {
         <div className="rounded-lg border border-[#232325] bg-[#0D0D0E] mt-10 pb-3 pt-6">
           <div className=" relative  mx-10 flex justify-center h-[45px]  bg-zinc-900 rounded-lg p-0.5 flex border border-zinc-800">
             <button
-              onClick={() => setGenerationType("create")}
+              onClick={() => setGenerationType('create')}
               type="button"
               className={`${
-                generationType === "create"
-                  ? "relative w-1/2 bg-zinc-700 border-zinc-800 shadow-sm text-white"
-                  : "ml-0.5 relative w-1/2 border border-transparent text-zinc-400"
+                generationType === 'create'
+                  ? 'relative w-1/2 bg-zinc-700 border-zinc-800 shadow-sm text-white'
+                  : 'ml-0.5 relative w-1/2 border border-transparent text-zinc-400'
               } rounded-md m-1 text-sm font-medium whitespace-nowrap focus:outline-none focus:z-10  sm:px-8`}
             >
               Create
             </button>
             <button
-              onClick={() => setGenerationType("customize")}
+              onClick={() => setGenerationType('customize')}
               type="button"
               className={`${
-                generationType === "customize"
-                  ? "relative w-1/2 bg-zinc-700 border-zinc-800 shadow-sm text-white"
-                  : "ml-0.5 relative w-1/2 border border-transparent text-zinc-400"
+                generationType === 'customize'
+                  ? 'relative w-1/2 bg-zinc-700 border-zinc-800 shadow-sm text-white'
+                  : 'ml-0.5 relative w-1/2 border border-transparent text-zinc-400'
               } rounded-md m-1  text-sm font-medium whitespace-nowrap focus:outline-none focus:z-10  sm:px-8`}
             >
               <div className="flex justify-center pl-0.5 items-center">
                 <div className="pr-1">Customize</div>
                 <div className="h-6 text-white">
-                  <img src="/sparkle-star.png" alt="star" className="h-6" />{" "}
+                  <img src="/sparkle-star.png" alt="star" className="h-6" />{' '}
                 </div>
               </div>
             </button>
           </div>
 
-          {generationType === "create" ? (
+          {generationType === 'create' ? (
             <form
               onSubmit={(e) => {
                 e.preventDefault();
-                setShowSecondBox("true");
+                setShowSecondBox('true');
                 resetMeals();
 
                 fetchData();
@@ -700,7 +478,7 @@ export default function HomePageGenerator() {
                 type="submit"
                 className="group w-3/4 h-[39px] mt-6 sm:w-[220px] rounded-md px-4 py-2 text-[13px] font-semibold transition-all flex items-center justify-center bg-[#f5f7f9] text-[#1E2B3A] no-underline active:scale-95 scale-100 duration-75"
                 style={{
-                  boxShadow: "0 1px 1px #0c192714, 0 1px 3px #0c192724",
+                  boxShadow: '0 1px 1px #0c192714, 0 1px 3px #0c192724'
                 }}
               >
                 <span className="text-md"> Generate </span>
@@ -734,7 +512,7 @@ export default function HomePageGenerator() {
                 href="/signin"
                 className="group flex rounded-md px-4 mt-3 py-2 text-[13px] font-semibold transition-all items-center justify-center bg-[#f5f7f9] text-[#1E2B3A] no-underline active:scale-95 scale-100 duration-75"
                 style={{
-                  boxShadow: "0 1px 1px #0c192714, 0 1px 3px #0c192724",
+                  boxShadow: '0 1px 1px #0c192714, 0 1px 3px #0c192724'
                 }}
               >
                 <span className="text-md"> I'm ready </span>
@@ -764,7 +542,7 @@ export default function HomePageGenerator() {
           )}
         </div>
 
-        {showSecondBox === "true" ? (
+        {showSecondBox === 'true' ? (
           <div className="mt-6">
             {breakfastIsLoading ? (
               <div>

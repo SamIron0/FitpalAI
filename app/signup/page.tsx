@@ -1,37 +1,31 @@
-'use state';
-import { useState } from 'react';
-import { useSupabase } from '../supabase-provider';
-import { useRouter } from 'next/navigation';
+export const metadata = {
+  title: 'Sign Up - Simple',
+  description: 'Page description'
+};
+
+import axios from 'axios';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 import toast from 'react-hot-toast';
-import { Turnstile } from '@marsidev/react-turnstile';
 
-export default function SignIn() {
-  const { supabase } = useSupabase();
-  const [captchaToken, setCaptchaToken] = useState();
-
+export default function SignUp() {
+  const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
-  const onSubmit = async (data: any) => {
+  const onSubmit = (data: any) => {
     setIsLoading(true);
-    const router = useRouter();
-
     try {
-      const { error } = await supabase.auth.signInWithPassword({
-        email: data.email,
-        password: data.password,
-        options: { captchaToken }
-      });
-      if (error) {
-        toast.error(error.message);
-      } else {
-        toast.success('Logged in');
-        router.refresh();
-      }
-    } catch (error) {
-      toast.error('An error occurred during login.');
-    } finally {
-      setIsLoading(false);
+      const result = axios.post('/api/register', data);
+
+      toast.success('Registered!');
+      router.push('/signin');
+    } catch (error: any) {
+      console.log(error);
+      const errorMessage = error.response
+        ? error.response.data.message
+        : 'An error occurred';
+      toast.error(errorMessage);
     }
   };
   return (
@@ -41,7 +35,7 @@ export default function SignIn() {
           {/* Page header */}
           <div className="max-w-3xl mx-auto text-center pb-12 md:pb-20">
             <h1 className="h1">
-              Welcome back. We exist to make entrepreneurism easier.
+              Welcome. We exist to make entrepreneurism easier.
             </h1>
           </div>
 
@@ -52,9 +46,26 @@ export default function SignIn() {
                 <div className="w-full px-3">
                   <label
                     className="block text-gray-800 text-sm font-medium mb-1"
+                    htmlFor="name"
+                  >
+                    Name <span className="text-red-600">*</span>
+                  </label>
+                  <input
+                    id="name"
+                    type="text"
+                    className="form-input w-full text-gray-800"
+                    placeholder="Enter your name"
+                    required
+                  />
+                </div>
+              </div>
+              <div className="flex flex-wrap -mx-3 mb-4">
+                <div className="w-full px-3">
+                  <label
+                    className="block text-gray-800 text-sm font-medium mb-1"
                     htmlFor="email"
                   >
-                    Email
+                    Email <span className="text-red-600">*</span>
                   </label>
                   <input
                     id="email"
@@ -67,20 +78,12 @@ export default function SignIn() {
               </div>
               <div className="flex flex-wrap -mx-3 mb-4">
                 <div className="w-full px-3">
-                  <div className="flex justify-between">
-                    <label
-                      className="block text-gray-800 text-sm font-medium mb-1"
-                      htmlFor="password"
-                    >
-                      Password
-                    </label>
-                    <Link
-                      href="/reset-password"
-                      className="text-sm font-medium text-blue-600 hover:underline"
-                    >
-                      Having trouble signing in?
-                    </Link>
-                  </div>
+                  <label
+                    className="block text-gray-800 text-sm font-medium mb-1"
+                    htmlFor="password"
+                  >
+                    Password <span className="text-red-600">*</span>
+                  </label>
                   <input
                     id="password"
                     type="password"
@@ -90,24 +93,23 @@ export default function SignIn() {
                   />
                 </div>
               </div>
-              <div className="flex flex-wrap -mx-3 mb-4">
-                <div className="w-full px-3">
-                  <div className="flex justify-between">
-                    <label className="flex items-center">
-                      <input type="checkbox" className="form-checkbox" />
-                      <span className="text-gray-600 ml-2">
-                        Keep me signed in
-                      </span>
-                    </label>
-                  </div>
-                </div>
-              </div>
               <div className="flex flex-wrap -mx-3 mt-6">
                 <div className="w-full px-3">
                   <button className="btn text-white bg-blue-600 hover:bg-blue-700 w-full">
-                    Sign in
+                    Sign up
                   </button>
                 </div>
+              </div>
+              <div className="text-sm text-gray-500 text-center mt-3">
+                By creating an account, you agree to the{' '}
+                <a className="underline" href="#0">
+                  terms & conditions
+                </a>
+                , and our{' '}
+                <a className="underline" href="#0">
+                  privacy policy
+                </a>
+                .
               </div>
             </form>
             <div className="flex items-center my-6">
@@ -156,22 +158,16 @@ export default function SignIn() {
               </div>
             </form>
             <div className="text-gray-600 text-center mt-6">
-              Don't you have an account?{' '}
+              Already using Simple?{' '}
               <Link
-                href="/signup"
+                href="/signin"
                 className="text-blue-600 hover:underline transition duration-150 ease-in-out"
               >
-                Sign up
+                Sign in
               </Link>
             </div>
           </div>
         </div>
-        <Turnstile
-          siteKey="0x4AAAAAAAQelymlKVFM1Y4d"
-          onSuccess={(token: any) => {
-            setCaptchaToken(token);
-          }}
-        />
       </div>
     </section>
   );
