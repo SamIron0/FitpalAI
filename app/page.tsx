@@ -63,7 +63,7 @@ export default async function Home() {
             </div>
           </div>
           <div className="w-full sm:px-24 px-10  flex justify-center items-center">
-            <figure className="border-[1px] rounded-lg border-zinc-700 relative z-[1] max-w-full w-[70rem] h-auto shadow-[0_2.75rem_3.5rem_-2rem_rgb(45_55_75_/_20%),_0_0_5rem_-2rem_rgb(45_55_75_/_15%)] dark:shadow-[0_2.75rem_3.5rem_-2rem_rgb(0_0_0_/_20%),_0_0_5rem_-2rem_rgb(0_0_0_/_15%)]">
+            <figure className="border-[1px] rounded-t-lg border-zinc-700 relative z-[1] max-w-full w-[70rem] h-auto shadow-[0_2.75rem_3.5rem_-2rem_rgb(45_55_75_/_20%),_0_0_5rem_-2rem_rgb(45_55_75_/_15%)] dark:shadow-[0_2.75rem_3.5rem_-2rem_rgb(0_0_0_/_20%),_0_0_5rem_-2rem_rgb(0_0_0_/_15%)]">
               <div className="relative flex items-center  bg-zinc-800 rounded-t-lg py-2 px-24 dark:bg-zinc-700">
                 <div className="flex space-x-1 absolute top-2/4 start-4 -translate-y-1">
                   <span className="w-2 h-2 bg-zinc-600 rounded-full dark:bg-zinc-600"></span>
@@ -83,7 +83,7 @@ export default async function Home() {
                 />
               </div>
             </figure>
-            <div className='p-5'>
+            <div className='w-full p-5'>
 
 
             </div>
