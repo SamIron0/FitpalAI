@@ -52,19 +52,19 @@ export interface Database {
       };
       clicks: {
         Row: {
-          id: string;
+          id?: string;
           name: string;
           count: number;
         };
         Insert: {
-          id: string;
-          name: string;
-          count: number;
+          id?: string;
+          name?: string;
+          count?: number;
         };
         Update: {
-          id: string;
-          name: string;
-          count: number;
+          id?: string;
+          nam?: string;
+          count?: number;
         };
       };
       mealplan: {

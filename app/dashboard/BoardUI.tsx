@@ -8,6 +8,7 @@ import { TbRefresh } from 'react-icons/tb';
 import ResultBox from '../../components/ResultBox';
 import SuggestionPill from '../../components/SuggestionPill';
 import { Meal, MealPlan } from '@/types';
+import { getData } from '@/utils/helpers';
 
 function BoardUI() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -98,6 +99,24 @@ function BoardUI() {
   const onPillClick = (caption: string) => {
     setInput(caption);
   };
+  const logClick = async () => {
+    const name = 'Generate';
+    const url = '/api/log-click';
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(name)
+    };
+
+    const response = await fetch(url, options);
+    const data = await response.json();
+
+    // const meal:  MealPlan = data.mealplan
+    if (!response.ok) {
+    }
+  };
   return (
     <div className="flex w-full justify-center  bg-zinc-900 h-screen overflow-hidden  inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:16px_16px]">
       <div className="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
@@ -127,6 +146,7 @@ function BoardUI() {
                   />
                   <button
                     type="submit"
+                    onClick={logClick}
                     disabled={isLoading}
                     className=" absolute end-2.5 bottom-2.5 focus:outline-none font-medium rounded-lg text-sm px-4 py-2 inline-flex items-center justify-start pl-2 p7 overflow-hidden  text-blue-500 transition-all duration-150 ease-in-out bg-gray-50 group"
                   >

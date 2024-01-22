@@ -15,6 +15,22 @@ const supabaseAdmin = createClient<Database>(
 );
 let emailCount = 0;
 
+const logClick = async (name: string) => {
+  const { data: existingClick } = await supabaseAdmin
+    .from('clicks')
+    .select('name, count')
+    .eq('name', name)
+    .single();
+
+  if (existingClick) {
+    await supabaseAdmin
+      .from('clicks')
+      .update({ count: existingClick.count + 1 })
+      .eq('name', name);
+  } else {
+    await supabaseAdmin.from('clicks').insert([{ name, count: 1 }]);
+  }
+};
 const createOrRetrieveWaitListContact = async (
   userName: string,
   userEmail: string
@@ -53,4 +69,4 @@ const createOrRetrieveMealPlan = async (
   return mealPlan.id;
 };
 
-export { createOrRetrieveMealPlan, createOrRetrieveWaitListContact };
+export { createOrRetrieveMealPlan, createOrRetrieveWaitListContact, logClick };
