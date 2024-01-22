@@ -25,6 +25,9 @@ dependencies:
   axios:
     specifier: ^1.5.0
     version: 1.5.0
+  bufferutil:
+    specifier: ^4.0.8
+    version: 4.0.8
   classnames:
     specifier: ^2.3.2
     version: 2.3.2
@@ -1094,8 +1097,8 @@ packages:
       node-releases: 2.0.12
       update-browserslist-db: 1.0.11(browserslist@4.21.7)
 
-  /bufferutil@4.0.7:
-    resolution: {integrity: sha512-kukuqc39WOHtdxtw4UScxF/WVnMFVSQVKhtx3AjZJzhd0RGZZldcrfSEbVsWWe6KNH253574cq5F+wpv0G9pJw==}
+  /bufferutil@4.0.8:
+    resolution: {integrity: sha512-4T53u4PdgsXqKaIctwF8ifXlRTTmEPJ8iEPWFdGZvcf7sbwYo6FKFEX9eNNAnzFZ7EzJAQ3CJeOtCRA4rDp7Pw==}
     engines: {node: '>=6.14.2'}
     requiresBuild: true
     dependencies:
@@ -4328,7 +4331,7 @@ packages:
     resolution: {integrity: sha512-PRDso2sGwF6kM75QykIesBijKSVceR6jL2G8NGYyq2XrItNC2P5/qL5XeR056GhA+Ly7JMFvJb9I312mJfmqnQ==}
     engines: {node: '>=4.0.0'}
     dependencies:
-      bufferutil: 4.0.7
+      bufferutil: 4.0.8
       debug: 2.6.9
       es5-ext: 0.10.62
       typedarray-to-buffer: 3.1.5
