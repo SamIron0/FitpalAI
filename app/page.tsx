@@ -7,7 +7,7 @@ import { getSession } from './supabase-server';
 import { useSupabase } from './supabase-provider';
 import { redirect } from 'next/navigation';
 import Container from '@/components/Container';
-import toast from 'react-hot-toast';
+import {toast} from 'react-hot-toast';
 export default async function Home() {
   toast.success('Welcome!');
   const session = await getSession();
@@ -65,14 +65,14 @@ export default async function Home() {
             </div>
           </div>
           <div className="w-full px-4 pt-32 flex justify-center items-center">
-            <figure className="border-[1px]  rounded-lg border-zinc-700 relative z-[1] max-w-full w-[50rem] h-auto shadow-[0_2.75rem_3.5rem_-2rem_rgb(45_55_75_/_20%),_0_0_5rem_-2rem_rgb(45_55_75_/_15%)] dark:shadow-[0_2.75rem_3.5rem_-2rem_rgb(0_0_0_/_20%),_0_0_5rem_-2rem_rgb(0_0_0_/_15%)]">
+            <figure className="border-[1px]  rounded-t-lg border-zinc-700 relative z-[1] max-w-full w-[50rem] h-auto shadow-[0_2.75rem_3.5rem_-2rem_rgb(45_55_75_/_20%),_0_0_5rem_-2rem_rgb(45_55_75_/_15%)] dark:shadow-[0_2.75rem_3.5rem_-2rem_rgb(0_0_0_/_20%),_0_0_5rem_-2rem_rgb(0_0_0_/_15%)]">
               <div className="relative flex items-center max-w-[50rem] bg-zinc-800 rounded-t-lg py-2 px-24 dark:bg-zinc-700">
                 <div className="flex space-x-1 absolute top-2/4 start-4 -translate-y-1">
                   <span className="w-2 h-2 bg-zinc-600 rounded-full dark:bg-zinc-600"></span>
                   <span className="w-2 h-2 bg-zinc-600 rounded-full dark:bg-zinc-600"></span>
                   <span className="w-2 h-2 bg-zinc-600 rounded-full dark:bg-zinc-600"></span>
                 </div>
-                <div className="flex py-0.5justify-center items-center w-full h-full bg-zinc-700 text-[.25rem] text-zinc-400 rounded-sm sm:text-[.5rem] dark:bg-zinc-600 dark:text-zinc-400">
+                <div className="flex py-0.5 justify-center items-center w-full h-full bg-zinc-700 text-[.25rem] text-zinc-400 rounded-sm sm:text-[.5rem] dark:bg-zinc-600 dark:text-zinc-400">
                   www.fitpalai.com
                 </div>
               </div>
