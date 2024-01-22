@@ -122,7 +122,7 @@ function BoardUI() {
                     value={input}
                     disabled={isLoading}
                     onChange={(e) => setInput(e.target.value)}
-                    className=" px-2 w-full h-[60px] focus:outline-none bg-zinc-900 border-[1px] border-[#232325] text-md rounded-md "
+                    className=" px-2 pl-4 w-full h-[60px] focus:outline-none bg-zinc-800 border-[1px] border-zinc-600 text-md rounded-md "
                     placeholder="Ask a question"
                   />
                   <button
@@ -162,7 +162,7 @@ function BoardUI() {
                   onclick={() => {
                     onPillClick('What should I make for dinner');
                   }}
-                  icon={'🍔'}
+                  icon={'🥘'}
                   caption="What should I make for dinner "
                 />
                 <SuggestionPill
@@ -176,7 +176,7 @@ function BoardUI() {
                   onclick={() => {
                     onPillClick('');
                   }}
-                  icon={'🍔'}
+                  icon={'🍜'}
                   caption=" Make me a cheap recipe for lunch"
                 />
               </div>
