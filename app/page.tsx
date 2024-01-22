@@ -29,7 +29,7 @@ export default async function Home() {
               </p>
             </div>
           </div>
-          <div className="pb-30 px-8">
+          <div className="pb-32 px-8">
             <div className="rounded-full border-[#232325] bg-[#0D0D0E] flex items-center border  h-12  sm:w-[370px] w-[358px] mx-auto ">
               <Link href="/waitlist" className="flex p-3 w-full ">
                 <div className="w-1/4 flex justify-start pl-0.5 pr-0.5 ">
@@ -62,28 +62,31 @@ export default async function Home() {
               </Link>
             </div>
           </div>
-            <div className="w-full px-24 flex justify-center items-center">
-              <figure className="border-1 border-zinc-600 relative z-[1] max-w-full w-[50rem] h-auto shadow-[0_2.75rem_3.5rem_-2rem_rgb(45_55_75_/_20%),_0_0_5rem_-2rem_rgb(45_55_75_/_15%)] dark:shadow-[0_2.75rem_3.5rem_-2rem_rgb(0_0_0_/_20%),_0_0_5rem_-2rem_rgb(0_0_0_/_15%)]">
-                <div className="relative flex items-center max-w-[50rem] bg-gray-800 rounded-t-lg py-2 px-24 dark:bg-gray-700">
-                  <div className="flex space-x-1 absolute top-2/4 start-4 -translate-y-1">
-                    <span className="w-2 h-2 bg-gray-600 rounded-full dark:bg-gray-600"></span>
-                    <span className="w-2 h-2 bg-gray-600 rounded-full dark:bg-gray-600"></span>
-                    <span className="w-2 h-2 bg-gray-600 rounded-full dark:bg-gray-600"></span>
-                  </div>
-                  <div className="flex justify-center items-center w-full h-full bg-gray-700 text-[.25rem] text-gray-400 rounded-sm sm:text-[.5rem] dark:bg-gray-600 dark:text-gray-400">
-                    www.fitpalai.com
-                  </div>
+          <div className="w-full sm:px-24 px-10  flex justify-center items-center">
+            <figure className="border-1 border-zinc-600 relative z-[1] max-w-full w-[50rem] h-auto shadow-[0_2.75rem_3.5rem_-2rem_rgb(45_55_75_/_20%),_0_0_5rem_-2rem_rgb(45_55_75_/_15%)] dark:shadow-[0_2.75rem_3.5rem_-2rem_rgb(0_0_0_/_20%),_0_0_5rem_-2rem_rgb(0_0_0_/_15%)]">
+              <div className="relative flex items-center max-w-[50rem] bg-gray-800 rounded-t-lg py-2 px-24 dark:bg-gray-700">
+                <div className="flex space-x-1 absolute top-2/4 start-4 -translate-y-1">
+                  <span className="w-2 h-2 bg-gray-600 rounded-full dark:bg-gray-600"></span>
+                  <span className="w-2 h-2 bg-gray-600 rounded-full dark:bg-gray-600"></span>
+                  <span className="w-2 h-2 bg-gray-600 rounded-full dark:bg-gray-600"></span>
                 </div>
+                <div className="flex justify-center items-center w-full h-full bg-gray-700 text-[.25rem] text-gray-400 rounded-sm sm:text-[.5rem] dark:bg-gray-600 dark:text-gray-400">
+                  www.fitpalai.com
+                </div>
+              </div>
 
-                <div className="bg-gray-800 rounded-b-lg">
-                  <img
-                    className="max-w-full h-auto rounded-b-lg"
-                    src="mockup1.png"
-                    alt="ImageMockup"
-                  />
-                </div>
-              </figure>
+              <div className="bg-gray-800 ">
+                <img
+                  className="max-w-full h-auto"
+                  src="mockup1.png"
+                  alt="ImageMockup"
+                />
+              </div>
+            </figure>
+            <div>
+
             </div>
+          </div>
           <Footer />
         </div>
       </>
