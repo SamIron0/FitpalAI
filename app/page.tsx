@@ -8,6 +8,7 @@ import { useSupabase } from './supabase-provider';
 import { redirect } from 'next/navigation';
 import Container from '@/components/Container';
 import { toast } from 'react-hot-toast';
+import HomePageGenerator from '@/components/HomePageGenerator';
 export default async function Home() {
   //toast.success('Welcome!');
   const session = await getSession();
@@ -63,6 +64,9 @@ export default async function Home() {
                 </div>
               </Link>
             </div>
+          </div>
+          <div className="pt-32">
+            <HomePageGenerator />
           </div>
           <div className="w-full px-4 pt-32 flex justify-center items-center">
             <figure className="border-[1px]  rounded-t-lg border-zinc-700 relative z-[1] max-w-full w-[50rem] h-auto shadow-[0_2.75rem_3.5rem_-2rem_rgb(45_55_75_/_20%),_0_0_5rem_-2rem_rgb(45_55_75_/_15%)] dark:shadow-[0_2.75rem_3.5rem_-2rem_rgb(0_0_0_/_20%),_0_0_5rem_-2rem_rgb(0_0_0_/_15%)]">
