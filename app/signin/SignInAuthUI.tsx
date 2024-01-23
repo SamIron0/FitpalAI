@@ -28,13 +28,13 @@ export default function AuthUI() {
       const { error } = await supabase.auth.signInWithPassword({
         email: data.email,
         password: data.password,
-            });
+        options: { captchaToken }
+      });
       if (error) {
         toast.error(error.message);
       } else {
         toast.success('Signed in');
 
-        
         router.refresh();
       }
     } catch (error) {
@@ -119,7 +119,7 @@ export default function AuthUI() {
                 </div>
               </div>
             </form>
-             <div className="text-zinc-400 text-center mt-6 pb-6">
+            <div className="text-zinc-400 text-center mt-6 pb-6">
               Don't you have an account?{' '}
               <Link
                 href="/signup"
@@ -127,6 +127,14 @@ export default function AuthUI() {
               >
                 Sign up
               </Link>
+            </div>
+            <div className="flex justify-center items-center pt-3 ">
+              <Turnstile
+                siteKey="your-sitekey"
+                onSuccess={(token: any) => {
+                  setCaptchaToken(token);
+                }}
+              />
             </div>
           </div>
         </div>
