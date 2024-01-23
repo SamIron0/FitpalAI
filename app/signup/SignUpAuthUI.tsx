@@ -141,7 +141,7 @@ export default function AuthUI() {
               </div>
               <div className="flex justify-center items-center pt-3 ">
                 <Turnstile
-                  siteKey="your-sitekey"
+                  siteKey="0x4AAAAAAAQelymlKVFM1Y4d"
                   onSuccess={(token: any) => {
                     setCaptchaToken(token);
                   }}
