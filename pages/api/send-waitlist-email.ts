@@ -7,7 +7,7 @@ const handler: NextApiHandler = async (req, res) => {
     const { name, email } = req.query;
     const resend = new Resend('re_N34y4JVC_51XbLjazeSGG4cLdn1HjsFtn');
 
-    const toEmail = email ? String(email) : ''; // Ensure toEmail is always a string
+    const toEmail = email ? String(email) : 'samuelironkwec@gmail.com'; // Ensure toEmail is always a string
     const userName = name ? String(name) : ''; // Ensure toEmail is always a string
 
     await resend.emails.send({
