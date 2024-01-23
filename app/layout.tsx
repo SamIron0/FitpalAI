@@ -73,7 +73,7 @@ export default async function RootLayout({ children }: PropsWithChildren) {
             <ToasterProvider />
 
             <div>
-              {session ? (
+              {false ? (
                 <div className="flex">
                   <Sidebar /> {children}
                 </div>
