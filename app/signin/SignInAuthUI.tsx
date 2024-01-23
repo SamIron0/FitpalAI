@@ -28,8 +28,7 @@ export default function AuthUI() {
       const { error } = await supabase.auth.signInWithPassword({
         email: data.email,
         password: data.password,
-        options: { captchaToken }
-      });
+            });
       if (error) {
         toast.error(error.message);
       } else {
