@@ -13,7 +13,8 @@ import FeaturesBlocks from '@/components/get-started-block';
 export default async function Home() {
   //toast.success('Welcome!');
   const session = await getSession();
-  if (!session) {
+  if (true) {
+    
     return (
       <>
         <div className=" bg-black ">
