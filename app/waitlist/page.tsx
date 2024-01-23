@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { Toaster, toast } from 'react-hot-toast';
 import WaitlistEmailTemplate from '@/components/WaitlistEmailTemplate';
+import axios from 'axios';
 //const emailKey = process.env.RESEND_KEY;
 function waitlist() {
   const [userName, setUserName] = useState('');
@@ -30,15 +31,7 @@ function waitlist() {
     }
   };
   const sendConfirmationEmail = async () => {
-    console.log('sending');
-    const resend = new Resend('re_N34y4JVC_51XbLjazeSGG4cLdn1HjsFtn');
-    resend.emails.send({
-      from: 'samuel@fitpalai.com',
-      to: 'samuelironkwec@gmail.com',
-      subject: 'Thank you for joining the fitpal community!',
-      react: WaitlistEmailTemplate()
-    });
-    //console.log(result);
+    axios.get('/api/send-waitlist-email');
   };
 
   return (
