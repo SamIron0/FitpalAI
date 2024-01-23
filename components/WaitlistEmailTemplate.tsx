@@ -1,5 +1,5 @@
 'use client';
-export default function WaitListEmailTemplate(name: string) {
+export default function WaitListEmailTemplate(name?: string) {
   return (
     <section className="max-w-2xl px-6 py-8 mx-auto bg-white dark:bg-gray-900">
       <main className="mt-8">

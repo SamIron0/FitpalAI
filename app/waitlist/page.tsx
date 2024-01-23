@@ -32,7 +32,7 @@ function waitlist() {
   };
   const sendConfirmationEmail = async (email: string, name: string) => {
     try {
-      await axios.post('/api/send-waitlist-email', { email, name });
+      await axios.post('/api/send-waitlist-email');
     } catch (error) {
       console.log(error);
     }
