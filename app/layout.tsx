@@ -47,23 +47,7 @@ export default async function RootLayout({ children }: PropsWithChildren) {
   const session = await getSession();
   return (
     <>
-      <Head>
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-DM7XC7YDQT"
-        ></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'G-DM7XC7YDQT');
-     `
-          }}
-        ></script>
-      </Head>
+     
       <body className="loading">
         <SupabaseProvider>
           <main

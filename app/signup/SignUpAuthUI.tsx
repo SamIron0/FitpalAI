@@ -28,7 +28,7 @@ export default function AuthUI() {
         if (error) {
           toast.error(error.message);
         } else {
-          toast.success('Logged in');
+          toast.success('Account created. Please check your email for verification.');
           router.refresh();
         }
       } catch (error) {
