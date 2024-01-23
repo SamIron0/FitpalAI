@@ -90,7 +90,7 @@ export default function AuthUI() {
                       Password
                     </label>
                     <Link
-                      href="#"
+                      href="/reset-password"
                       className="text-sm font-medium text-blue-500 hover:underline"
                     >
                       Having trouble signing in?
@@ -111,7 +111,7 @@ export default function AuthUI() {
                 <div className="w-full px-3">
                   <button
                     type="submit"
-                    className=" flex justify-center px-0 py-2 rounded-lg text-white bg-blue-600 hover:bg-blue-700 w-full relative "
+                    className="btn flex justify-centerpx-0 py-2 rounded-lg text-white bg-blue-600 hover:bg-blue-700 w-full relative  items-center"
                   >
                     Sign in
                   </button>
