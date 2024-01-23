@@ -1,12 +1,51 @@
+import SupabaseProvider, { useSupabase } from './supabase-provider';
+import Footer from '@/components/ui/Footer';
 import Navbar from '@/components/ui/Navbar';
-import Sidebar from '@/components/ui/Sidebar';
 import { PropsWithChildren } from 'react';
-import ToasterProvider from './providers/ToasterProvider';
-import SupabaseProvider from './supabase-provider';
+import 'styles/main.css';
 import { Analytics } from '@vercel/analytics/react';
-export default function RootLayout({ children }: PropsWithChildren) {
- 
-return (
+import Sidebar from '@/components/ui/Sidebar';
+import { useSession } from '@supabase/auth-helpers-react';
+import Head from 'next/head';
+import { getSession } from './supabase-server';
+import ToasterProvider from './providers/ToasterProvider';
+const meta = {
+  title: 'Fitpal AI',
+  description: 'Meal plans and calorie tracking.',
+  cardImage: '/og.png',
+  robots: 'follow, index',
+  favicon: '/favicon.ico',
+  url: 'https://fitpalai.com',
+  type: 'website'
+};
+
+export const metadata = {
+  title: meta.title,
+  description: meta.description,
+  cardImage: meta.cardImage,
+  robots: meta.robots,
+  favicon: meta.favicon,
+  url: meta.url,
+  type: meta.type,
+  openGraph: {
+    url: meta.url,
+    title: meta.title,
+    description: meta.description,
+    cardImage: meta.cardImage,
+    type: meta.type,
+    site_name: meta.title
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@vercel',
+    title: meta.title,
+    description: meta.description,
+    cardImage: meta.cardImage
+  }
+};
+export default async function RootLayout({ children }: PropsWithChildren) {
+  const session = await getSession();
+  return (
     <>
       <head>
         <script
@@ -23,7 +62,7 @@ return (
               `
           }}
         ></script>
-      </head> 
+      </head>
       <body className="loading">
         <SupabaseProvider>
           <main
@@ -31,6 +70,7 @@ return (
             className="min-h-[calc(100dvh-4rem)] bg-black md:min-h[calc(100dvh-5rem)]"
           >
             <ToasterProvider />
+
             <div>
               {false ? (
                 <div className="flex">
@@ -38,11 +78,13 @@ return (
                 </div>
               ) : (
                 <div>
-                  <Navbar /> {children}
+                  <Navbar />
+                  {children}
                 </div>
               )}
             </div>
           </main>
+
           <Analytics />
         </SupabaseProvider>
       </body>
