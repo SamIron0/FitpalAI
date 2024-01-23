@@ -53,7 +53,12 @@ export default function AuthUI() {
 
             {/* Form */}
             <div className="max-w-sm mx-auto">
-              <form>
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  onSubmit({ email, password });
+                }}
+              >
                 <div className="flex flex-wrap -mx-3 mb-4">
                   <div className="w-full px-3">
                     <label
@@ -112,7 +117,7 @@ export default function AuthUI() {
                 <div className="flex flex-wrap -mx-3 mt-6">
                   <div className="w-full px-3">
                     <button
-                      onClick={() => onSubmit({ email, password })}
+                      type="submit"
                       className="btn px-0 py-2 flex justify-center rounded-lg text-white bg-blue-600 hover:bg-blue-700 w-full relative  items-center"
                     >
                       Sign up
