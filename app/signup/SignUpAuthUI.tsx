@@ -47,7 +47,7 @@ export default function AuthUI() {
             {/* Page header */}
             <div className="max-w-xl mx-auto text-center pb-12 md:pb-20">
               <h1 className="text-white font-semibold text-2xl">
-                Welcome Sign up to begin creating.
+                Welcome, sign up to begin creating.
               </h1>
             </div>
 
