@@ -33,6 +33,8 @@ export default function AuthUI() {
         toast.error(error.message);
       } else {
         toast.success('Signed in');
+
+        
         router.refresh();
       }
     } catch (error) {
