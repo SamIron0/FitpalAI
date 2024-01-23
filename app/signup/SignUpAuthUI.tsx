@@ -15,10 +15,10 @@ export default function AuthUI() {
     const [captchaToken, setCaptchaToken] = useState();
 
     const [isLoading, setIsLoading] = useState(false);
+    const router = useRouter();
 
     const onSubmit = async (data: any) => {
       setIsLoading(true);
-      const router = useRouter();
 
       try {
         const { data, error } = await supabase.auth.signUp({
@@ -89,6 +89,7 @@ export default function AuthUI() {
                       placeholder="Enter your email"
                       className="w-full text-white px-4 py-2 focus:outline-none bg-zinc-800 border-[1px] border-zinc-600 text-md rounded-md "
                       value={email}
+                      type='email'
                       onChange={(e) => setEmail(e.target.value)}
                     />
                   </div>
