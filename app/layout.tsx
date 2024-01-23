@@ -5,8 +5,9 @@ import ToasterProvider from './providers/ToasterProvider';
 import SupabaseProvider from './supabase-provider';
 import { Analytics } from '@vercel/analytics/react';
 export default function RootLayout({ children }: PropsWithChildren) {
-  return (
-    <html lang="en">
+ 
+return (
+    <>
       <head>
         <script
           async
@@ -22,7 +23,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
               `
           }}
         ></script>
-      </head>
+      </head> 
       <body className="loading">
         <SupabaseProvider>
           <main
@@ -45,6 +46,6 @@ export default function RootLayout({ children }: PropsWithChildren) {
           <Analytics />
         </SupabaseProvider>
       </body>
-    </html>
+    </>
   );
 }
