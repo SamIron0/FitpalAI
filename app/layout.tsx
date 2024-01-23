@@ -1,18 +1,22 @@
-import SupabaseProvider from "./supabase-provider";
-import Footer from "@/components/ui/Footer";
-import Navbar from "@/components/ui/Navbar";
-import { PropsWithChildren } from "react";
-import "styles/main.css";
-import { Analytics } from "@vercel/analytics/react";
-
+import SupabaseProvider, { useSupabase } from './supabase-provider';
+import Footer from '@/components/ui/Footer';
+import Navbar from '@/components/ui/Navbar';
+import { PropsWithChildren } from 'react';
+import 'styles/main.css';
+import { Analytics } from '@vercel/analytics/react';
+import Sidebar from '@/components/ui/Sidebar';
+import { useSession } from '@supabase/auth-helpers-react';
+import Head from 'next/head';
+import { getSession } from './supabase-server';
+import ToasterProvider from './providers/ToasterProvider';
 const meta = {
-  title: "Fitpal AI",
-  description: "Meal plans and calorie tracking.",
-  cardImage: "/og.png",
-  robots: "follow, index",
-  favicon: "/favicon.ico",
-  url: "https://fitpalai.com",
-  type: "website",
+  title: 'Fitpal AI',
+  description: 'Meal plans and calorie tracking.',
+  cardImage: '/og.png',
+  robots: 'follow, index',
+  favicon: '/favicon.ico',
+  url: 'https://fitpalai.com',
+  type: 'website'
 };
 
 export const metadata = {
@@ -29,46 +33,58 @@ export const metadata = {
     description: meta.description,
     cardImage: meta.cardImage,
     type: meta.type,
-    site_name: meta.title,
+    site_name: meta.title
   },
   twitter: {
-    card: "summary_large_image",
-    site: "@vercel",
+    card: 'summary_large_image',
+    site: '@vercel',
     title: meta.title,
     description: meta.description,
-    cardImage: meta.cardImage,
-  },
+    cardImage: meta.cardImage
+  }
 };
-export default function RootLayout({ children }: PropsWithChildren) {
+export default async function RootLayout({ children }: PropsWithChildren) {
+  const session = await getSession();
   return (
     <>
-      <head>
+      <Head>
         <script
           async
-          src="https://www.googletagmanager.com/gtag/js?id=G-39N664CG65"
+          src="https://www.googletagmanager.com/gtag/js?id=G-DM7XC7YDQT"
         ></script>
         <script
           dangerouslySetInnerHTML={{
             __html: `
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', 'G-39N664CG65');
-              `,
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-DM7XC7YDQT');
+     `
           }}
         ></script>
-      </head>
-      <body className="bg-black  loading">
+      </Head>
+      <body className="loading">
         <SupabaseProvider>
-          {/* @ts-expect-error */}
-          <Navbar />
           <main
             id="skip"
-            className="min-h-[calc(100dvh-4rem)] md:min-h[calc(100dvh-5rem)]"
+            className="min-h-[calc(100dvh-4rem)] bg-black md:min-h[calc(100dvh-5rem)]"
           >
-            {children}
+            <ToasterProvider />
+
+            <div>
+              {session ? (
+                <div className="flex">
+                  <Sidebar /> {children}
+                </div>
+              ) : (
+                <div>
+                  <Navbar />
+                  {children}
+                </div>
+              )}
+            </div>
           </main>
-          <Footer />
 
           <Analytics />
         </SupabaseProvider>
