@@ -9,6 +9,7 @@ import { Turnstile } from '@marsidev/react-turnstile';
 import { signIn } from 'next-auth/react';
 import Input from '@/components/Input';
 
+
 export default function AuthUI() {
   {
     const { supabase } = useSupabase();
@@ -23,12 +24,15 @@ export default function AuthUI() {
       try {
         const { data, error } = await supabase.auth.signUp({
           email: email,
-          password: password
+          password: password,
+          options: { captchaToken }
         });
         if (error) {
           toast.error(error.message);
         } else {
-          toast.success('Account created. Please check your email for verification.');
+          toast.success(
+            'Account created. Please check your email for verification.'
+          );
           router.refresh();
         }
       } catch (error) {
@@ -89,7 +93,7 @@ export default function AuthUI() {
                       placeholder="Enter your email"
                       className="w-full text-white px-4 py-2 focus:outline-none bg-zinc-800 border-[1px] border-zinc-600 text-md rounded-md "
                       value={email}
-                      type='email'
+                      type="email"
                       onChange={(e) => setEmail(e.target.value)}
                     />
                   </div>
@@ -126,7 +130,6 @@ export default function AuthUI() {
                   </div>
                 </div>
               </form>
-
               <div className="text-zinc-400 text-center mt-6 pb-6">
                 Already using Fitpal?{' '}
                 <Link
@@ -136,6 +139,14 @@ export default function AuthUI() {
                   Sign in
                 </Link>
               </div>
+              <div className="flex justify-center items-center pt-3 ">
+                <Turnstile
+                  siteKey="your-sitekey"
+                  onSuccess={(token: any) => {
+                    setCaptchaToken(token);
+                  }}
+                />
+              </div>{' '}
             </div>
           </div>
         </div>

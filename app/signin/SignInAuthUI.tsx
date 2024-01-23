@@ -5,7 +5,6 @@ import { useSupabase } from '../supabase-provider';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import toast from 'react-hot-toast';
-import { Turnstile } from '@marsidev/react-turnstile';
 import { signIn } from 'next-auth/react';
 import Input from '@/components/Input';
 
@@ -28,7 +27,6 @@ export default function AuthUI() {
       const { error } = await supabase.auth.signInWithPassword({
         email: data.email,
         password: data.password,
-        options: { captchaToken }
       });
       if (error) {
         toast.error(error.message);
@@ -128,14 +126,7 @@ export default function AuthUI() {
                 Sign up
               </Link>
             </div>
-            <div className="flex justify-center items-center pt-3 ">
-              <Turnstile
-                siteKey="your-sitekey"
-                onSuccess={(token: any) => {
-                  setCaptchaToken(token);
-                }}
-              />
-            </div>
+         
           </div>
         </div>
       </div>
