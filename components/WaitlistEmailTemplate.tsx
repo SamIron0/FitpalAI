@@ -1,18 +1,14 @@
-export default function WaitListEmailTemplate() {
+export default function WaitListEmailTemplate({ name }: { name: string }) {
   return (
     <section className="max-w-2xl px-6 py-8 mx-auto bg-white dark:bg-gray-900">
       <header>
         <a href="#">
-          <img
-            className="w-auto h-7 sm:h-8"
-            src="/logo-3.svg"
-            alt=""
-          />
+          <img className="w-auto h-7 sm:h-8" src="/logo-3.svg" alt="" />
         </a>
       </header>
 
       <main className="mt-8">
-        <h2 className="text-gray-200">Hello,</h2>
+        <h2 className="text-gray-200">Hello, {name}</h2>
 
         <p className="mt-2 leading-loosetext-gray-300">
           Thank you for joining the waitlist to get early access to FitpalAI! To
@@ -31,14 +27,12 @@ export default function WaitListEmailTemplate() {
         </button>
 
         <p className="mt-8 text-gray-300">
-          Thanks, <br />
-          - The FitpalAI Team
+          Thanks, <br />- The FitpalAI Team
         </p>
       </main>
 
       <footer className="mt-8">
-        
-      <p className="mt-3 text-gray-400">
+        <p className="mt-3 text-gray-400">
           © 2024 FitpalAI. All Rights Reserved.
         </p>
       </footer>

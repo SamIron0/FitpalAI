@@ -25,13 +25,17 @@ function waitlist() {
         data: { userName, userEmail }
       });
       notify();
-      sendConfirmationEmail();
+      sendConfirmationEmail(userEmail, userName);
     } catch (error) {
       return alert((error as Error)?.message);
     }
   };
-  const sendConfirmationEmail = async () => {
-    axios.get('/api/send-waitlist-email');
+  const sendConfirmationEmail = async (email: string, name: string) => {
+    try {
+      await axios.post('/api/send-waitlist-email', { email, name });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
