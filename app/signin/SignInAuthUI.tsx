@@ -118,19 +118,7 @@ export default function AuthUI() {
                 </div>
               </div>
             </form>
-            <div className="flex items-center my-6">
-              <div
-                className="border-t border-gray-300 grow mr-3"
-                aria-hidden="true"
-              ></div>
-              <div className="text-zinc-300 italic">Or</div>
-              <div
-                className="border-t border-gray-300 grow ml-3"
-                aria-hidden="true"
-              ></div>
-            </div>
-          
-            <div className="text-zinc-400 text-center mt-6 pb-6">
+             <div className="text-zinc-400 text-center mt-6 pb-6">
               Don't you have an account?{' '}
               <Link
                 href="/signup"
