@@ -19,7 +19,7 @@ export default async function Home() {
         <div className=" bg-black ">
           <div className="max-w-4xl mx-auto px-4 sm:px-6">
             {/* Hero content */}
-            <div className="pt-24 pb-12 md:pt-40 md:pb-20">
+            <div className="pt-24 pb-6 md:pt-32 md:pb-14">
               {/* Section header */}
               <div className="text-center pb-12 md:pb-16">
                 <h1
@@ -81,7 +81,6 @@ export default async function Home() {
           </div>
 
           <div className="w-full px-4 pt-32 flex justify-center items-center">
-            <div className="absolute left-0 right-0 bottom-0 m-auto w-px p-px h-20 bg-gray-200 transform translate-y-1/2"></div>
 
             <figure className="border-[1px]  rounded-t-lg border-zinc-700 relative z-[1] max-w-full w-[50rem] h-auto shadow-[0_2.75rem_3.5rem_-2rem_rgb(45_55_75_/_20%),_0_0_5rem_-2rem_rgb(45_55_75_/_15%)] dark:shadow-[0_2.75rem_3.5rem_-2rem_rgb(0_0_0_/_20%),_0_0_5rem_-2rem_rgb(0_0_0_/_15%)]">
               <div className="relative flex items-center max-w-[50rem] bg-zinc-800 rounded-t-lg py-2 px-24 dark:bg-zinc-700">

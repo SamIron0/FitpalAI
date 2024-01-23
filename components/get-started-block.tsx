@@ -1,3 +1,5 @@
+import { redirect } from "next/navigation";
+
 export default function GetStartedBlock() {
   return (
     <section className="relative">
@@ -10,7 +12,7 @@ export default function GetStartedBlock() {
           {/* Section header */}
           <div className="max-w-3xl mx-auto text-center pb-12 md:pb-20">
             <h2 className=" text-4xl font-bold text-white pt-8 text-center mb-4">
-              Get started with a free account
+              Get your personalized daily plan
             </h2>
             <button
               type="button"
