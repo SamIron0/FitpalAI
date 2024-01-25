@@ -64,11 +64,17 @@ export default function AuthUI() {
                 onSubmit({ email, password });
               }}
             >
+              <label
+                style={{ position: 'absolute', left: '-9999px' }}
+                htmlFor="botField"
+              >
+                Please leave this field empty.
+              </label>
               <input
-                type="hidden"
-                style={{ display: 'none' }}
+                id="botField"
                 value={botField}
                 onChange={(e) => setBotField(e.target.value)}
+                style={{ position: 'absolute', left: '-9999px' }}
               />
               <div className="flex flex-wrap -mx-3 mb-4">
                 <div className="w-full px-3">
