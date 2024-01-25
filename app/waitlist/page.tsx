@@ -25,7 +25,7 @@ function waitlist() {
         data: { userName, userEmail }
       });
       notify();
-      sendConfirmationEmail(userEmail, userName);
+      //sendConfirmationEmail(userEmail, userName);
     } catch (error) {
       return alert((error as Error)?.message);
     }
