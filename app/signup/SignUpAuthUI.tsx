@@ -137,6 +137,7 @@ export default function AuthUI() {
                   <button
                     type="submit"
                     className="btn px-0 py-2 flex justify-center rounded-lg text-white bg-blue-600 hover:bg-blue-700 w-full relative  items-center"
+                    disabled={isLoading || !captchaToken}
                   >
                     Sign up
                   </button>
