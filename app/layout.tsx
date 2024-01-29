@@ -50,7 +50,9 @@ export default async function RootLayout({ children }: PropsWithChildren) {
     .then((response) => response.json())
     .then((data) => data.country);
 
-  if (countryCode === 'RU' || countryCode === 'KZ' || countryCode === 'PL') return null;
+  console.log(countryCode);
+  if (countryCode === 'RU' || countryCode === 'KZ' || countryCode === 'PL')
+    return null;
 
   return (
     <>
