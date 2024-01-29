@@ -170,10 +170,15 @@ export default function AuthUI() {
 }
 
 export async function getServerSideProps({ req }: any) {
-  const reqIp = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-  const countryCode = geoip.lookup(reqIp)?.country;
+  const res = await fetch('api/country');
+  const data = await res.json();
 
-  if (countryCode === 'RU' || countryCode === 'KZ' || countryCode === 'PL' || countryCode === 'CA') {
+  if (
+    data.country === 'RU' ||
+    data.country === 'KZ' ||
+    data.country === 'PL' ||
+    data.country === 'CA'
+  ) {
     return { notFound: true };
   }
 
