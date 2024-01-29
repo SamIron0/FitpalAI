@@ -9,8 +9,6 @@ import { Turnstile } from '@marsidev/react-turnstile';
 import { signIn } from 'next-auth/react';
 import Input from '@/components/Input';
 
-const geoip = require('geoip-lite');
-
 export default function AuthUI() {
   const { supabase } = useSupabase();
   const [captchaToken, setCaptchaToken] = useState();
