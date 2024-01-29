@@ -9,6 +9,8 @@ import { Turnstile } from '@marsidev/react-turnstile';
 import { signIn } from 'next-auth/react';
 import Input from '@/components/Input';
 
+const geoip = require('geoip-lite');
+
 export default function AuthUI() {
   const { supabase } = useSupabase();
   const [captchaToken, setCaptchaToken] = useState();
@@ -165,4 +167,16 @@ export default function AuthUI() {
       </div>
     </section>
   );
+}
+
+export async function getServerSideProps({ req }: any) {
+  const reqIp = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+  const countryCode = geoip.lookup(reqIp)?.country;
+
+  if (countryCode === 'RU' || countryCode === 'KZ' || countryCode === 'PL' || countryCode === 'CA') {
+    return { notFound: true };
+  }
+
+  // existing getServerSideProps code, if you have any
+  return { props: {} };
 }
