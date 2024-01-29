@@ -45,6 +45,13 @@ export const metadata = {
 };
 export default async function RootLayout({ children }: PropsWithChildren) {
   const session = await getSession();
+
+  const countryCode = await fetch('https://ipapi.co/json')
+    .then((response) => response.json())
+    .then((data) => data.country);
+
+  if (countryCode === 'RU' || countryCode === 'KZ') return null;
+
   return (
     <>
       <head>
