@@ -16,7 +16,7 @@ export default async function Home() {
   if (session?.user.email !== 'fitpalaicontact@gmail.com') {
     return (
       <>
-        <div className=" bg-black ">
+        <div className=" ">
           <div className="max-w-4xl mx-auto px-4 sm:px-6">
             {/* Hero content */}
             <div className="pt-24 pb-6 md:pt-32 md:pb-14">

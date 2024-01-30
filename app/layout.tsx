@@ -67,10 +67,6 @@ export default async function RootLayout({ children }: PropsWithChildren) {
       </head>
       <body className="dark">
         <SupabaseProvider>
-          <main
-            id="skip"
-            className="min-h-[calc(100dvh-4rem)]  md:min-h[calc(100dvh-5rem)]"
-          >
             <ToasterProvider />
             <div className={cn('bg-primary text-primary-foreground')}>
               {session?.user.email === 'fitpalaicontact@gmail.com' ? (
@@ -84,8 +80,6 @@ export default async function RootLayout({ children }: PropsWithChildren) {
                 </div>
               )}
             </div>
-          </main>
-
           <Analytics />
         </SupabaseProvider>
       </body>

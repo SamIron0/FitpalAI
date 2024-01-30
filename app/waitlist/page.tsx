@@ -39,7 +39,7 @@ function waitlist() {
   };
 
   return (
-    <div className="h-screen bg-black">
+    <div className="h-screen">
       <Toaster />
       <div className="flex items-center jusify-center w-full h-20">
         {showAlert && (
