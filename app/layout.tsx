@@ -69,7 +69,7 @@ export default async function RootLayout({ children }: PropsWithChildren) {
         <SupabaseProvider>
           <main
             id="skip"
-            className="min-h-[calc(100dvh-4rem)] bg-black md:min-h[calc(100dvh-5rem)]"
+            className="min-h-[calc(100dvh-4rem)]  md:min-h[calc(100dvh-5rem)]"
           >
             <ToasterProvider />
             <div className={cn('bg-primary text-primary-foreground')}>
