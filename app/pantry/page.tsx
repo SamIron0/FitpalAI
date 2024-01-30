@@ -1,7 +1,8 @@
+import {PantryUI} from './PantryUI';
 export default async function Pantry() {
   return (
     <>
-      <div>Pantry</div>
+      <PantryUI />
     </>
   );
 }
