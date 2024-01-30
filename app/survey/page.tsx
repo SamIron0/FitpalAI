@@ -7,7 +7,7 @@ export default async function Survey() {
     // if user has filled survey display thank you screeen
   }
   return (
-    <div className="flex items-center justify-center">
+    <div className="flex items-center w-full justify-center">
       <SurveyUI user={session?.user} />{' '}
     </div>
   );
