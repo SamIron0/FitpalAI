@@ -9,6 +9,7 @@ import { useSession } from '@supabase/auth-helpers-react';
 import Head from 'next/head';
 import { getSession } from './supabase-server';
 import ToasterProvider from './providers/ToasterProvider';
+import { cn } from '@/lib/utils';
 const meta = {
   title: 'Fitpal AI',
   description: 'Meal plans and calorie tracking.',
@@ -71,7 +72,7 @@ export default async function RootLayout({ children }: PropsWithChildren) {
             className="min-h-[calc(100dvh-4rem)] bg-black md:min-h[calc(100dvh-5rem)]"
           >
             <ToasterProvider />
-            <div>
+            <div className={cn('bg-primary text-primary-foreground')}>
               {session?.user.email === 'fitpalaicontact@gmail.com' ? (
                 <div className="flex">
                   <Sidebar /> {children}
