@@ -316,6 +316,7 @@ export function PantryUI() {
         </div>
       </Card>
       <Allergies />
+      <div className='w-full pt-8 flex text-center text-primary border-border bg-foreground h-4'>x</div>
     </div>
   );
 }
