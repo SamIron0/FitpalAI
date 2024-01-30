@@ -201,7 +201,8 @@ export function PantryUI() {
   });
 
   return (
-    <div className="w-full overflow-x-auto flex sm:flex-col">
+    <div className="w-full overflow-x-auto gaap-2 flex sm:flex-row">
+      <Card>
       <div className="flex items-center py-4">
         <Input
           placeholder="Filter emails..."
@@ -312,7 +313,7 @@ export function PantryUI() {
           </Button>
         </div>
       </div>
-
+      </Card>
       <Allergies />
     </div>
   );
