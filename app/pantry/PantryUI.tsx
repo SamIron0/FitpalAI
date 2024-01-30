@@ -40,6 +40,7 @@ import {
   TableRow
 } from '@/components/ui/table';
 import { Allergies } from '@/components/Allergies';
+import { Card } from '@/components/ui/card';
 
 const data: Payment[] = [
   {
