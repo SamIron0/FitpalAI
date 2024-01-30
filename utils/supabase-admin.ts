@@ -1,4 +1,4 @@
-import { MealPlan } from '@/types';
+import { MealPlan, SurveyResponse } from '@/types';
 import { toDateTime } from './helpers';
 import { createClient } from '@supabase/supabase-js';
 import type { Database } from 'types_db';
@@ -48,6 +48,22 @@ const createOrRetrieveWaitListContact = async (
   console.log(`New contact inserted for ${userName}.`);
   return emailCount;
 };
+
+export async function createSurveyResponse(response: SurveyResponse) {
+  const { data, error: supabaseError } = await supabaseAdmin
+    .from('survey_responses')
+    .insert([
+      {
+        id: uuidv4(),
+        response: response.response,
+        user_id: response.user_id
+      }
+    ]);
+
+  if (supabaseError) throw supabaseError;
+  console.log(`New survey response inserted for ${response.user_id}.`);
+  return emailCount;
+}
 
 const createOrRetrieveMealPlan = async (
   mealPlan: MealPlan,

@@ -271,6 +271,31 @@ export interface Database {
           }
         ];
       };
+      survey_responses: {
+        Row: {
+          id: string;
+          user_id: string | null;
+          response: Json | null;
+        };
+        Insert: {
+          id: string;
+          user_id?: string | null;
+          response?: Json | null;
+        };
+        Update: {
+          id: string;
+          user_id?: string | null;
+          response?: Json | null;
+        };
+        Relationships: [
+          {
+            foreignKeyName: 'user_id_fkey';
+            columns: ['user_id'];
+            referencedRelation: 'users';
+            referencedColumns: ['id'];
+          }
+        ];
+      };
     };
     Views: {
       [_ in never]: never;
