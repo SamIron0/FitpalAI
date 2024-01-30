@@ -79,7 +79,6 @@ export default async function RootLayout({ children }: PropsWithChildren) {
             className="min-h-[calc(100dvh-4rem)] bg-black md:min-h[calc(100dvh-5rem)]"
           >
             <ToasterProvider />
-
             <div>
               {false ? (
                 <div className="flex">
