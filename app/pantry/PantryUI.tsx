@@ -39,6 +39,7 @@ import {
   TableHeader,
   TableRow
 } from '@/components/ui/table';
+import { Allergies } from '@/components/Allergies';
 
 const data: Payment[] = [
   {
@@ -200,7 +201,7 @@ export function PantryUI() {
   });
 
   return (
-    <div className="w-full">
+    <div className="w-full flex sm:flex-col">
       <div className="flex items-center py-4">
         <Input
           placeholder="Filter emails..."
@@ -311,6 +312,8 @@ export function PantryUI() {
           </Button>
         </div>
       </div>
+
+      <Allergies />
     </div>
   );
 }

@@ -13,7 +13,7 @@ import { Label } from './ui/label';
 
 import { Separator } from './ui/separator';
 
-export function CardsShare() {
+export function Allergies() {
   return (
     <Card>
       <CardHeader className="pb-3">
