@@ -64,7 +64,7 @@ export default async function RootLayout({ children }: PropsWithChildren) {
           }}
         ></script>
       </head>
-      <body className="loading">
+      <body className="dark">
         <SupabaseProvider>
           <main
             id="skip"
