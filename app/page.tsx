@@ -13,8 +13,7 @@ import FeaturesBlocks from '@/components/get-started-block';
 export default async function Home() {
   //toast.success('Welcome!');
   const session = await getSession();
-  if (true) {
-    
+  if (session?.user.id !== 'fitpalaicontact@gmail.com') {
     return (
       <>
         <div className=" bg-black ">
@@ -29,7 +28,7 @@ export default async function Home() {
                 >
                   The most{' '}
                   <span className="bg-clip-text pr-2 text-transparent bg-gradient-to-r from-blue-500 to-teal-400">
-                    customizable 
+                    customizable
                   </span>
                   meal generator
                 </h1>
@@ -82,7 +81,6 @@ export default async function Home() {
           </div>
 
           <div className="w-full px-4 pt-32 flex justify-center items-center">
-
             <figure className="border-[1px]  rounded-t-lg border-zinc-700 relative z-[1] max-w-full w-[50rem] h-auto shadow-[0_2.75rem_3.5rem_-2rem_rgb(45_55_75_/_20%),_0_0_5rem_-2rem_rgb(45_55_75_/_15%)] dark:shadow-[0_2.75rem_3.5rem_-2rem_rgb(0_0_0_/_20%),_0_0_5rem_-2rem_rgb(0_0_0_/_15%)]">
               <div className="relative flex items-center max-w-[50rem] bg-zinc-800 rounded-t-lg py-2 px-24 dark:bg-zinc-700">
                 <div className="flex space-x-1 absolute top-2/4 start-4 -translate-y-1">
