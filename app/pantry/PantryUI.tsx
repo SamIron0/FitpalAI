@@ -202,7 +202,7 @@ export function PantryUI() {
   });
 
   return (
-    <div className="w-full overflow-x-auto gap-2 flex sm:flex-col">
+    <div className="w-full overflow-x-auto gap-2 flex flex-col sm:flex-row">
       <Card>
         <div className="flex items-center py-4">
           <Input

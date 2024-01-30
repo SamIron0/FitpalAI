@@ -67,15 +67,6 @@
 }
  
 
-@layer base {
-  * {
-    border: 1px solid var(--border);
-  }
-  body {
-    background: var(--background);
-    color: var(--foreground);
-  }
-}
 
 *,
 *:before,
