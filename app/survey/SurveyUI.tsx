@@ -46,7 +46,7 @@ export function SurveyUI({ user }: SurveryProps) {
   }
 
   return (
-    <Card>
+    <Card className="p-6 mt-10">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
           <FormField
