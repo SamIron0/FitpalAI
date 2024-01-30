@@ -27,6 +27,7 @@ interface SurveryProps {
   user?: User;
 }
 export function SurveyUI({ user }: SurveryProps) {
+// if user has filled survey display thank you screeen
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
