@@ -73,6 +73,19 @@
   border: 1px solid hsl(var(--border));
 }
 
+.bg{
+  background: hsl(var(--background));
+}
+
+.text{
+  color: hsl(var(--foreground));
+}
+
+.card{
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+}
+
 html,
 body {
   font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Helvetica Neue',
@@ -84,7 +97,7 @@ body {
   position: relative;
   min-height: 100%;
   margin: 0;
-  }
+}
 
 
 .animated {
