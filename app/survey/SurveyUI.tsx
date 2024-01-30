@@ -17,6 +17,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { User } from '@supabase/supabase-js';
 import Container from '@/components/Container';
+import { Card } from '@/components/ui/card';
 
 const formSchema = z.object({
   username: z.string().min(2, {
@@ -45,7 +46,7 @@ export function SurveyUI({ user }: SurveryProps) {
   }
 
   return (
-    <Container>
+    <Card>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
           <FormField
@@ -109,6 +110,6 @@ export function SurveyUI({ user }: SurveryProps) {
           <Button type="submit">Submit</Button>
         </form>
       </Form>
-    </Container>
+    </Card>
   );
 }
