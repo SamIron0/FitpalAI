@@ -68,7 +68,7 @@ export default async function RootLayout({ children }: PropsWithChildren) {
       <body className="dark">
         <SupabaseProvider>
             <ToasterProvider />
-            <div className={cn('bg-primary text-primary-foreground')}>
+            <div className={cn('bg-background text-primary-foreground')}>
               {session?.user.email === 'fitpalaicontact@gmail.com' ? (
                 <div className="flex">
                   <Sidebar /> {children}
