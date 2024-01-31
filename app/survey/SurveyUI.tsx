@@ -76,14 +76,14 @@ export function SurveyUI({ user }: SurveryProps) {
           }}
         />
       )}
-
+      <h1 className='text-3xl  text-primary'>Delighted to See You at Our Table!</h1>
+      <h2 className="text-md pt-3 pb-8 text-secondary">
+        We're so thrilled you've joined us! Your thoughts and preferences matter
+        a lot to us. Please take a few moments to answer this brief survey. Your
+        feedback will help us create even better meal plans, customized just for
+        you.
+      </h2>
       <Card className="p-6  mt-24 mb-40 px-8">
-        <CardHeader className="pb-3">
-          <CardTitle className="text-xl">Share this document</CardTitle>
-          <CardDescription>
-            Anyone with the link can view this document.
-          </CardDescription>
-        </CardHeader>
         <CardContent>
           {' '}
           <Form {...form}>
@@ -99,7 +99,7 @@ export function SurveyUI({ user }: SurveryProps) {
                         and preparation?
                       </FormLabel>
                       <FormControl>
-                        <Input placeholder="shadcn" {...field} />
+                        <Input {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
