@@ -9,9 +9,9 @@ interface SidebarProps {
 }
 import { TiHeartOutline } from 'react-icons/ti';
 import { IoSaveOutline } from 'react-icons/io5';
-
-const Sidebar = () => {
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+import { useSidebar } from '@/app/providers/SideBarContext';
+const Sidebar = (isOpen: boolean) => {
+  const { isSidebarOpen, setSidebarOpen } = useSidebar();
   function Backdrop({ isOpen }: { isOpen: boolean }) {
     return isOpen ? (
       <div
@@ -26,27 +26,27 @@ const Sidebar = () => {
   }
   return (
     <>
-      {!sidebarOpen ? (
+      {!isSidebarOpen ? (
         <div className="absolute top-2 left-2 z-50">
-          <button className="p-2" onClick={() => setSidebarOpen(!sidebarOpen)}>
+          <button className="p-2" onClick={() => setSidebarOpen(!isSidebarOpen)}>
             <BiMenuAltLeft className="w-8 h-8 text-zinc-400" />
           </button>
         </div>
       ) : (
         <div
           className={`transform ${
-            sidebarOpen ? 'translate-x-0' : '-translate-x-full'
+            isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
           } transition-transform duration-200 ease-in-out absolute inset-y-0 left-0 z-50  h-full bg-black overflow-y-auto`}
         >
-          {sidebarOpen && (
+          {isSidebarOpen && (
             <div>
               <button
                 className="p-2 pt-2 flex flex-col items-center w-full"
-                onClick={() => setSidebarOpen(!sidebarOpen)}
+                onClick={() => setSidebarOpen(!isSidebarOpen)}
               >
                 <BiMenuAltLeft className="w-8 h-8 text-zinc-400" />
               </button>
-              <Backdrop isOpen={sidebarOpen} />
+              <Backdrop isOpen={isSidebarOpen} />
 
               <aside className="flex flex-col items-center w-16 h-screen py-8 overflow-y-auto border-r rtl:border-l rtl:border-r-0 bg-black border-black">
                 <nav className="flex flex-col flex-1 space-y-6">
