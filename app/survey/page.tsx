@@ -1,10 +1,8 @@
-import { useRouter } from 'next/router';
 import { getSession } from '../supabase-server';
 import { SurveyUI } from './SurveyUI';
 
 export default async function Survey() {
   const session = await getSession();
-  const router = useRouter();
 
   if (!session) {
     window.location.href = '/signin?next=' + window.location.pathname;
