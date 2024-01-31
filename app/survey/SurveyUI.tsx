@@ -25,6 +25,7 @@ import {
   CardTitle
 } from '@/components/ui/card';
 import Sidebar from '@/components/ui/Sidebar';
+import toast from 'react-hot-toast';
 
 interface SurveryProps {
   user?: User;
@@ -63,21 +64,29 @@ export function SurveyUI({ user }: SurveryProps) {
   });
 
   // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: z.infer<typeof formSchema>) {
     // console.log(values);
-    const url = '/api/save-survey';
-    const body = { values };
-    const options = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(body)
-    };
+    try {
+      const url = '/api/save-survey';
+      const body = { values };
+      const options = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body)
+      };
 
-    const response = fetch(url, options);
-    const data = response;
-    console.log(data);
+      const response = fetch(url, options);
+      const data = await response;
+      //console.log(data);
+      if (!data.ok) {
+        toast.error('An error occurred while saving survey.');
+      }
+      toast.success('Thank you for your feedback!');
+    } catch (error) {
+      toast.error('An error occurred while saving survey.');
+    }
   }
 
   return (
@@ -111,7 +120,19 @@ export function SurveyUI({ user }: SurveryProps) {
                 <FormField
                   key={idx}
                   control={form.control}
-                  name={ idx === 0 ? `survey0` : idx === 1 ? `survey1` :  idx === 2 ? `survey2` : idx === 3 ? `survey3` : idx === 4 ? `survey4` : `survey5` }
+                  name={
+                    idx === 0
+                      ? `survey0`
+                      : idx === 1
+                      ? `survey1`
+                      : idx === 2
+                      ? `survey2`
+                      : idx === 3
+                      ? `survey3`
+                      : idx === 4
+                      ? `survey4`
+                      : `survey5`
+                  }
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>{question}</FormLabel>
