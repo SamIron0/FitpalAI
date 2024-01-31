@@ -26,14 +26,14 @@ export default function AuthUI() {
     try {
       const { error } = await supabase.auth.signInWithPassword({
         email: data.email,
-        password: data.password,
+        password: data.password
       });
       if (error) {
         toast.error(error.message);
       } else {
         toast.success('Signed in');
-
-        router.refresh();
+        window.history.back();
+        // router.refresh();
       }
     } catch (error) {
       toast.error('An error occurred during login.');
@@ -126,7 +126,6 @@ export default function AuthUI() {
                 Sign up
               </Link>
             </div>
-         
           </div>
         </div>
       </div>
