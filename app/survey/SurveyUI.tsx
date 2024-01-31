@@ -83,36 +83,59 @@ export function SurveyUI({ user }: SurveryProps) {
                 render={({ field }) => (
                   <>
                     <FormItem>
-                      <FormLabel>Username</FormLabel>
+                      <FormLabel>
+                        What has been your biggest challenge in meal planning
+                        and preparation?
+                      </FormLabel>
                       <FormControl>
                         <Input placeholder="shadcn" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
                     <FormItem>
-                      <FormLabel>Username</FormLabel>
+                      <FormLabel>
+                        What type of meals interest you most?
+                      </FormLabel>
                       <FormControl>
                         <Input placeholder="shadcn" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
                     <FormItem>
-                      <FormLabel>Username</FormLabel>
+                      <FormLabel>
+                        {' '}
+                        Would you prefer tracking your pantry ingredients?
+                      </FormLabel>
                       <FormControl>
                         <Input placeholder="shadcn" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
-                    
+
                     <FormItem>
-                      <FormLabel>Username</FormLabel>
+                      <FormLabel>
+                        Have you used meal planning apps before?{' '}
+                      </FormLabel>
                       <FormControl>
                         <Input placeholder="shadcn" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
                     <FormItem>
-                      <FormLabel>Username</FormLabel>
+                      <FormLabel>
+                        What drove you to sign up for our service?
+                      </FormLabel>
+                      <FormControl>
+                        <Input placeholder="shadcn" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                    <FormItem>
+                      <FormLabel>
+                        {' '}
+                        What features are important to you in a meal planning
+                        app?
+                      </FormLabel>
                       <FormControl>
                         <Input placeholder="shadcn" {...field} />
                       </FormControl>
