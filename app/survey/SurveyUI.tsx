@@ -108,7 +108,7 @@ export function SurveyUI({ user }: SurveryProps) {
                         What type of meals interest you most?
                       </FormLabel>
                       <FormControl>
-                        <Input placeholder="shadcn" {...field} />
+                        <Input/>
                       </FormControl>
                       <FormMessage />
                     </FormItem>
