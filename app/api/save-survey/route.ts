@@ -1,8 +1,3 @@
-import { cookies, headers } from "next/headers";
-import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
-import { createOrRetrieveWaitListContact } from "@/utils/supabase-admin";
-import { getURL } from "@/utils/helpers";
-import { Database } from "@/types_db";
 
 export async function POST(req: Request) {
   if (req.method === "POST") {
