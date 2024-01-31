@@ -52,7 +52,7 @@ export function SurveyUI({ user }: SurveryProps) {
   }
 
   return (<div className='flex flex-col  px-6'>
-    <Card className="p-6  mt-24 mb-40 px-12">
+    <Card className="p-6  mt-24 mb-40 px-8">
       <CardHeader className="pb-3">
         <CardTitle>Share this document</CardTitle>
         <CardDescription>

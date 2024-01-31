@@ -12,7 +12,18 @@ import { IoSaveOutline } from 'react-icons/io5';
 
 const Sidebar = () => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
-
+  function Backdrop({ isOpen }: { isOpen: boolean }) {
+    return isOpen ? (
+      <div
+        style={{
+          position: 'fixed',
+          width: '100%',
+          height: '100%',
+          backgroundColor: 'rgba(0,0,0,0.5)'
+        }}
+      />
+    ) : null;
+  }
   return (
     <>
       {!sidebarOpen ? (
@@ -28,14 +39,15 @@ const Sidebar = () => {
           } transition-transform duration-200 ease-in-out absolute inset-y-0 left-0 z-50  h-full bg-black overflow-y-auto`}
         >
           {sidebarOpen && (
-            // add button here as well
             <div>
               <button
-                className="p-2  flex flex-col items-center w-full"
+                className="p-2 pt-2 flex flex-col items-center w-full"
                 onClick={() => setSidebarOpen(!sidebarOpen)}
               >
                 <BiMenuAltLeft className="w-8 h-8 text-zinc-400" />
               </button>
+              <Backdrop isOpen={isOpen} />
+
               <aside className="flex flex-col items-center w-16 h-screen py-8 overflow-y-auto border-r rtl:border-l rtl:border-r-0 bg-black border-black">
                 <nav className="flex flex-col flex-1 space-y-6">
                   <a href="/">
