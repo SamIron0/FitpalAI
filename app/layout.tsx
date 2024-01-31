@@ -71,9 +71,9 @@ export default async function RootLayout({ children }: PropsWithChildren) {
           <ToasterProvider />
           <SidebarProvider>
             <div className={cn('bg-background text-foreground')}>
-              {session?.user.email === 'fitpalaicontact@gmail.com' ? (
+              {session?.user.email ? (
                 <div className="flex">
-                  <Sidebar /> {children}
+                  <Sidebar session={session} /> {children}
                 </div>
               ) : (
                 <div>

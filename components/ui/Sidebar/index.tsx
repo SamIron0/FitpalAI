@@ -7,14 +7,23 @@ import { BiMenuAltLeft } from 'react-icons/bi';
 import { TiHeartOutline } from 'react-icons/ti';
 import { IoSaveOutline } from 'react-icons/io5';
 import { useSidebar } from '@/app/providers/SideBarContext';
-const Sidebar = () => {
+import { Session } from '@supabase/supabase-js';
+
+interface SidebarProps {
+  session: Session;
+}
+const Sidebar = ({ session }: SidebarProps) => {
   const { isSidebarOpen, setSidebarOpen } = useSidebar();
- 
+  const disabled =
+    session.user.email === 'fitpalaicontact@gmail.com' ? false : true;
   return (
     <>
       {!isSidebarOpen ? (
         <div className="absolute top-2 left-2 z-50">
-          <button className="p-2" onClick={() => setSidebarOpen(!isSidebarOpen)}>
+          <button
+            className="p-2"
+            onClick={() => setSidebarOpen(!isSidebarOpen)}
+          >
             <BiMenuAltLeft className="w-8 h-8 text-zinc-400" />
           </button>
         </div>
@@ -64,7 +73,7 @@ const Sidebar = () => {
                   </a>
 
                   <a
-                    href="/plans"
+                    href={disabled ? '#' : '/plans'}
                     className="p-1.5 focus:outline-nones flex justify-center  transition-colors duration-200 rounded-lg text-gray-200 hover:bg-zinc-800 "
                   >
                     <IoSaveOutline
@@ -74,7 +83,7 @@ const Sidebar = () => {
                   </a>
 
                   <a
-                    href="/pantry"
+                    href={disabled ? '#' : '/pantry'}
                     className="p-1.5 flex justify-center focus:outline-nones transition-colors duration-200 rounded-lg text-gray-200 hover:bg-zinc-800 "
                   >
                     <TbFridge
@@ -84,7 +93,7 @@ const Sidebar = () => {
                   </a>
 
                   <a
-                    href="/preferences"
+                    href={disabled ? '#' : '/preferences'}
                     className="p-1.5 text-gray-200 flex justify-center focus:outline-nones transition-colors duration-200 rounded-lg  hover:bg-zinc-800 "
                   >
                     <TiHeartOutline
