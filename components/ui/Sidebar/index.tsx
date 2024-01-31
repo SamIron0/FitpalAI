@@ -10,7 +10,7 @@ interface SidebarProps {
 import { TiHeartOutline } from 'react-icons/ti';
 import { IoSaveOutline } from 'react-icons/io5';
 import { useSidebar } from '@/app/providers/SideBarContext';
-const Sidebar = (isOpen: boolean) => {
+const Sidebar = () => {
   const { isSidebarOpen, setSidebarOpen } = useSidebar();
   function Backdrop({ isOpen }: { isOpen: boolean }) {
     return isOpen ? (

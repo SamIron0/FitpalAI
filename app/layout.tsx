@@ -85,7 +85,7 @@ const {isSidebarOpen, setSidebarOpen} = useSidebar();
             )}
             {session?.user.email === 'fitpalaicontact@gmail.com' ? (
               <div className="flex">
-                <Sidebar isOpen={isSidebarOpen} />{' '}
+                <Sidebar />{' '}
                 {children}
               </div>
             ) : (
