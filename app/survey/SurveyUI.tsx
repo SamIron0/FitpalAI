@@ -90,7 +90,7 @@ export function SurveyUI({ user }: SurveryProps) {
   }
 
   return (
-    <div className="flex flex-col  px-6">
+    <div className="flex flex-col  px-16">
       {isSidebarOpen && (
         <div
           style={{
