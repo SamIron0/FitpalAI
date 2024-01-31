@@ -10,8 +10,6 @@ import Head from 'next/head';
 import { getSession } from './supabase-server';
 import ToasterProvider from './providers/ToasterProvider';
 import { cn } from '@/lib/utils';
-import { useSidebar } from './providers/SideBarContext';
-
 const meta = {
   title: 'Fitpal AI',
   description: 'Meal plans and calorie tracking.',
@@ -48,7 +46,7 @@ export const metadata = {
 };
 export default async function RootLayout({ children }: PropsWithChildren) {
   const session = await getSession();
-const {isSidebarOpen, setSidebarOpen} = useSidebar();
+
   return (
     <>
       <head>
@@ -69,32 +67,19 @@ const {isSidebarOpen, setSidebarOpen} = useSidebar();
       </head>
       <body className="dark">
         <SupabaseProvider>
-          <div className={cn('bg-background text-foreground')}>
-            {isSidebarOpen && (
-              <div
-                style={{
-                  position: 'fixed',
-                  top: 0,
-                  left: 0,
-                  width: '100%',
-                  height: '100%',
-                  backgroundColor: 'rgba(0, 0, 0, 0.7)',
-                  zIndex: 100
-                }}
-              ></div>
-            )}
-            {session?.user.email === 'fitpalaicontact@gmail.com' ? (
-              <div className="flex">
-                <Sidebar />{' '}
-                {children}
-              </div>
-            ) : (
-              <div>
-                <Navbar />
-                {children}
-              </div>
-            )}
-          </div>
+            <ToasterProvider />
+            <div className={cn('bg-background text-foreground')}>
+              {session?.user.email === 'fitpalaicontact@gmail.com' ? (
+                <div className="flex">
+                  <Sidebar /> {children }
+                </div>
+              ) : (
+                <div>
+                  <Navbar />
+                  {children}
+                </div>
+              )}
+            </div>
           <Analytics />
         </SupabaseProvider>
       </body>
