@@ -16,7 +16,7 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { User } from '@supabase/supabase-js';
-import Container from '@/components/Container';
+import { useSidebar } from '../providers/SideBarContext';
 import {
   Card,
   CardContent,

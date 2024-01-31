@@ -1,4 +1,3 @@
-'use client';
 import Link from 'next/link';
 import mealIcon from '../meal-icon.png';
 import Navbar from '@/components/ui/Navbar';
@@ -11,12 +10,10 @@ import Container from '@/components/Container';
 import { toast } from 'react-hot-toast';
 import Features from '@/components/Features';
 import FeaturesBlocks from '@/components/get-started-block';
-
 export default async function Home() {
   //toast.success('Welcome!');
-  const { supabase } = useSupabase();
-  const session = await supabase.auth.getSession();
-  if (session.data.session?.user.email !== 'fitpalaicontact@gmail.com') {
+  const session = await getSession();
+  if (session?.user.email !== 'fitpalaicontact@gmail.com') {
     return (
       <>
         <div className=" ">
