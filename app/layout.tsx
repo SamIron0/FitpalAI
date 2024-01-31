@@ -10,6 +10,7 @@ import Head from 'next/head';
 import { getSession } from './supabase-server';
 import ToasterProvider from './providers/ToasterProvider';
 import { cn } from '@/lib/utils';
+import { SidebarProvider } from './providers/SideBarContext';
 const meta = {
   title: 'Fitpal AI',
   description: 'Meal plans and calorie tracking.',
@@ -67,11 +68,12 @@ export default async function RootLayout({ children }: PropsWithChildren) {
       </head>
       <body className="dark">
         <SupabaseProvider>
-            <ToasterProvider />
+          <ToasterProvider />
+          <SidebarProvider>
             <div className={cn('bg-background text-foreground')}>
               {session?.user.email === 'fitpalaicontact@gmail.com' ? (
                 <div className="flex">
-                  <Sidebar /> {children }
+                  <Sidebar /> {children}
                 </div>
               ) : (
                 <div>
@@ -80,7 +82,8 @@ export default async function RootLayout({ children }: PropsWithChildren) {
                 </div>
               )}
             </div>
-          <Analytics />
+            <Analytics />
+          </SidebarProvider>
         </SupabaseProvider>
       </body>
     </>
