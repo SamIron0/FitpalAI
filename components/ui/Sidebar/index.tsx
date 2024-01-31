@@ -44,7 +44,7 @@ const Sidebar = ({ session }: SidebarProps) => {
 
               <aside className="flex flex-col items-center w-16 h-screen py-8 overflow-y-auto border-r rtl:border-l rtl:border-r-0 bg-black border-black">
                 <nav className="flex flex-col flex-1 space-y-6">
-                  <a href="/">
+                  <a href={disabled ? '#' : '/plans'}>
                     <img
                       className="w-[37px] h-[37px]"
                       src="/logo-2.svg"
@@ -53,7 +53,7 @@ const Sidebar = ({ session }: SidebarProps) => {
                   </a>
 
                   <a
-                    href="/dashboard"
+                    href={disabled ? '#' : '/plans'}
                     className="p-1.5 text-gray-200 flex justify-center focus:outline-nones transition-colors duration-200 rounded-lg hover:bg-zinc-800 "
                   >
                     <svg
