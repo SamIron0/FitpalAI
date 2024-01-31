@@ -46,7 +46,7 @@ const Sidebar = () => {
               >
                 <BiMenuAltLeft className="w-8 h-8 text-zinc-400" />
               </button>
-              <Backdrop isOpen={isOpen} />
+              <Backdrop isOpen={sidebarOpen} />
 
               <aside className="flex flex-col items-center w-16 h-screen py-8 overflow-y-auto border-r rtl:border-l rtl:border-r-0 bg-black border-black">
                 <nav className="flex flex-col flex-1 space-y-6">
