@@ -12,18 +12,7 @@ import { IoSaveOutline } from 'react-icons/io5';
 import { useSidebar } from '@/app/providers/SideBarContext';
 const Sidebar = () => {
   const { isSidebarOpen, setSidebarOpen } = useSidebar();
-  function Backdrop({ isOpen }: { isOpen: boolean }) {
-    return isOpen ? (
-      <div
-        style={{
-          position: 'fixed',
-          width: '100%',
-          height: '100%',
-          backgroundColor: 'rgba(0,0,0,0.5)'
-        }}
-      />
-    ) : null;
-  }
+ 
   return (
     <>
       {!isSidebarOpen ? (
@@ -46,7 +35,6 @@ const Sidebar = () => {
               >
                 <BiMenuAltLeft className="w-8 h-8 text-zinc-400" />
               </button>
-              <Backdrop isOpen={isSidebarOpen} />
 
               <aside className="flex flex-col items-center w-16 h-screen py-8 overflow-y-auto border-r rtl:border-l rtl:border-r-0 bg-black border-black">
                 <nav className="flex flex-col flex-1 space-y-6">
