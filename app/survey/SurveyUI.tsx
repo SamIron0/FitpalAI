@@ -51,8 +51,8 @@ export function SurveyUI({ user }: SurveryProps) {
     console.log(values);
   }
 
-  return (
-    <Card className="p-6 mt-32 mb-52 px-12">
+  return (<div className='flex flex-col  px-6'>
+    <Card className="p-6  mt-24 mb-40 px-12">
       <CardHeader className="pb-3">
         <CardTitle>Share this document</CardTitle>
         <CardDescription>
@@ -110,6 +110,6 @@ export function SurveyUI({ user }: SurveryProps) {
           </form>
         </Form>{' '}
       </CardContent>
-    </Card>
+    </Card></div>
   );
 }
