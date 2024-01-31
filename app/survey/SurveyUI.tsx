@@ -26,7 +26,7 @@ import {
 } from '@/components/ui/card';
 import Sidebar from '@/components/ui/Sidebar';
 import toast from 'react-hot-toast';
-
+import { useRouter } from 'next/navigation';
 interface SurveryProps {
   user?: User;
 }
@@ -50,7 +50,7 @@ export function SurveyUI({ user }: SurveryProps) {
     survey5: z.string().min(2)
   });
   const { isSidebarOpen } = useSidebar();
-
+  const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -66,6 +66,7 @@ export function SurveyUI({ user }: SurveryProps) {
   // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof formSchema>) {
     // console.log(values);
+    const toastId = toast.loading('Saving...');
     try {
       const url = '/api/save-survey';
       const body = { values };
@@ -83,7 +84,9 @@ export function SurveyUI({ user }: SurveryProps) {
       if (!data.ok) {
         toast.error('An error occurred while saving survey.');
       }
+      toast.dismiss(toastId);
       toast.success('Thank you for your feedback!');
+      router.refresh();
     } catch (error) {
       toast.error('An error occurred while saving survey.');
     }
