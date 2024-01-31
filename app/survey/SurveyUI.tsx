@@ -26,23 +26,39 @@ import {
 } from '@/components/ui/card';
 import Sidebar from '@/components/ui/Sidebar';
 
-const formSchema = z.object({
-  username: z.string().min(2, {
-    message: 'Username must be at least 2 characters.'
-  })
-});
-
 interface SurveryProps {
   user?: User;
 }
 export function SurveyUI({ user }: SurveryProps) {
   // if user has filled survey display thank you screeen
 
+  const surveyQuestions = [
+    'Biggest challenge in meal planning and preparation?',
+    'What type of meals interest you most?',
+    'Would you prefer tracking your pantry ingredients?',
+    'Have you used meal planning apps before?',
+    'What drove you to sign up for our service?',
+    'What features are important to you in a meal planning app?'
+  ];
+  const formSchema = z.object({
+    survey0: z.string().min(2),
+    survey1: z.string().min(2),
+    survey2: z.string().min(2),
+    survey3: z.string().min(2),
+    survey4: z.string().min(2),
+    survey5: z.string().min(2)
+  });
   const { isSidebarOpen } = useSidebar();
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      username: ''
+      survey0: '',
+      survey1: '',
+      survey2: '',
+      survey3: '',
+      survey4: '',
+      survey5: ''
     }
   });
 
@@ -76,7 +92,9 @@ export function SurveyUI({ user }: SurveryProps) {
           }}
         />
       )}
-      <h1 className='text-3xl pt-20 text-primary'>Delighted to See You at Our Table! 🍲</h1>
+      <h1 className="text-3xl pt-20 text-primary">
+        Delighted to See You at Our Table! 🍲
+      </h1>
       <h2 className="text-md pt-3 text-muted-foreground">
         We're so thrilled you've joined us! Your thoughts and preferences matter
         a lot to us. Please take a few moments to answer this brief survey. Your
@@ -88,76 +106,26 @@ export function SurveyUI({ user }: SurveryProps) {
           {' '}
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-              <FormField
-                control={form.control}
-                name="username"
-                render={({ field }) => (
-                  <>
+              {surveyQuestions.map((question, idx) => (
+                //Unique field for each survey question
+                <FormField
+                  key={idx}
+                  control={form.control}
+                  name={ `survey${idx as number}` }
+                  render={({ field }) => (
                     <FormItem>
-                      <FormLabel>
-                        What has been your biggest challenge in meal planning
-                        and preparation?
-                      </FormLabel>
+                      <FormLabel>{question}</FormLabel>
                       <FormControl>
                         <Input {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
-                    <FormItem>
-                      <FormLabel>
-                        What type of meals interest you most?
-                      </FormLabel>
-                      <FormControl>
-                        <Input/>
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                    <FormItem>
-                      <FormLabel>
-                        {' '}
-                        Would you prefer tracking your pantry ingredients?
-                      </FormLabel>
-                      <FormControl>
-                        <Input placeholder="shadcn" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-
-                    <FormItem>
-                      <FormLabel>
-                        Have you used meal planning apps before?{' '}
-                      </FormLabel>
-                      <FormControl>
-                        <Input placeholder="shadcn" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                    <FormItem>
-                      <FormLabel>
-                        What drove you to sign up for our service?
-                      </FormLabel>
-                      <FormControl>
-                        <Input placeholder="shadcn" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                    <FormItem>
-                      <FormLabel>
-                        {' '}
-                        What features are important to you in a meal planning
-                        app?
-                      </FormLabel>
-                      <FormControl>
-                        <Input placeholder="shadcn" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  </>
-                )}
-              />
+                  )}
+                />
+              ))}
               <Button type="submit">Submit</Button>
             </form>
-          </Form>{' '}
+          </Form>
         </CardContent>
       </Card>
     </div>
