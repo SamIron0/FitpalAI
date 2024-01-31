@@ -113,7 +113,7 @@ export function SurveyUI({ user }: SurveryProps) {
         feedback will help us create even better meal plans, customized just for
         you.
       </h2>
-      <Card className="p-6 mt-16 mb-40 px-5">
+      <Card className="pt-10 sm:px-3 mt-16 mb-40 ">
         <CardContent>
           {' '}
           <Form {...form}>
