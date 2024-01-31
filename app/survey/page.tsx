@@ -1,4 +1,4 @@
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/router';
 import { getSession } from '../supabase-server';
 import { SurveyUI } from './SurveyUI';
 
