@@ -19,7 +19,7 @@ const Sidebar = ({ session }: SidebarProps) => {
   return (
     <>
       {!isSidebarOpen ? (
-        <div className="absolute top-2 left-2 z-50">
+        <div className="absolute left-2 z-50">
           <button
             className="p-2"
             onClick={() => setSidebarOpen(!isSidebarOpen)}
