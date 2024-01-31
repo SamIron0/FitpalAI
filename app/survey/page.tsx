@@ -4,10 +4,10 @@ import { SurveyUI } from './SurveyUI';
 
 export default async function Survey() {
   const session = await getSession();
-  const router  = useRouter();
+  const router = useRouter();
 
   if (!session) {
-    router.push(`/signin`)
+    window.location.href = '/signin?next=' + window.location.pathname;
   }
   return (
     <div className="flex items-center w-full p-4 justify-center">
