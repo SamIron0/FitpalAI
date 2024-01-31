@@ -15,6 +15,8 @@ export default async function Survey() {
         </h1>
       </div>;
     }
+  } else {
+    redirect('/signin');
   }
   return (
     <div className="flex items-center w-full justify-center">
