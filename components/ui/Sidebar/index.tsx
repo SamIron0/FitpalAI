@@ -3,10 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { TbFridge } from 'react-icons/tb';
 
 import { BiMenuAltLeft } from 'react-icons/bi';
-interface SidebarProps {
-  sidebarOpen?: boolean;
-  setSidebarOpen?: (arg: boolean) => void;
-}
+
 import { TiHeartOutline } from 'react-icons/ti';
 import { IoSaveOutline } from 'react-icons/io5';
 import { useSidebar } from '@/app/providers/SideBarContext';
