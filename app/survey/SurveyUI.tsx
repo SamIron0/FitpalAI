@@ -111,7 +111,7 @@ export function SurveyUI({ user }: SurveryProps) {
                 <FormField
                   key={idx}
                   control={form.control}
-                  name={ `survey${idx as number}` }
+                  name={ idx === 0 ? `survey0` : idx === 1 ? `survey1` :  idx === 2 ? `survey2` : idx === 3 ? `survey3` : idx === 4 ? `survey4` : `survey5` }
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>{question}</FormLabel>
