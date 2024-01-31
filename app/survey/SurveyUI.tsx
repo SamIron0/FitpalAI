@@ -76,14 +76,14 @@ export function SurveyUI({ user }: SurveryProps) {
           }}
         />
       )}
-      <h1 className='text-3xl pt-12 text-primary'>Delighted to See You at Our Table! 🍲</h1>
-      <h2 className="text-md pt-3 pb-8 text-primary-foreground">
+      <h1 className='text-3xl pt-18 text-primary'>Delighted to See You at Our Table! 🍲</h1>
+      <h2 className="text-md pt-3 pb-8 text-muted-foreground">
         We're so thrilled you've joined us! Your thoughts and preferences matter
         a lot to us. Please take a few moments to answer this brief survey. Your
         feedback will help us create even better meal plans, customized just for
         you.
       </h2>
-      <Card className="p-6  mt-24 mb-40 px-8">
+      <Card className="p-6 mt-16 mb-40 px-5">
         <CardContent>
           {' '}
           <Form {...form}>
