@@ -31,23 +31,10 @@ const Sidebar = () => {
             // add button here as well
             <div>
               <button
-                className="p-2 flex flex-col items-center w-full"
+                className="p-2  flex flex-col items-center w-full"
                 onClick={() => setSidebarOpen(!sidebarOpen)}
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  className="w-8 h-8 text-white"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                </svg>
+                <BiMenuAltLeft className="w-8 h-8 text-zinc-400" />
               </button>
               <aside className="flex flex-col items-center w-16 h-screen py-8 overflow-y-auto border-r rtl:border-l rtl:border-r-0 bg-black border-black">
                 <nav className="flex flex-col flex-1 space-y-6">
