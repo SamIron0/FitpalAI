@@ -65,6 +65,13 @@ export async function createSurveyResponse(response: SurveyResponse) {
   return emailCount;
 }
 
+const isSurveryComplete = async (id: string) => {
+  const { data, error } = await supabaseAdmin
+    .from('survey_responses')
+    .select()
+    .eq('user_id', id);
+  return data?.length && data?.length > 0;
+};
 const createOrRetrieveMealPlan = async (
   mealPlan: MealPlan,
   owner_id: string,
@@ -85,4 +92,4 @@ const createOrRetrieveMealPlan = async (
   return mealPlan.id;
 };
 
-export { createOrRetrieveMealPlan, createOrRetrieveWaitListContact, logClick };
+export { createOrRetrieveMealPlan, isSurveryComplete, createOrRetrieveWaitListContact, logClick };

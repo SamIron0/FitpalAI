@@ -34,10 +34,10 @@ export function SurveyUI({ user }: SurveryProps) {
   // if user has filled survey display thank you screeen
 
   const surveyQuestions = [
-    'Biggest challenge in meal planning and preparation?',
+    'What is your biggest challenge in meal planning and preparation?',
     'What type of meals interest you most?',
-    'Would you prefer tracking your pantry ingredients?',
-    'Have you used meal planning apps before?',
+    'Would you be interested in tracking your pantry ingredients?',
+    'Have you used meal planning apps before? if so, what apps have you used?',
     'What drove you to sign up for our service?',
     'What features are important to you in a meal planning app?'
   ];
