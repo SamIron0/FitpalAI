@@ -55,8 +55,7 @@ function BoardUI() {
     setIsLoading(true);
     const userDetails = { id: '1' };
     try {
-      const url =
-        'https://93vi8g23wa.execute-api.us-east-1.amazonaws.com/default/get-meal';
+      const url = 'https://3x077l0rol.execute-api.us-east-1.amazonaws.com/main';
       const body = { userDetails };
       const options = {
         method: 'POST',
@@ -70,7 +69,7 @@ function BoardUI() {
 
       const data = await response.json();
       // handle data
-      console.log("data",data);
+      console.log('data', data);
       const mealplan: MealPlan = data.mealplan;
     } catch (error) {
       console.log(error);
