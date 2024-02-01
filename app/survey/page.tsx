@@ -10,7 +10,7 @@ export default async function Survey() {
     const complete = await isSurveyComplete(session.user.id);
     if (complete) {
       return(
-      <div className="flex items-center w-full p-18 justify-center">
+      <div className="flex items-center w-full pt-20 justify-center">
         <h1 className="text-4xl font-bold text-center">
           Thank you for taking the survey!
         </h1>
