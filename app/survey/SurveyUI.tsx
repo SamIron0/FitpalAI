@@ -38,7 +38,7 @@ export function SurveyUI({ user }: SurveryProps) {
     'What type of meals interest you most?',
     'Would you be interested in tracking your pantry ingredients?',
     'Have you used meal planning apps before? if so, what apps have you used?',
-    'What drove you to sign up for our service?',
+    'How did you hear about us',
     'What features are important to you in a meal planning app?'
   ];
   const formSchema = z.object({
