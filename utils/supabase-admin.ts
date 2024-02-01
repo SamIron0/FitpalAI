@@ -71,8 +71,8 @@ const isSurveyComplete = async (id: string) => {
     .select()
     .eq('user_id', id);
 
-  //console.log('isSurveyComplete?  ', data, error);
-  return data
+  console.log('isSurveyComplete?  ', data, data?.length);
+  return data && data?.length > 0;
 };
 const createOrRetrieveMealPlan = async (
   mealPlan: MealPlan,
