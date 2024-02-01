@@ -53,13 +53,25 @@ function BoardUI() {
   }
   const fetchData = async () => {
     setIsLoading(true);
+    const userDetails = { id: '1' };
     try {
-      const response = await fetch(
-        'https://93vi8g23wa.execute-api.us-east-1.amazonaws.com/default/get-meal'
-      );
+      const url =
+        'https://93vi8g23wa.execute-api.us-east-1.amazonaws.com/default/get-meal';
+      const body = { userDetails };
+      const options = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body)
+      };
+
+      const response = await fetch(url, options);
+
       const data = await response.json();
       // handle data
       console.log(data);
+      const mealplan: MealPlan = data.mealplan;
     } catch (error) {
       console.log(error);
     } finally {
