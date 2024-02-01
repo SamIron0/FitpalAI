@@ -70,6 +70,8 @@ const isSurveyComplete = async (id: string) => {
     .from('survey_responses')
     .select()
     .eq('user_id', id);
+
+  console.log('isSurveyComplete?  ', data, error);
   return data?.length && data?.length > 0;
 };
 const createOrRetrieveMealPlan = async (
@@ -92,4 +94,9 @@ const createOrRetrieveMealPlan = async (
   return mealPlan.id;
 };
 
-export { createOrRetrieveMealPlan, isSurveyComplete, createOrRetrieveWaitListContact, logClick };
+export {
+  createOrRetrieveMealPlan,
+  isSurveyComplete,
+  createOrRetrieveWaitListContact,
+  logClick
+};

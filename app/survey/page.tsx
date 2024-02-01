@@ -13,7 +13,7 @@ export default async function Survey() {
         <h1 className="text-4xl font-bold text-center">
           Thank you for taking the survey!
         </h1>
-      </div>;
+      </div>
     }
   } else {
     redirect('/signin');
