@@ -13,7 +13,7 @@ import FeaturesBlocks from '@/components/get-started-block';
 export default async function Home() {
   //toast.success('Welcome!');
   const session = await getSession();
-  if (session?.user.email !== 'fitpalaicontact@gmail.com') {
+  if (!session?.user.email) {
     return (
       <>
         <div className=" ">
@@ -109,6 +109,6 @@ export default async function Home() {
       </>
     );
   } else {
-    redirect('/dashboard');
+    redirect('/survey');
   }
 }

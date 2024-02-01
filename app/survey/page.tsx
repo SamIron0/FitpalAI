@@ -11,7 +11,7 @@ export default async function Survey() {
     const complete = await isSurveyComplete(session.user.id);
     if (complete) {
       return (
-        <div className="flex items-center w-full pt-20 justify-center">
+        <div className="flex items-center w-full pt-28 justify-center">
           <Card>
             <CardHeader>
               <h1 className="text-4xl font-bold text-center">
