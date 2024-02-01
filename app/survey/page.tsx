@@ -9,11 +9,13 @@ export default async function Survey() {
   if (session?.user) {
     const complete = await isSurveyComplete(session.user.id);
     if (complete) {
+      return(
       <div className="flex items-center w-full p-18 justify-center">
         <h1 className="text-4xl font-bold text-center">
           Thank you for taking the survey!
         </h1>
       </div>
+      )
     }
   } else {
     redirect('/signin');
