@@ -86,7 +86,7 @@ export function SurveyUI({ user }: SurveryProps) {
       }
       toast.dismiss(toastId);
       toast.success('Thank you for your feedback!');
-      router.refresh();
+      router.push('/survey');
     } catch (error) {
       toast.error('An error occurred while saving survey.');
     }
