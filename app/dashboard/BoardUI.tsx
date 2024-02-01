@@ -51,32 +51,19 @@ function BoardUI() {
     }
     return ghostCards;
   }
-
   const fetchData = async () => {
     setIsLoading(true);
     try {
       const response = await fetch(
-        'https://1ni3q9uo0h.execute-api.us-east-1.amazonaws.com/final',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            input: input
-          })
-        }
+        'https://93vi8g23wa.execute-api.us-east-1.amazonaws.com/default/get-meal'
       );
-      const result = await response.json();
-      if (response.ok) {
-        const responseBody = JSON.parse(result.body);
-        setMealPlan(responseBody);
-      } else {
-        console.log(result);
-      }
-      setIsLoading(false);
+      const data = await response.json();
+      // handle data
+      console.log(data);
     } catch (error) {
       console.log(error);
+    } finally {
+      setIsLoading(false);
     }
   };
   function emptyState() {
