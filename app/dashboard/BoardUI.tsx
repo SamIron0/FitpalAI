@@ -72,7 +72,7 @@ function BoardUI() {
       const data = await response.json();
       // handle data
       console.log('data', data);
-      const mealplan: MealPlan = data.mealplan;
+      //const mealplan: MealPlan = data.mealplan;
     } catch (error) {
       console.log(error);
     } finally {
