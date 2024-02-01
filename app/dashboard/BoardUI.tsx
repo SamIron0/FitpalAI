@@ -55,7 +55,7 @@ function BoardUI() {
     setIsLoading(true);
     const userDetails = { id: '1' };
     try {
-      const url = 'https://3x077l0rol.execute-api.us-east-1.amazonaws.com/main';
+      const url = 'https://3x077l0rol.execute-api.us-east-1.amazonaws.com/main/';
       const body = { userDetails };
       const options = {
         method: 'POST',
