@@ -15,7 +15,7 @@ export default async function Survey() {
           <Card>
             <CardHeader>
               <h1 className="text-4xl font-bold text-center">
-                Thank you for taking the survey!
+                Thank you for taking the survey! ⭐
               </h1>
             </CardHeader>
             <CardContent className='text-muted-foreground'>
