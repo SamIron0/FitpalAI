@@ -17,6 +17,7 @@ import {
   CardTitle
 } from '@/components/ui/card';
 import { CardStackIcon } from '@radix-ui/react-icons';
+import { Skeleton } from '@/components/ui/skeleton';
 
 function BoardUI() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -54,8 +55,8 @@ function BoardUI() {
   };
   function renderGhostCards() {
     const ghostCards = [];
-    for (let i = 0; i < 10; i++) {
-      ghostCards.push(<GhostCard />);
+    for (let i = 0; i < 4; i++) {
+      ghostCards.push(<Skeleton className="w-full h-12" />);
     }
     return ghostCards;
   }
