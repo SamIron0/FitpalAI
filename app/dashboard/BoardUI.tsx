@@ -56,7 +56,7 @@ function BoardUI() {
   function renderGhostCards() {
     const ghostCards = [];
     for (let i = 0; i < 4; i++) {
-      ghostCards.push(<Skeleton className="w-[200px] h-12" />);
+      ghostCards.push(<Skeleton className="w-[310px] gap-4 h-32" />);
     }
     return ghostCards;
   }
@@ -124,7 +124,7 @@ function BoardUI() {
     const results: any[] = [];
     mealplan?.meals?.forEach((meal) => {
       results.push(
-        <Card className="">
+        <Card className="gap-4">
           <CardHeader>
             <CardTitle>{meal.type}</CardTitle>
           </CardHeader>
