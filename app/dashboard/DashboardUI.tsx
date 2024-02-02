@@ -218,7 +218,9 @@ export function DashboardUI() {
       <h1 className="margin-x-auto w-full text-center text-2xl">Dashboard</h1>
 
       <div className="w-full p-4 pt-20 pb-64 flex flex-col sm:flex-row">
-        <Pantry />
+        <Card>
+          <Pantry />
+        </Card>
         <Allergies />
       </div>
     </div>
