@@ -14,6 +14,8 @@ import { Label } from './ui/label';
 import { Separator } from './ui/separator';
 
 export function Allergies() {
+  const deleteAllergy = (allergy: string) => {};
+  const addAllergy = (allergy: string) => {};
   return (
     <Card>
       <CardHeader className="pb-3">
@@ -32,7 +34,7 @@ export function Allergies() {
             value="http://example.com/link/to/document"
             readOnly
           />
-          <Button variant="secondary" className="shrink-0">
+          <Button onClick={() => addAllergy('nuts')} className="shrink-0">
             Add
           </Button>
         </div>
@@ -44,7 +46,12 @@ export function Allergies() {
               <div className="flex items-center space-x-4">
                 <p className="text-sm font-medium leading-none">Nuts</p>
               </div>
-              <Button variant="secondary">Remove</Button>
+              <Button
+                onSubmit={() => deleteAllergy('nuts')}
+                variant="secondary"
+              >
+                Remove
+              </Button>
             </div>
             <div className="flex items-center justify-between space-x-4">
               <div className="flex items-center space-x-4">
