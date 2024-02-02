@@ -125,8 +125,31 @@ function BoardUI() {
     mealplan?.meals?.forEach((meal) => {
       results.push(
         <Card className="gap-4">
-          <CardHeader>
+          <CardHeader className="flex w-full justify-between">
             <CardTitle>{meal.type}</CardTitle>
+            <div className="flex w-full justify-between">
+              <div className="flex ">
+                <button
+                  disabled={isLoading}
+                  className="inline-flex mx-1 items-center justify-center w-6 h-6 mr-2 text-zinc-900 transition-colors duration-150 bg-gray-200 rounded-lg focus:shadow-outline hover:bg-gray-400"
+                >
+                  <TbRefresh className="w-3 h-10" />
+                </button>
+                <button
+                  disabled={isLoading}
+                  onClick={() => saveMealPlan()}
+                  className="inline-flex mx-1 items-center justify-center w-6 h-6 mr-2 text-indigo-100 transition-colors duration-150 bg-blue-500 rounded-lg focus:shadow-outline hover:bg-blue-700"
+                >
+                  <svg className="w-3 h-3 fill-current" viewBox="0 0 20 20">
+                    <path
+                      d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
+                      clip-rule="evenodd"
+                      fill-rule="evenodd"
+                    ></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
           </CardHeader>
           <CardContent>{meal.title}</CardContent>
         </Card>
@@ -240,30 +263,7 @@ function BoardUI() {
             </div>
           )}
 
-          <Container>
-            <div className="flex w-full justify-between">
-              <div className="flex ">
-                <button
-                  disabled={isLoading}
-                  className="inline-flex mx-1 items-center justify-center w-10 h-10 mr-2 text-zinc-900 transition-colors duration-150 bg-gray-200 rounded-lg focus:shadow-outline hover:bg-gray-400"
-                >
-                  <TbRefresh className="w-4 h-14" />
-                </button>
-                <button
-                  disabled={isLoading}
-                  onClick={() => saveMealPlan()}
-                  className="inline-flex mx-1 items-center justify-center w-10 h-10 mr-2 text-indigo-100 transition-colors duration-150 bg-blue-500 rounded-lg focus:shadow-outline hover:bg-blue-700"
-                >
-                  <svg className="w-4 h-4 fill-current" viewBox="0 0 20 20">
-                    <path
-                      d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
-                      clip-rule="evenodd"
-                      fill-rule="evenodd"
-                    ></path>
-                  </svg>
-                </button>
-              </div>
-            </div>
+          <Card className="w-full bg-card">
             <div className="pt-4 ">
               {isLoading
                 ? renderGhostCards()
@@ -271,7 +271,7 @@ function BoardUI() {
                 ? renderResultBox()
                 : emptyState()}
             </div>
-          </Container>
+          </Card>
         </div>
       </div>
     </div>
