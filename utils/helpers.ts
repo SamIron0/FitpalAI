@@ -5,7 +5,7 @@ type Price = Database['public']['Tables']['prices']['Row'];
 
 export const getURL = () => {
   let url =
-    process?.env?.NEXT_PUBLIC_SITE_URL ?? 
+    process?.env?.NEXT_PUBLIC_SITE_URL ??
     process?.env?.NEXT_PUBLIC_VERCEL_URL ??
     'http://localhost:3000/';
   // Include `https://` when not localhost.
@@ -20,7 +20,7 @@ export const postMealPlan = async ({
   data
 }: {
   url: string;
-  data?: { mealplan: MealPlan, planName: string, planDescription: string };
+  data?: { mealplan: MealPlan; planName: string; planDescription: string };
 }) => {
   console.log('posting,', url, data);
 
@@ -45,14 +45,15 @@ export const postData = async ({
   data
 }: {
   url: string;
-  data?: { price: Price };
+  data?: any;
 }) => {
   console.log('posting,', url, data);
 
   const res = await fetch(url, {
     method: 'POST',
-    headers: new Headers({ 'Content-Type': 'application/json' }),
-    credentials: 'same-origin',
+    headers: {
+      'Content-Type': 'application/json'
+    },
     body: JSON.stringify(data)
   });
 
@@ -70,7 +71,7 @@ export const getData = async ({
   data
 }: {
   url: string;
-  data?: {userName: string, userEmail: string };
+  data?: { userName: string; userEmail: string };
 }) => {
   console.log('getting,', url, data);
 

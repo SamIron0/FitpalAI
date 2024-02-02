@@ -8,6 +8,7 @@ import { TbRefresh } from 'react-icons/tb';
 import ResultBox from '../../components/ResultBox';
 import SuggestionPill from '../../components/SuggestionPill';
 import { MealType, MealPlan, UserDetails } from '@/types';
+import { postData } from '@/utils/helpers';
 
 function BoardUI() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -65,35 +66,19 @@ function BoardUI() {
       }
     };
     try {
-      const url =
-        'https://3x077l0rol.execute-api.us-east-1.amazonaws.com/main/';
-      const options = {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
+      const result = await postData({
+        url: 'https://3x077l0rol.execute-api.us-east-1.amazonaws.com/main/',
+        data: {
           query: query,
           userDetails: userDetails
-        })
-      };
-
-      const response = await fetch(url, options);
-
-      const data = await response.json();
-      // handle data
-      if (!response.ok) {
-        //&& (check other stuff about the returned  data)) {
-        throw new Error(
-          data?.error?.message ?? 'An error occurred while fetching data.'
-        );
-      }
-      console.log(data);
-      setGptResponse(data); //const mealplan: MealPlan = data.mealplan;
+        }
+      });
+      console.log(result.breakfast);
+      setGptResponse(result);
       mealplan = {
         id: '',
         owner: '',
-        meals: [{ type: 'breakfast', title: data.breakfast }]
+        meals: [{ type: 'breakfast', title: result.breakfast }]
       };
       setMealPlan(mealplan);
     } catch (error) {
@@ -252,7 +237,7 @@ function BoardUI() {
               <div className="pt-4 ">
                 {isLoading
                   ? renderGhostCards()
-                  : mealplan?.meals && mealplan?.meals?.length > 0
+                  : mealplan?.meals
                   ? renderResultBox()
                   : emptyState()}
               </div>
