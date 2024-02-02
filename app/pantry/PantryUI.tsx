@@ -213,7 +213,7 @@ export function PantryUI() {
   });
 
   return (
-    <div className="w-full p-4  pb-24 gap-4 flex flex-col sm:flex-row">
+    <div className="w-full p-4 pt-12 pb-24 gap-4 flex flex-col sm:flex-row">
       <Allergies />
      
     </div>
