@@ -74,15 +74,14 @@ function BoardUI() {
         }
       });
       const data = JSON.parse(result.body);
-      console.log(data.breakfast);
-      console.log('data', data);
-      console.log('breakfast', data.breakfast);
-      console.log('breakfast2', data['breakfast']);
+      let parsedData = JSON.parse(data);
       //setGptResponse(result);
+      console.log('Parsed data: ', parsedData);
+      console.log(parsedData.breakfast);
       mealplan = {
         id: '',
         owner: '',
-        meals: [{ type: 'breakfast', title: data.breakfast }]
+        meals: [{ type: 'breakfast', title: parsedData.breakfast }]
       };
       setMealPlan(mealplan);
     } catch (error) {
