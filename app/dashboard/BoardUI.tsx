@@ -51,11 +51,11 @@ function BoardUI() {
     }
     return ghostCards;
   }
-  const fetchData = async () => {
+  const fetchData = async (query:string) => {
     setIsLoading(true);
     const userDetails = { id: '1' };
     try {
-      
+
       const url = 'https://3x077l0rol.execute-api.us-east-1.amazonaws.com/main/';
       const body = { userDetails };
       const options = {
@@ -64,7 +64,7 @@ function BoardUI() {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          query: 'hello'
+          query: query
         })
       };
 
@@ -134,7 +134,7 @@ function BoardUI() {
               <form
                 onSubmit={(e) => {
                   e.preventDefault();
-                  fetchData();
+                  fetchData(input);
                 }}
               >
                 <div className="relative">
