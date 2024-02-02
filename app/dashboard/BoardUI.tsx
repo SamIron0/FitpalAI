@@ -124,7 +124,7 @@ function BoardUI() {
     const results: any[] = [];
     mealplan?.meals?.forEach((meal) => {
       results.push(
-        <Card className="pb-4  bg-primary">
+        <Card className="pb-4  bg-foreground">
           <CardHeader className="flex flex-row w-full justify-between">
             <CardTitle>{meal.type}</CardTitle>
             <div className="flex w-full justify-between">
