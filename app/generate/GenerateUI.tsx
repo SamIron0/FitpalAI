@@ -132,7 +132,7 @@ function GenerateUI() {
               <div className="flex justify-end">
                 <button
                   disabled={isLoading}
-                  className="inline-flex mx-1 items-center justify-center w-6 h-6 mr-2 text-zinc-900 transition-colors duration-150 bg-gray-200 rounded-lg focus:shadow-outline hover:bg-gray-400"
+                  className="inline-flex mx-1 items-center justify-center w-6 h-6 mr-0.5 text-zinc-900 transition-colors duration-150 bg-gray-200 rounded-lg focus:shadow-outline hover:bg-gray-400"
                 >
                   <TbRefresh className="w-4 h-10" />
                 </button>
@@ -278,6 +278,7 @@ function GenerateUI() {
                       <Button>
                         Save
                       </Button>
+                      
                     </span>
                   </CardTitle>
                 </CardHeader>
