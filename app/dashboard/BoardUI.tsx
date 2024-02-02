@@ -9,6 +9,14 @@ import ResultBox from '../../components/ResultBox';
 import SuggestionPill from '../../components/SuggestionPill';
 import { MealType, MealPlan, UserDetails } from '@/types';
 import { postData } from '@/utils/helpers';
+import {
+  Card,
+  CardHeader,
+  CardContent,
+  CardFooter,
+  CardTitle
+} from '@/components/ui/card';
+import { CardStackIcon } from '@radix-ui/react-icons';
 
 function BoardUI() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -100,7 +108,18 @@ function BoardUI() {
   function renderResultBox() {
     const results: any[] = [];
     mealplan?.meals?.forEach((meal) => {
-      results.push(<ResultBox meal={meal} />);
+      results.push(
+        <Card>
+          <CardHeader>
+            <CardTitle>Breakfast</CardTitle>
+          </CardHeader>
+          <CardContent>
+            {meal.title}
+            <CardStackIcon />
+          </CardContent>
+          <CardFooter></CardFooter>
+        </Card>
+      );
     });
 
     return results;
