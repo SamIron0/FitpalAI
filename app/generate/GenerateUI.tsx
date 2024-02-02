@@ -56,7 +56,7 @@ function GenerateUI() {
   function renderGhostCards() {
     const ghostCards = [];
     for (let i = 0; i < 4; i++) {
-      ghostCards.push(<Skeleton className="w-[360px] mx-auto gap-4 h-32" />);
+      ghostCards.push(<Skeleton className="w-[360px] mx-auto mb-4 h-32" />);
     }
     return ghostCards;
   }
@@ -124,7 +124,7 @@ function GenerateUI() {
     const results: any[] = [];
     mealplan?.meals?.forEach((meal) => {
       results.push(
-        <Card className="mb-4 ">
+        <Card className="mb-4 max-w-[420px]">
           <CardHeader className="flex flex-row w-full items-center justify-center">
             <CardTitle className="text-muted-foreground">{meal.type}</CardTitle>
             <div className="flex w-full justify-between">
