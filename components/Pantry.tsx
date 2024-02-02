@@ -237,7 +237,7 @@ export function Pantry() {
         </DropdownMenu>
       </div>
       <div className="">
-        <Table>
+        <Table className="text-zinc-300">
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
