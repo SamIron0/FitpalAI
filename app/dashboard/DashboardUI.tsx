@@ -214,7 +214,7 @@ export function DashboardUI() {
   });
 
   return (
-    <div className="w-full p-4 pt-12 pb-24 gap-4 flex flex-col sm:flex-row">
+    <div className="w-full p-4 pt-20 pb-64 gap-4 flex flex-col sm:flex-row">
       <Pantry />
       <Allergies />
     </div>

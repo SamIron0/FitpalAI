@@ -60,9 +60,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   position: relative;
   min-height: 100%;
-  margin: 0;
-  background: hsl(var(--background));
- }
+  margin: 0}
 
 
 .animated {
