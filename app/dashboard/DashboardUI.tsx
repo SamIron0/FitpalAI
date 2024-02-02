@@ -214,11 +214,12 @@ export function DashboardUI() {
   });
 
   return (
-    <div className="w-full ">
-      <h1 className="margin-x-auto w-full text-center text-2xl">Dashboard</h1>
-
-      <div className="w-full p-4 pt-20 pb-64 flex flex-col sm:flex-row">
-        <Card>
+    <div className="w-full p-12 ">
+      <div className="pl-16 py-3 w-full mb-5 border-b bg-zinc-900 flex items-center text-xl text-semibold  border-zinc-800">
+        Dashboard
+      </div>
+      <div className="w-full p-12 pt-20 pb-64 flex flex-col justify-center sm:flex-row">
+        <Card className="w-full sm:w-1/2 mb-4 sm:mb-0 sm:mr-4">
           <Pantry />
         </Card>
         <Allergies />
