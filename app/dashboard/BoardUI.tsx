@@ -79,7 +79,7 @@ function BoardUI() {
       mealplan = {
         id: '',
         owner: '',
-        meals: [{ type: 'breakfast', title: breakfast }]
+        meals: [{ type: 'breakfast', title: data.breakfast }]
       };
       setMealPlan(mealplan);
     } catch (error) {
