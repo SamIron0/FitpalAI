@@ -19,7 +19,7 @@ import {
 import { CardStackIcon } from '@radix-ui/react-icons';
 import { Skeleton } from '@/components/ui/skeleton';
 
-function BoardUI() {
+function GenerateUI() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [completed, setCompleted] = useState<boolean>(false);
   const [mealplan, setMealPlan] = useState<MealPlan | undefined>(undefined);
@@ -278,4 +278,4 @@ function BoardUI() {
   );
 }
 
-export default BoardUI;
+export default GenerateUI;

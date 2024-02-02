@@ -48,6 +48,7 @@ import {
   CardTitle
 } from '@/components/ui/card';
 import { postData } from '@/utils/helpers';
+import { Pantry } from '@/components/Pantry';
 
 const data: Payment[] = [
   {
@@ -184,7 +185,7 @@ export const addAllergies = (allergies: string[]) => {
     postData({ url: '/api/update-allergies', data: allergies });
   }
 };
-export function PantryUI() {
+export function DashboardUI() {
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
@@ -214,8 +215,8 @@ export function PantryUI() {
 
   return (
     <div className="w-full p-4 pt-12 pb-24 gap-4 flex flex-col sm:flex-row">
+      <Pantry />
       <Allergies />
-     
     </div>
   );
 }

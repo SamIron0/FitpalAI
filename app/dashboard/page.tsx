@@ -1,9 +1,11 @@
-import BoardUI from './BoardUI';
-import Sidebar from '@/components/ui/Sidebar';
-export default async function DashBoard() {
+import { Card } from '@/components/ui/card';
+import { DashboardUI } from './DashboardUI';
+export default async function Pantry() {
   return (
-    <>
-      <BoardUI />
-    </>
+    <div className="flex sm: flex-rrow">
+        <DashboardUI />
+    
+    </div>
+    
   );
 }
