@@ -73,8 +73,8 @@ function BoardUI() {
           userDetails: userDetails
         }
       });
-      const breakfast = JSON.parse(result.body);
-      console.log(breakfast);
+      const data = JSON.parse(result.body);
+      console.log(data.breakfast);
       //setGptResponse(result);
       mealplan = {
         id: '',
