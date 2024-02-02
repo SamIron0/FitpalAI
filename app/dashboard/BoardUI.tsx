@@ -51,12 +51,12 @@ function BoardUI() {
     }
     return ghostCards;
   }
-  const fetchData = async (query:string) => {
+  const fetchData = async (query: string) => {
     setIsLoading(true);
     const userDetails = { id: '1' };
     try {
-
-      const url = 'https://3x077l0rol.execute-api.us-east-1.amazonaws.com/main/';
+      const url =
+        'https://3x077l0rol.execute-api.us-east-1.amazonaws.com/main/';
       const body = { userDetails };
       const options = {
         method: 'POST',
@@ -72,8 +72,8 @@ function BoardUI() {
 
       const data = await response.json();
       // handle data
-      console.log('data', data);
-      //const mealplan: MealPlan = data.mealplan;
+      console.log(data);
+      setGptResponse(data); //const mealplan: MealPlan = data.mealplan;
     } catch (error) {
       console.log(error);
     } finally {
@@ -96,7 +96,7 @@ function BoardUI() {
     return results;
   }
   const [input, setInput] = useState('');
-
+  const [gptResponse, setGptResponse] = useState();
   const onPillClick = (caption: string) => {
     setInput(caption);
   };
