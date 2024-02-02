@@ -124,7 +124,7 @@ function BoardUI() {
     const results: any[] = [];
     mealplan?.meals?.forEach((meal) => {
       results.push(
-        <Card className="pb-4  bg-card-foreground">
+        <Card className="pb-4  bg-primary">
           <CardHeader className="flex flex-row w-full justify-between">
             <CardTitle>{meal.type}</CardTitle>
             <div className="flex w-full justify-between">
@@ -263,7 +263,7 @@ function BoardUI() {
             </div>
           )}
 
-          <Card className="w-full p-4  sm:p-8 bg-card">
+          <Card className="w-full p-4  sm:p-8 bg-background">
               {isLoading
                 ? renderGhostCards()
                 : mealplan?.meals
