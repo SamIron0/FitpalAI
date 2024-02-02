@@ -7,8 +7,7 @@ import GhostCard from '../../components/GhostCard';
 import { TbRefresh } from 'react-icons/tb';
 import ResultBox from '../../components/ResultBox';
 import SuggestionPill from '../../components/SuggestionPill';
-import { Meal, MealPlan } from '@/types';
-import { getData } from '@/utils/helpers';
+import { MealType, MealPlan, UserDetails } from '@/types';
 
 function BoardUI() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -53,18 +52,30 @@ function BoardUI() {
   }
   const fetchData = async (query: string) => {
     setIsLoading(true);
-    const userDetails = { id: '1' };
+    let mealplan: MealPlan; //await getData(query);
+    const userDetails: UserDetails = {
+      allergies: [],
+      goals: [],
+      weight: 0,
+      age: 0,
+      macros: {
+        protein: 0,
+        fat: 0,
+        carbs: 0
+      }
+    };
     try {
       const url =
         'https://3x077l0rol.execute-api.us-east-1.amazonaws.com/main/';
-      const body = { userDetails };
+      // const body = { userDetails };
       const options = {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          query: query
+          query: query,
+          userDetails: userDetails
         })
       };
 
@@ -72,8 +83,19 @@ function BoardUI() {
 
       const data = await response.json();
       // handle data
+      if (!response.ok) {
+        //&& (check other stuff about the returned  data)) {
+        throw new Error(
+          data?.error?.message ?? 'An error occurred while fetching data.'
+        );
+      }
       console.log(data);
       setGptResponse(data); //const mealplan: MealPlan = data.mealplan;
+      mealplan = {
+        id: '',
+        owner: '',
+        meals: [{ type: 'breakfast', title: data.breakfast }]
+      };
     } catch (error) {
       console.log(error);
     } finally {
