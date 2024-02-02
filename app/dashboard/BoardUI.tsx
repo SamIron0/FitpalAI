@@ -263,7 +263,7 @@ function BoardUI() {
             </div>
           )}
 
-          <Card className="w-full p-4  sm:p-8 bg-background">
+          <Card className="w-full p-4  sm:p-8 ">
             {isLoading
               ? renderGhostCards()
               : mealplan?.meals
