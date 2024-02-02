@@ -56,7 +56,7 @@ function BoardUI() {
   function renderGhostCards() {
     const ghostCards = [];
     for (let i = 0; i < 4; i++) {
-      ghostCards.push(<Skeleton className="w-full h-12" />);
+      ghostCards.push(<Skeleton className="w-[200px] h-12" />);
     }
     return ghostCards;
   }
@@ -90,7 +90,21 @@ function BoardUI() {
       mealplan = {
         id: '',
         owner: '',
-        meals: [{ type: 'breakfast', title: parsedData.breakfast }]
+        meals: [
+          { type: 'breakfast', title: parsedData.breakfast },
+          {
+            type: 'lunch',
+            title: parsedData.lunch
+          },
+          {
+            type: 'dinner',
+            title: parsedData.dinner
+          },
+          {
+            type: 'snack',
+            title: parsedData.snack
+          }
+        ]
       };
       setMealPlan(mealplan);
     } catch (error) {
@@ -112,13 +126,9 @@ function BoardUI() {
       results.push(
         <Card>
           <CardHeader>
-            <CardTitle>Breakfast</CardTitle>
+            <CardTitle>{meal.type}</CardTitle>
           </CardHeader>
-          <CardContent>
-            {meal.title}
-            <CardStackIcon />
-          </CardContent>
-          <CardFooter></CardFooter>
+          <CardContent>{meal.title}</CardContent>
         </Card>
       );
     });
@@ -152,7 +162,7 @@ function BoardUI() {
     <div className="flex w-full justify-center  bg-zinc-900 h-screen overflow-hidden  inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:16px_16px]">
       <div className="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
         <div className="p-4 w-full mb-5 border-b bg-zinc-900 flex items-center pl-5 text-xl text-semibold  border-zinc-800">
-          Welcome back, Dimitri
+          Welcome back
         </div>
         <div className=" p-4 w-full flex justify-center md:p-6">
           <div className="flex max-w-3xl flex-col justify-center">
@@ -177,7 +187,6 @@ function BoardUI() {
                   />
                   <button
                     type="submit"
-                    onClick={logClick}
                     disabled={isLoading}
                     className=" absolute end-2.5 bottom-2.5 focus:outline-none font-medium rounded-lg text-sm px-4 py-2 inline-flex items-center justify-start pl-2 p7 overflow-hidden  text-blue-500 transition-all duration-150 ease-in-out bg-gray-50 group"
                   >
