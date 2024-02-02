@@ -17,9 +17,9 @@ export function Allergies() {
   return (
     <Card>
       <CardHeader className="pb-3">
-        <CardTitle>Share this document</CardTitle>
+        <CardTitle>Allergies</CardTitle>
         <CardDescription>
-          Anyone with the link can view this document.
+          Please enter any allergies that you have.
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -33,19 +33,16 @@ export function Allergies() {
             readOnly
           />
           <Button variant="secondary" className="shrink-0">
-            Copy Link
+            Add
           </Button>
         </div>
         <Separator className="my-4" />
         <div className="space-y-4">
-          <h4 className="text-sm font-medium">People with access</h4>
+          <h4 className="text-sm font-medium">Allergies</h4>
           <div className="grid gap-6">
             <div className="flex items-center justify-between space-x-4">
               <div className="flex items-center space-x-4">
-                <p className="text-sm font-medium leading-none">
-                  Olivia Martin
-                </p>
-                <p className="text-sm text-muted-foreground">m@example.com</p>
+                <p className="text-sm font-medium leading-none">Nuts</p>
               </div>
               <Button variant="secondary">Remove</Button>
             </div>
