@@ -67,7 +67,6 @@ function BoardUI() {
     try {
       const url =
         'https://3x077l0rol.execute-api.us-east-1.amazonaws.com/main/';
-      // const body = { userDetails };
       const options = {
         method: 'POST',
         headers: {
@@ -96,6 +95,7 @@ function BoardUI() {
         owner: '',
         meals: [{ type: 'breakfast', title: data.breakfast }]
       };
+      setMealPlan(mealplan);
     } catch (error) {
       console.log(error);
     } finally {
