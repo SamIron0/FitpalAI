@@ -61,7 +61,7 @@ body {
   position: relative;
   min-height: 100%;
   margin: 0;
-  border: hsl(var(--muted));
+  background: hsl(var(--background));
  }
 
 
