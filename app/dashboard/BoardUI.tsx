@@ -73,12 +73,13 @@ function BoardUI() {
           userDetails: userDetails
         }
       });
-      console.log(result.breakfast);
-      setGptResponse(result);
+      const breakfast = JSON.parse(result.body).breakfast;
+      console.log(breakfast);
+      //setGptResponse(result);
       mealplan = {
         id: '',
         owner: '',
-        meals: [{ type: 'breakfast', title: result.breakfast }]
+        meals: [{ type: 'breakfast', title: breakfast }]
       };
       setMealPlan(mealplan);
     } catch (error) {

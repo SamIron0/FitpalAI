@@ -15,7 +15,6 @@ export default function ResultBox({ meal }: Props) {
       <div className="flex w-full items-center justify-between">
         <div className="pr-2">
           <div className="mb-1 text-gray-200 font-bold"> {meal?.title}</div>
-          <div>{meal?.title}</div>
         </div>
       </div>
     </div>
