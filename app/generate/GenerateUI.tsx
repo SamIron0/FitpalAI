@@ -124,7 +124,7 @@ function GenerateUI() {
     const results: any[] = [];
     mealplan?.meals?.forEach((meal) => {
       results.push(
-        <Card className="mb-4 max-w-[420px]">
+        <Card className="mb-4 mx-auto max-w-[420px]">
           <CardHeader className="flex flex-row w-full items-center justify-center">
             <CardTitle className="text-muted-foreground">{meal.type}</CardTitle>
             <div className="flex w-full justify-between">
@@ -186,7 +186,7 @@ function GenerateUI() {
         <div className="pl-16 py-3 w-full mb-5 border-b bg-zinc-900 flex items-center text-xl text-semibold  border-zinc-800">
           Welcome back
         </div>
-        <div className=" p-4 w-full flex flex-col justify-center md:p-6">
+        <div className=" p-4 max-w-2xl flex flex-col justify-center md:p-6">
           <div className="flex w-full  flex-col justify-center pb-3">
             <p className="text-4xl flex justify-center pt-12 text-semibold pb-12">
               Create a Plan
