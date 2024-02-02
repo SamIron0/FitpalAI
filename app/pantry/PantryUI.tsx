@@ -47,6 +47,7 @@ import {
   CardHeader,
   CardTitle
 } from '@/components/ui/card';
+import { postData } from '@/utils/helpers';
 
 const data: Payment[] = [
   {
@@ -178,7 +179,11 @@ export const columns: ColumnDef<Payment>[] = [
     }
   }
 ];
-
+export const addAllergies = (allergies: string[]) => {
+  if (allergies.length > 0) {
+    postData({ url: '/api/update-allergies', data: allergies });
+  }
+};
 export function PantryUI() {
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(

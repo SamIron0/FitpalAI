@@ -75,6 +75,9 @@ function BoardUI() {
       });
       const data = JSON.parse(result.body);
       console.log(data.breakfast);
+      console.log('data', data);
+      console.log('breakfast', data.breakfast);
+      console.log('breakfast2', data['breakfast']);
       //setGptResponse(result);
       mealplan = {
         id: '',
