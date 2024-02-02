@@ -125,22 +125,22 @@ function BoardUI() {
     mealplan?.meals?.forEach((meal) => {
       results.push(
         <Card className="mb-4 ">
-          <CardHeader className="flex flex-row w-full justify-between">
+          <CardHeader className="flex flex-row w-full items-center justify-center">
             <CardTitle>{meal.type}</CardTitle>
             <div className="flex w-full justify-between">
-              <div className="flex ">
+              <div className="flex justify-end">
                 <button
                   disabled={isLoading}
                   className="inline-flex mx-1 items-center justify-center w-6 h-6 mr-2 text-zinc-900 transition-colors duration-150 bg-gray-200 rounded-lg focus:shadow-outline hover:bg-gray-400"
                 >
-                  <TbRefresh className="w-3 h-10" />
+                  <TbRefresh className="w-4 h-10" />
                 </button>
                 <button
                   disabled={isLoading}
                   onClick={() => saveMealPlan()}
                   className="inline-flex mx-1 items-center justify-center w-6 h-6 mr-2 text-indigo-100 transition-colors duration-150 bg-blue-500 rounded-lg focus:shadow-outline hover:bg-blue-700"
                 >
-                  <svg className="w-3 h-3 fill-current" viewBox="0 0 20 20">
+                  <svg className="w-4 h-4 fill-current" viewBox="0 0 20 20">
                     <path
                       d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
                       clip-rule="evenodd"
@@ -236,7 +236,7 @@ function BoardUI() {
               </div>
             </form>
           </div>
-          {!isLoading && !completed && (
+          {!isLoading && !completed ? (
             <div className="pb-24">
               <span className="px-2 pr-3 mb-2">Try</span>
               <SuggestionPill
@@ -261,6 +261,8 @@ function BoardUI() {
                 caption=" Make me a cheap recipe for lunch"
               />
             </div>
+          ) : (
+            isLoading && !completed && <div className="h-14" />
           )}
 
           <Card className="w-full p-4  sm:p-8 ">
