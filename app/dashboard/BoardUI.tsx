@@ -126,7 +126,7 @@ function BoardUI() {
       results.push(
         <Card className="mb-4 ">
           <CardHeader className="flex flex-row w-full items-center justify-center">
-            <CardTitle>{meal.type}</CardTitle>
+            <CardTitle className="text-muted-foreground">{meal.type}</CardTitle>
             <div className="flex w-full justify-between">
               <div className="flex justify-end">
                 <button
