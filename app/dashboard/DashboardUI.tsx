@@ -34,7 +34,7 @@ import { Allergies } from '@/components/Allergies';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { postData } from '@/utils/helpers';
 import { Pantry } from '@/components/Pantry';
-import { Calories } from '@/components/Calories';
+import Calories  from '@/components/Calories';
 
 const data: Payment[] = [
   {

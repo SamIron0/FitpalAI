@@ -1,40 +1,31 @@
 'use client';
+import { Doughnut } from 'react-chartjs-2';
 
-interface Props {
-  protein: number;
-  fat: number;
-  carbs: number;
-}
-export function Calories({ protein, fat, carbs }: Props) {
-  const { Doughnut } = require('https://cdn.jsdelivr.net/npm/chart.js');
+const data = {
+  labels: ["JavaScript", "Python", "Ruby"],
+  datasets: [
+    {
+      label: "My First Dataset",
+      data: [300, 50, 100],
+      backgroundColor: [
+        "rgb(133, 105, 241)",
+        "rgb(164, 101, 241)",
+        "rgb(101, 143, 241)",
+      ],
+      hoverOffset: 4,
+    },
+  ],
+};
 
-  const data = {
-    labels: ['Protein', 'Fat', 'Carbs'],
-    datasets: [
-      {
-        label: 'Macronutrient Distribution',
-        data: [protein, fat, carbs],
-        backgroundColor: [
-          'rgb(133, 105, 241)',
-          'rgb(164, 101, 241)',
-          'rgb(101, 143, 241)'
-        ],
-        hoverOffset: 4
-      }
-    ]
-  };
-
-  new Doughnut(document.getElementById('chartDoughnut'), {
-    type: 'doughnut',
-    data: data,
-    options: {}
-  });
-
+function ChartComponent() {
   return (
-    <div>
-      <div className="shadow-lg rounded-lg overflow-hidden">
-        <canvas className="p-10" id="chartDoughnut"></canvas>
+    <div className="shadow-lg rounded-lg overflow-hidden">
+      <div className="py-3 px-5 bg-gray-50">Doughnut chart</div>
+      <div className="p-10">
+        <Doughnut data={data} options={{}} />
       </div>
     </div>
   );
 }
+
+export default ChartComponent;
