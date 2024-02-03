@@ -38,6 +38,7 @@ import { Pantry } from '@/components/Pantry';
 import { Calories } from '@/components/Calories';
 import toast from 'react-hot-toast';
 import { User } from '@supabase/supabase-js';
+import { DatePicker } from '@/components/DatePicker';
 
 const data: Payment[] = [
   {
@@ -530,6 +531,13 @@ export function DashboardUI({ user }: DashboardUIProps) {
         ) : (
           <div>
             <Card className="w-full md:w-3/5 mb-4 md:mb-0 sm:mr-4">
+              <CardHeader>
+                <CardTitle>
+                  <div className="w-full flex justify-end">
+                    <DatePicker />
+                  </div>
+                </CardTitle>
+              </CardHeader>
               {activeMealPlan?.meals.map((meal) => {
                 return (
                   <Card className="mb-4 mx-auto w-full">
