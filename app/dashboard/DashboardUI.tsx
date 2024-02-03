@@ -1,4 +1,5 @@
 'use client';
+import { BsStars } from "react-icons/bs";
 import { BsThreeDotsVertical } from 'react-icons/bs';
 import * as React from 'react';
 import { CaretSortIcon, DotsHorizontalIcon } from '@radix-ui/react-icons';
@@ -425,7 +426,6 @@ export function DashboardUI({ user }: DashboardUIProps) {
   const [generateMode, setGenerateMode] = useState(true);
   const { isSidebarOpen } = useSidebar();
   return (
-  
     <div className="w-full sm:p-12 p-4">
       {isSidebarOpen && (
         <div
@@ -440,11 +440,17 @@ export function DashboardUI({ user }: DashboardUIProps) {
 
       <div className="w-full flex justify-end">
         {generateMode ? (
-          <Button onClick={() => setGenerateMode(false)} className="bg-accent">
+          <Button onClick={() => setGenerateMode(false)} className="px-3">
             Track
           </Button>
         ) : (
-          <Button onClick={() => setGenerateMode(true)}> Generate</Button>
+          <Button
+            onClick={() => setGenerateMode(true)}
+            className="bg-blue-600 "
+          >
+            <BsStars className="pr-1"/>
+            Generate
+          </Button>
         )}
       </div>
       <div className="w-full pt-8 flex flex-col justify-center md:flex-row">
