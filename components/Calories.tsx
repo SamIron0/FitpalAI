@@ -15,7 +15,7 @@ export function Calories({ proteins, fats, carbs }: CaloriesProps) {
     labels: ['Protein', 'Carbs', 'Fat'],
     datasets: [
       {
-        label: '# of Votes',
+        label: '# of grams',
         data: [proteins, carbs, fats],
         backgroundColor: [
           'rgba(255, 99, 132, 0.2)',

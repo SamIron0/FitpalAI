@@ -237,7 +237,7 @@ export function DashboardUI() {
   function renderGhostCards() {
     const ghostCards = [];
     for (let i = 0; i < 4; i++) {
-      ghostCards.push(<Skeleton className="w-full min-w-[380px] mb-4 h-28" />);
+      ghostCards.push(<Skeleton className="w-full min-w-[350px] mb-4 h-28" />);
     }
     return ghostCards;
   }
@@ -305,7 +305,7 @@ export function DashboardUI() {
       {
         meal.title &&
           results.push(
-            <Card className="mb-4 mx-auto min-w-[380px]">
+            <Card className="mb-4 mx-auto min-w-[350px]">
               <CardHeader className="flex flex-row w-full items-center justify-center">
                 <CardTitle className="text-muted-foreground">
                   {meal.type}
@@ -376,7 +376,7 @@ export function DashboardUI() {
           <div className="relative flex flex-1 flex-col">
             <div className=" p-4 max-w-2xl mx-auto flex flex-col justify-center md:p-6">
               <div className="flex w-full  flex-col justify-center pb-3">
-                <p className="text-4xl flex justify-center pt-12 text-semibold pb-12">
+                <p className="text-4xl flex justify-center py-10 text-semibold ">
                   Create a Plan
                 </p>
 
@@ -471,7 +471,7 @@ export function DashboardUI() {
             </div>
           </div>
         </Card>
-        <Card className="w-full flex justify-center pt-4 sm:w-2/5 mb-4 sm:mb-0 sm:mr-4">
+        <Card className="w-full flex justify-center py-4 sm:w-2/5 mb-4 sm:mb-0 sm:mr-4">
           <Calories proteins={protein} fats={fat} carbs={carbs} />
         </Card>
       </div>
