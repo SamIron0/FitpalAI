@@ -548,10 +548,15 @@ export function DashboardUI({ user }: DashboardUIProps) {
               {activeMealPlan?.meals.map((meal) => {
                 return (
                   meal.title && (
-                    <Card className="mb-4 w-full">
+                    <Card className="mb-4 flex flex-col w-full">
+                     <div>
                       <CardHeader className="flex flex-row w-full items-center justify-center">
                         <CardTitle className="text-muted-foreground"></CardTitle>
-                        <div className="flex w-full justify-end ">
+                       
+                      </CardHeader>
+                      <CardContent>{meal.title}</CardContent>
+                      </div>
+                      <div className="flex justify-end ">
                           <div className="flex justify-end">
                             <Popover>
                               <PopoverTrigger asChild>
@@ -568,8 +573,6 @@ export function DashboardUI({ user }: DashboardUIProps) {
                             </Popover>
                           </div>
                         </div>
-                      </CardHeader>
-                      <CardContent>{meal.title}</CardContent>
                     </Card>
                   )
                 );
