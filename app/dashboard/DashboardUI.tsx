@@ -359,9 +359,9 @@ export function DashboardUI() {
     }
   };
 
-  const [protein, setProtein] = useState(0);
-  const [carbs, setCarbs] = useState(0);
-  const [fat, setFat] = useState(0);
+  const [protein, setProtein] = useState(220);
+  const [carbs, setCarbs] = useState(220);
+  const [fat, setFat] = useState(220);
   return (
     <div className="w-full sm:p-12 p-4">
       <div className="w-full pt-4 flex flex-col justify-center md:flex-row">
