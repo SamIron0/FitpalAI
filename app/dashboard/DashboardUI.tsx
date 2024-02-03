@@ -254,8 +254,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
         url: '/api/save-meal-plan',
         data: { mealplan: createdMealplan }
       });
-      const result = JSON.parse(data.body);
-      if (!result) {
+      if (!data) {
         toast.dismiss(toastId);
         toast.error('Error saving meal plan');
         return;
