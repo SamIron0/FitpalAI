@@ -74,6 +74,7 @@ const isSurveyComplete = async (id: string) => {
   return data && data?.length > 0;
 };
 const createOrRetrieveMealPlan = async (mealPlan: MealPlan) => {
+  console.log(' inserting meal plan ', mealPlan);
   const { data, error: supabaseError } = await supabaseAdmin
     .from('mealplans')
     .insert([
