@@ -249,7 +249,6 @@ export function DashboardUI({ user }: DashboardUIProps) {
       const result = JSON.parse(data.body);
       if (!result) {
         toast.dismiss(toastId);
-
         toast.error('Error saving meal plan');
         return;
       }
