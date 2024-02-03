@@ -316,12 +316,12 @@ export function DashboardUI() {
                       disabled={isLoading}
                       className="inline-flex mx-1 items-center justify-center w-6 h-6 mr-0.5 text-zinc-900 transition-colors duration-150 bg-gray-200 rounded-lg focus:shadow-outline hover:bg-gray-400"
                     >
-                      <TbRefresh className="w-4 h-10" />
+                      <TbRefresh className="w-10 h-10" />
                     </button>
                     <button
                       disabled={isLoading}
                       onClick={() => saveMealPlan()}
-                      className="inline-flex mx-1 items-center justify-center w-6 h-6 mr-2 text-indigo-100 transition-colors duration-150 bg-blue-500 rounded-lg focus:shadow-outline hover:bg-blue-700"
+                      className="inline-flex mx-1 items-center justify-center w-9 h-9 mr-2 text-indigo-100 transition-colors duration-150 bg-blue-500 rounded-lg focus:shadow-outline hover:bg-blue-700"
                     >
                       <svg className="w-4 h-4 fill-current" viewBox="0 0 20 20">
                         <path
