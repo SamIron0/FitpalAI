@@ -80,12 +80,11 @@ const createOrRetrieveMealPlan = async (mealPlan: MealPlan) => {
     .insert([
       {
         id: uuidv4(),
-        meals: mealPlan.meals,
-        owner: mealPlan.owner
+        owner: mealPlan.owner,
       }
     ]);
   if (supabaseError) {
-    console.log(supabaseError);
+    console.log('error',supabaseError);
     throw supabaseError;
   }
   else{

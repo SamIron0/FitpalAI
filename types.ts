@@ -9,7 +9,7 @@ export interface Meal {
   macros?: Macros | null;
 }
 export interface MealPlan {
-  meals: Meal[];
+  meals?: Meal[];
   id: string;
   owner: string | undefined;
 }

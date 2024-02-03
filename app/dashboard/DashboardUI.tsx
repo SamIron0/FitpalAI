@@ -37,6 +37,7 @@ import { postData } from '@/utils/helpers';
 import { Pantry } from '@/components/Pantry';
 import { Calories } from '@/components/Calories';
 import toast from 'react-hot-toast';
+import { User } from 'next-auth';
 
 const data: Payment[] = [
   {
@@ -173,7 +174,11 @@ export const addAllergies = (allergies: string[]) => {
     postData({ url: '/api/update-allergies', data: allergies });
   }
 };
-export function DashboardUI() {
+
+interface DashboardUIProps {
+  user: User;
+}
+export function DashboardUI( { user }: DashboardUIProps) {
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
@@ -218,7 +223,7 @@ export function DashboardUI() {
     try {
       const data = await postData({
         url: '/api/save-meal-plan',
-        data: {mealplan}
+        data: { mealplan }
       });
       const result = JSON.parse(data.body);
       let parsedData = JSON.parse(result);
@@ -241,8 +246,10 @@ export function DashboardUI() {
   function renderGhostCards() {
     const ghostCards = [];
     for (let i = 0; i < 4; i++) {
-      ghostCards.push(<Skeleton className="w-[350px] sm:w-[511px] md:w-[350px] lg:[550px] xl:[625px] mx-auto mb-4 h-28" />);
-    } 
+      ghostCards.push(
+        <Skeleton className="w-[350px] sm:w-[511px] md:w-[350px] lg:[550px] xl:[625px] mx-auto mb-4 h-28" />
+      );
+    }
     return ghostCards;
   }
   const fetchData = async (query: string) => {
