@@ -237,7 +237,7 @@ export function DashboardUI() {
   function renderGhostCards() {
     const ghostCards = [];
     for (let i = 0; i < 4; i++) {
-      ghostCards.push(<Skeleton className="w-full min-w-[600px] mb-4 h-28" />);
+      ghostCards.push(<Skeleton className="w-full min-w-[460px] mb-4 h-28" />);
     }
     return ghostCards;
   }
@@ -458,7 +458,7 @@ export function DashboardUI() {
               ) : mealplan?.meals ? (
                 <>
                   <div className="w-full pb-4 md:px-8 flex flex-row">
-                    <h2 className="w-1/2 text-xl pt-12">Meal Plan</h2>
+                    <h2 className="w-1/2 flex text-xl pt-12">Meal Plan</h2>
                     <span className="flex w-1/2 justify-end">
                       <Button>Save</Button>
                     </span>
