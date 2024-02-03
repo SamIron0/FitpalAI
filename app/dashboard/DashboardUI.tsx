@@ -235,7 +235,7 @@ export function DashboardUI() {
   function renderGhostCards() {
     const ghostCards = [];
     for (let i = 0; i < 4; i++) {
-      ghostCards.push(<Skeleton className="w-[360px] mx-auto mb-4 h-32" />);
+      ghostCards.push(<Skeleton className="w-full mb-4 h-28" />);
     }
     return ghostCards;
   }
@@ -302,37 +302,42 @@ export function DashboardUI() {
   function renderResultBox() {
     const results: any[] = [];
     mealplan?.meals?.forEach((meal) => {
-      results.push(
-        <Card className="mb-4 mx-auto max-w-[420px]">
-          <CardHeader className="flex flex-row w-full items-center justify-center">
-            <CardTitle className="text-muted-foreground">{meal.type}</CardTitle>
-            <div className="flex w-full justify-between">
-              <div className="flex justify-end">
-                <button
-                  disabled={isLoading}
-                  className="inline-flex mx-1 items-center justify-center w-6 h-6 mr-0.5 text-zinc-900 transition-colors duration-150 bg-gray-200 rounded-lg focus:shadow-outline hover:bg-gray-400"
-                >
-                  <TbRefresh className="w-4 h-10" />
-                </button>
-                <button
-                  disabled={isLoading}
-                  onClick={() => saveMealPlan()}
-                  className="inline-flex mx-1 items-center justify-center w-6 h-6 mr-2 text-indigo-100 transition-colors duration-150 bg-blue-500 rounded-lg focus:shadow-outline hover:bg-blue-700"
-                >
-                  <svg className="w-4 h-4 fill-current" viewBox="0 0 20 20">
-                    <path
-                      d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
-                      clip-rule="evenodd"
-                      fill-rule="evenodd"
-                    ></path>
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </CardHeader>
-          <CardContent>{meal.title}</CardContent>
-        </Card>
-      );
+      {
+        meal.title &&
+          results.push(
+            <Card className="mb-4 mx-auto max-w-[420px]">
+              <CardHeader className="flex flex-row w-full items-center justify-center">
+                <CardTitle className="text-muted-foreground">
+                  {meal.type}
+                </CardTitle>
+                <div className="flex w-full justify-end ">
+                  <div className="flex justify-end">
+                    <button
+                      disabled={isLoading}
+                      className="inline-flex mx-1 items-center justify-center w-6 h-6 mr-0.5 text-zinc-900 transition-colors duration-150 bg-gray-200 rounded-lg focus:shadow-outline hover:bg-gray-400"
+                    >
+                      <TbRefresh className="w-4 h-10" />
+                    </button>
+                    <button
+                      disabled={isLoading}
+                      onClick={() => saveMealPlan()}
+                      className="inline-flex mx-1 items-center justify-center w-6 h-6 mr-2 text-indigo-100 transition-colors duration-150 bg-blue-500 rounded-lg focus:shadow-outline hover:bg-blue-700"
+                    >
+                      <svg className="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                        <path
+                          d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
+                          clip-rule="evenodd"
+                          fill-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent>{meal.title}</CardContent>
+            </Card>
+          );
+      }
     });
     return results;
   }
@@ -366,7 +371,7 @@ export function DashboardUI() {
 
   return (
     <div className="w-full sm:p-12 p-4">
-      <div className="w-full pt-4 flex flex-col justify-center md:flex-row">
+      <div className="w-full pt-8 flex flex-col justify-center md:flex-row">
         <Card className="w-full sm:w-3/5 mb-4 sm:mb-0 sm:mr-4">
           <div className="relative flex flex-1 flex-col">
             <div className=" p-4 max-w-2xl mx-auto flex flex-col justify-center md:p-6">
@@ -448,30 +453,24 @@ export function DashboardUI() {
                 isLoading && !completed && <div className="h-14" />
               )}
 
-              <Card className="w-full p-4  sm:p-8 ">
-                {isLoading ? (
-                  renderGhostCards()
-                ) : mealplan?.meals ? (
-                  <>
-                    <CardHeader>
-                      <CardTitle className="text-2xl flex flex-row w-full">
-                        <p>Meal Plan</p>
-                        <span className="flex justify-end">
-                          <Button>Save</Button>
-                        </span>
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent> {renderResultBox()} </CardContent>
-                  </>
-                ) : (
-                  emptyState()
-                )}
-              </Card>
+              {isLoading ? (
+                renderGhostCards()
+              ) : mealplan?.meals ? (
+                <>
+                  <p className="w-full pt-12">Meal Plan</p>
+                  <span className="flex w-full justify-end">
+                    <Button>Save</Button>
+                  </span>
+                  <CardContent> {renderResultBox()} </CardContent>
+                </>
+              ) : (
+                emptyState()
+              )}
             </div>
           </div>
         </Card>
         <Card className="w-full sm:w-2/5 mb-4 sm:mb-0 sm:mr-4">
-          <Calories protein={protein} fat={fat} carbs={carbs} />
+          <Calories proteins={protein} fats={fat} carbs={carbs} />
         </Card>
       </div>
       <div className="w-full pt-4 flex flex-col justify-center md:flex-row">
