@@ -44,6 +44,7 @@ import {
   PopoverContent,
   PopoverTrigger
 } from '@/components/ui/popover';
+import { useSidebar } from '../providers/SideBarContext';
 
 const data: Payment[] = [
   {
@@ -424,8 +425,21 @@ export function DashboardUI({ user }: DashboardUIProps) {
   const [fat, setFat] = useState(220);
   const [activeMealPlan, setActiveMealPlan] = useState<MealPlan>();
   const [generateMode, setGenerateMode] = useState(true);
+  const { isSidebarOpen } = useSidebar();
   return (
+  
     <div className="w-full sm:p-12 p-4">
+      {isSidebarOpen && (
+        <div
+          style={{
+            position: 'fixed',
+            width: '100%',
+            height: '100%',
+            backgroundColor: 'rgba(0,0,0,0.5)'
+          }}
+        />
+      )}
+
       <div className="w-full flex justify-end">
         {generateMode ? (
           <Button onClick={() => setGenerateMode(false)} className="bg-accent">
