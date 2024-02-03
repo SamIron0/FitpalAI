@@ -453,8 +453,8 @@ export function DashboardUI() {
                 isLoading && !completed && <div className="h-14" />
               )}
 
-              {isLoading ? (
-                renderGhostCards()
+              {isLoading ? (<div className='pt-24'>
+                renderGhostCards()</div>
               ) : mealplan?.meals ? (
                 <>
                   <div className="w-full pb-4 md:px-8 flex flex-row">
