@@ -1,5 +1,5 @@
 import { NextApiHandler } from 'next';
-import { createOrRetrieveMealPlan } from '@/utils/supabase-admin';
+import { createMealPlan } from '@/utils/supabase-admin';
 import { createServerSupabaseClient, getSession } from '@/app/supabase-server';
 
 export async function POST(req: Request) {
@@ -7,7 +7,6 @@ export async function POST(req: Request) {
     try {
       const session = await getSession();
       const { mealplan } = await req.json();
-      console.log('plan',mealplan);
       if (!session) {
         return new Response(JSON.stringify('Unauthorized'), {
           status: 401
@@ -15,10 +14,9 @@ export async function POST(req: Request) {
       }
 
       mealplan.owner = session.user.id;
-      console.log('owner',mealplan.owner);
 
-      const mealPlanId = await createOrRetrieveMealPlan(mealplan);
-      if (mealPlanId != undefined) {
+      const mealPlanId = await createMealPlan(mealplan);
+      if (mealPlanId) {
         const response = 'Meal plan saved';
         return new Response(JSON.stringify(response), {
           status: 200

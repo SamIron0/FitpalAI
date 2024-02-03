@@ -40,13 +40,7 @@ export const postMealPlan = async ({
   return res.json();
 };
 
-export const postData = async ({
-  url,
-  data
-}: {
-  url: string;
-  data?: any;
-}) => {
+export const postData = async ({ url, data }: { url: string; data?: any }) => {
   console.log('posting,', url, data);
 
   const res = await fetch(url, {
@@ -66,24 +60,17 @@ export const postData = async ({
   return res.json();
 };
 
-export const getData = async ({
-  url,
-  data
-}: {
-  url: string;
-  data?: { userName: string; userEmail: string };
-}) => {
+export const getData = async ({ url, data }: { url: string; data?: any }) => {
   console.log('getting,', url, data);
 
   const res = await fetch(url, {
-    method: 'POST',
+    method: 'GET',
     headers: new Headers({ 'Content-Type': 'application/json' }),
-    credentials: 'same-origin',
-    body: JSON.stringify(data)
+    credentials: 'same-origin'
   });
 
   if (!res.ok) {
-    console.log('Error in postData', { url, data, res });
+    console.log('Error in getData', { url, data, res });
 
     throw Error(res.statusText);
   }

@@ -1,7 +1,7 @@
 'use client';
 import { Resend } from 'resend';
 
-import { getData } from '@/utils/helpers';
+import { getData, postData } from '@/utils/helpers';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { Toaster, toast } from 'react-hot-toast';
@@ -20,7 +20,7 @@ function waitlist() {
     const notify = () => toast.success('Saved to waitlist!');
 
     try {
-      const { data } = await getData({
+      const { data } = await postData({
         url: '/api/save-waitlist-contact',
         data: { userName, userEmail }
       });

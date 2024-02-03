@@ -31,10 +31,7 @@ const logClick = async (name: string) => {
     await supabaseAdmin.from('clicks').insert([{ name, count: 1 }]);
   }
 };
-const createOrRetrieveWaitListContact = async (
-  userName: string,
-  userEmail: string
-) => {
+const createWaitListContact = async (userName: string, userEmail: string) => {
   const { data, error: supabaseError } = await supabaseAdmin
     .from('contacts')
     .insert([
@@ -73,7 +70,16 @@ const isSurveyComplete = async (id: string) => {
 
   return data && data?.length > 0;
 };
-const createOrRetrieveMealPlan = async (mealPlan: MealPlan) => {
+
+const retrieveMealPlans = async (user_id: string) => {
+  const { data, error: supabaseError } = await supabaseAdmin
+    .from('mealplans')
+    .select()
+    .eq('owner', user_id);
+  return data;
+};
+
+const createMealPlan = async (mealPlan: MealPlan) => {
   const { data, error: supabaseError } = await supabaseAdmin
     .from('mealplans')
     .insert([
@@ -87,12 +93,13 @@ const createOrRetrieveMealPlan = async (mealPlan: MealPlan) => {
     throw supabaseError;
   }
   console.log(`New mealplan inserted for ${mealPlan.owner}.`);
-  return mealPlan.id;
+  return data;
 };
 
 export {
-  createOrRetrieveMealPlan,
+  createMealPlan,
+  retrieveMealPlans,
   isSurveyComplete,
-  createOrRetrieveWaitListContact,
+  createWaitListContact,
   logClick
 };

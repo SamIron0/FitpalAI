@@ -33,7 +33,7 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Allergies } from '@/components/Allergies';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { postData } from '@/utils/helpers';
+import { getData, postData } from '@/utils/helpers';
 import { Pantry } from '@/components/Pantry';
 import { Calories } from '@/components/Calories';
 import toast from 'react-hot-toast';
@@ -208,26 +208,40 @@ export function DashboardUI({ user }: DashboardUIProps) {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [completed, setCompleted] = useState<boolean>(false);
   const [mealplan, setMealPlan] = useState<MealPlan | undefined>(undefined);
+
+  const retrieveMealPlan = async () => {
+    try {
+      const data = await getData({
+        url: '/api/retrieve-meal-plan',
+        data: { mealplan }
+      });
+      const result = JSON.parse(data.body);
+      if (!result) {
+        return;
+      }
+      return result;
+      console.log(result);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const saveMealPlan = async () => {
     // save meal plan to supabase
     // console.log('Preparing to save meal plan');
     setIsLoading(true);
-    const toastId = toast.loading('Saving meal plan');
     if (!mealplan) {
       setIsLoading(false);
-      toast.dismiss(toastId);
-      toast.error('Error saving meal plan');
+      toast.error('Create meal plan first');
       return;
     }
-    // console.log('Saving meal plan');
+    const toastId = toast.loading('Saving meal plan');
     try {
       const data = await postData({
         url: '/api/save-meal-plan',
         data: { mealplan }
       });
       const result = JSON.parse(data.body);
-      let parsedData = JSON.parse(result);
-      if (!parsedData) {
+      if (!result) {
         toast.dismiss(toastId);
 
         toast.error('Error saving meal plan');
@@ -238,7 +252,6 @@ export function DashboardUI({ user }: DashboardUIProps) {
       toast.success('Meal plan saved successfully');
     } catch (error) {
       setIsLoading(false);
-
       toast.dismiss(toastId);
       toast.error('Error saving meal plan');
     }
