@@ -567,12 +567,11 @@ export function DashboardUI({ user }: DashboardUIProps) {
                               </Button>
                             </DropdownMenuTrigger>
                             <DropdownMenuContent className='border-muted' align="end">
-                              <DropdownMenuLabel>Actions</DropdownMenuLabel>
                               <DropdownMenuItem>
-                                Copy payment ID
+                                Regenerate
                               </DropdownMenuItem>
                               <DropdownMenuSeparator />
-                              <DropdownMenuItem>View customer</DropdownMenuItem>
+                              <DropdownMenuItem>Delete</DropdownMenuItem>
                               <DropdownMenuItem>
                                 View payment details
                               </DropdownMenuItem>
