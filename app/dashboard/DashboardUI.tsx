@@ -544,30 +544,35 @@ export function DashboardUI({ user }: DashboardUIProps) {
                 </div>
               </CardTitle>
             </CardHeader>
-            {activeMealPlan?.meals.map((meal) => {
-              return (
-                <Card className="mb-4 mx-4 w-full">
-                  <CardHeader className="flex flex-row w-full items-center justify-center">
-                    <CardTitle className="text-muted-foreground"></CardTitle>
-                    <div className="flex w-full justify-end ">
-                      <div className="flex justify-end">
-                        <Popover>
-                          <PopoverTrigger asChild>
-                            <Button>
-                              <BsThreeDotsVertical />
-                            </Button>
-                          </PopoverTrigger>
-                          <PopoverContent className="w-auto p-0" align="start">
-                            <Card>Delete</Card>
-                          </PopoverContent>
-                        </Popover>
+            <CardContent>
+              {activeMealPlan?.meals.map((meal) => {
+                return (
+                  <Card className="mb-4 w-full">
+                    <CardHeader className="flex flex-row w-full items-center justify-center">
+                      <CardTitle className="text-muted-foreground"></CardTitle>
+                      <div className="flex w-full justify-end ">
+                        <div className="flex justify-end">
+                          <Popover>
+                            <PopoverTrigger asChild>
+                              <Button>
+                                <BsThreeDotsVertical />
+                              </Button>
+                            </PopoverTrigger>
+                            <PopoverContent
+                              className="w-auto p-0"
+                              align="start"
+                            >
+                              <Card>Delete</Card>
+                            </PopoverContent>
+                          </Popover>
+                        </div>
                       </div>
-                    </div>
-                  </CardHeader>
-                  <CardContent>{meal.title}</CardContent>
-                </Card>
-              );
-            })}
+                    </CardHeader>
+                    <CardContent>{meal.title}</CardContent>
+                  </Card>
+                );
+              })}
+            </CardContent>
           </Card>
         )}
 
