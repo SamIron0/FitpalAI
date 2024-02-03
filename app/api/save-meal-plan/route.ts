@@ -1,37 +1,33 @@
 import { NextApiHandler } from 'next';
 import { createOrRetrieveMealPlan } from '@/utils/supabase-admin';
-import { createServerSupabaseClient } from '@/app/supabase-server';
+import { createServerSupabaseClient, getSession } from '@/app/supabase-server';
 
-const SaveMealPlan: NextApiHandler = async (req, res) => {
+export async function POST(req: Request) {
   if (req.method === 'POST') {
-    const { mealplan } = req.body;
     try {
-      const supabase = createServerSupabaseClient({ req, res });
-      const {
-        data: { session }
-      } = await supabase.auth.getSession();
-
-      if (!session)
-        return res.status(401).json({
-          error: 'not authenticatedd',
-          description:
-            'The user does not have an active session or is not authenticated'
+      const session = await getSession();
+      const { mealplan } = await req.json();
+      if (!session) {
+        return new Response(JSON.stringify('Unauthorized'), {
+          status: 401
         });
+      }
       mealplan.owner = session.user.id;
 
       const mealPlanId = createOrRetrieveMealPlan(mealplan);
       if (mealPlanId != undefined) {
         const response = 'Meal plan saved';
-        res.status(200).json(response);
+        return new Response(JSON.stringify(response), {
+          status: 200
+        });
       }
     } catch (err: any) {
-      console.log(err);
-      res
-        .status(500)
-        .json({ error: { statusCode: 500, message: err.message } });
+      return new Response(JSON.stringify(err), { status: 500 });
     }
   } else {
-    res.status(401).end('Method Not Allowed');
+    return new Response('Method Not Allowed', {
+      headers: { Allow: 'POST' },
+      status: 405
+    });
   }
-};
-export default SaveMealPlan;
+}
