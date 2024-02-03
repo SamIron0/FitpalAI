@@ -1,4 +1,5 @@
 'use client';
+'use client';
 
 import * as React from 'react';
 import { CaretSortIcon, DotsHorizontalIcon } from '@radix-ui/react-icons';
@@ -14,7 +15,6 @@ import {
   useReactTable
 } from '@tanstack/react-table';
 
-('use client');
 import { useState } from 'react';
 import { TbRefresh } from 'react-icons/tb';
 import SuggestionPill from '../../components/SuggestionPill';
