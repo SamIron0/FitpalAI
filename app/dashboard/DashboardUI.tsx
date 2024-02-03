@@ -229,6 +229,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
         console.log(error);
       }
     };
+    retrieveMealPlan();
   }, []);
   const saveMealPlan = async () => {
     // save meal plan to supabase

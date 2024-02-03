@@ -6,18 +6,18 @@ export async function POST(req: Request) {
   if (req.method === 'POST') {
     try {
       const session = await getSession();
-      const { mealplan } = await req.json();
+      const { createMealPlan } = await req.json();
       if (!session) {
         return new Response(JSON.stringify('Unauthorized'), {
           status: 401
         });
       }
 
-      mealplan.owner = session.user.id;
+      createMealPlan.owner = session.user.id;
 //sconsole.log(meal'plan);
-      const mealPlanId = await createMealPlan(mealplan);
-      console.log('saved',mealPlanId);
-      if (mealPlanId) {
+      const status = await createMealPlan(createMealPlan);
+      console.log('saved',status);
+      if (status) {
         const response = 'Meal plan saved';
         return new Response(JSON.stringify(response), {
           status: 200
