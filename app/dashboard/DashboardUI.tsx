@@ -357,7 +357,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
     const results: any[] = [];
     createdMealplan?.meals?.forEach((meal) => {
       {
-        meal.title &&
+        meal.title?.length &&
           results.push(
             <Card className="mb-4 mx-auto w-full">
               <CardHeader className="flex flex-row w-full items-center justify-center">
@@ -539,7 +539,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
             <CardHeader>
               <CardTitle>
                 <div className="w-full flex justify-between">
-                  <h2 className="text-xl text-muted-foreground">Meal Plan</h2>
+                  <h2 className="text-md text-muted-foreground">Meal Plan</h2>
                   <DatePicker />
                 </div>
               </CardTitle>
