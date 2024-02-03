@@ -1,36 +1,53 @@
-export default function Calories( ) {
-  const dataDoughnut = {
-    labels: ['JavaScript', 'Python', 'Ruby'],
-    datasets: [
-      {
-        label: 'My First Dataset',
-        data: [300, 50, 100],
-        backgroundColor: [
-          'rgb(133, 105, 241)',
-          'rgb(164, 101, 241)',
-          'rgb(101, 143, 241)'
-        ],
-        hoverOffset: 4
+import { useEffect } from 'react';
+import { Chart } from 'chart.js';
+function Calories() {
+  useEffect(() => {
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+      type: 'pie',
+      data: {
+        labels: ['Accepted', 'Pending', 'Rejected'],
+        datasets: [
+          {
+            data: [70, 10, 6],
+            borderColor: ['#3cba9f', '#ffa500', '#c45850'],
+            backgroundColor: [
+              'rgb(60,186,159,0.1)',
+              'rgb(255,165,0,0.1)',
+              'rgb(196,88,80,0.1)'
+            ],
+            borderWidth: 2
+          }
+        ]
+      },
+      options: {
+        scales: {
+          xAxes: [
+            {
+              display: false
+            }
+          ],
+          yAxes: [
+            {
+              display: false
+            }
+          ]
+        }
       }
-    ]
-  };
-
-  const configDoughnut = {
-    type: 'doughnut',
-    data: dataDoughnut,
-    options: {}
-  };
-
-  var chartBar = new Chart(
-    document.getElementById('chartDoughnut'),
-    configDoughnut
-  );
+    });
+  }, []);
   return (
-    <div>
-      <div className="shadow-lg rounded-lg overflow-hidden">
-        <div className="py-3 px-5 bg-gray-50">Doughnut chart</div>
-        <canvas className="p-10" id="chartDoughnut"></canvas>
+    <>
+      {/* Pie chart */}
+      <h1 className="w-[110px] mx-auto mt-10 text-xl font-semibold capitalize ">
+        Pie Chart
+      </h1>
+      <div className="w-[1100px] h-screen flex mx-auto my-auto">
+        <div className="border border-gray-400 pt-0 rounded-xl  w-full h-fit my-auto  shadow-xl pb-2">
+          <canvas id="myChart"></canvas>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
+export default Example;
