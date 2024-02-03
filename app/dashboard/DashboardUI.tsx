@@ -538,7 +538,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
           <Card className="w-full md:w-3/5 mb-4 md:mb-0 sm:mr-4">
             <CardHeader>
               <CardTitle>
-                <div className="w-full flex justify-between">
+                <div className="w-full flex items-center justify-between">
                   <h2 className="text-md text-muted-foreground">Meal Plan</h2>
                   <DatePicker />
                 </div>
@@ -549,27 +549,35 @@ export function DashboardUI({ user }: DashboardUIProps) {
                 return (
                   meal.title && (
                     <Card className="mb-4 w-full">
-                      <div className="w-full flex flex-row">
-                        <div className="w-9/10">
+                      <div className="w-full flex justify-between flex-row">
+                        <div className="">
                           <CardHeader className="flex flex-row w-full items-center justify-center">
-                            <CardTitle className="text-muted-foreground"></CardTitle>
+                            <CardTitle className="text-muted-foreground">
+                              {meal.type}
+                            </CardTitle>
                           </CardHeader>
                           <CardContent>{meal.title}</CardContent>
                         </div>
-                        <div className="flex w-1/10 items-center justify-end">
-                          <Popover>
-                            <PopoverTrigger asChild>
-                              <Button variant="outline" size="icon">
-                                <BsThreeDotsVertical />
+                        <div className="flex px-3 items-center justify-end">
+                          <DropdownMenu>
+                            <DropdownMenuTrigger asChild>
+                              <Button variant="ghost" className="h-8 w-8 p-0">
+                                <span className="sr-only">Open menu</span>
+                                <DotsHorizontalIcon className="h-4 w-4" />
                               </Button>
-                            </PopoverTrigger>
-                            <PopoverContent
-                              className="w-auto p-0"
-                              align="start"
-                            >
-                              <Card>Delete</Card>
-                            </PopoverContent>
-                          </Popover>
+                            </DropdownMenuTrigger>
+                            <DropdownMenuContent align="end">
+                              <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                              <DropdownMenuItem>
+                                Copy payment ID
+                              </DropdownMenuItem>
+                              <DropdownMenuSeparator />
+                              <DropdownMenuItem>View customer</DropdownMenuItem>
+                              <DropdownMenuItem>
+                                View payment details
+                              </DropdownMenuItem>
+                            </DropdownMenuContent>
+                          </DropdownMenu>
                         </div>
                       </div>
                     </Card>
