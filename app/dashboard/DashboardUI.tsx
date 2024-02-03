@@ -244,7 +244,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
     try {
       const data = await postData({
         url: '/api/save-meal-plan',
-        data: { createdMealplan: createdMealplan }
+        data: { mealplan: createdMealplan }
       });
       const result = JSON.parse(data.body);
       if (!result) {

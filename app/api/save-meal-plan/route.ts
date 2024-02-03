@@ -5,16 +5,15 @@ import { createServerSupabaseClient, getSession } from '@/app/supabase-server';
 export async function POST(req: Request) {
   if (req.method === 'POST') {
     try {
-      const { createdMealPlan } = await req.json();
-      console.log(createdMealPlan);
+      const { mealplan } = await req.json();
       const session = await getSession();
       if (!session) {
         return new Response(JSON.stringify('Unauthorized'), {
           status: 401
         });
       }
-      createdMealPlan.owner = session.user.id;
-      const status = await createMealPlan(createdMealPlan);
+      mealplan.owner = session.user.id;
+      const status = await createMealPlan(mealplan);
       if (status) {
         const response = 'Meal plan saved';
         return new Response(JSON.stringify(response), {
