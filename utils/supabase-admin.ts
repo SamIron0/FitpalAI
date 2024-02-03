@@ -80,6 +80,7 @@ const retrieveMealPlans = async (user_id: string) => {
 };
 
 const createMealPlan = async (mealPlan: MealPlan) => {
+  console.log('saving',mealPlan);
   const { data, error: supabaseError } = await supabaseAdmin
     .from('mealplans')
     .insert([
