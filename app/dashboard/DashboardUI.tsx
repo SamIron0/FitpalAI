@@ -1,5 +1,5 @@
 'use client';
-
+import { BsThreeDotsVertical } from 'react-icons/bs';
 import * as React from 'react';
 import { CaretSortIcon, DotsHorizontalIcon } from '@radix-ui/react-icons';
 import {
@@ -39,6 +39,11 @@ import { Calories } from '@/components/Calories';
 import toast from 'react-hot-toast';
 import { User } from '@supabase/supabase-js';
 import { DatePicker } from '@/components/DatePicker';
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger
+} from '@/components/ui/popover';
 
 const data: Payment[] = [
   {
@@ -224,7 +229,9 @@ export function DashboardUI({ user }: DashboardUIProps) {
         console.log(data);
         setUsersMealPlans(data);
         setActiveMealPlan(data[0]);
-        setGenerateMode(false);
+        if (data.length > 0) {
+          setGenerateMode(false);
+        }
         return data;
       } catch (error) {
         console.log(error);
@@ -539,33 +546,21 @@ export function DashboardUI({ user }: DashboardUIProps) {
             </CardHeader>
             {activeMealPlan?.meals.map((meal) => {
               return (
-                <Card className="mb-4 mx-auto w-full">
+                <Card className="mb-4 mx-4 w-full">
                   <CardHeader className="flex flex-row w-full items-center justify-center">
                     <CardTitle className="text-muted-foreground"></CardTitle>
                     <div className="flex w-full justify-end ">
                       <div className="flex justify-end">
-                        <button
-                          disabled={isLoading}
-                          className="inline-flex mx-1 items-center justify-center w-9 h-9 mr-0.5 text-zinc-900 transition-colors duration-150 bg-gray-200 rounded-lg focus:shadow-outline hover:bg-gray-400"
-                        >
-                          <TbRefresh className="w-4 h-4" />
-                        </button>
-                        <button
-                          disabled={isLoading}
-                          onClick={() => likeMeal(meal)}
-                          className="inline-flex mx-1 items-center justify-center w-9 h-9 mr-2 text-indigo-100 transition-colors duration-150 bg-blue-500 rounded-lg focus:shadow-outline hover:bg-blue-700"
-                        >
-                          <svg
-                            className="w-4 h-4 fill-current"
-                            viewBox="0 0 20 20"
-                          >
-                            <path
-                              d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
-                              clip-rule="evenodd"
-                              fill-rule="evenodd"
-                            ></path>
-                          </svg>
-                        </button>
+                        <Popover>
+                          <PopoverTrigger asChild>
+                            <Button>
+                              <BsThreeDotsVertical />
+                            </Button>
+                          </PopoverTrigger>
+                          <PopoverContent className="w-auto p-0" align="start">
+                            <Card>Delete</Card>
+                          </PopoverContent>
+                        </Popover>
                       </div>
                     </div>
                   </CardHeader>
