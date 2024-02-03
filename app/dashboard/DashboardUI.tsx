@@ -471,7 +471,7 @@ export function DashboardUI() {
           </div>
         </Card>
         <Card className="w-full sm:w-2/5 mb-4 sm:mb-0 sm:mr-4">
-          <Calories />
+          <Calories protein={protein} fat={fat} carbs={carbs} />
         </Card>
       </div>
       <div className="w-full pt-4 flex flex-col justify-center md:flex-row">
