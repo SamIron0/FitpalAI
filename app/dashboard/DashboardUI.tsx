@@ -13,8 +13,9 @@ import {
   getSortedRowModel,
   useReactTable
 } from '@tanstack/react-table';
+import { Doughnut } from 'react-chartjs-2';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { TbRefresh } from 'react-icons/tb';
 import SuggestionPill from '../../components/SuggestionPill';
 import { MealPlan, UserDetails } from '@/types';
@@ -34,7 +35,7 @@ import { Allergies } from '@/components/Allergies';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { postData } from '@/utils/helpers';
 import { Pantry } from '@/components/Pantry';
-import Calories  from '@/components/Calories';
+import { Calories } from '@/components/Calories';
 
 const data: Payment[] = [
   {
@@ -362,6 +363,7 @@ export function DashboardUI() {
   const [protein, setProtein] = useState(220);
   const [carbs, setCarbs] = useState(220);
   const [fat, setFat] = useState(220);
+
   return (
     <div className="w-full sm:p-12 p-4">
       <div className="w-full pt-4 flex flex-col justify-center md:flex-row">
