@@ -426,6 +426,15 @@ export function DashboardUI({ user }: DashboardUIProps) {
   const [generateMode, setGenerateMode] = useState(true);
   return (
     <div className="w-full sm:p-12 p-4">
+      <div className="w-full flex justify-end">
+        {generateMode ? (
+          <Button onClick={() => setGenerateMode(false)} className="bg-accent">
+            Track
+          </Button>
+        ) : (
+          <Button onClick={() => setGenerateMode(true)}> Generate</Button>
+        )}
+      </div>
       <div className="w-full pt-8 flex flex-col justify-center md:flex-row">
         {generateMode ? (
           <Card className="w-full md:w-3/5 mb-4 md:mb-0 sm:mr-4">
@@ -566,10 +575,11 @@ export function DashboardUI({ user }: DashboardUIProps) {
                                 <DotsHorizontalIcon className="h-4 w-4" />
                               </Button>
                             </DropdownMenuTrigger>
-                            <DropdownMenuContent className='border-muted' align="end">
-                              <DropdownMenuItem>
-                                Regenerate
-                              </DropdownMenuItem>
+                            <DropdownMenuContent
+                              className="border-muted"
+                              align="end"
+                            >
+                              <DropdownMenuItem>Regenerate</DropdownMenuItem>
                               <DropdownMenuSeparator />
                               <DropdownMenuItem>Delete</DropdownMenuItem>
                               <DropdownMenuItem>
