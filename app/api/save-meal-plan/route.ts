@@ -17,7 +17,7 @@ export async function POST(req: Request) {
       mealplan.owner = session.user.id;
       console.log('owner',mealplan.owner);
 
-      const mealPlanId = createOrRetrieveMealPlan(mealplan);
+      const mealPlanId = await createOrRetrieveMealPlan(mealplan);
       if (mealPlanId != undefined) {
         const response = 'Meal plan saved';
         return new Response(JSON.stringify(response), {
