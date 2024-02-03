@@ -51,4 +51,4 @@ function Calories() {
     </>
   );
 }
-export default Example;
+export default Calories;
