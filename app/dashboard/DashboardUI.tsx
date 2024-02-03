@@ -208,30 +208,34 @@ export function DashboardUI() {
     // console.log('Preparing to save meal plan');
     setIsLoading(true);
     const toastId = toast.loading('Saving meal plan');
-    if (mealplan) {
-      // console.log('Saving meal plan');
-      try {
-        const data = await postData({
-          url: '/api/save-meal-plan',
-          data: mealplan
-        });
-        const result = JSON.parse(data.body);
-        let parsedData = JSON.parse(result);
-        if (!parsedData) {
-          toast.dismiss(toastId);
-
-          toast.error('Error saving meal plan');
-          return;
-        }
-        setIsLoading(false);
+    if (!mealplan) {
+      setIsLoading(false);
+      toast.dismiss(toastId);
+      toast.error('Error saving meal plan');
+      return;
+    }
+    // console.log('Saving meal plan');
+    try {
+      const data = await postData({
+        url: '/api/save-meal-plan',
+        data: mealplan
+      });
+      const result = JSON.parse(data.body);
+      let parsedData = JSON.parse(result);
+      if (!parsedData) {
         toast.dismiss(toastId);
-        toast.success('Meal plan saved successfully');
-      } catch (error) {
-        setIsLoading(false);
 
-        toast.dismiss(toastId);
         toast.error('Error saving meal plan');
+        return;
       }
+      setIsLoading(false);
+      toast.dismiss(toastId);
+      toast.success('Meal plan saved successfully');
+    } catch (error) {
+      setIsLoading(false);
+
+      toast.dismiss(toastId);
+      toast.error('Error saving meal plan');
     }
   };
   function renderGhostCards() {
@@ -302,7 +306,6 @@ export function DashboardUI() {
   const likeMeal = async (meal: any) => {
     setIsLoading(true);
     try {
-
       const data = await postData({
         url: '/api/like-meal',
         data: meal
@@ -317,7 +320,7 @@ export function DashboardUI() {
     } catch (error) {
       toast.error('Error liking meal');
     }
-  }
+  };
   function renderResultBox() {
     const results: any[] = [];
     mealplan?.meals?.forEach((meal) => {
@@ -482,7 +485,11 @@ export function DashboardUI() {
                     </h2>
                     <span className="flex w-1/2 items-center justify-end">
                       <Button
-                      onClick={() => saveMealPlan()}>Save</Button>
+                        onClick={() => saveMealPlan()}
+                        disabled={isLoading}
+                      >
+                        Save
+                      </Button>
                     </span>
                   </div>
                   {renderResultBox()}
