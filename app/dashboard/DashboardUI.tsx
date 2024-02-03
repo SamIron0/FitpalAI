@@ -223,6 +223,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
         }
         console.log(result);
         setUsersMealPlans(result);
+        setActiveMealPlans(result[0]);
         return result;
       } catch (error) {
         console.log(error);
