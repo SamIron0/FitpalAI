@@ -554,7 +554,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
                         <div className="flex justify-end">
                           <Popover>
                             <PopoverTrigger asChild>
-                              <Button>
+                              <Button variant="outline" size="icon">
                                 <BsThreeDotsVertical />
                               </Button>
                             </PopoverTrigger>

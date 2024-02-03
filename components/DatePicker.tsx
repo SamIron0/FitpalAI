@@ -30,7 +30,7 @@ export function DatePicker({
             id="date"
             variant={"outline"}
             className={cn(
-              "w-[280px] justify-start text-left font-normal",
+              "w-[240px] justify-start text-left font-normal",
               !date && "text-muted-foreground"
             )}
           >
@@ -57,6 +57,7 @@ export function DatePicker({
             selected={date}
             onSelect={setDate}
             numberOfMonths={2}
+            className="border-muted"
           />
         </PopoverContent>
       </Popover>
