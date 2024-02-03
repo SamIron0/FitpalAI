@@ -1,36 +1,45 @@
 'use client';
-import { Doughnut } from 'react-chartjs-2';
+import { useEffect } from 'react';
 
-const data = {
-  labels: ['JavaScript', 'Python', 'Ruby'],
-  datasets: [
-    {
-      label: 'My First Dataset',
-      data: [300, 50, 100],
-      backgroundColor: [
-        'rgb(133, 105, 241)',
-        'rgb(164, 101, 241)',
-        'rgb(101, 143, 241)'
-      ],
-      hoverOffset: 4
-    }
-  ]
-};
-
-interface CaloriesProps {
+interface Props {
   protein: number;
   fat: number;
   carbs: number;
 }
-function Calories({ protein, fat, carbs }: CaloriesProps) {
+
+const Calories: React.FC<Props> = ({ protein, fat, carbs }) => {
+  useEffect(() => {
+    const { Chart } = require('chart.js');
+    new Chart(document.getElementById('chartDoughnut') as HTMLCanvasElement, {
+      type: 'doughnut',
+      data: {
+        labels: ['Protein', 'Fat', 'Carbs'],
+        datasets: [
+          {
+            data: [protein, fat, carbs],
+            backgroundColor: [
+              'rgb(133, 105, 241)',
+              'rgb(164, 101, 241)',
+              'rgb(101, 143, 241)'
+            ],
+            hoverOffset: 4
+          }
+        ]
+      },
+      options: {}
+    });
+  }, [protein, fat, carbs]);
+
   return (
-    <div className="shadow-lg rounded-lg overflow-hidden">
-      <div className="py-3 px-5 bg-gray-50">Doughnut chart</div>
-      <div className="p-10">
-        <Doughnut data={data} options={{}} />
+    <div>
+      <div
+        className="shadow-lg rounded-lg 
+overflow-hidden"
+      >
+        <canvas id="chartDoughnut"></canvas>
       </div>
     </div>
   );
-}
+};
 
 export default Calories;
