@@ -359,8 +359,8 @@ export function DashboardUI() {
   };
 
   return (
-    <div className="w-full p-12 ">
-      <Card className='m-4'>
+    <div className="w-full sm:p-12 p-4">
+      <Card className='w-full sm:w-3/5 mb-4 sm:mb-0 sm:mr-4'>
         <div className="relative flex flex-1 flex-col">
           <div className=" p-4 max-w-2xl mx-auto flex flex-col justify-center md:p-6">
             <div className="flex w-full  flex-col justify-center pb-3">
@@ -463,7 +463,10 @@ export function DashboardUI() {
           </div>
         </div>
       </Card>
-      <div className="w-full p-4 pt-20 pb-64 flex flex-col justify-center md:flex-row">
+      <Card className='w-full sm:w-2/5 mb-4 sm:mb-0 sm:mr-4'>
+        
+      </Card>
+      <div className="w-full pt-4 flex flex-col justify-center md:flex-row">
         <Card className="w-full sm:w-1/2 mb-4 sm:mb-0 sm:mr-4">
           <Pantry />
         </Card>
