@@ -241,8 +241,8 @@ export function DashboardUI() {
   function renderGhostCards() {
     const ghostCards = [];
     for (let i = 0; i < 4; i++) {
-      ghostCards.push(<Skeleton className="w-[350px] sm:w-[450px] lg:[640px] mx-auto mb-4 h-28" />);
-    }
+      ghostCards.push(<Skeleton className="w-[350px] sm:w-[511px] md:w-[350px] lg:[550px] xl:[625px] mx-auto mb-4 h-28" />);
+    } 
     return ghostCards;
   }
   const fetchData = async (query: string) => {
