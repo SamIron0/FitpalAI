@@ -210,7 +210,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
   const [createdMealplan, setCreatedMealPlan] = useState<MealPlan | undefined>(
     undefined
   );
-
+  const [usersMealPlans, setUsersMealPlans] = useState<MealPlan[]>([]);
   useEffect(() => {
     const retrieveMealPlan = async () => {
       try {
@@ -221,8 +221,9 @@ export function DashboardUI({ user }: DashboardUIProps) {
         if (!result) {
           return;
         }
-        return result;
         console.log(result);
+        setUsersMealPlans(result);
+        return result;
       } catch (error) {
         console.log(error);
       }
