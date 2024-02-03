@@ -67,7 +67,7 @@ export interface Database {
           count?: number;
         };
       };
-      mealplan: {
+      mealplans: {
         Row: {
           id: string;
           meals: Meal[] | null;

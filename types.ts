@@ -11,7 +11,7 @@ export interface Meal {
 export interface MealPlan {
   meals: Meal[];
   id: string;
-  owner: string | null;
+  owner: string | undefined;
 }
 
 export interface SurveyResponse {
