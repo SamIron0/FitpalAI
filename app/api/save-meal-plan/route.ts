@@ -7,6 +7,9 @@ export async function POST(req: Request) {
     try {
       const session = await getSession();
       const { createdMealPlan } = await req.json();
+      console.log('json', req.json);
+      console.log('body', req.body);
+
       console.log('here w/', createdMealPlan);
       if (!session) {
         return new Response(JSON.stringify('Unauthorized'), {

@@ -217,7 +217,6 @@ export function DashboardUI({ user }: DashboardUIProps) {
         const data = await getData({
           url: '/api/retrieve-meal-plans'
         });
-        console.log(data);
         //  const result = JSON.parse(data.body);
         if (!data) {
           return;
