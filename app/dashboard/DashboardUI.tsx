@@ -457,11 +457,13 @@ export function DashboardUI() {
                 renderGhostCards()
               ) : mealplan?.meals ? (
                 <>
-                  <p className="w-full pt-12">Meal Plan</p>
-                  <span className="flex w-full justify-end">
-                    <Button>Save</Button>
-                  </span>
-                  <CardContent> {renderResultBox()} </CardContent>
+                  <div className="w-full pb-4  flex flex-col">
+                    <h2 className="w-1/2 text-xl pt-12">Meal Plan</h2>
+                    <span className="flex w-1/2 justify-end">
+                      <Button>Save</Button>
+                    </span>
+                  </div>
+                  {renderResultBox()}
                 </>
               ) : (
                 emptyState()
