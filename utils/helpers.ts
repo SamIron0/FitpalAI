@@ -15,7 +15,7 @@ export const getURL = () => {
   return url;
 };
 
-export const postData = async ({ url, data }: { url: string; data?: any }) => {
+export const postData = async ({ url, data }: { url: string; data: any }) => {
   console.log('posting,', url, data);
 
   const res = await fetch(url, {

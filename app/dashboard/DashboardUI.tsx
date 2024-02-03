@@ -217,14 +217,15 @@ export function DashboardUI({ user }: DashboardUIProps) {
         const data = await getData({
           url: '/api/retrieve-meal-plans'
         });
-        const result = JSON.parse(data.body);
-        if (!result) {
+        console.log(data);
+        //  const result = JSON.parse(data.body);
+        if (!data) {
           return;
         }
-        console.log(result);
-        setUsersMealPlans(result);
-        setActiveMealPlans(result[0]);
-        return result;
+        console.log(data);
+        // setUsersMealPlans(result);
+        // setActiveMealPlans(result[0]);
+        // return result;
       } catch (error) {
         console.log(error);
       }
@@ -235,11 +236,12 @@ export function DashboardUI({ user }: DashboardUIProps) {
     // save meal plan to supabase
     // console.log('Preparing to save meal plan');
     setIsLoading(true);
-    if (!createdMealplan) {
+    if (createdMealplan === undefined) {
       setIsLoading(false);
       toast.error('Create meal plan first');
       return;
     }
+    console.log('1: ', createdMealplan);
     const toastId = toast.loading('Saving meal plan');
     try {
       const data = await postData({
