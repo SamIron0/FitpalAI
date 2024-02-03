@@ -357,10 +357,9 @@ export function DashboardUI({ user }: DashboardUIProps) {
     const results: any[] = [];
     createdMealplan?.meals?.forEach((meal) => {
       {
-        meal.title?.length &&
+        meal.title &&
           results.push(
             <Card className="mb-4 mx-auto w-full">
-              <div className=''>
               <CardHeader className="flex flex-row w-full items-center justify-center">
                 <CardTitle className="text-muted-foreground">
                   {meal.type}
@@ -389,10 +388,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
                   </div>
                 </div>
               </CardHeader>
-              <CardContent>{meal.title}</CardContent></div>
-              <div className='flex items-center justify-center'>
-
-              </div>
+              <CardContent>{meal.title}</CardContent>
             </Card>
           );
       }
@@ -551,29 +547,31 @@ export function DashboardUI({ user }: DashboardUIProps) {
             <CardContent>
               {activeMealPlan?.meals.map((meal) => {
                 return (
-                  <Card className="mb-4 w-full">
-                    <CardHeader className="flex flex-row w-full items-center justify-center">
-                      <CardTitle className="text-muted-foreground"></CardTitle>
-                      <div className="flex w-full justify-end ">
-                        <div className="flex justify-end">
-                          <Popover>
-                            <PopoverTrigger asChild>
-                              <Button variant="outline" size="icon">
-                                <BsThreeDotsVertical />
-                              </Button>
-                            </PopoverTrigger>
-                            <PopoverContent
-                              className="w-auto p-0"
-                              align="start"
-                            >
-                              <Card>Delete</Card>
-                            </PopoverContent>
-                          </Popover>
+                  meal.title && (
+                    <Card className="mb-4 w-full">
+                      <CardHeader className="flex flex-row w-full items-center justify-center">
+                        <CardTitle className="text-muted-foreground"></CardTitle>
+                        <div className="flex w-full justify-end ">
+                          <div className="flex justify-end">
+                            <Popover>
+                              <PopoverTrigger asChild>
+                                <Button variant="outline" size="icon">
+                                  <BsThreeDotsVertical />
+                                </Button>
+                              </PopoverTrigger>
+                              <PopoverContent
+                                className="w-auto p-0"
+                                align="start"
+                              >
+                                <Card>Delete</Card>
+                              </PopoverContent>
+                            </Popover>
+                          </div>
                         </div>
-                      </div>
-                    </CardHeader>
-                    <CardContent>{meal.title}</CardContent>
-                  </Card>
+                      </CardHeader>
+                      <CardContent>{meal.title}</CardContent>
+                    </Card>
+                  )
                 );
               })}
             </CardContent>
