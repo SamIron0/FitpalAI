@@ -539,7 +539,8 @@ export function DashboardUI({ user }: DashboardUIProps) {
           <Card className="w-full md:w-3/5 mb-4 md:mb-0 sm:mr-4">
             <CardHeader>
               <CardTitle>
-                <div className="w-full flex justify-end">
+                <div className="w-full flex justify-between">
+                  <h2 className="text-xl text-muted-foreground">Meal Plan</h2>
                   <DatePicker />
                 </div>
               </CardTitle>
