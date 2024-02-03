@@ -551,7 +551,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
                     <Card className="mb-4 w-full">
                       <div className="w-full flex justify-between flex-row">
                         <div className="">
-                          <CardHeader className="flex flex-row w-full items-center justify-center">
+                          <CardHeader className="flex flex-row w-full items-center ">
                             <CardTitle className="text-muted-foreground">
                               {meal.type}
                             </CardTitle>
@@ -566,7 +566,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
                                 <DotsHorizontalIcon className="h-4 w-4" />
                               </Button>
                             </DropdownMenuTrigger>
-                            <DropdownMenuContent align="end">
+                            <DropdownMenuContent className='border-muted' align="end">
                               <DropdownMenuLabel>Actions</DropdownMenuLabel>
                               <DropdownMenuItem>
                                 Copy payment ID
