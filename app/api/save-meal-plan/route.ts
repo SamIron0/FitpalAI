@@ -14,12 +14,10 @@ export async function POST(req: Request) {
       }
       mealplan.owner = session.user.id;
       const status = await createMealPlan(mealplan);
-      if (status) {
-        const response = 'Meal plan saved';
-        return new Response(JSON.stringify(response), {
-          status: 200
-        });
-      }
+      const response = 'Meal plan saved';
+      return new Response(JSON.stringify(response), {
+        status: 200
+      });
     } catch (err: any) {
       return new Response(JSON.stringify(err), { status: 500 });
     }

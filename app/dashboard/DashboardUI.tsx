@@ -217,14 +217,14 @@ export function DashboardUI({ user }: DashboardUIProps) {
         const data = await getData({
           url: '/api/retrieve-meal-plans'
         });
-        //  const result = JSON.parse(data.body);
         if (!data) {
           return;
         }
         console.log(data);
-        // setUsersMealPlans(result);
-        // setActiveMealPlans(result[0]);
-        // return result;
+        setUsersMealPlans(data);
+        setActiveMealPlan(data[0]);
+        setGenerateMode(false);
+        return data;
       } catch (error) {
         console.log(error);
       }
@@ -415,11 +415,12 @@ export function DashboardUI({ user }: DashboardUIProps) {
   const [protein, setProtein] = useState(220);
   const [carbs, setCarbs] = useState(220);
   const [fat, setFat] = useState(220);
-  const [activeMealPlans, setActiveMealPlans] = useState(false);
+  const [activeMealPlan, setActiveMealPlan] = useState<MealPlan>();
+  const [generateMode, setGenerateMode] = useState(true);
   return (
     <div className="w-full sm:p-12 p-4">
       <div className="w-full pt-8 flex flex-col justify-center md:flex-row">
-        {!activeMealPlans ? (
+        {generateMode ? (
           <Card className="w-full md:w-3/5 mb-4 md:mb-0 sm:mr-4">
             <div className="relative flex flex-1 flex-col">
               <div className=" p-4 max-w-2xl mx-auto flex flex-col justify-center md:p-6">
@@ -527,113 +528,46 @@ export function DashboardUI({ user }: DashboardUIProps) {
             </div>
           </Card>
         ) : (
-          <Card className="w-full md:w-3/5 mb-4 md:mb-0 sm:mr-4">
-            <div className="relative flex flex-1 flex-col">
-              <div className=" p-4 max-w-2xl mx-auto flex flex-col justify-center md:p-6">
-                <div className="flex w-full  flex-col justify-center pb-3">
-                  <p className="text-4xl flex justify-center py-10 text-semibold ">
-                    Create a Plan
-                  </p>
-
-                  <form
-                    onSubmit={(e) => {
-                      e.preventDefault();
-                      fetchData(input);
-                    }}
-                  >
-                    <div className="relative w-full">
-                      <input
-                        value={input}
-                        disabled={isLoading}
-                        onChange={(e) => setInput(e.target.value)}
-                        className=" px-2 pl-4 w-full h-[60px] focus:outline-none bg-zinc-800 border-[1px] border-zinc-600 text-md rounded-md "
-                        placeholder="Ask about a meal"
-                      />
-                      <button
-                        type="submit"
-                        disabled={isLoading}
-                        className=" absolute end-2.5 bottom-2.5 focus:outline-none font-medium rounded-lg text-sm px-4 py-2 inline-flex items-center justify-start pl-2 p7 overflow-hidden  text-blue-500 transition-all duration-150 ease-in-out bg-gray-50 group"
-                      >
-                        <span className="absolute bottom-0 left-0 w-full h-1 transition-all duration-150 ease-in-out bg-blue-500 group-hover:h-full"></span>
-                        <span className="absolute right-0 pr-2 duration-200 ease-out group-hover:translate-x-0">
+          <div>
+            {activeMealPlan?.meals.map((meal) => {
+              return (
+                <Card className="mb-4 mx-auto w-full">
+                  <CardHeader className="flex flex-row w-full items-center justify-center">
+                    <CardTitle className="text-muted-foreground"></CardTitle>
+                    <div className="flex w-full justify-end ">
+                      <div className="flex justify-end">
+                        <button
+                          disabled={isLoading}
+                          className="inline-flex mx-1 items-center justify-center w-9 h-9 mr-0.5 text-zinc-900 transition-colors duration-150 bg-gray-200 rounded-lg focus:shadow-outline hover:bg-gray-400"
+                        >
+                          <TbRefresh className="w-4 h-4" />
+                        </button>
+                        <button
+                          disabled={isLoading}
+                          onClick={() => likeMeal(meal)}
+                          className="inline-flex mx-1 items-center justify-center w-9 h-9 mr-2 text-indigo-100 transition-colors duration-150 bg-blue-500 rounded-lg focus:shadow-outline hover:bg-blue-700"
+                        >
                           <svg
-                            className="w-4 h-4 text-black"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
+                            className="w-4 h-4 fill-current"
+                            viewBox="0 0 20 20"
                           >
                             <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              stroke-width="2"
-                              d="M14 5l7 7m0 0l-7 7m7-7H3"
+                              d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
+                              clip-rule="evenodd"
+                              fill-rule="evenodd"
                             ></path>
                           </svg>
-                        </span>
-
-                        <span className="relative w-lg pr-3 text-left transition-colors duration-200 ease-in-out group-hover:text-white">
-                          Generate
-                        </span>
-                      </button>
+                        </button>
+                      </div>
                     </div>
-                  </form>
-                </div>
-                {!isLoading && !completed ? (
-                  <div className="pb-24">
-                    <span className="px-2 pr-3 mb-2">Try</span>
-                    <SuggestionPill
-                      onclick={() => {
-                        onPillClick('What should I make for dinner');
-                      }}
-                      icon={'🥘'}
-                      caption="What should I make for dinner "
-                    />
-                    <SuggestionPill
-                      onclick={() => {
-                        onPillClick('Make me a meal plan for the week');
-                      }}
-                      icon={'🍔'}
-                      caption="Make me a meal plan for the week"
-                    />
-                    <SuggestionPill
-                      onclick={() => {
-                        onPillClick('Make me a cheap recipe for lunch');
-                      }}
-                      icon={'🍜'}
-                      caption=" Make me a cheap recipe for lunch"
-                    />
-                  </div>
-                ) : (
-                  isLoading && !completed && <div className="h-14" />
-                )}
-
-                {isLoading ? (
-                  <div className="pt-32">{renderGhostCards()}</div>
-                ) : createdMealplan?.meals ? (
-                  <>
-                    <div className="w-full pb-4 md:px-8 flex flex-row">
-                      <h2 className="w-1/2 flex items-center text-xl ">
-                        Meal Plan
-                      </h2>
-                      <span className="flex w-1/2 items-center justify-end">
-                        <Button
-                          onClick={() => saveMealPlan()}
-                          disabled={isLoading}
-                        >
-                          Save
-                        </Button>
-                      </span>
-                    </div>
-                    {renderResultBox()}
-                  </>
-                ) : (
-                  emptyState()
-                )}
-              </div>
-            </div>
-          </Card>
+                  </CardHeader>
+                  <CardContent>{meal.title}</CardContent>
+                </Card>
+              );
+            })}
+          </div>
         )}
+
         <Card className="w-full flex justify-center py-4 sm:w-2/5 mb-4 sm:mb-0 sm:mr-4">
           <Calories proteins={protein} fats={fat} carbs={carbs} />
         </Card>
