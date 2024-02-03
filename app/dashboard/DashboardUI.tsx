@@ -359,42 +359,40 @@ export function DashboardUI({ user }: DashboardUIProps) {
       {
         meal.title?.length &&
           results.push(
-            <Card className="mb-4 flex flex-row w-full">
-              <div className=' mx-auto '>
-                <CardHeader className="flex flex-row w-full items-center justify-center">
-                  <CardTitle className="text-muted-foreground">
-                    {meal.type}
-                  </CardTitle>
-                  <div className="flex w-full justify-end ">
-                    <div className="flex justify-end">
-                      <button
-                        disabled={isLoading}
-                        className="inline-flex mx-1 items-center justify-center w-9 h-9 mr-0.5 text-zinc-900 transition-colors duration-150 bg-gray-200 rounded-lg focus:shadow-outline hover:bg-gray-400"
-                      >
-                        <TbRefresh className="w-4 h-4" />
-                      </button>
-                      <button
-                        disabled={isLoading}
-                        onClick={() => likeMeal(meal)}
-                        className="inline-flex mx-1 items-center justify-center w-9 h-9 mr-2 text-indigo-100 transition-colors duration-150 bg-blue-500 rounded-lg focus:shadow-outline hover:bg-blue-700"
-                      >
-                        <svg
-                          className="w-4 h-4 fill-current"
-                          viewBox="0 0 20 20"
-                        >
-                          <path
-                            d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
-                            clip-rule="evenodd"
-                            fill-rule="evenodd"
-                          ></path>
-                        </svg>
-                      </button>
-                    </div>
+            <Card className="mb-4 mx-auto w-full">
+              <div className=''>
+              <CardHeader className="flex flex-row w-full items-center justify-center">
+                <CardTitle className="text-muted-foreground">
+                  {meal.type}
+                </CardTitle>
+                <div className="flex w-full justify-end ">
+                  <div className="flex justify-end">
+                    <button
+                      disabled={isLoading}
+                      className="inline-flex mx-1 items-center justify-center w-9 h-9 mr-0.5 text-zinc-900 transition-colors duration-150 bg-gray-200 rounded-lg focus:shadow-outline hover:bg-gray-400"
+                    >
+                      <TbRefresh className="w-4 h-4" />
+                    </button>
+                    <button
+                      disabled={isLoading}
+                      onClick={() => likeMeal(meal)}
+                      className="inline-flex mx-1 items-center justify-center w-9 h-9 mr-2 text-indigo-100 transition-colors duration-150 bg-blue-500 rounded-lg focus:shadow-outline hover:bg-blue-700"
+                    >
+                      <svg className="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                        <path
+                          d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
+                          clip-rule="evenodd"
+                          fill-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </button>
                   </div>
-                </CardHeader>
-                <CardContent>{meal.title}</CardContent>
+                </div>
+              </CardHeader>
+              <CardContent>{meal.title}</CardContent></div>
+              <div className='flex items-center justify-center'>
+
               </div>
-              <div className="flex items-center justify-center"></div>
             </Card>
           );
       }
