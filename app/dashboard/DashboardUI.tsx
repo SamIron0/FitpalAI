@@ -240,12 +240,11 @@ export function DashboardUI({ user }: DashboardUIProps) {
       toast.error('Create meal plan first');
       return;
     }
-    console.log('1: ', createdMealplan);
     const toastId = toast.loading('Saving meal plan');
     try {
       const data = await postData({
         url: '/api/save-meal-plan',
-        data: { createdMealplan }
+        data: { createdMealplan: createdMealplan }
       });
       const result = JSON.parse(data.body);
       if (!result) {
