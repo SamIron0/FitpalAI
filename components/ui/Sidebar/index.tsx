@@ -39,7 +39,7 @@ const Sidebar = ({ session }: SidebarProps) => {
                 className="p-2 pt-2 flex flex-col items-center w-full"
                 onClick={() => setSidebarOpen(!isSidebarOpen)}
               >
-                <BiMenuAltLeft className="w-8 h-8 text-zinc-400" />
+                <BiMenuAltLeft className="w-8 h-8 text-gray-200" />
               </button>
 
               <aside className="flex flex-col items-center w-16 h-screen py-8 overflow-y-auto border-r rtl:border-l rtl:border-r-0 bg-black border-black">
@@ -92,7 +92,7 @@ const Sidebar = ({ session }: SidebarProps) => {
                     />
                   </a>
                 </nav>
-                <div className="flex flex-col mb-12 sm:mb-0 space-y-6">
+                <div className="flex flex-col mb-9 space-y-6">
                   <a
                     href="#"
                     className="p-1.5 focus:outline-nones transition-colors duration-200 rounded-lg text-gray-200 bg-zinc-800 "
