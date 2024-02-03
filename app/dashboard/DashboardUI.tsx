@@ -299,6 +299,25 @@ export function DashboardUI() {
       </div>
     );
   }
+  const likeMeal = async (meal: any) => {
+    setIsLoading(true);
+    try {
+
+      const data = await postData({
+        url: '/api/like-meal',
+        data: meal
+      });
+      const result = JSON.parse(data.body);
+      let parsedData = JSON.parse(result);
+      if (!parsedData) {
+        toast.error('Error liking meal');
+        return;
+      }
+      toast.success('Added to likes');
+    } catch (error) {
+      toast.error('Error liking meal');
+    }
+  }
   function renderResultBox() {
     const results: any[] = [];
     mealplan?.meals?.forEach((meal) => {
@@ -320,7 +339,7 @@ export function DashboardUI() {
                     </button>
                     <button
                       disabled={isLoading}
-                      onClick={() => saveMealPlan()}
+                      onClick={() => likeMeal(meal)}
                       className="inline-flex mx-1 items-center justify-center w-9 h-9 mr-2 text-indigo-100 transition-colors duration-150 bg-blue-500 rounded-lg focus:shadow-outline hover:bg-blue-700"
                     >
                       <svg className="w-4 h-4 fill-current" viewBox="0 0 20 20">
@@ -453,14 +472,17 @@ export function DashboardUI() {
                 isLoading && !completed && <div className="h-14" />
               )}
 
-              {isLoading ? (<div className='pt-24'>
-                renderGhostCards()</div>
+              {isLoading ? (
+                <div className="pt-34">{renderGhostCards()}</div>
               ) : mealplan?.meals ? (
                 <>
                   <div className="w-full pb-4 md:px-8 flex flex-row">
-                    <h2 className="w-1/2 flex items-center text-xl ">Meal Plan</h2>
+                    <h2 className="w-1/2 flex items-center text-xl ">
+                      Meal Plan
+                    </h2>
                     <span className="flex w-1/2 items-center justify-end">
-                      <Button>Save</Button>
+                      <Button
+                      onClick={() => saveMealPlan()}>Save</Button>
                     </span>
                   </div>
                   {renderResultBox()}
