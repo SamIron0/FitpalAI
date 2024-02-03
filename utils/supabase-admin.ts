@@ -86,8 +86,9 @@ const createOrRetrieveMealPlan = async (mealPlan: MealPlan) => {
     ]);
   if (supabaseError) {
     console.log(supabaseError);
-    throw supabaseError;
+    //throw supabaseError;
   }
+  console.log(data);
   console.log(`New mealplan inserted for ${mealPlan.owner}.`);
   return mealPlan.id;
 };
