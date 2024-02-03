@@ -60,8 +60,8 @@ export const postData = async ({ url, data }: { url: string; data?: any }) => {
   return res.json();
 };
 
-export const getData = async ({ url, data }: { url: string; data?: any }) => {
-  console.log('getting,', url, data);
+export const getData = async ({ url }: { url: string; data?: any }) => {
+  console.log('getting,', url);
 
   const res = await fetch(url, {
     method: 'GET',
@@ -70,7 +70,7 @@ export const getData = async ({ url, data }: { url: string; data?: any }) => {
   });
 
   if (!res.ok) {
-    console.log('Error in getData', { url, data, res });
+    console.log('Error in getData', { url, res });
 
     throw Error(res.statusText);
   }

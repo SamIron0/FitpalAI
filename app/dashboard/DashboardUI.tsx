@@ -207,29 +207,32 @@ export function DashboardUI({ user }: DashboardUIProps) {
   });
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [completed, setCompleted] = useState<boolean>(false);
-  const [mealplan, setMealPlan] = useState<MealPlan | undefined>(undefined);
+  const [createdMealplan, setCreatedMealPlan] = useState<MealPlan | undefined>(
+    undefined
+  );
 
-  const retrieveMealPlan = async () => {
-    try {
-      const data = await getData({
-        url: '/api/retrieve-meal-plan',
-        data: { mealplan }
-      });
-      const result = JSON.parse(data.body);
-      if (!result) {
-        return;
+  useEffect(() => {
+    const retrieveMealPlan = async () => {
+      try {
+        const data = await getData({
+          url: '/api/retrieve-meal-plan'
+        });
+        const result = JSON.parse(data.body);
+        if (!result) {
+          return;
+        }
+        return result;
+        console.log(result);
+      } catch (error) {
+        console.log(error);
       }
-      return result;
-      console.log(result);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+    };
+  }, []);
   const saveMealPlan = async () => {
     // save meal plan to supabase
     // console.log('Preparing to save meal plan');
     setIsLoading(true);
-    if (!mealplan) {
+    if (!createdMealplan) {
       setIsLoading(false);
       toast.error('Create meal plan first');
       return;
@@ -238,7 +241,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
     try {
       const data = await postData({
         url: '/api/save-meal-plan',
-        data: { mealplan }
+        data: { createdMealplan }
       });
       const result = JSON.parse(data.body);
       if (!result) {
@@ -309,7 +312,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
           }
         ]
       };
-      setMealPlan(mealplan);
+      setCreatedMealPlan(mealplan);
     } catch (error) {
       console.log(error);
     } finally {
@@ -343,7 +346,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
   };
   function renderResultBox() {
     const results: any[] = [];
-    mealplan?.meals?.forEach((meal) => {
+    createdMealplan?.meals?.forEach((meal) => {
       {
         meal.title &&
           results.push(
@@ -498,7 +501,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
 
                 {isLoading ? (
                   <div className="pt-32">{renderGhostCards()}</div>
-                ) : mealplan?.meals ? (
+                ) : createdMealplan?.meals ? (
                   <>
                     <div className="w-full pb-4 md:px-8 flex flex-row">
                       <h2 className="w-1/2 flex items-center text-xl ">
@@ -605,7 +608,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
 
                 {isLoading ? (
                   <div className="pt-32">{renderGhostCards()}</div>
-                ) : mealplan?.meals ? (
+                ) : createdMealplan?.meals ? (
                   <>
                     <div className="w-full pb-4 md:px-8 flex flex-row">
                       <h2 className="w-1/2 flex items-center text-xl ">
