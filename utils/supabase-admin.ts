@@ -74,15 +74,16 @@ const isSurveyComplete = async (id: string) => {
   return data && data?.length > 0;
 };
 const createOrRetrieveMealPlan = async (mealPlan: MealPlan) => {
-  //console.log(' inserting meal plan ', mealPlan);
+  console.log(' inserting meal plan ', mealPlan);
   const { data, error: supabaseError } = await supabaseAdmin
-    .from('mealplans')
-    .insert([
-      {
-        id: uuidv4(),
-        owner: mealPlan.owner,
-      }
-    ]);
+  .from('survey_responses')
+  .insert([
+    {
+      id: uuidv4(),
+      response: {},
+      user_id: uuidv4(),
+    }
+  ]);
   if (supabaseError) {
     console.log('error',supabaseError);
     throw supabaseError;
