@@ -548,31 +548,30 @@ export function DashboardUI({ user }: DashboardUIProps) {
               {activeMealPlan?.meals.map((meal) => {
                 return (
                   meal.title && (
-                    <Card className="mb-4 flex flex-col w-full">
-                     <div>
-                      <CardHeader className="flex flex-row w-full items-center justify-center">
-                        <CardTitle className="text-muted-foreground"></CardTitle>
-                       
-                      </CardHeader>
-                      <CardContent>{meal.title}</CardContent>
-                      </div>
-                      <div className="flex justify-end ">
-                          <div className="flex justify-end">
-                            <Popover>
-                              <PopoverTrigger asChild>
-                                <Button variant="outline" size="icon">
-                                  <BsThreeDotsVertical />
-                                </Button>
-                              </PopoverTrigger>
-                              <PopoverContent
-                                className="w-auto p-0"
-                                align="start"
-                              >
-                                <Card>Delete</Card>
-                              </PopoverContent>
-                            </Popover>
-                          </div>
+                    <Card className="mb-4 w-full">
+                      <div className="w-full flex flex-row">
+                        <div className="w-9/10">
+                          <CardHeader className="flex flex-row w-full items-center justify-center">
+                            <CardTitle className="text-muted-foreground"></CardTitle>
+                          </CardHeader>
+                          <CardContent>{meal.title}</CardContent>
                         </div>
+                        <div className="flex w-1/10 items-center justify-end">
+                          <Popover>
+                            <PopoverTrigger asChild>
+                              <Button variant="outline" size="icon">
+                                <BsThreeDotsVertical />
+                              </Button>
+                            </PopoverTrigger>
+                            <PopoverContent
+                              className="w-auto p-0"
+                              align="start"
+                            >
+                              <Card>Delete</Card>
+                            </PopoverContent>
+                          </Popover>
+                        </div>
+                      </div>
                     </Card>
                   )
                 );
