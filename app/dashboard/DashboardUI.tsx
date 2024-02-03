@@ -262,6 +262,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
       setIsLoading(false);
       toast.dismiss(toastId);
       toast.success('Meal plan saved successfully');
+      setGenerateMode(false);
     } catch (error) {
       setIsLoading(false);
       toast.dismiss(toastId);
