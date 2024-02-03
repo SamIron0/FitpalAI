@@ -218,7 +218,7 @@ export function DashboardUI() {
     try {
       const data = await postData({
         url: '/api/save-meal-plan',
-        data: mealplan
+        data: {mealplan}
       });
       const result = JSON.parse(data.body);
       let parsedData = JSON.parse(result);
