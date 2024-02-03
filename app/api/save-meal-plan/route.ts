@@ -7,12 +7,15 @@ export async function POST(req: Request) {
     try {
       const session = await getSession();
       const { mealplan } = await req.json();
+      console.log('plan',mealplan);
       if (!session) {
         return new Response(JSON.stringify('Unauthorized'), {
           status: 401
         });
       }
+
       mealplan.owner = session.user.id;
+      console.log('owner',mealplan.owner);
 
       const mealPlanId = createOrRetrieveMealPlan(mealplan);
       if (mealPlanId != undefined) {
