@@ -458,7 +458,7 @@ export function DashboardUI() {
               ) : mealplan?.meals ? (
                 <>
                   <div className="w-full pb-4 md:px-8 flex flex-row">
-                    <h2 className="w-1/2 flex items-center text-xl pt-12">Meal Plan</h2>
+                    <h2 className="w-1/2 flex items-center text-xl ">Meal Plan</h2>
                     <span className="flex w-1/2 items-center justify-end">
                       <Button>Save</Button>
                     </span>
