@@ -36,6 +36,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { postData } from '@/utils/helpers';
 import { Pantry } from '@/components/Pantry';
 import { Calories } from '@/components/Calories';
+import toast from 'react-hot-toast';
 
 const data: Payment[] = [
   {
@@ -206,31 +207,32 @@ export function DashboardUI() {
     // save meal plan to supabase
     // console.log('Preparing to save meal plan');
     setIsLoading(true);
+    const toastId = toast.loading('Saving meal plan');
     if (mealplan) {
-      console.log('Saving meal plan');
+      // console.log('Saving meal plan');
+      try {
+        const data = await postData({
+          url: '/api/save-meal-plan',
+          data: mealplan
+        });
+        const result = JSON.parse(data.body);
+        let parsedData = JSON.parse(result);
+        if (!parsedData) {
+          toast.dismiss(toastId);
 
-      const url = '/api/save-meal-plan';
-      const body = { mealplan };
-      const options = {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(body)
-      };
+          toast.error('Error saving meal plan');
+          return;
+        }
+        setIsLoading(false);
+        toast.dismiss(toastId);
+        toast.success('Meal plan saved successfully');
+      } catch (error) {
+        setIsLoading(false);
 
-      const response = await fetch(url, options);
-      const data = await response.json();
-
-      // const meal:  MealPlan = data.mealplan
-      if (!response.ok) {
-        throw new Error(
-          data?.error?.message ?? 'An error occurred while saving meal plan.'
-        );
+        toast.dismiss(toastId);
+        toast.error('Error saving meal plan');
       }
-      setIsLoading(false);
     }
-    //return data;
   };
   function renderGhostCards() {
     const ghostCards = [];
@@ -264,8 +266,6 @@ export function DashboardUI() {
       const data = JSON.parse(result.body);
       let parsedData = JSON.parse(data);
       //setGptResponse(result);
-      console.log('Parsed data: ', parsedData);
-      console.log(parsedData.breakfast);
       mealplan = {
         id: '',
         owner: '',

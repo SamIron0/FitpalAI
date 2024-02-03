@@ -4,7 +4,7 @@ import { createOrRetrieveMealPlan } from '@/utils/supabase-admin';
 
 const SaveMealPlan: NextApiHandler = async (req, res) => {
   if (req.method === 'POST') {
-    const { mealplan, planName, planDescription } = req.body;
+    const { mealplan} = req.body;
     try {
       const supabase = createServerSupabaseClient({ req, res });
       const {
@@ -19,10 +19,7 @@ const SaveMealPlan: NextApiHandler = async (req, res) => {
         });
 
       const mealPlanId = createOrRetrieveMealPlan(
-        mealplan,
-        session.user.id,
-        planName,
-        planDescription
+        mealplan
       );
       if (mealPlanId != undefined) {
         const response = 'Meal plan saved';

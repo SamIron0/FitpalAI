@@ -75,21 +75,18 @@ const isSurveyComplete = async (id: string) => {
 };
 const createOrRetrieveMealPlan = async (
   mealPlan: MealPlan,
-  owner_id: string,
-  planName: string,
-  planDescription: string
 ) => {
   const { data, error: supabaseError } = await supabaseAdmin
     .from('mealplans')
     .insert([
       {
-        id: 'here',
+        id: uuidv4(),
         meals: mealPlan.meals,
-        owner: owner_id
+        owner: mealPlan.owner
       }
     ]);
   if (supabaseError) throw supabaseError;
-  console.log(`New mealplan inserted for}.`);
+  console.log(`New mealplan inserted for ${mealPlan.owner}.`);
   return mealPlan.id;
 };
 
