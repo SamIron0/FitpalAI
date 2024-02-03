@@ -529,53 +529,51 @@ export function DashboardUI({ user }: DashboardUIProps) {
             </div>
           </Card>
         ) : (
-          <div>
-            <Card className="w-full md:w-3/5 mb-4 md:mb-0 sm:mr-4">
-              <CardHeader>
-                <CardTitle>
-                  <div className="w-full flex justify-end">
-                    <DatePicker />
-                  </div>
-                </CardTitle>
-              </CardHeader>
-              {activeMealPlan?.meals.map((meal) => {
-                return (
-                  <Card className="mb-4 mx-auto w-full">
-                    <CardHeader className="flex flex-row w-full items-center justify-center">
-                      <CardTitle className="text-muted-foreground"></CardTitle>
-                      <div className="flex w-full justify-end ">
-                        <div className="flex justify-end">
-                          <button
-                            disabled={isLoading}
-                            className="inline-flex mx-1 items-center justify-center w-9 h-9 mr-0.5 text-zinc-900 transition-colors duration-150 bg-gray-200 rounded-lg focus:shadow-outline hover:bg-gray-400"
+          <Card className="w-full md:w-3/5 mb-4 md:mb-0 sm:mr-4">
+            <CardHeader>
+              <CardTitle>
+                <div className="w-full flex justify-end">
+                  <DatePicker />
+                </div>
+              </CardTitle>
+            </CardHeader>
+            {activeMealPlan?.meals.map((meal) => {
+              return (
+                <Card className="mb-4 mx-auto w-full">
+                  <CardHeader className="flex flex-row w-full items-center justify-center">
+                    <CardTitle className="text-muted-foreground"></CardTitle>
+                    <div className="flex w-full justify-end ">
+                      <div className="flex justify-end">
+                        <button
+                          disabled={isLoading}
+                          className="inline-flex mx-1 items-center justify-center w-9 h-9 mr-0.5 text-zinc-900 transition-colors duration-150 bg-gray-200 rounded-lg focus:shadow-outline hover:bg-gray-400"
+                        >
+                          <TbRefresh className="w-4 h-4" />
+                        </button>
+                        <button
+                          disabled={isLoading}
+                          onClick={() => likeMeal(meal)}
+                          className="inline-flex mx-1 items-center justify-center w-9 h-9 mr-2 text-indigo-100 transition-colors duration-150 bg-blue-500 rounded-lg focus:shadow-outline hover:bg-blue-700"
+                        >
+                          <svg
+                            className="w-4 h-4 fill-current"
+                            viewBox="0 0 20 20"
                           >
-                            <TbRefresh className="w-4 h-4" />
-                          </button>
-                          <button
-                            disabled={isLoading}
-                            onClick={() => likeMeal(meal)}
-                            className="inline-flex mx-1 items-center justify-center w-9 h-9 mr-2 text-indigo-100 transition-colors duration-150 bg-blue-500 rounded-lg focus:shadow-outline hover:bg-blue-700"
-                          >
-                            <svg
-                              className="w-4 h-4 fill-current"
-                              viewBox="0 0 20 20"
-                            >
-                              <path
-                                d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
-                                clip-rule="evenodd"
-                                fill-rule="evenodd"
-                              ></path>
-                            </svg>
-                          </button>
-                        </div>
+                            <path
+                              d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
+                              clip-rule="evenodd"
+                              fill-rule="evenodd"
+                            ></path>
+                          </svg>
+                        </button>
                       </div>
-                    </CardHeader>
-                    <CardContent>{meal.title}</CardContent>
-                  </Card>
-                );
-              })}
-            </Card>
-          </div>
+                    </div>
+                  </CardHeader>
+                  <CardContent>{meal.title}</CardContent>
+                </Card>
+              );
+            })}
+          </Card>
         )}
 
         <Card className="w-full flex justify-center py-4 sm:w-2/5 mb-4 sm:mb-0 sm:mr-4">
