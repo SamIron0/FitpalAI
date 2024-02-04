@@ -20,7 +20,7 @@ export const categories = [
     description: 'View All Available Destinations!'
   },
   {
-    label: 'Exclusions',
+    label: 'Allergies',
     icon: TbShoppingCart,
     description: 'This property is has windmills!'
   },
@@ -28,16 +28,6 @@ export const categories = [
     label: 'Macros',
     icon: MdFlight,
     description: 'This property is modern!'
-  },
-  {
-    label: 'Weight',
-    icon: TbSchool,
-    description: 'This property is in the countryside!'
-  },
-  {
-    label: 'Goal',
-    icon: TbMovie,
-    description: 'Wanna see a movie?!'
   }
 ];
 

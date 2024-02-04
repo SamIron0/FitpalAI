@@ -13,29 +13,6 @@ export const metadata: Metadata = {
   description: 'Advanced form example using react-hook-form and Zod.'
 };
 
-const sidebarNavItems = [
-  {
-    title: 'Profile',
-    href: '/examples/forms'
-  },
-  {
-    title: 'Account',
-    href: '/examples/forms/account'
-  },
-  {
-    title: 'Appearance',
-    href: '/examples/forms/appearance'
-  },
-  {
-    title: 'Notifications',
-    href: 'preferences/notifications'
-  },
-  {
-    title: 'Display',
-    href: '/examples/forms/display'
-  }
-];
-
 interface PreferencesUIProps {
   children: React.ReactNode;
 }
@@ -151,14 +128,10 @@ export function PreferencesUI() {
                 </Label>
               </div>
             </RadioGroup>
-          ) : activeCategory === 'Exclusion' ? (
-            <div>2</div>
           ) : activeCategory === 'Macros' ? (
             <div>3</div>
-          ) : activeCategory === 'Weight' ? (
-            <div>4</div>
-          ) : activeCategory === 'Goals' ? (
-            <div>Goal</div>
+          ) : activeCategory === 'Allergies' ? (
+            <div>3</div>
           ) : null}
         </div>
       </div>
