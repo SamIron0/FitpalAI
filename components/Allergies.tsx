@@ -17,17 +17,25 @@ import { useState } from 'react';
 export function Allergies({ allergies }: { allergies?: string[] | null }) {
   const deleteAllergy = (allergy: string) => {
     if (allergy.length > 0 && allergies?.includes(allergy)) {
-      
       postData({ url: '/api/upsert-user-details', data: { allergy } });
     }
   };
+  const [isLoading, setIsLoading] = useState(false);
   const addAllergy = (allergy: string) => {
+    setIsLoading(true);
+    console.log('adding', allergy);
     if (allergy.length > 0 && !allergies?.includes(allergy)) {
-      postData({ url: '/api/upsert-user-details', data: { allergy } });
+      try {
+        postData({ url: '/api/upsert-user-details', data: { allergy } });
+      } catch (e) {
+        console.log(e);
+      }
     }
+    setIsLoading(false);
+    setNewAllergy('');
   };
   const [new_allergy, setNewAllergy] = useState<string>('');
-  
+
   return (
     <Card className="w-full max-w-3xl">
       <CardHeader className="pb-3">
@@ -38,8 +46,12 @@ export function Allergies({ allergies }: { allergies?: string[] | null }) {
       </CardHeader>
       <CardContent>
         <div className="flex space-x-2">
-          <Input placeholder='start typing...' value={new_allergy} onChange={(e) => setNewAllergy(e.target.value)}/>
-            
+          <Input
+            placeholder="start typing..."
+            value={new_allergy}
+            onChange={(e) => setNewAllergy(e.target.value)}
+          />
+
           <Button onClick={() => addAllergy(new_allergy)} className="shrink-0">
             Add
           </Button>

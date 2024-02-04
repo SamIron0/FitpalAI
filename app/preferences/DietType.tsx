@@ -19,7 +19,7 @@ import { Label } from '@/components/ui/label';
 
 const FormSchema = z.object({
   type: z.enum(['Anything', 'Vegetarian', 'Vegan' , 'Gluten-free', 'Keto', 'Paleo', 'Pescatarian', 'Pescetarian', 'Mediterranean', 'Low-Carb'], {
-    required_error: 'You need to select a notification type.'
+    required_error: 'You need to select a diet type.'
   })
 });
 
@@ -37,7 +37,7 @@ export default function DietType( { submit }: DietTypeProps) {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onsubmit)} className="w-2/3 space-y-6">
+      <form onSubmit={form.handleSubmit(onsubmit)} className="sm:w-2/3 w-full space-y-6">
         <FormField
           control={form.control}
           name="type"
@@ -196,7 +196,7 @@ export default function DietType( { submit }: DietTypeProps) {
             </FormItem>
           )}
         />
-        <Button className='w-lg' type="submit">Save</Button>
+        <Button className='w-full max-w-xl' type="submit">Save</Button>
       </form>
     </Form>
   );
