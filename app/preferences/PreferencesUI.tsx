@@ -21,7 +21,7 @@ export function PreferencesUI() {
   const [activeCategory, setActiveCategory] = useState('Diet Type');
 
   return (
-    <div className="space-y-6 p-4 pt-12  pb-16">
+    <div className="space-y-6 p-4 sm:p-12 pt-12  pb-16">
       <div className="space-y-0.5 flex flex-col">
         <h2 className="text-2xl font-bold tracking-tight">Preferences</h2>
         <p className="text-muted-foreground">
