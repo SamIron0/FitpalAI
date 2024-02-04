@@ -283,6 +283,8 @@ export function DashboardUI({ user }: DashboardUIProps) {
     }
     return ghostCards;
   }
+
+  //call aws to create the initial meal plan
   const fetchData = async (query: string) => {
     setIsLoading(true);
     let mealplan: MealPlan; //await getData(query);
@@ -334,6 +336,8 @@ export function DashboardUI({ user }: DashboardUIProps) {
       setIsLoading(false);
     }
   };
+
+  
   function emptyState() {
     return (
       <div className="flex flex-col justify-center items-center h-full">
