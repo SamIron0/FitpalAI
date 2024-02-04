@@ -32,12 +32,10 @@ const CategoryBox: React.FC<CategoryBoxProps> = ({
         justify-center 
         gap-2
         p-3
-        border-b-2
-        border-zinc-400
         hover:text-zinc-200
         transition
         cursor-pointer
-        ${selected ? 'border-b-zinc-200' : 'border-transparent'}
+        ${selected ? 'border-b-zinc-200' : ''}
         ${selected ? 'text-zinc-200' : 'text-zinc-500'}
       `}
     >
