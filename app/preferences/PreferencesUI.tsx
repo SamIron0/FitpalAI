@@ -10,6 +10,8 @@ import { Label } from '@/components/ui/label';
 import { Allergies } from '@/components/Allergies';
 import { UserDetails } from '@/types';
 import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
+import { Calories } from '@/components/Calories';
 
 export const metadata: Metadata = {
   title: 'Forms',
@@ -136,11 +138,16 @@ export function PreferencesUI({ userDetails }: PreferencesUIProps) {
                   </Label>
                 </div>
               </RadioGroup>
-              <Button className='w-full sm:max-w-lg'>
-                Save</Button>{' '}
+              <Button className="w-full sm:max-w-lg">Save</Button>{' '}
             </>
           ) : activeCategory === 'Macros' ? (
-            <div>3</div>
+            <Card className="w-full flex justify-center py-4 sm:w-2/5 mb-4 sm:mb-0">
+              <Calories
+                proteins={userDetails.macros?.protein}
+                fats={userDetails.macros?.fat}
+                carbs={userDetails.macros?.carbs}
+              />
+            </Card>
           ) : activeCategory === 'Allergies' ? (
             <Allergies allergies={userDetails.allergies} />
           ) : null}

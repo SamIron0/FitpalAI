@@ -6,9 +6,9 @@ import { Doughnut } from 'react-chartjs-2';
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 interface CaloriesProps {
-  proteins: number;
-  fats: number;
-  carbs: number;
+  proteins: number | undefined;
+  fats: number | undefined;
+  carbs: number | undefined;
 }
 export function Calories({ proteins, fats, carbs }: CaloriesProps) {
   const data = {
