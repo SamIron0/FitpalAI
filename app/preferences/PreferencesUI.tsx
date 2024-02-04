@@ -5,6 +5,8 @@ import Image from 'next/image';
 import { Separator } from '@/components/ui/separator';
 import Categories from './Categories';
 import { useState } from 'react';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { Label } from '@/components/ui/label';
 
 export const metadata: Metadata = {
   title: 'Forms',
@@ -56,7 +58,99 @@ export function PreferencesUI() {
         />
         <div className="flex-1 lg:max-w-2xl">
           {activeCategory === 'Diet Type' ? (
-            <div>1</div>
+            <RadioGroup defaultValue="card" className="grid grid-cols-3 gap-4">
+              <div>
+                <RadioGroupItem
+                  value="apple"
+                  id="apple"
+                  className="peer sr-only"
+                />
+                <Label
+                  htmlFor="apple"
+                  className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+                >
+                  Anything
+                </Label>
+              </div>
+              <div>
+                <RadioGroupItem
+                  value="apple"
+                  id="apple"
+                  className="peer sr-only"
+                />
+                <Label
+                  htmlFor="apple"
+                  className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+                >
+                  Mediterranean
+                </Label>
+              </div>
+              <div>
+                <RadioGroupItem
+                  value="apple"
+                  id="apple"
+                  className="peer sr-only"
+                />
+                <Label
+                  htmlFor="apple"
+                  className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+                >
+                  Paleo
+                </Label>
+              </div>
+              <div>
+                <RadioGroupItem
+                  value="card"
+                  id="card"
+                  className="peer sr-only"
+                />
+                <Label
+                  htmlFor="card"
+                  className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    className="mb-3 h-6 w-6"
+                  >
+                    <rect width="20" height="14" x="2" y="5" rx="2" />
+                    <path d="M2 10h20" />
+                  </svg>
+                  Vegan
+                </Label>
+              </div>
+              <div>
+                <RadioGroupItem
+                  value="paypal"
+                  id="paypal"
+                  className="peer sr-only"
+                />
+                <Label
+                  htmlFor="paypal"
+                  className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+                >
+                  Keto
+                </Label>
+              </div>
+              <div>
+                <RadioGroupItem
+                  value="apple"
+                  id="apple"
+                  className="peer sr-only"
+                />
+                <Label
+                  htmlFor="apple"
+                  className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+                >
+                  Vegetarian
+                </Label>
+              </div>
+            </RadioGroup>
           ) : activeCategory === 'Exclusion' ? (
             <div>2</div>
           ) : activeCategory === 'Macros' ? (
