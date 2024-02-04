@@ -45,7 +45,7 @@ interface CategoriesProps {
   activeCategory: string;
   setActiveCategory: (label: string) => void;
 }
-const Categories = ({ activeCategory, setActiveCategory }: CategoriesProps) => {
+export function Categories = ({ activeCategory, setActiveCategory }: CategoriesProps) => {
   const params = useSearchParams();
   const pathname = usePathname();
   const isMainPage = pathname === '/';
@@ -58,5 +58,3 @@ const Categories = ({ activeCategory, setActiveCategory }: CategoriesProps) => {
      <>hello</>
   );
 };
-
-export default Categories;
