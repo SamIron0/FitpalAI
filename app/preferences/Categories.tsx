@@ -29,27 +29,27 @@ import {
 
 export const categories = [
   {
-    label: 'All',
+    label: 'Diet Type',
     icon: TbCar,
     description: 'View All Available Destinations!'
   },
   {
-    label: 'Shop',
+    label: 'Exclusions',
     icon: TbShoppingCart,
     description: 'This property is has windmills!'
   },
   {
-    label: 'Airport',
+    label: 'Macros',
     icon: MdFlight,
     description: 'This property is modern!'
   },
   {
-    label: 'School',
+    label: 'Weight',
     icon: TbSchool,
     description: 'This property is in the countryside!'
   },
   {
-    label: 'Cinema',
+    label: 'Goal',
     icon: TbMovie,
     description: 'Wanna see a movie?!'
   }
