@@ -40,10 +40,6 @@ const Categories = ({ activeCategory, setActiveCategory }: CategoriesProps) => {
   const pathname = usePathname();
   const isMainPage = pathname === '/';
 
-  if (!isMainPage) {
-    return null;
-  }
-
   return (
     <div
       className="max-w-screen
