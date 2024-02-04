@@ -82,7 +82,7 @@ export function PreferencesUI({ userDetails }: PreferencesUIProps) {
               />
             </Card>
           ) : activeCategory === 'Allergies' ? (
-            <Allergies allergies={userDetails?.allergies} />
+            <Allergies userDetails={userDetails} />
           ) : null}
         </div>
       </div>

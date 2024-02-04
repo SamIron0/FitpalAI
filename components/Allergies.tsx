@@ -12,23 +12,57 @@ import {
 import { Input } from './ui/input';
 import { UserDetails } from '@/types';
 import { Separator } from './ui/separator';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { EmptyAllergies } from './EmptyAllergies';
+import toast from 'react-hot-toast';
 
-export function Allergies({ allergies }: { allergies?: string[] | null }) {
-  const deleteAllergy = (allergy: string) => {
-    if (allergy.length > 0 && allergies?.includes(allergy)) {
-      postData({ url: '/api/upsert-user-details', data: { allergy } });
+interface AllergiesProps {
+  userDetails: UserDetails | null | undefined;
+}
+export function Allergies({ userDetails }: AllergiesProps) {
+  const deleteAllergy = async (allergy: string) => {
+    console.log('deleting', allergy);
+    if (allergy.length > 0 && userDetails?.allergies?.includes(allergy)) {
+      const updatedDetails: UserDetails = {
+        ...userDetails,
+        allergies: userDetails?.allergies?.filter((a) => a !== allergy)
+      };
+      const result = await postData({
+        url: '/api/upsert-user-details',
+        data: { userDetails: updatedDetails }
+      });
+      const data = JSON.parse(result.body);
+      setUserAllergies(userDetails?.allergies?.filter((a) => a !== allergy));
     }
   };
   const [isLoading, setIsLoading] = useState(false);
-  const addAllergy = (allergy: string) => {
+  const [userAllergies, setUserAllergies] = useState<string[]>([]); //userAlle
+  useEffect(() => {
+    if (userDetails?.allergies) {
+      setUserAllergies(userDetails?.allergies);
+    }
+  });
+  const addAllergy = async (allergy: string) => {
     setIsLoading(true);
-    console.log('adding', allergy);
-    if (allergy.length > 0 && !allergies?.includes(allergy)) {
+    if (allergy.length > 0) {
+      console.log('adding', allergy);
+      const allergies = [...(userDetails?.allergies || []), allergy];
+      const updatedDetails: UserDetails = {
+        ...userDetails,
+        allergies: allergies
+      };
       try {
-        postData({ url: '/api/upsert-user-details', data: { allergy } });
-      } catch (e) {
-        console.log(e);
+        const result = await postData({
+          url: '/api/upsert-user-details',
+          data: { userDetails: updatedDetails }
+        });
+        const data = JSON.parse(result.body);
+        if (!data) {
+          toast.error('Error updating your preferences please try again later');
+        }
+        setUserAllergies(allergies);
+      } catch (error) {
+        console.log(error);
       }
     }
     setIsLoading(false);
@@ -57,23 +91,29 @@ export function Allergies({ allergies }: { allergies?: string[] | null }) {
           </Button>
         </div>
         <Separator className="my-4" />
-        <div className="space-y-4">
-          <div className="grid gap-6">
-            {allergies?.map((allergy) => (
-              <div className="flex items-center justify-between space-x-4">
-                <div className="flex items-center space-x-4">
-                  <p className="text-sm font-medium leading-none">{allergy}</p>
+        {userAllergies.length === 0 ? (
+          <EmptyAllergies />
+        ) : (
+          <div className="space-y-4">
+            <div className="grid gap-6">
+              {userAllergies.map((allergy) => (
+                <div className="flex items-center justify-between space-x-4">
+                  <div className="flex items-center space-x-4">
+                    <p className="text-sm font-medium leading-none">
+                      {allergy}
+                    </p>
+                  </div>
+                  <Button
+                    onSubmit={() => deleteAllergy('nuts')}
+                    variant="secondary"
+                  >
+                    Remove
+                  </Button>
                 </div>
-                <Button
-                  onSubmit={() => deleteAllergy('nuts')}
-                  variant="secondary"
-                >
-                  Remove
-                </Button>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
+        )}
       </CardContent>
     </Card>
   );
