@@ -24,7 +24,7 @@ const sidebarNavItems = [
   },
   {
     title: 'Notifications',
-    href: '/examples/forms/notifications'
+    href: 'preferences/notifications'
   },
   {
     title: 'Display',
@@ -32,10 +32,10 @@ const sidebarNavItems = [
   }
 ];
 
-interface SettingsLayoutProps {
+interface PreferencesUIProps {
   children: React.ReactNode;
 }
-export function PreferencesUI() {
+export function PreferencesUI( { children }: PreferencesUIProps ) {
   return (
     <>
       <div className="md:hidden">
@@ -65,7 +65,7 @@ export function PreferencesUI() {
         <div className="flex flex-col space-y-8 lg:flex-row lg:space-x-12 lg:space-y-0">
           <aside className="-mx-4 lg:w-1/5">
             <SidebarNav items={sidebarNavItems} />
-          </aside>
+          </aside> <div className="flex-1 lg:max-w-2xl">{children}</div>
         </div>
       </div>
     </>
