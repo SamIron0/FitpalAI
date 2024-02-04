@@ -26,12 +26,12 @@ const FormSchema = z.object({
 interface DietTypeProps {
   submit: (data: z.infer<typeof FormSchema>) => void;
 }
-export default function DietType({ submit }: DietTypeProps) {
+export default function DietType() {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema)
   });
   function onsubmit(data: z.infer<typeof FormSchema>) {
-    submit(data);
+    //submit(data);
   }
 
   return (
