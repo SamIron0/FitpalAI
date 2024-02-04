@@ -55,13 +55,7 @@ const Categories = ({ activeCategory, setActiveCategory }: CategoriesProps) => {
   }
 
   return (
-    <div
-      className="max-w-screen
-    mx-auto
-    xl:px-20
-    md:px-10
-    px-4"
-    >
+    <div>
       hi{' '}
       <div
         className="
