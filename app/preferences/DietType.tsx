@@ -139,11 +139,11 @@ export default function DietType() {
                     </Label>
                   </div>
                 </RadioGroup>
-                <Button type="submit">Save</Button>
               </FormControl>
             </FormItem>
           )}
         />
+        <Button type="submit">Save</Button>
       </form>
     </Form>
   );
