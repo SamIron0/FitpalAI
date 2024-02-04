@@ -144,7 +144,7 @@ export default function DietType( { submit }: DietTypeProps) {
             </FormItem>
           )}
         />
-        <Button type="submit">Save</Button>
+        <Button className='w-lg' type="submit">Save</Button>
       </form>
     </Form>
   );
