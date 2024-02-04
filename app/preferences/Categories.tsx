@@ -45,7 +45,7 @@ interface CategoriesProps {
   activeCategory: string;
   setActiveCategory: (label: string) => void;
 }
-export function Categories({ activeCategory, setActiveCategory }: CategoriesProps){
+const Categories = ({ activeCategory, setActiveCategory }: CategoriesProps) => {
   const params = useSearchParams();
   const pathname = usePathname();
   const isMainPage = pathname === '/';
@@ -55,6 +55,31 @@ export function Categories({ activeCategory, setActiveCategory }: CategoriesProp
   }
 
   return (
-     <>hello</>
+    <div
+      className="max-w-screen
+    mx-auto
+    xl:px-20
+    md:px-10
+    px-4"
+    >
+      <div
+        className="
+        pt-4 flex px-10 sm:px-24 md:px-44 lg:px-64 xl:px-80 flex-row items-center justify-between overflow-x-auto"
+      >
+        {categories.map((item, index) => (
+          <CategoryBox
+            key={item.label}
+            label={item.label}
+            icon={item.icon}
+            selected={activeCategory === item.label}
+            activeCategory={activeCategory}
+            setActiveCategory={setActiveCategory}
+            // Apply margin-right except for the last item
+          />
+        ))}
+      </div>
+    </div>
   );
 };
+
+export default Categories;
