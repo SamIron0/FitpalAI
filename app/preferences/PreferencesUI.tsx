@@ -1,8 +1,10 @@
+'use client'
 import { Metadata } from 'next';
 import Image from 'next/image';
 
 import { Separator } from '@/components/ui/separator';
-import { SidebarNav } from './SidebarNav';
+import Categories from './Categories';
+import { useState } from 'react';
 
 export const metadata: Metadata = {
   title: 'Forms',
@@ -35,22 +37,41 @@ const sidebarNavItems = [
 interface PreferencesUIProps {
   children: React.ReactNode;
 }
-export function PreferencesUI({ children }: PreferencesUIProps) {
+export function PreferencesUI() {
+  const [activeCategory, setActiveCategory] = useState('Diet Type');
+
   return (
-      <div className="space-y-6 p-10 pb-16 md:block">
-        <div className="space-y-0.5">
-          <h2 className="text-2xl font-bold tracking-tight">Settings</h2>
-          <p className="text-muted-foreground">
-            Manage your account settings and set e-mail preferences.
-          </p>
-        </div>
-        <Separator className="my-6" />
-        <div className="flex flex-col space-y-8 lg:flex-row lg:space-x-12 lg:space-y-0">
-          <aside className="-mx-4 lg:w-1/5">
-            <SidebarNav items={sidebarNavItems} />
-          </aside>{' '}
-          <div className="flex-1 lg:max-w-2xl">{children}</div>
+    <div className="space-y-6 p-10 pb-16">
+      <div className="space-y-0.5 flex flex-col">
+        <h2 className="text-2xl font-bold tracking-tight">Preferences</h2>
+        <p className="text-muted-foreground">
+          Manage your account preferences and customize your experience
+        </p>
+      </div>
+      <Separator className="my-6" />
+      <div className="flex flex-col space-y-8 lg:flex-row lg:space-x-12 lg:space-y-0">
+          <Categories
+            activeCategory={activeCategory}
+            setActiveCategory={setActiveCategory}
+          />
+        <div className="flex-1 lg:max-w-2xl">
+          {activeCategory === 'Diet Type' ? (
+            <div></div>
+          ): activeCategory === 'Exclusion' ? (
+            <div></div>
+
+          ): activeCategory === 'Macros' ? (
+            <div></div>
+
+          ): activeCategory === 'Weight'?(
+            <div></div>
+
+          ): activeCategory === 'Goals' ? (
+            <div>Goal</div>
+
+          ):null}
         </div>
       </div>
+    </div>
   );
 }

@@ -2,8 +2,7 @@
 export async function POST(req: Request) {
   if (req.method === 'POST') {
     try {
-      const { allergies } = await req.json();
-      //const response = await updateAllergies(allergies);
+      const { userDetails } = await req.json();
     } catch (err: any) {
       console.log(err);
       return new Response(JSON.stringify(err), { status: 500 });
