@@ -68,9 +68,11 @@ export function PreferencesUI({ userDetails }: PreferencesUIProps) {
         />
         <div className="flex-1 justify-center lg:max-w-2xl">
           {activeCategory === 'Diet Type' ? (
-         
-
-         <></>
+            <DietType
+              submit={(data) => {
+                updateUserDietType(data);
+              }}
+            />
           ) : activeCategory === 'Macros' ? (
             <Card className="w-full flex justify-center py-4 sm:w-2/5 mb-4 sm:mb-0">
               <Calories
