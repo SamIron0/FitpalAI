@@ -31,6 +31,7 @@ export default function DietType( { submit }: DietTypeProps) {
     resolver: zodResolver(FormSchema)
   });
   function onsubmit(data: z.infer<typeof FormSchema>) {
+    console.log('submitting', data);
     submit(data);
   }
 

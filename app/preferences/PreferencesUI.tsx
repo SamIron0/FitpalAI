@@ -61,12 +61,12 @@ export function PreferencesUI({ userDetails }: PreferencesUIProps) {
         </p>
       </div>
       <Separator className="my-6" />
-      <div className="flex flex-col space-y-5 ">
+      <div className="flex flex-col justify-center space-y-5 ">
         <Categories
           activeCategory={activeCategory}
           setActiveCategory={setActiveCategory}
         />
-        <div className="flex-1 justify-center lg:max-w-2xl">
+        <div className="flex justify-center lg:max-w-2xl">
           {activeCategory === 'Diet Type' ? (
             <DietType
               submit={(data) => {
