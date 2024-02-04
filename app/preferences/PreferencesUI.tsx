@@ -28,7 +28,7 @@ export function PreferencesUI() {
         </p>
       </div>
       <Separator className="my-6" />
-      <div className="flex flex-col space-y-8 lg:flex-row lg:space-x-12 lg:space-y-0">
+      <div className="flex flex-col space-y-5 ">
         <Categories
           activeCategory={activeCategory}
           setActiveCategory={setActiveCategory}
@@ -38,12 +38,12 @@ export function PreferencesUI() {
             <RadioGroup defaultValue="card" className="grid grid-cols-3 gap-4">
               <div>
                 <RadioGroupItem
-                  value="apple"
-                  id="apple"
+                  value="Anything"
+                  id="Anything"
                   className="peer sr-only"
                 />
                 <Label
-                  htmlFor="apple"
+                  htmlFor="Anything"
                   className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
                 >
                   Anything
@@ -51,12 +51,12 @@ export function PreferencesUI() {
               </div>
               <div>
                 <RadioGroupItem
-                  value="apple"
-                  id="apple"
+                  value="Mediterranean"
+                  id="Mediterranean"
                   className="peer sr-only"
                 />
                 <Label
-                  htmlFor="apple"
+                  htmlFor="Mediterranean"
                   className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
                 >
                   Mediterranean
@@ -64,12 +64,12 @@ export function PreferencesUI() {
               </div>
               <div>
                 <RadioGroupItem
-                  value="apple"
-                  id="apple"
+                  value="Paleo"
+                  id="Paleo"
                   className="peer sr-only"
                 />
                 <Label
-                  htmlFor="apple"
+                  htmlFor="v"
                   className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
                 >
                   Paleo
@@ -77,12 +77,12 @@ export function PreferencesUI() {
               </div>
               <div>
                 <RadioGroupItem
-                  value="card"
-                  id="card"
+                  value="Vegan"
+                  id="Vegan"
                   className="peer sr-only"
                 />
                 <Label
-                  htmlFor="card"
+                  htmlFor="Vegan"
                   className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
                 >
                   <svg
@@ -103,12 +103,12 @@ export function PreferencesUI() {
               </div>
               <div>
                 <RadioGroupItem
-                  value="paypal"
-                  id="paypal"
+                  value="Keto"
+                  id="Keto"
                   className="peer sr-only"
                 />
                 <Label
-                  htmlFor="paypal"
+                  htmlFor="Keto"
                   className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
                 >
                   Keto
@@ -116,12 +116,12 @@ export function PreferencesUI() {
               </div>
               <div>
                 <RadioGroupItem
-                  value="apple"
-                  id="apple"
+                  value="Vegetarian"
+                  id="Vegetarian"
                   className="peer sr-only"
                 />
                 <Label
-                  htmlFor="apple"
+                  htmlFor="Vegetarian"
                   className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
                 >
                   Vegetarian
