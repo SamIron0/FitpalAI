@@ -53,7 +53,7 @@ export function PreferencesUI({ userDetails }: PreferencesUIProps) {
     }
   };
   return (
-    <div className="space-y-6 p-6 sm:p-12 pt-18  pb-16">
+    <div className="space-y-6 p-6 sm:p-12 pt-20  pb-16">
       <div className="space-y-0.5 flex flex-col">
         <h2 className="text-2xl font-bold tracking-tight">Preferences</h2>
         <p className="text-muted-foreground">
