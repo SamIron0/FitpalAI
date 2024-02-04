@@ -259,6 +259,7 @@ export interface Database {
           username?: string | null;
           age?: number | null;
           subscription?: Json | null;
+          diet_type?: string | null;
         };
         Insert: {
           avatar_url?: string | null;
@@ -278,6 +279,7 @@ export interface Database {
           username?: string | null;
           age?: number | null;
           subscription?: Json | null;
+          diet_type?: string | null;
         };
         Update: {
           avatar_url?: string | null;
@@ -297,6 +299,7 @@ export interface Database {
           username?: string | null;
           age?: number | null;
           subscription?: Json | null;
+          diet_type?: string | null;
         };
         Relationships: [
           {

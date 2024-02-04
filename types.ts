@@ -47,4 +47,5 @@ export interface UserDetails {
   username?: string | null;
   age?: number | null;
   subscription?: Json | null;
+  diet_type?: string | null;
 }
