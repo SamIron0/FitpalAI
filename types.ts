@@ -37,7 +37,7 @@ export interface UserDetails {
   address?: string | null;
   payment_method?: Json | null;
   geolocation?: GeoCoordinate | null;
-  allergies?: string[] | null;
+  allergies: string[] | null;
   bio?: string | null;
   goals?: string[] | null;
   height?: number | null;

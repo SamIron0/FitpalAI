@@ -8,6 +8,7 @@ import { useState } from 'react';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
 import { Allergies } from '@/components/Allergies';
+import { UserDetails } from '@/types';
 
 export const metadata: Metadata = {
   title: 'Forms',
@@ -15,13 +16,13 @@ export const metadata: Metadata = {
 };
 
 interface PreferencesUIProps {
-  children: React.ReactNode;
+  userDetails: UserDetails;
 }
-export function PreferencesUI() {
+export function PreferencesUI( { userDetails }: PreferencesUIProps) {
   const [activeCategory, setActiveCategory] = useState('Diet Type');
 
   return (
-    <div className="space-y-6 p-4 sm:p-12 pt-12  pb-16">
+    <div className="space-y-6 p-6 sm:p-12 pt-18  pb-16">
       <div className="space-y-0.5 flex flex-col">
         <h2 className="text-2xl font-bold tracking-tight">Preferences</h2>
         <p className="text-muted-foreground">
@@ -132,7 +133,7 @@ export function PreferencesUI() {
           ) : activeCategory === 'Macros' ? (
             <div>3</div>
           ) : activeCategory === 'Allergies' ? (
-            <Allergies />
+            <Allergies allergies={userDetails.allergies} />
           ) : null}
         </div>
       </div>

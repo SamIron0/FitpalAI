@@ -80,7 +80,7 @@ const retrieveMealPlans = async (user_id: string) => {
 };
 
 const createMealPlan = async (mealPlan: MealPlan) => {
-  console.log('saving',mealPlan);
+  console.log('saving', mealPlan);
   const { data, error: supabaseError } = await supabaseAdmin
     .from('mealplans')
     .insert([
@@ -96,7 +96,13 @@ const createMealPlan = async (mealPlan: MealPlan) => {
   console.log(`New mealplan inserted for ${mealPlan.owner}.`);
   return data;
 };
-
+export const upsertUserDetails = async (userDetails: any) => {
+  const { data, error: supabaseError } = await supabaseAdmin
+    .from('user_details')
+    .upsert(userDetails);
+  if (supabaseError) throw supabaseError;
+  return data;
+};
 export {
   createMealPlan,
   retrieveMealPlans,

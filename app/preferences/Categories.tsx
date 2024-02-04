@@ -41,21 +41,23 @@ const Categories = ({ activeCategory, setActiveCategory }: CategoriesProps) => {
   const isMainPage = pathname === '/';
 
   return (
-    <div
-      className="
-        pt-4 flex px-4 sm:px-24 md:px-44 lg:px-64 xl:px-80 flex-row items-center justify-between overflow-x-auto"
-    >
-      {categories.map((item, index) => (
-        <CategoryBox
-          key={item.label}
-          label={item.label}
-          icon={item.icon}
-          selected={activeCategory === item.label}
-          activeCategory={activeCategory}
-          setActiveCategory={setActiveCategory}
-          // Apply margin-right except for the last item
-        />
-      ))}
+    <div className="w-full items-center justify-center flex">
+      <div
+        className="
+        pt-4 flex px9 sm:px-24 md:px-44 lg:px-64 xl:px-80 flex-row items-center justify-between mx-auto sm:mx-0 overflow-x-auto"
+      >
+        {categories.map((item, index) => (
+          <CategoryBox
+            key={item.label}
+            label={item.label}
+            icon={item.icon}
+            selected={activeCategory === item.label}
+            activeCategory={activeCategory}
+            setActiveCategory={setActiveCategory}
+            // Apply margin-right except for the last item
+          />
+        ))}
+      </div>
     </div>
   );
 };
