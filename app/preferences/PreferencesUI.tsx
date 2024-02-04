@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import { Metadata } from 'next';
 import Image from 'next/image';
 
@@ -50,26 +50,22 @@ export function PreferencesUI() {
       </div>
       <Separator className="my-6" />
       <div className="flex flex-col space-y-8 lg:flex-row lg:space-x-12 lg:space-y-0">
-          <Categories
-            activeCategory={activeCategory}
-            setActiveCategory={setActiveCategory}
-          />
+        <Categories
+          activeCategory={activeCategory}
+          setActiveCategory={setActiveCategory}
+        />
         <div className="flex-1 lg:max-w-2xl">
           {activeCategory === 'Diet Type' ? (
-            <div></div>
-          ): activeCategory === 'Exclusion' ? (
-            <div></div>
-
-          ): activeCategory === 'Macros' ? (
-            <div></div>
-
-          ): activeCategory === 'Weight'?(
-            <div></div>
-
-          ): activeCategory === 'Goals' ? (
+            <div>1</div>
+          ) : activeCategory === 'Exclusion' ? (
+            <div>2</div>
+          ) : activeCategory === 'Macros' ? (
+            <div>3</div>
+          ) : activeCategory === 'Weight' ? (
+            <div>4</div>
+          ) : activeCategory === 'Goals' ? (
             <div>Goal</div>
-
-          ):null}
+          ) : null}
         </div>
       </div>
     </div>

@@ -2,20 +2,6 @@
 
 import CategoryBox from './CategoryBox';
 import { usePathname, useSearchParams } from 'next/navigation';
-import { useState } from 'react';
-import { BsSnow } from 'react-icons/bs';
-import { FaSkiing } from 'react-icons/fa';
-import {
-  GiBarn,
-  GiBoatFishing,
-  GiCactus,
-  GiCastle,
-  GiCaveEntrance,
-  GiForestCamp,
-  GiIsland,
-  GiWindmill
-} from 'react-icons/gi';
-import { IoDiamond } from 'react-icons/io5';
 import { MdFlight, MdOutlineVilla } from 'react-icons/md';
 import {
   TbBeach,
@@ -76,7 +62,7 @@ const Categories = ({ activeCategory, setActiveCategory }: CategoriesProps) => {
     md:px-10
     px-4"
     >
-      {' '}
+      hi{' '}
       <div
         className="
         pt-4 flex px-10 sm:px-24 md:px-44 lg:px-64 xl:px-80 flex-row items-center justify-between overflow-x-auto"
