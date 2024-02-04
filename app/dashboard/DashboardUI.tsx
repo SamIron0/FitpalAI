@@ -240,6 +240,10 @@ export function DashboardUI({ user }: DashboardUIProps) {
     };
     retrieveMealPlan();
   }, []);
+
+  useEffect(() => {
+    setActiveMealPlan(createdMealplan);
+  }, [createdMealplan]);
   const saveMealPlan = async () => {
     // save meal plan to supabase
     // console.log('Preparing to save meal plan');
