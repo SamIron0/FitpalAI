@@ -18,7 +18,7 @@ import { Toast } from 'react-hot-toast';
 import { Label } from '@/components/ui/label';
 
 const FormSchema = z.object({
-  type: z.enum(['Anything', 'Vegetarian', 'Vegan' , 'Gluten-free', 'Keto', 'Paleo', 'Pescatarian', 'Pescetarian', 'Mediterranean', 'Low-Carb'], {
+  type: z.enum(['Anything', 'Vegetarian', 'Vegan' , 'Gluten-free', 'Keto', 'Paleo', 'Pescatarian', 'Mediterranean', 'Low-Carb'], {
     required_error: 'You need to select a diet type.'
   })
 });
@@ -124,19 +124,6 @@ export default function DietType( { submit }: DietTypeProps) {
                       className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
                     >
                       Keto
-                    </Label>
-                  </div>
-                  <div>
-                    <RadioGroupItem
-                      value="Vegetarian"
-                      id="Vegetarian"
-                      className="peer sr-only"
-                    />
-                    <Label
-                      htmlFor="Vegetarian"
-                      className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
-                    >
-                      Vegetarian
                     </Label>
                   </div>
                   <div>
