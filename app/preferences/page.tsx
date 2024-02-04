@@ -1,5 +1,5 @@
 import {  PreferencesUI } from './PreferencesUI';
-export default async function Pantry() {
+export default async function Preferences() {
   return (
     <div className="flex w-full">
         <PreferencesUI />

@@ -35,7 +35,7 @@ const sidebarNavItems = [
 interface SettingsLayoutProps {
   children: React.ReactNode;
 }
-export function PreferencesUI({ children }: SettingsLayoutProps) {
+export function PreferencesUI() {
   return (
     <>
       <div className="md:hidden">
@@ -66,7 +66,6 @@ export function PreferencesUI({ children }: SettingsLayoutProps) {
           <aside className="-mx-4 lg:w-1/5">
             <SidebarNav items={sidebarNavItems} />
           </aside>
-          <div className="flex-1 lg:max-w-2xl">{children}</div>
         </div>
       </div>
     </>
