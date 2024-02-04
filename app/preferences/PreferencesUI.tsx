@@ -66,7 +66,7 @@ export function PreferencesUI({ userDetails }: PreferencesUIProps) {
           activeCategory={activeCategory}
           setActiveCategory={setActiveCategory}
         />
-        <div className="flex-1 lg:max-w-2xl">
+        <div className="flex-1 justify-center lg:max-w-2xl">
           {activeCategory === 'Diet Type' ? (
             <DietType
               submit={(data) => {
