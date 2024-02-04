@@ -18,7 +18,7 @@ import { Toast } from 'react-hot-toast';
 import { Label } from '@/components/ui/label';
 
 const FormSchema = z.object({
-  type: z.enum(['all', 'mentions', 'none'], {
+  type: z.enum(['Anything', 'Vegetarian', 'Vegan' , 'Gluten-free', 'Keto', 'Paleo', 'Pescatarian', 'Pescetarian', 'Mediterranean', 'Low-Carb'], {
     required_error: 'You need to select a notification type.'
   })
 });
@@ -137,6 +137,58 @@ export default function DietType( { submit }: DietTypeProps) {
                       className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
                     >
                       Vegetarian
+                    </Label>
+                  </div>
+                  <div>
+                    <RadioGroupItem
+                      value="Vegetarian"
+                      id="Vegetarian"
+                      className="peer sr-only"
+                    />
+                    <Label
+                      htmlFor="Vegetarian"
+                      className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+                    >
+                      Vegetarian
+                    </Label>
+                  </div>
+                  <div>
+                    <RadioGroupItem
+                      value="Gluten-free"
+                      id="Gluten-free"
+                      className="peer sr-only"
+                    />
+                    <Label
+                      htmlFor="Gluten-free"
+                      className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+                    >
+                      Gluten-free
+                    </Label>
+                  </div>
+                  <div>
+                    <RadioGroupItem
+                      value="Pescatarian"
+                      id="Pescatarian"
+                      className="peer sr-only"
+                    />
+                    <Label
+                      htmlFor="Pescatarian"
+                      className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+                    >
+                      Pescatarian
+                    </Label>
+                  </div>
+                  <div>
+                    <RadioGroupItem
+                      value="Low-Carb"
+                      id="Low-Carb"
+                      className="peer sr-only"
+                    />
+                    <Label
+                      htmlFor="Low-Carb"
+                      className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+                    >
+                    Low-Carb
                     </Label>
                   </div>
                 </RadioGroup>
