@@ -5,7 +5,7 @@ export default async function Pantry() {
   const session = await getSession();
   return (
     <div className="flex w-full">
-      <SavedPlansUI user={session?.user} />
+      <SavedPlansUI />
     </div>
   );
 }
