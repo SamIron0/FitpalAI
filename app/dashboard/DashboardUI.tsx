@@ -564,60 +564,71 @@ export function DashboardUI({ user }: DashboardUIProps) {
             </div>
           </Card>
         ) : (
-          <>
-            {!activeMealPlan?.meals && <EmptyMealplans />}
-            <Card className="w-full md:w-3/5 mb-4 md:mb-0 sm:mr-4">
-              <CardHeader>
-                <CardTitle>
-                  <div className="w-full flex items-center justify-between">
-                    <h2 className="text-md text-muted-foreground">Meal Plan</h2>
-                    <DatePicker />
-                  </div>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                {activeMealPlan?.meals.map((meal) => {
-                  return (
-                    meal.title && (
-                      <Card className="mb-4 w-full">
-                        <div className="w-full flex justify-between flex-row">
-                          <div className="">
-                            <CardHeader className="flex flex-row w-full items-center ">
-                              <CardTitle className="text-muted-foreground">
-                                {meal.type}
-                              </CardTitle>
-                            </CardHeader>
-                            <CardContent>{meal.title}</CardContent>
+          <Card className="w-full md:w-3/5 mb-4 md:mb-0 sm:mr-4">
+            {!activeMealPlan?.meals ? (
+              <EmptyMealplans />
+            ) : (
+              <>
+                {' '}
+                <CardHeader>
+                  <CardTitle>
+                    <div className="w-full flex items-center justify-between">
+                      <h2 className="text-md text-muted-foreground">
+                        Meal Plan
+                      </h2>
+                      <DatePicker />
+                    </div>
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  {activeMealPlan?.meals.map((meal) => {
+                    return (
+                      meal.title && (
+                        <Card className="mb-4 w-full">
+                          <div className="w-full flex justify-between flex-row">
+                            <div className="">
+                              <CardHeader className="flex flex-row w-full items-center ">
+                                <CardTitle className="text-muted-foreground">
+                                  {meal.type}
+                                </CardTitle>
+                              </CardHeader>
+                              <CardContent>{meal.title}</CardContent>
+                            </div>
+                            <div className="flex px-3 items-center justify-end">
+                              <DropdownMenu>
+                                <DropdownMenuTrigger asChild>
+                                  <Button
+                                    variant="ghost"
+                                    className="h-8 w-8 p-0"
+                                  >
+                                    <span className="sr-only">Open menu</span>
+                                    <DotsHorizontalIcon className="h-4 w-4" />
+                                  </Button>
+                                </DropdownMenuTrigger>
+                                <DropdownMenuContent
+                                  className="border-muted"
+                                  align="end"
+                                >
+                                  <DropdownMenuItem>
+                                    Regenerate
+                                  </DropdownMenuItem>
+                                  <DropdownMenuSeparator />
+                                  <DropdownMenuItem>Delete</DropdownMenuItem>
+                                  <DropdownMenuItem>
+                                    View payment details
+                                  </DropdownMenuItem>
+                                </DropdownMenuContent>
+                              </DropdownMenu>
+                            </div>
                           </div>
-                          <div className="flex px-3 items-center justify-end">
-                            <DropdownMenu>
-                              <DropdownMenuTrigger asChild>
-                                <Button variant="ghost" className="h-8 w-8 p-0">
-                                  <span className="sr-only">Open menu</span>
-                                  <DotsHorizontalIcon className="h-4 w-4" />
-                                </Button>
-                              </DropdownMenuTrigger>
-                              <DropdownMenuContent
-                                className="border-muted"
-                                align="end"
-                              >
-                                <DropdownMenuItem>Regenerate</DropdownMenuItem>
-                                <DropdownMenuSeparator />
-                                <DropdownMenuItem>Delete</DropdownMenuItem>
-                                <DropdownMenuItem>
-                                  View payment details
-                                </DropdownMenuItem>
-                              </DropdownMenuContent>
-                            </DropdownMenu>
-                          </div>
-                        </div>
-                      </Card>
-                    )
-                  );
-                })}
-              </CardContent>
-            </Card>
-          </>
+                        </Card>
+                      )
+                    );
+                  })}
+                </CardContent>
+              </>
+            )}
+          </Card>
         )}
 
         <Card className="w-full flex justify-center py-4 sm:w-2/5 mb-4 sm:mb-0 sm:mr-4">
