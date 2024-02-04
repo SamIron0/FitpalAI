@@ -24,7 +24,7 @@ export interface GeoCoordinate {
   lat: number;
   lon: number;
 }
-interface Macros {
+export interface Macros {
   protein: number;
   fat: number;
   carbs: number;

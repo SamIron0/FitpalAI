@@ -13,7 +13,7 @@ import { Input } from './ui/input';
 import { UserDetails } from '@/types';
 import { Separator } from './ui/separator';
 
-export function Allergies({ allergies }: { allergies: string[] | null }) {
+export function Allergies({ allergies }: { allergies?: string[] | null }) {
   const deleteAllergy = (allergy: string) => {
     if (allergy.length > 0) {
       postData({ url: '/api/upsert-user-details', data: { allergy } });

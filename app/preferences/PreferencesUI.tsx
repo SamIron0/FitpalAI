@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 };
 
 interface PreferencesUIProps {
-  userDetails: UserDetails;
+  userDetails: UserDetails | null | undefined;
 }
 export function PreferencesUI({ userDetails }: PreferencesUIProps) {
   const [activeCategory, setActiveCategory] = useState('Diet Type');
@@ -143,13 +143,13 @@ export function PreferencesUI({ userDetails }: PreferencesUIProps) {
           ) : activeCategory === 'Macros' ? (
             <Card className="w-full flex justify-center py-4 sm:w-2/5 mb-4 sm:mb-0">
               <Calories
-                proteins={userDetails.macros?.protein}
-                fats={userDetails.macros?.fat}
-                carbs={userDetails.macros?.carbs}
+                proteins={userDetails?.macros?.protein}
+                fats={userDetails?.macros?.fat}
+                carbs={userDetails?.macros?.carbs}
               />
             </Card>
           ) : activeCategory === 'Allergies' ? (
-            <Allergies allergies={userDetails.allergies} />
+            <Allergies allergies={userDetails?.allergies} />
           ) : null}
         </div>
       </div>

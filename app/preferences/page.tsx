@@ -4,7 +4,7 @@ export default async function Preferences() {
   const userDetails = await getUserDetails();
   return (
     <div className="w-full">
-      <PreferencesUI userDetails={userDetails} />
+      <PreferencesUI userDetails={userDetails}  />
     </div>
   );
 }

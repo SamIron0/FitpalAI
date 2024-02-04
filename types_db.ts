@@ -1,4 +1,4 @@
-import { Meal } from './types';
+import { GeoCoordinate, Macros, Meal } from './types';
 
 export type Json =
   | string
@@ -242,25 +242,61 @@ export interface Database {
       };
       users: {
         Row: {
-          avatar_url: string | null;
-          billing_address: Json | null;
-          full_name: string | null;
-          id: string;
-          payment_method: Json | null;
+          avatar_url?: string | null;
+          billing_address?: Json | null;
+          full_name?: string | null;
+          id?: string;
+          address?: string | null;
+          payment_method?: Json | null;
+          geolocation?: GeoCoordinate | null;
+          allergies?: string[] | null;
+          bio?: string | null;
+          goals?: string[] | null;
+          height?: number | null;
+          weight?: number | null;
+          macros?: Macros | null;
+          phone?: string | null;
+          username?: string | null;
+          age?: number | null;
+          subscription?: Json | null;
         };
         Insert: {
           avatar_url?: string | null;
           billing_address?: Json | null;
           full_name?: string | null;
-          id: string;
+          id?: string;
+          address?: string | null;
           payment_method?: Json | null;
+          geolocation?: GeoCoordinate | null;
+          allergies?: string[] | null;
+          bio?: string | null;
+          goals?: string[] | null;
+          height?: number | null;
+          weight?: number | null;
+          macros?: Macros | null;
+          phone?: string | null;
+          username?: string | null;
+          age?: number | null;
+          subscription?: Json | null;
         };
         Update: {
           avatar_url?: string | null;
           billing_address?: Json | null;
           full_name?: string | null;
           id?: string;
+          address?: string | null;
           payment_method?: Json | null;
+          geolocation?: GeoCoordinate | null;
+          allergies?: string[] | null;
+          bio?: string | null;
+          goals?: string[] | null;
+          height?: number | null;
+          weight?: number | null;
+          macros?: Macros | null;
+          phone?: string | null;
+          username?: string | null;
+          age?: number | null;
+          subscription?: Json | null;
         };
         Relationships: [
           {
