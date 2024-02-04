@@ -17,7 +17,7 @@ export function Allergies() {
   const deleteAllergy = (allergy: string) => {};
   const addAllergy = (allergy: string) => {};
   return (
-    <Card className="w-full md:w-1/2">
+    <Card className="w-full max-w-3xl">
       <CardHeader className="pb-3">
         <CardTitle>Allergies</CardTitle>
         <CardDescription>

@@ -277,9 +277,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
   function renderGhostCards() {
     const ghostCards = [];
     for (let i = 0; i < 3; i++) {
-      ghostCards.push(
-        <Skeleton className="w-full mx-auto mb-4 h-22" />
-      );
+      ghostCards.push(<Skeleton className="w-full mx-auto mb-4 h-22" />);
     }
     return ghostCards;
   }
@@ -337,7 +335,6 @@ export function DashboardUI({ user }: DashboardUIProps) {
     }
   };
 
-  
   function emptyState() {
     return (
       <div className="flex flex-col justify-center items-center h-full">
@@ -643,12 +640,6 @@ export function DashboardUI({ user }: DashboardUIProps) {
           <Card className="w-full flex justify-center py-4 sm:w-2/5 mb-4 sm:mb-0">
             <Calories proteins={protein} fats={fat} carbs={carbs} />
           </Card>
-        </div>
-        <div className="w-full pt-4 flex flex-col justify-center md:flex-row">
-          <Card className="w-full md:w-1/2 mb-4 md:mb-0 md:mr-4">
-            <Pantry />
-          </Card>
-          <Allergies />
         </div>
       </div>
     </>
