@@ -1,4 +1,4 @@
-import { MealPlan, SurveyResponse } from '@/types';
+import { MealPlan, SurveyResponse, UserDetails } from '@/types';
 import { toDateTime } from './helpers';
 import { createClient } from '@supabase/supabase-js';
 import type { Database } from 'types_db';
@@ -97,10 +97,18 @@ const createMealPlan = async (mealPlan: MealPlan) => {
   return data;
 };
 
-export const upsertUserDetails = async (userDetails: any) => {
+export const upsertUserDetails = async (userDetails: UserDetails) => {
+  console.log('saving', userDetails);
   const { data, error: supabaseError } = await supabaseAdmin
     .from('users')
-    .upsert(userDetails);
+    .upsert({
+      id: userDetails.id,
+      allergies: userDetails.allergies,
+      diet_type: userDetails.diet_type,
+      macros: userDetails.macros
+    });
+  console.log(`New user ,${data}.`);
+
   if (supabaseError) throw supabaseError;
   return data;
 };

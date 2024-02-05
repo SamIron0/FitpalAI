@@ -128,6 +128,7 @@ export default function DietType({ userDetails }: DietTypeProps) {
                       value="Paleo"
                       id="Paleo"
                       className="peer sr-only"
+                      onClick={() => setDiet('Paleo')}
                     />
                     <Label
                       htmlFor="Paleo"
@@ -141,6 +142,7 @@ export default function DietType({ userDetails }: DietTypeProps) {
                       value="Vegan"
                       id="Vegan"
                       className="peer sr-only"
+                      onClick={() => setDiet('Vegan')}
                     />
                     <Label
                       htmlFor="Vegan"
@@ -167,6 +169,7 @@ export default function DietType({ userDetails }: DietTypeProps) {
                       value="Keto"
                       id="Keto"
                       className="peer sr-only"
+                      onClick={() => setDiet('Keto')}
                     />
                     <Label
                       htmlFor="Keto"
@@ -180,6 +183,7 @@ export default function DietType({ userDetails }: DietTypeProps) {
                       value="Vegetarian"
                       id="Vegetarian"
                       className="peer sr-only"
+                      onClick={() => setDiet('Vegetarian')}
                     />
                     <Label
                       htmlFor="Vegetarian"
@@ -193,6 +197,7 @@ export default function DietType({ userDetails }: DietTypeProps) {
                       value="Gluten-free"
                       id="Gluten-free"
                       className="peer sr-only"
+                      onClick={() => setDiet('Gluten-free')}
                     />
                     <Label
                       htmlFor="Gluten-free"
@@ -206,6 +211,7 @@ export default function DietType({ userDetails }: DietTypeProps) {
                       value="Pescatarian"
                       id="Pescatarian"
                       className="peer sr-only"
+                      onClick={() => setDiet('Pescatarian')}
                     />
                     <Label
                       htmlFor="Pescatarian"
@@ -219,6 +225,7 @@ export default function DietType({ userDetails }: DietTypeProps) {
                       value="Low-Carb"
                       id="Low-Carb"
                       className="peer sr-only"
+                      onClick={() => setDiet('Low-Carb')}
                     />
                     <Label
                       htmlFor="Low-Carb"
