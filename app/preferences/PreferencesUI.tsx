@@ -78,9 +78,7 @@ export function PreferencesUI({ userDetails }: PreferencesUIProps) {
             <div className="flex flex-col sm:flex-row">
               <Card className="w-full flex justify-center py-4 sm:w-2/5 mb-4 sm:mb-0">
                 <Calories
-                  proteins={userDetails?.macros?.protein}
-                  fats={userDetails?.macros?.fat}
-                  carbs={userDetails?.macros?.carbs}
+                  macros={userDetails?.macros}
                 />
               </Card>
               <Card className="w-full flex justify-center sm:w-3/5 ">

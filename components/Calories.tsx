@@ -2,15 +2,18 @@
 import React from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
+import { Macros } from '@/types';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 interface CaloriesProps {
-  proteins: number | undefined;
-  fats: number | undefined;
-  carbs: number | undefined;
+  macros: Macros | null | undefined; 
 }
-export function Calories({ proteins, fats, carbs }: CaloriesProps) {
+export function Calories({ macros }: CaloriesProps) {
+  const proteins = macros?.protein || 250;
+  const carbs = macros?.carbs || 250;
+  const fats = macros?.fat || 44;
+
   const data = {
     labels: ['Protein', 'Carbs', 'Fat'],
     datasets: [
