@@ -83,9 +83,11 @@ export function MacrosSetter({ userDetails }: MacroSetterProps) {
 
   return (
     <div className="flex items-center w-full justify-center space-x-2">
-    
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+      <Form {...form} className="w-full ">
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="space-y-8 w-full max-w-3xl"
+        >
           {macrosQuestions.map((question, idx) => (
             //Unique field for each survey question
             <FormField
