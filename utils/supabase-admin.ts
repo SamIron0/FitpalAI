@@ -101,17 +101,13 @@ export const upsertUserDetails = async (userDetails: UserDetails) => {
   console.log('saving', userDetails);
   const { data, error: supabaseError } = await supabaseAdmin
     .from('users')
-    .upsert({
-      id: userDetails.id,
-      allergies: userDetails.allergies,
-      diet_type: userDetails.diet_type,
-      macros: userDetails.macros
-    });
-  console.log(`New user ,${data}.`);
+    .update(userDetails)
+    .eq('id', userDetails.id);
 
   if (supabaseError) throw supabaseError;
   return data;
 };
+
 export const getUserDetails = async (id: string) => {
   const { data, error: supabaseError } = await supabaseAdmin
     .from('users')
