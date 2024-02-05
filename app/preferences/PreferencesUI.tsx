@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 import { Separator } from '@/components/ui/separator';
 import Categories from './Categories';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
 import { Allergies } from '@/components/Allergies';
@@ -24,10 +24,22 @@ export const metadata: Metadata = {
   description: 'Advanced form example using react-hook-form and Zod.'
 };
 
-interface PreferencesUIProps {
-  userDetails: UserDetails | null | undefined;
-}
-export function PreferencesUI({ userDetails }: PreferencesUIProps) {
+export function PreferencesUI({ id }: { id: string | undefined }) {
+  const [userDetails, setUserDetails] = useState<UserDetails | null>(null);
+
+  useEffect(() => {
+    const getDetails = async () => {
+      const data = await postData({
+        url: '/api/get-user-details',
+        data: {
+          userId: id
+        }
+      });
+      console.log('userDetails', data);
+      setUserDetails(data);
+    };
+    getDetails();
+  },[]);
   const [activeCategory, setActiveCategory] = useState('Diet Type');
 
   const updateUserDietType = async (data: any) => {
@@ -36,7 +48,7 @@ export function PreferencesUI({ userDetails }: PreferencesUIProps) {
       toast.error('Please select a diet type');
       return;
     }
-    userDetails = {
+    const newUserDetails = {
       ...userDetails,
       diet_type: data
     };
@@ -44,7 +56,7 @@ export function PreferencesUI({ userDetails }: PreferencesUIProps) {
       console.log(data);
       const result = await postData({
         url: '/api/update-user-details',
-        data: { userDetails: userDetails }
+        data: { userDetails: newUserDetails }
       });
       if (!result) {
         toast.error('Error updating your preferences please try again later');
