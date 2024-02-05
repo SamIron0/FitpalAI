@@ -97,12 +97,23 @@ const createMealPlan = async (mealPlan: MealPlan) => {
   return data;
 };
 
+export const updateMacros = async (userDetails: UserDetails) => {
+  const { data, error: supabaseError } = await supabaseAdmin
+    .from('users')
+    .insert([
+      {
+        macros: userDetails.macros
+      }
+    ])
+    .eq('id', userDetails.id);
+};
 export const upsertUserDetails = async (userDetails: UserDetails) => {
   console.log('saving', userDetails);
   const { data, error: supabaseError } = await supabaseAdmin
     .from('users')
     .insert([
       {
+        id: userDetails.id,
         diet_type: userDetails.diet_type
       }
     ])
