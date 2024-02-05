@@ -125,7 +125,7 @@ export const updateAllergies = async (userDetails: UserDetails) => {
 
   return data;
 };
-export const change = async (userDetails: UserDetails) => {
+export const upsertUserDetails = async (userDetails: UserDetails) => {
   console.log('saving', userDetails);
   const { data, error: supabaseError } = await supabaseAdmin
     .from('users')
