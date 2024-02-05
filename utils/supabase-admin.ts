@@ -130,7 +130,13 @@ export const upsertUserDetails = async (userDetails: UserDetails) => {
   console.log('saving', userDetails);
   const { data, error: supabaseError } = await supabaseAdmin
     .from('users')
-    .update(userDetails)
+    .update(
+      {
+        id: userDetails.id,
+        allergies: userDetails.allergies,
+        macros: userDetails.macros
+      }
+    )
     .eq('id', userDetails.id);
 
   console.log('data', data);
