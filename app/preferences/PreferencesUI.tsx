@@ -13,7 +13,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Calories } from '@/components/Calories';
 import { Form, FormControl, FormField, FormItem } from '@/components/ui/form';
-import { postData } from '@/utils/helpers';
+import { getData, postData } from '@/utils/helpers';
 import toast from 'react-hot-toast';
 import DietType from './DietType';
 import { MacrosSetter } from '@/components/MacrosSetter';
@@ -29,11 +29,8 @@ export function PreferencesUI({ id }: { id: string | undefined }) {
 
   useEffect(() => {
     const getDetails = async () => {
-      const data = await postData({
-        url: '/api/get-user-details',
-        data: {
-          userId: id
-        }
+      const data = await getData({
+        url: '/api/get-user-details'
       });
       console.log('userDetails', data);
       setUserDetails(data);

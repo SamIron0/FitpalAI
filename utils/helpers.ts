@@ -35,7 +35,7 @@ export const postData = async ({ url, data }: { url: string; data: any }) => {
   return res.json();
 };
 
-export const getData = async ({ url }: { url: string; data?: any }) => {
+export const getData = async ({ url }: { url: string; }) => {
   console.log('getting,', url);
 
   const res = await fetch(url, {

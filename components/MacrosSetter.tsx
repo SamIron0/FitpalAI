@@ -55,7 +55,7 @@ export function MacrosSetter({ userDetails }: MacroSetterProps) {
 
   // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    // console.log(values);
+    setIsLoading(true);
     const toastId = toast.loading('Saving...');
     const updatedDetails: UserDetails = {
       ...userDetails,
@@ -65,13 +65,11 @@ export function MacrosSetter({ userDetails }: MacroSetterProps) {
         fat: Number(values.fat)
       }
     };
+
     try {
       const url = '/api/upsert-user-details';
       const body = { userDetails: updatedDetails };
       const data = await postData({ url, data: body });
-      if (!data.ok) {
-        toast.error('An error occurred while saving macros. Please try again.');
-      }
       toast.dismiss(toastId);
       toast.success('Macros saved successfully.');
     } catch (error) {
@@ -79,6 +77,7 @@ export function MacrosSetter({ userDetails }: MacroSetterProps) {
         'An error occurred while saving macros please try again later.'
       );
     }
+    setIsLoading(false);
   }
 
   return (
