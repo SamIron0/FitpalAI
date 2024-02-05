@@ -101,9 +101,15 @@ export const upsertUserDetails = async (userDetails: UserDetails) => {
   console.log('saving', userDetails);
   const { data, error: supabaseError } = await supabaseAdmin
     .from('users')
-    .update(userDetails)
+    .insert([
+      {
+        diet_type: userDetails.diet_type
+      }
+    ])
     .eq('id', userDetails.id);
 
+  console.log('data', data);
+  console.log('supabaseError', supabaseError);
   if (supabaseError) throw supabaseError;
   return data;
 };
