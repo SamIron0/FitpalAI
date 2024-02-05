@@ -49,10 +49,12 @@ export default function DietType({ userDetails }: DietTypeProps) {
   });
 
   console.log('diet type', userDetails?.diet_type);
-  const [diet, setDiet] = useState(userDetails?.diet_type || 'Anything');
+  const [diet, setDiet] = useState('Anything');
 
   useEffect(() => {
-    setDiet(userDetails?.diet_type || 'Anything');
+    if (userDetails?.diet_type){
+      setDiet(userDetails?.diet_type)
+    }
   }, [userDetails]);
 
   const [isLoading, setIsLoading] = useState(false);
