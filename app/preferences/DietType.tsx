@@ -47,6 +47,8 @@ export default function DietType({ userDetails }: DietTypeProps) {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema)
   });
+
+  console.log('diet type', userDetails?.diet_type);
   const [diet, setDiet] = useState(userDetails?.diet_type || 'Anything');
   const [isLoading, setIsLoading] = useState(false);
   async function onSubmit() {
