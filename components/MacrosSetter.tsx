@@ -1,49 +1,123 @@
 'use client';
 import React from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-import { Button } from './ui/button';
-import { Minus, Plus } from 'lucide-react';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
+
+import { Button } from '@/components/ui/button';
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage
+} from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
+import { User } from '@supabase/supabase-js';
+import toast from 'react-hot-toast';
+import { useRouter } from 'next/navigation';
+import { useSidebar } from '@/app/providers/SideBarContext';
+import { postData } from '@/utils/helpers';
+import { UserDetails } from '@/types';
+
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 interface MacroSetterProps {
-  setMacros: any;
+  userDetails: UserDetails | null | undefined;
 }
-export function MacrosSetter({ setMacros }: MacroSetterProps) {
+export function MacrosSetter({ userDetails }: MacroSetterProps) {
   const [protein, setProtein] = React.useState(200);
   const [carbs, setCarbs] = React.useState(200);
   const [fat, setFat] = React.useState(200);
-  function onClickProtein(adjustment: number) {
-    setProtein(adjustment + protein);
-  }
+
   const [isLoading, setIsLoading] = React.useState(false);
+
+  const surveyQuestions = [
+    'Enter your protein goal',
+    'Enter your carb goal',
+    'Enter your fat goal'
+  ];
+  const formSchema = z.object({
+    protein: z.number().min(2),
+    carbs: z.number().min(2),
+    fat: z.number().min(2)
+  });
+  const { isSidebarOpen } = useSidebar();
+  const router = useRouter();
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      protein: userDetails?.macros?.protein,
+      carbs: userDetails?.macros?.carbs,
+      fat: userDetails?.macros?.fat
+    }
+  });
+
+  // 2. Define a submit handler.
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    // console.log(values);
+    const toastId = toast.loading('Saving...');
+    const updatedDetails: UserDetails = {
+      ...userDetails,
+      macros: {
+        protein: Number(values.protein),
+        carbs: Number(values.carbs),
+        fat: Number(values.fat)
+      }
+    };
+    try {
+      const url = '/api/upsert-user-details';
+      const body = { userDetails: updatedDetails };
+      const data = await postData({ url, data: body });
+      if (!data.ok) {
+        toast.error('An error occurred while saving survey.');
+      }
+      toast.dismiss(toastId);
+      toast.success('Macros saved successfully.');
+    } catch (error) {
+      toast.error(
+        'An error occurred while saving macros please try again later.'
+      );
+    }
+  }
+
   return (
     <div className="flex items-center justify-center space-x-2">
-      <Button
-        variant="outline"
-        size="icon"
-        className="h-8 w-8 shrink-0 rounded-full"
-        onClick={() => onClickProtein(-10)}
-        disabled={isLoading}
-      >
-        <Minus className="h-4 w-4" />
-        <span className="sr-only">Decrease</span>
-      </Button>
-      <div className="flex-1 text-center">
-        <div className="text-7xl font-bold tracking-tighter">{protein}</div>
-        <div className="text-[0.70rem] uppercase text-muted-foreground">
-          g/day
-        </div>
-      </div>
-      <Button
-        variant="outline"
-        size="icon"
-        className="h-8 w-8 shrink-0 rounded-full"
-        onClick={() => onClickProtein(10)}
-        disabled={protein >= 400}
-      >
-        <Plus className="h-4 w-4" />
-        <span className="sr-only">Increase</span>
-      </Button>
+      {isSidebarOpen && (
+        <div
+          style={{
+            position: 'fixed',
+            width: '100%',
+            height: '100%',
+            backgroundColor: 'rgba(0,0,0,0.5)'
+          }}
+        />
+      )}
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+          {surveyQuestions.map((question, idx) => (
+            //Unique field for each survey question
+            <FormField
+              key={idx}
+              control={form.control}
+              name={idx === 0 ? `protein` : idx === 1 ? `carbs` : `fat`}
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>{question}</FormLabel>
+                  <FormControl>
+                    <Input {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          ))}
+          <Button type="submit">Submit</Button>
+        </form>
+      </Form>
     </div>
   );
 }

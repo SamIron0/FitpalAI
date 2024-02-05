@@ -77,12 +77,10 @@ export function PreferencesUI({ userDetails }: PreferencesUIProps) {
           ) : activeCategory === 'Macros' ? (
             <div className="flex flex-col sm:flex-row">
               <Card className="w-full flex justify-center py-4 sm:w-2/5 mb-4 sm:mb-0">
-                <Calories
-                  macros={userDetails?.macros}
-                />
+                <Calories macros={userDetails?.macros} />
               </Card>
               <Card className="w-full flex justify-center sm:w-3/5 ">
-                <MacrosSetter setMacros={'userDetails?.macros'} />
+                <MacrosSetter userDetails={userDetails} />
               </Card>
             </div>
           ) : activeCategory === 'Allergies' ? (
