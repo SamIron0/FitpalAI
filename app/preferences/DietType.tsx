@@ -52,8 +52,8 @@ export default function DietType({ userDetails }: DietTypeProps) {
   const [diet, setDiet] = useState('Anything');
 
   useEffect(() => {
-    if (userDetails?.diet_type){
-      setDiet(userDetails?.diet_type)
+    if (userDetails?.diet_type) {
+      setDiet(userDetails?.diet_type);
     }
   }, [userDetails]);
 
@@ -98,7 +98,6 @@ export default function DietType({ userDetails }: DietTypeProps) {
             value="Anything"
             id="Anything"
             className="peer sr-only"
-            onClick={() => setDiet('Anything')}
           />
           <Label
             htmlFor="Anything"
@@ -112,7 +111,6 @@ export default function DietType({ userDetails }: DietTypeProps) {
             value="Mediterranean"
             id="Mediterranean"
             className="peer sr-only"
-            onClick={() => setDiet('Mediterranean')}
           />
           <Label
             htmlFor="Mediterranean"
@@ -122,12 +120,7 @@ export default function DietType({ userDetails }: DietTypeProps) {
           </Label>
         </div>
         <div>
-          <RadioGroupItem
-            value="Paleo"
-            id="Paleo"
-            className="peer sr-only"
-            onClick={() => setDiet('Paleo')}
-          />
+          <RadioGroupItem value="Paleo" id="Paleo" className="peer sr-only" />
           <Label
             htmlFor="Paleo"
             className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
@@ -136,12 +129,7 @@ export default function DietType({ userDetails }: DietTypeProps) {
           </Label>
         </div>
         <div>
-          <RadioGroupItem
-            value="Vegan"
-            id="Vegan"
-            className="peer sr-only"
-            onClick={() => setDiet('Vegan')}
-          />
+          <RadioGroupItem value="Vegan" id="Vegan" className="peer sr-only" />
           <Label
             htmlFor="Vegan"
             className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
@@ -151,12 +139,7 @@ export default function DietType({ userDetails }: DietTypeProps) {
           </Label>
         </div>
         <div>
-          <RadioGroupItem
-            value="Keto"
-            id="Keto"
-            className="peer sr-only"
-            onClick={() => setDiet('Keto')}
-          />
+          <RadioGroupItem value="Keto" id="Keto" className="peer sr-only" />
           <Label
             htmlFor="Keto"
             className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
@@ -169,7 +152,6 @@ export default function DietType({ userDetails }: DietTypeProps) {
             value="Vegetarian"
             id="Vegetarian"
             className="peer sr-only"
-            onClick={() => setDiet('Vegetarian')}
           />
           <Label
             htmlFor="Vegetarian"
@@ -183,7 +165,6 @@ export default function DietType({ userDetails }: DietTypeProps) {
             value="Gluten-free"
             id="Gluten-free"
             className="peer sr-only"
-            onClick={() => setDiet('Gluten-free')}
           />
           <Label
             htmlFor="Gluten-free"
@@ -197,7 +178,6 @@ export default function DietType({ userDetails }: DietTypeProps) {
             value="Pescatarian"
             id="Pescatarian"
             className="peer sr-only"
-            onClick={() => setDiet('Pescatarian')}
           />
           <Label
             htmlFor="Pescatarian"
@@ -212,7 +192,6 @@ export default function DietType({ userDetails }: DietTypeProps) {
             value="Low-Carb"
             id="Low-Carb"
             className="peer sr-only"
-            onClick={() => setDiet('Low-Carb')}
           />
           <Label
             htmlFor="Low-Carb"
