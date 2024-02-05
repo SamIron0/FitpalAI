@@ -52,7 +52,9 @@ export default function DietType({ userDetails }: DietTypeProps) {
   const [diet, setDiet] = useState(userDetails?.diet_type || 'Anything');
   useEffect(() => {
     setDiet(userDetails?.diet_type || 'Anything');
-  }, [userDetails]);
+  }, [userDetails?.diet_type]);
+
+  
   const [isLoading, setIsLoading] = useState(false);
   async function onSubmit() {
     console.log('submitting', diet);
@@ -71,7 +73,7 @@ export default function DietType({ userDetails }: DietTypeProps) {
         });
 
         toast.dismiss(toastId);
-        toast.success('Allergy added');
+        toast.success('Diet type updated');
       } catch (error) {
         console.log(error);
         toast.dismiss(toastId);
@@ -82,8 +84,8 @@ export default function DietType({ userDetails }: DietTypeProps) {
   }
 
   return (
-    <div className="flex flex-col justify-center items-center w-full">
-      <RadioGroup defaultValue={diet} className="grid grid-cols-3 gap-4 pb-16">
+    <div className="flex flex-col justify-center items-center w-full max-w-2xl">
+      <RadioGroup defaultValue={diet} className="grid w-fullgrid-cols-3 gap-4 pb-16">
         <div>
           <RadioGroupItem
             value="Anything"

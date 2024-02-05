@@ -94,10 +94,10 @@ export function PreferencesUI({ id }: { id: string | undefined }) {
               <DietType userDetails={userDetails} />
             ) : activeCategory === 'Macros' ? (
               <div className="flex flex-col w-full sm:flex-row">
-                <Card className="w-full flex justify-center py-4 sm:w-2/5 mb-4 md:mb-0 md:mr-4">
+                <Card className="w-full flex justify-center py-4 sm:w-1/2 mb-4 md:mb-0 md:mr-4">
                   <Calories macros={userDetails?.macros} />
                 </Card>
-                <Card className="w-full sm:w-3/5 px-2 ">
+                <Card className="w-full sm:w-1/2 px-2 ">
                   <CardHeader>
                     <CardTitle className="text-muted-foreground">
                       Set your macros

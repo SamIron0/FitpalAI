@@ -71,7 +71,7 @@ export function MacrosSetter({ userDetails }: MacroSetterProps) {
       const body = { userDetails: updatedDetails };
       const data = await postData({ url, data: body });
       toast.dismiss(toastId);
-      toast.success('Macros saved successfully.');
+      toast.success('Macros updated.');
     } catch (error) {
       toast.error(
         'An error occurred while saving macros please try again later.'

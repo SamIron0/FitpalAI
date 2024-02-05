@@ -117,7 +117,7 @@ export function Allergies({ userDetails }: AllergiesProps) {
                     </p>
                   </div>
                   <Button
-                    onSubmit={() => deleteAllergy(allergy)}
+                    onClick={() => deleteAllergy(allergy)}
                     variant="secondary"
                   >
                     Remove
