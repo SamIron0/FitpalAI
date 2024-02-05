@@ -70,7 +70,7 @@ export function MacrosSetter({ userDetails }: MacroSetterProps) {
       const body = { userDetails: updatedDetails };
       const data = await postData({ url, data: body });
       if (!data.ok) {
-        toast.error('An error occurred while saving survey.');
+        toast.error('An error occurred while saving macros. Please try again.');
       }
       toast.dismiss(toastId);
       toast.success('Macros saved successfully.');
@@ -82,7 +82,7 @@ export function MacrosSetter({ userDetails }: MacroSetterProps) {
   }
 
   return (
-    <div className="flex items-center justify-center space-x-2">
+    <div className="flex items-center w-full justify-center space-x-2">
     
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
