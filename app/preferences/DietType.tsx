@@ -19,23 +19,36 @@ import { Label } from '@/components/ui/label';
 import { useState } from 'react';
 
 const FormSchema = z.object({
-  type: z.enum(['Anything', 'Vegetarian', 'Vegan' , 'Gluten-free', 'Keto', 'Paleo', 'Pescatarian', 'Mediterranean', 'Low-Carb'], {
-    required_error: 'You need to select a diet type.'
-  })
+  type: z.enum(
+    [
+      'Anything',
+      'Vegetarian',
+      'Vegan',
+      'Gluten-free',
+      'Keto',
+      'Paleo',
+      'Pescatarian',
+      'Mediterranean',
+      'Low-Carb'
+    ],
+    {
+      required_error: 'You need to select a diet type.'
+    }
+  )
 });
 
 interface DietTypeProps {
   submit: (data: z.infer<typeof FormSchema>) => void;
 }
-export default function DietType( { submit }: DietTypeProps) {
+export default function DietType({ submit }: DietTypeProps) {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema)
   });
-  function onSubmit(data:string) {
-    console.log('submitting', data);
+  const [diet, setDiet] = useState('');
+  function onSubmit() {
+    console.log('submitting', diet);
   }
 
-  const [diet, setDiet] = useState('');
   return (
     <Form {...form}>
       <form className="sm:w-2/3 w-full space-y-6">
@@ -54,7 +67,7 @@ export default function DietType( { submit }: DietTypeProps) {
                       value="Anything"
                       id="Anything"
                       className="peer sr-only"
-                      onClick={()=>setDiet('Anything')}
+                      onClick={() => setDiet('Anything')}
                     />
                     <Label
                       htmlFor="Anything"
@@ -68,8 +81,7 @@ export default function DietType( { submit }: DietTypeProps) {
                       value="Mediterranean"
                       id="Mediterranean"
                       className="peer sr-only"
-                      onClick={()=>setDiet('Mediterranean')}
-
+                      onClick={() => setDiet('Mediterranean')}
                     />
                     <Label
                       htmlFor="Mediterranean"
@@ -179,7 +191,7 @@ export default function DietType( { submit }: DietTypeProps) {
                       htmlFor="Low-Carb"
                       className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
                     >
-                    Low-Carb
+                      Low-Carb
                     </Label>
                   </div>
                 </RadioGroup>
@@ -187,7 +199,9 @@ export default function DietType( { submit }: DietTypeProps) {
             </FormItem>
           )}
         />
-        <Button className='w-full max-w-xl' type="submit">Save</Button>
+        <Button className="w-full max-w-xl" onClick={() => onSubmit}>
+          Save
+        </Button>
       </form>
     </Form>
   );
