@@ -89,6 +89,8 @@ export default function DietType({ userDetails }: DietTypeProps) {
     <div className="flex flex-col justify-center items-center w-full max-w-2xl">
       <RadioGroup
         defaultValue={diet}
+        onValueChange={(value) => setDiet(value)}
+        value={diet}
         className="grid w-full grid-cols-3 gap-4 pb-16"
       >
         <div>
