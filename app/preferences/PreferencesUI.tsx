@@ -75,18 +75,18 @@ export function PreferencesUI({ userDetails }: PreferencesUIProps) {
               }}
             />
           ) : activeCategory === 'Macros' ? (
-           <div>
-           <Card className="w-full flex justify-center py-4 sm:w-2/5 mb-4 sm:mb-0">
-              <Calories
-                proteins={userDetails?.macros?.protein}
-                fats={userDetails?.macros?.fat}
-                carbs={userDetails?.macros?.carbs}
-              />
-
-                     </Card>
-                     <Card>
-                          <MacrosSetter setMacros={'userDetails?.macros'} /> 
-                     </Card></div>
+            <div className="flex flex-col sm:flex-row">
+              <Card className="w-full flex justify-center py-4 sm:w-2/5 mb-4 sm:mb-0">
+                <Calories
+                  proteins={userDetails?.macros?.protein}
+                  fats={userDetails?.macros?.fat}
+                  carbs={userDetails?.macros?.carbs}
+                />
+              </Card>
+              <Card className="w-full flex justify-center sm:w-3/5 ">
+                <MacrosSetter setMacros={'userDetails?.macros'} />
+              </Card>
+            </div>
           ) : activeCategory === 'Allergies' ? (
             <Allergies userDetails={userDetails} />
           ) : null}
