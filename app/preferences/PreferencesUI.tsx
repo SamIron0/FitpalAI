@@ -39,7 +39,7 @@ export function PreferencesUI({ id }: { id: string | undefined }) {
       setUserDetails(data);
     };
     getDetails();
-  },[]);
+  }, []);
   const [activeCategory, setActiveCategory] = useState('Diet Type');
 
   const updateUserDietType = async (data: any) => {
@@ -94,11 +94,7 @@ export function PreferencesUI({ id }: { id: string | undefined }) {
           />
           <div className="flex justify-center w-full">
             {activeCategory === 'Diet Type' ? (
-              <DietType
-                submit={(data) => {
-                  updateUserDietType(data);
-                }}
-              />
+              <DietType userDetails={userDetails} />
             ) : activeCategory === 'Macros' ? (
               <div className="flex flex-col w-full sm:flex-row">
                 <Card className="w-full flex justify-center py-4 sm:w-2/5 mb-4 md:mb-0 md:mr-4">
