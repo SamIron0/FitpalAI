@@ -16,6 +16,7 @@ import {
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Toast } from 'react-hot-toast';
 import { Label } from '@/components/ui/label';
+import { useState } from 'react';
 
 const FormSchema = z.object({
   type: z.enum(['Anything', 'Vegetarian', 'Vegan' , 'Gluten-free', 'Keto', 'Paleo', 'Pescatarian', 'Mediterranean', 'Low-Carb'], {
@@ -30,14 +31,14 @@ export default function DietType( { submit }: DietTypeProps) {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema)
   });
-  function onSubmit(data: z.infer<typeof FormSchema>) {
+  function onSubmit(data:string) {
     console.log('submitting', data);
-    submit(data);
   }
 
+  const [diet, setDiet] = useState('');
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="sm:w-2/3 w-full space-y-6">
+      <form className="sm:w-2/3 w-full space-y-6">
         <FormField
           control={form.control}
           name="type"
@@ -53,6 +54,7 @@ export default function DietType( { submit }: DietTypeProps) {
                       value="Anything"
                       id="Anything"
                       className="peer sr-only"
+                      onClick={()=>setDiet('Anything')}
                     />
                     <Label
                       htmlFor="Anything"
@@ -66,6 +68,8 @@ export default function DietType( { submit }: DietTypeProps) {
                       value="Mediterranean"
                       id="Mediterranean"
                       className="peer sr-only"
+                      onClick={()=>setDiet('Mediterranean')}
+
                     />
                     <Label
                       htmlFor="Mediterranean"
