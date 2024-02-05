@@ -22,6 +22,7 @@ export async function getSession() {
 
 export async function getUserDetails(id: string) {
   const supabase = createServerSupabaseClient();
+  console.log('checking id', id);
   try {
     const { data: userDetails } = await supabase
       .from('users')
