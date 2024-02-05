@@ -142,7 +142,7 @@ export default function DietType({ userDetails }: DietTypeProps) {
             htmlFor="Vegan"
             className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
           >
-            <LuVegan className="pb-1 w-5 h-5" />
+            <LuVegan className="pb-1 w-6 h-6" />
             Vegan
           </Label>
         </div>
@@ -199,7 +199,7 @@ export default function DietType({ userDetails }: DietTypeProps) {
             htmlFor="Pescatarian"
             className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
           >
-            <PiShrimpBold className="pb-1  w-5 h-5" />
+            <PiShrimpBold className="pb-1 w-6 h-6" />
             Pescatarian
           </Label>
         </div>

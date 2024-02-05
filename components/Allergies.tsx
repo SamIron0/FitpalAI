@@ -15,11 +15,13 @@ import { Separator } from './ui/separator';
 import { useEffect, useState } from 'react';
 import { EmptyAllergies } from './EmptyAllergies';
 import toast from 'react-hot-toast';
+import { useRouter } from 'next/navigation';
 
 interface AllergiesProps {
   userDetails: UserDetails | null | undefined;
 }
 export function Allergies({ userDetails }: AllergiesProps) {
+  const router = useRouter();
   const deleteAllergy = async (allergy: string) => {
     console.log('deleting', allergy);
     setIsLoading(true);
@@ -36,6 +38,7 @@ export function Allergies({ userDetails }: AllergiesProps) {
         setUserAllergies(userDetails?.allergies?.filter((a) => a !== allergy));
 
         toast.success('Allergies updated');
+        router.refresh();
       } catch (error) {
         console.log(error);
 
@@ -57,7 +60,8 @@ export function Allergies({ userDetails }: AllergiesProps) {
     setIsLoading(true);
     const toastId = toast.loading('Adding...');
     if (new_allergy.length > 0) {
-      const allergies = [...(userDetails?.allergies || []), new_allergy];
+      const allergies: string[] | null = userDetails?.allergies || [];
+      allergies?.push(new_allergy);
       const updatedDetails: UserDetails = {
         ...userDetails,
         allergies: allergies
