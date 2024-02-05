@@ -16,6 +16,7 @@ import { Form, FormControl, FormField, FormItem } from '@/components/ui/form';
 import { postData } from '@/utils/helpers';
 import toast from 'react-hot-toast';
 import DietType from './DietType';
+import { MacrosSetter } from '@/components/MacrosSetter';
 
 export const metadata: Metadata = {
   title: 'Forms',
@@ -74,13 +75,18 @@ export function PreferencesUI({ userDetails }: PreferencesUIProps) {
               }}
             />
           ) : activeCategory === 'Macros' ? (
-            <Card className="w-full flex justify-center py-4 sm:w-2/5 mb-4 sm:mb-0">
+           <div>
+           <Card className="w-full flex justify-center py-4 sm:w-2/5 mb-4 sm:mb-0">
               <Calories
                 proteins={userDetails?.macros?.protein}
                 fats={userDetails?.macros?.fat}
                 carbs={userDetails?.macros?.carbs}
               />
-            </Card>
+
+                     </Card>
+                     <Card>
+                          <MacrosSetter setMacros={'userDetails?.macros'} /> 
+                     </Card></div>
           ) : activeCategory === 'Allergies' ? (
             <Allergies userDetails={userDetails} />
           ) : null}

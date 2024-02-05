@@ -42,11 +42,10 @@ export function Allergies({ userDetails }: AllergiesProps) {
       setUserAllergies(userDetails?.allergies);
     }
   });
-  const addAllergy = async (allergy: string) => {
+  const addAllergy = async () => {
     setIsLoading(true);
-    if (allergy.length > 0) {
-      console.log('adding', allergy);
-      const allergies = [...(userDetails?.allergies || []), allergy];
+    if (new_allergy.length > 0) {
+      const allergies = [...(userDetails?.allergies || []), new_allergy];
       const updatedDetails: UserDetails = {
         ...userDetails,
         allergies: allergies
@@ -81,12 +80,13 @@ export function Allergies({ userDetails }: AllergiesProps) {
       <CardContent>
         <div className="flex space-x-2">
           <Input
+            onClick={(e) => e.preventDefault()}
             placeholder="start typing..."
             value={new_allergy}
             onChange={(e) => setNewAllergy(e.target.value)}
           />
 
-          <Button onClick={() => addAllergy(new_allergy)} className="shrink-0">
+          <Button onClick={() => addAllergy()} className="shrink-0">
             Add
           </Button>
         </div>

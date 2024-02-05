@@ -1,18 +1,17 @@
-import { NextApiHandler } from 'next';
-import { createMealPlan, upsertUserDetails } from '@/utils/supabase-admin';
-import { createServerSupabaseClient, getSession } from '@/app/supabase-server';
+import { upsertUserDetails } from '@/utils/supabase-admin';
+import { getSession } from '@/app/supabase-server';
 
 export async function POST(req: Request) {
   if (req.method === 'POST') {
     try {
       const { userDetails } = await req.json();
+      console.log('upserting user details: ', userDetails);
       const session = await getSession();
       if (!session) {
         return new Response(JSON.stringify('Unauthorized'), {
           status: 401
         });
       }
-      const userID = session.user.id;
       const status = await upsertUserDetails(userDetails);
       const response = 'Meal plan saved';
       return new Response(JSON.stringify(response), {
