@@ -99,7 +99,7 @@ const createMealPlan = async (mealPlan: MealPlan) => {
 
 export const upsertUserDetails = async (userDetails: any) => {
   const { data, error: supabaseError } = await supabaseAdmin
-    .from('user_details')
+    .from('users')
     .upsert(userDetails);
   if (supabaseError) throw supabaseError;
   return data;

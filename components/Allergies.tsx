@@ -64,10 +64,13 @@ export function Allergies({ userDetails }: AllergiesProps) {
         }
         setUserAllergies(allergies);
 
-        toast.success('Allergy added');
         toast.dismiss(toastId);
+        toast.success('Allergy added');
       } catch (error) {
         console.log(error);
+        toast.dismiss(toastId);
+        toast.error('Error adding allergy');
+
       }
     }
     setIsLoading(false);

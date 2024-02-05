@@ -14,9 +14,11 @@ import {
   FormMessage
 } from '@/components/ui/form';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
-import { Toast } from 'react-hot-toast';
+import toast, { Toast } from 'react-hot-toast';
 import { Label } from '@/components/ui/label';
 import { useState } from 'react';
+import { UserDetails } from '@/types';
+import { postData } from '@/utils/helpers';
 
 const FormSchema = z.object({
   type: z.enum(
@@ -38,15 +40,46 @@ const FormSchema = z.object({
 });
 
 interface DietTypeProps {
-  submit: (data: z.infer<typeof FormSchema>) => void;
+  userDetails: UserDetails | null | undefined;
 }
-export default function DietType({ submit }: DietTypeProps) {
+export default function DietType({ userDetails }: DietTypeProps) {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema)
   });
-  const [diet, setDiet] = useState('');
-  function onSubmit() {
+  const [diet, setDiet] = useState(userDetails?.diet_type);
+  const [isLoading, setIsLoading] = useState(false);
+  async function onSubmit() {
     console.log('submitting', diet);
+
+    setIsLoading(true);
+    const toastId = toast.loading('Adding...');
+    if (diet) {
+      const updatedDetails: UserDetails = {
+        ...userDetails,
+        diet_type: diet
+      };
+      try {
+        const result = await postData({
+          url: '/api/upsert-user-details',
+          data: { userDetails: updatedDetails }
+        });
+        const data = JSON.parse(result.body);
+        if (!data) {
+          toast.dismiss(toastId);
+
+          toast.error('Error updating your preferences please try again later');
+        }
+        setDiet(diet);
+
+        toast.dismiss(toastId);
+        toast.success('Allergy added');
+      } catch (error) {
+        console.log(error);
+        toast.dismiss(toastId);
+
+        toast.error('Error updating your preferences please try again later');
+      }
+    }
   }
 
   return (
