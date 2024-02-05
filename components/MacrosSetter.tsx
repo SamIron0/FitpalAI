@@ -83,7 +83,7 @@ export function MacrosSetter({ userDetails }: MacroSetterProps) {
 
   return (
     <div className="flex items-center w-full justify-center space-x-2">
-      <Form {...form} className="w-full ">
+      <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
           className="space-y-8 w-full max-w-3xl"
