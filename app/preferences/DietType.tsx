@@ -90,7 +90,7 @@ export default function DietType({ userDetails }: DietTypeProps) {
             <FormItem className="space-y-3">
               <FormControl>
                 <RadioGroup
-                  defaultValue="Anything"
+                  defaultValue={diet}
                   className="grid grid-cols-3 gap-4 pb-16"
                 >
                   <div>
