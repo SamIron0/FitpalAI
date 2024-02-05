@@ -1,5 +1,5 @@
 'use client';
-import { PiShrimpBold } from "react-icons/pi";
+import { PiShrimpBold } from 'react-icons/pi';
 import { LuVegan } from 'react-icons/lu';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
@@ -47,7 +47,7 @@ export default function DietType({ userDetails }: DietTypeProps) {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema)
   });
-  const [diet, setDiet] = useState('Anything');
+  const [diet, setDiet] = useState(userDetails?.diet_type || 'Anything');
   const [isLoading, setIsLoading] = useState(false);
   async function onSubmit() {
     console.log('submitting', diet);
@@ -149,7 +149,7 @@ export default function DietType({ userDetails }: DietTypeProps) {
                       htmlFor="Vegan"
                       className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
                     >
-                      <LuVegan className="pb-1 w-3 h-3" />
+                      <LuVegan className="pb-1 w-5 h-5" />
                       Vegan
                     </Label>
                   </div>
@@ -206,7 +206,7 @@ export default function DietType({ userDetails }: DietTypeProps) {
                       htmlFor="Pescatarian"
                       className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
                     >
-                      <PiShrimpBold className="pb-1"/>
+                      <PiShrimpBold className="pb-1  w-5 h-5" />
                       Pescatarian
                     </Label>
                   </div>
