@@ -17,6 +17,7 @@ import { postData } from '@/utils/helpers';
 import toast from 'react-hot-toast';
 import DietType from './DietType';
 import { MacrosSetter } from '@/components/MacrosSetter';
+import { useSidebar } from '../providers/SideBarContext';
 
 export const metadata: Metadata = {
   title: 'Forms',
@@ -53,46 +54,60 @@ export function PreferencesUI({ userDetails }: PreferencesUIProps) {
       toast.error('Error updating your preferences please try again later');
     }
   };
+  const isSidebarOpen = useSidebar();
   return (
-    <div className="space-y-6 p-6 sm:p-12 pt-20  pb-16">
-      <div className="space-y-0.5 flex flex-col">
-        <h2 className="text-2xl font-bold tracking-tight">Preferences</h2>
-        <p className="text-muted-foreground">
-          Manage your account preferences and customize your experience
-        </p>
-      </div>
-      <Separator className="my-6" />
-      <div className="flex flex-col justify-center space-y-5 ">
-        <Categories
-          activeCategory={activeCategory}
-          setActiveCategory={setActiveCategory}
+    <>
+      {isSidebarOpen && (
+        <div
+          style={{
+            position: 'fixed',
+            width: '100%',
+            height: '100%',
+            backgroundColor: 'rgba(0,0,0,0.5)'
+          }}
         />
-        <div className="flex justify-center w-full">
-          {activeCategory === 'Diet Type' ? (
-            <DietType
-              submit={(data) => {
-                updateUserDietType(data);
-              }}
-            />
-          ) : activeCategory === 'Macros' ? (
-            <div className="flex flex-col w-full sm:flex-row">
-              <Card className="w-full flex justify-center py-4 sm:w-2/5 mb-4 md:mb-0 md:mr-4">
-                <CardTitle className="text-muted-foreground">
-                  Set your macros
-                </CardTitle>
-                <Calories macros={userDetails?.macros} />
-              </Card>
-              <Card className="w-full flex justify-center sm:w-3/5 ">
-                <CardContent className="w-full">
-                  <MacrosSetter userDetails={userDetails} />
-                </CardContent>
-              </Card>
-            </div>
-          ) : activeCategory === 'Allergies' ? (
-            <Allergies userDetails={userDetails} />
-          ) : null}
+      )}
+      <div className="space-y-6 p-6 sm:p-12 pt-20  pb-16">
+        <div className="space-y-0.5 flex flex-col">
+          <h2 className="text-2xl font-bold tracking-tight">Preferences</h2>
+          <p className="text-muted-foreground">
+            Manage your account preferences and customize your experience
+          </p>
+        </div>
+        <Separator className="my-6" />
+        <div className="flex flex-col justify-center space-y-5 ">
+          <Categories
+            activeCategory={activeCategory}
+            setActiveCategory={setActiveCategory}
+          />
+          <div className="flex justify-center w-full">
+            {activeCategory === 'Diet Type' ? (
+              <DietType
+                submit={(data) => {
+                  updateUserDietType(data);
+                }}
+              />
+            ) : activeCategory === 'Macros' ? (
+              <div className="flex flex-col w-full sm:flex-row">
+                <Card className="w-full flex justify-center py-4 sm:w-2/5 mb-4 md:mb-0 md:mr-4">
+                  <Calories macros={userDetails?.macros} />
+                </Card>
+                <Card className="w-full flex justify-center sm:w-3/5 ">
+                  <CardTitle className="text-muted-foreground">
+                    Set your macros
+                  </CardTitle>
+
+                  <CardContent className="w-full">
+                    <MacrosSetter userDetails={userDetails} />
+                  </CardContent>
+                </Card>
+              </div>
+            ) : activeCategory === 'Allergies' ? (
+              <Allergies userDetails={userDetails} />
+            ) : null}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

@@ -18,7 +18,6 @@ import { Input } from '@/components/ui/input';
 import { User } from '@supabase/supabase-js';
 import toast from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
-import { useSidebar } from '@/app/providers/SideBarContext';
 import { postData } from '@/utils/helpers';
 import { UserDetails } from '@/types';
 
@@ -44,7 +43,6 @@ export function MacrosSetter({ userDetails }: MacroSetterProps) {
     carbs: z.number().min(2),
     fat: z.number().min(2)
   });
-  const { isSidebarOpen } = useSidebar();
   const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -85,16 +83,7 @@ export function MacrosSetter({ userDetails }: MacroSetterProps) {
 
   return (
     <div className="flex items-center justify-center space-x-2">
-      {isSidebarOpen && (
-        <div
-          style={{
-            position: 'fixed',
-            width: '100%',
-            height: '100%',
-            backgroundColor: 'rgba(0,0,0,0.5)'
-          }}
-        />
-      )}
+    
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
           {macrosQuestions.map((question, idx) => (
