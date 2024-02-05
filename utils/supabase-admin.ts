@@ -97,34 +97,7 @@ const createMealPlan = async (mealPlan: MealPlan) => {
   return data;
 };
 
-export const updateMacros = async (userDetails: UserDetails) => {
-  const { data, error: supabaseError } = await supabaseAdmin
-    .from('users')
-    .insert([
-      {
-        macros: userDetails.macros
-      }
-    ])
-    .eq('id', userDetails.id);
 
-  if (supabaseError) throw supabaseError;
-
-  return data;
-};
-export const updateAllergies = async (userDetails: UserDetails) => {
-  const { data, error: supabaseError } = await supabaseAdmin
-    .from('users')
-    .insert([
-      {
-        macros: userDetails.macros
-      }
-    ])
-    .eq('id', userDetails.id);
-
-  if (supabaseError) throw supabaseError;
-
-  return data;
-};
 export const upsertUserDetails = async (userDetails: UserDetails) => {
   console.log('saving', userDetails.id);
   const { data, error: supabaseError } = await supabaseAdmin
