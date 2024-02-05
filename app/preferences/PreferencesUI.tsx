@@ -86,7 +86,7 @@ export function PreferencesUI({ id }: { id: string | undefined }) {
             Manage your account preferences and customize your experience
           </p>
         </div>
-        <Separator className="my-6" />
+        <Separator className="mt-6" />
         <div className="flex flex-col justify-center space-y-5 ">
           <Categories
             activeCategory={activeCategory}
