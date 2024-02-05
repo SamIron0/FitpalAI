@@ -1,5 +1,6 @@
 'use client';
-
+import { PiShrimpBold } from "react-icons/pi";
+import { LuVegan } from 'react-icons/lu';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
@@ -63,7 +64,7 @@ export default function DietType({ userDetails }: DietTypeProps) {
           url: '/api/upsert-user-details',
           data: { userDetails: updatedDetails }
         });
-       // const data = JSON.parse(result.body);
+        // const data = JSON.parse(result.body);
         if (!result) {
           toast.dismiss(toastId);
 
@@ -148,19 +149,7 @@ export default function DietType({ userDetails }: DietTypeProps) {
                       htmlFor="Vegan"
                       className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
                     >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        className="mb-3 h-6 w-6"
-                      >
-                        <rect width="20" height="14" x="2" y="5" rx="2" />
-                        <path d="M2 10h20" />
-                      </svg>
+                      <LuVegan />
                       Vegan
                     </Label>
                   </div>
@@ -217,6 +206,7 @@ export default function DietType({ userDetails }: DietTypeProps) {
                       htmlFor="Pescatarian"
                       className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
                     >
+                      <PiShrimpBold />
                       Pescatarian
                     </Label>
                   </div>
