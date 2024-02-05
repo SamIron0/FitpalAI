@@ -96,10 +96,21 @@ const createMealPlan = async (mealPlan: MealPlan) => {
   console.log(`New mealplan inserted for ${mealPlan.owner}.`);
   return data;
 };
+
 export const upsertUserDetails = async (userDetails: any) => {
   const { data, error: supabaseError } = await supabaseAdmin
     .from('user_details')
     .upsert(userDetails);
+  if (supabaseError) throw supabaseError;
+  return data;
+};
+export const getUserDetails = async (id: string) => {
+  const { data, error: supabaseError } = await supabaseAdmin
+    .from('users')
+    .select('*')
+    .eq('id', id)
+    .single();
+
   if (supabaseError) throw supabaseError;
   return data;
 };
