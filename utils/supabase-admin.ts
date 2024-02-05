@@ -129,7 +129,7 @@ export const upsertUserDetails = async (userDetails: UserDetails) => {
   console.log('saving', userDetails.id);
   const { data, error: supabaseError } = await supabaseAdmin
     .from('users')
-    .update({ macros: userDetails.macros })
+    .update(userDetails)
     .match({ id: userDetails.id });
   console.log('data', data);
   console.log('supabaseError', supabaseError);
