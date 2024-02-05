@@ -106,17 +106,31 @@ export const updateMacros = async (userDetails: UserDetails) => {
       }
     ])
     .eq('id', userDetails.id);
+
+  if (supabaseError) throw supabaseError;
+
+  return data;
 };
-export const upsertUserDetails = async (userDetails: UserDetails) => {
-  console.log('saving', userDetails);
+export const updateAllergies = async (userDetails: UserDetails) => {
   const { data, error: supabaseError } = await supabaseAdmin
     .from('users')
     .insert([
       {
-        id: userDetails.id,
-        diet_type: userDetails.diet_type
+        macros: userDetails.macros
       }
     ])
+    .eq('id', userDetails.id);
+
+  if (supabaseError) throw supabaseError;
+
+  return data;
+};
+
+export const upsertUserDetails = async (userDetails: UserDetails) => {
+  console.log('saving', userDetails);
+  const { data, error: supabaseError } = await supabaseAdmin
+    .from('users')
+    .update(userDetails)
     .eq('id', userDetails.id);
 
   console.log('data', data);
