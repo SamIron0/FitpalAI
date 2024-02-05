@@ -35,7 +35,7 @@ export function Allergies({ userDetails }: AllergiesProps) {
         });
         setUserAllergies(userDetails?.allergies?.filter((a) => a !== allergy));
 
-        toast.success('Allergy deleted');
+        toast.success('Allergies updated');
       } catch (error) {
         console.log(error);
 

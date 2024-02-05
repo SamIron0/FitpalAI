@@ -91,6 +91,7 @@ export function PreferencesUI({ id }: { id: string | undefined }) {
           />
           <div className="flex justify-center w-full">
             {activeCategory === 'Diet Type' ? (
+              
               <DietType userDetails={userDetails} />
             ) : activeCategory === 'Macros' ? (
               <div className="flex flex-col w-full sm:flex-row">

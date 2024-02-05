@@ -44,7 +44,7 @@ const Categories = ({ activeCategory, setActiveCategory }: CategoriesProps) => {
     <div className="w-full items-center justify-center flex">
       <div
         className="
-        pt-4 flex px9 sm:px-24 md:px-44 lg:px-64 xl:px-80 flex-row items-center justify-between mx-auto sm:mx-0 overflow-x-auto"
+   flex  sm:px-24 md:px-44 lg:px-64 xl:px-80 flex-row items-center justify-between mx-auto sm:mx-0 overflow-x-auto"
       >
         {categories.map((item, index) => (
           <CategoryBox

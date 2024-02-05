@@ -50,11 +50,11 @@ export default function DietType({ userDetails }: DietTypeProps) {
 
   console.log('diet type', userDetails?.diet_type);
   const [diet, setDiet] = useState(userDetails?.diet_type || 'Anything');
+
   useEffect(() => {
     setDiet(userDetails?.diet_type || 'Anything');
-  }, [userDetails?.diet_type]);
+  }, [userDetails]);
 
-  
   const [isLoading, setIsLoading] = useState(false);
   async function onSubmit() {
     console.log('submitting', diet);
@@ -85,7 +85,10 @@ export default function DietType({ userDetails }: DietTypeProps) {
 
   return (
     <div className="flex flex-col justify-center items-center w-full max-w-2xl">
-      <RadioGroup defaultValue={userDetails?.diet_type || 'Anything'} className="grid w-full grid-cols-3 gap-4 pb-16">
+      <RadioGroup
+        defaultValue={diet}
+        className="grid w-full grid-cols-3 gap-4 pb-16"
+      >
         <div>
           <RadioGroupItem
             value="Anything"
