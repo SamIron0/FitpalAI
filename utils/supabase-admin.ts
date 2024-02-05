@@ -125,20 +125,12 @@ export const updateAllergies = async (userDetails: UserDetails) => {
 
   return data;
 };
-
-export const upsertUserDetails = async (userDetails: UserDetails) => {
+export const change = async (userDetails: UserDetails) => {
   console.log('saving', userDetails);
   const { data, error: supabaseError } = await supabaseAdmin
     .from('users')
-    .update(
-      {
-        id: userDetails.id,
-        allergies: userDetails.allergies,
-        macros: userDetails.macros
-      }
-    )
-    .eq('id', userDetails.id);
-
+    .update({ macros: userDetails.macros })
+    .match({ id: userDetails.id });
   console.log('data', data);
   console.log('supabaseError', supabaseError);
   if (supabaseError) throw supabaseError;
