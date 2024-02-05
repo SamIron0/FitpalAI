@@ -17,7 +17,7 @@ import {
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import toast, { Toast } from 'react-hot-toast';
 import { Label } from '@/components/ui/label';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { UserDetails } from '@/types';
 import { postData } from '@/utils/helpers';
 
@@ -50,6 +50,9 @@ export default function DietType({ userDetails }: DietTypeProps) {
 
   console.log('diet type', userDetails?.diet_type);
   const [diet, setDiet] = useState(userDetails?.diet_type || 'Anything');
+  useEffect(() => {
+    setDiet(userDetails?.diet_type || 'Anything');
+  }, [userDetails]);
   const [isLoading, setIsLoading] = useState(false);
   async function onSubmit() {
     console.log('submitting', diet);
@@ -79,155 +82,141 @@ export default function DietType({ userDetails }: DietTypeProps) {
   }
 
   return (
-    <Form {...form}>
-      <form className="sm:w-2/3 w-full space-y-6">
-        <FormField
-          control={form.control}
-          name="type"
-          render={({ field }) => (
-            <FormItem className="space-y-3">
-              <FormControl>
-                <RadioGroup
-                  defaultValue={diet}
-                  className="grid grid-cols-3 gap-4 pb-16"
-                >
-                  <div>
-                    <RadioGroupItem
-                      value="Anything"
-                      id="Anything"
-                      className="peer sr-only"
-                      onClick={() => setDiet('Anything')}
-                    />
-                    <Label
-                      htmlFor="Anything"
-                      className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
-                    >
-                      Anything
-                    </Label>
-                  </div>
-                  <div>
-                    <RadioGroupItem
-                      value="Mediterranean"
-                      id="Mediterranean"
-                      className="peer sr-only"
-                      onClick={() => setDiet('Mediterranean')}
-                    />
-                    <Label
-                      htmlFor="Mediterranean"
-                      className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
-                    >
-                      Mediterranean
-                    </Label>
-                  </div>
-                  <div>
-                    <RadioGroupItem
-                      value="Paleo"
-                      id="Paleo"
-                      className="peer sr-only"
-                      onClick={() => setDiet('Paleo')}
-                    />
-                    <Label
-                      htmlFor="Paleo"
-                      className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
-                    >
-                      Paleo
-                    </Label>
-                  </div>
-                  <div>
-                    <RadioGroupItem
-                      value="Vegan"
-                      id="Vegan"
-                      className="peer sr-only"
-                      onClick={() => setDiet('Vegan')}
-                    />
-                    <Label
-                      htmlFor="Vegan"
-                      className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
-                    >
-                      <LuVegan className="pb-1 w-5 h-5" />
-                      Vegan
-                    </Label>
-                  </div>
-                  <div>
-                    <RadioGroupItem
-                      value="Keto"
-                      id="Keto"
-                      className="peer sr-only"
-                      onClick={() => setDiet('Keto')}
-                    />
-                    <Label
-                      htmlFor="Keto"
-                      className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
-                    >
-                      Keto
-                    </Label>
-                  </div>
-                  <div>
-                    <RadioGroupItem
-                      value="Vegetarian"
-                      id="Vegetarian"
-                      className="peer sr-only"
-                      onClick={() => setDiet('Vegetarian')}
-                    />
-                    <Label
-                      htmlFor="Vegetarian"
-                      className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
-                    >
-                      Vegetarian
-                    </Label>
-                  </div>
-                  <div>
-                    <RadioGroupItem
-                      value="Gluten-free"
-                      id="Gluten-free"
-                      className="peer sr-only"
-                      onClick={() => setDiet('Gluten-free')}
-                    />
-                    <Label
-                      htmlFor="Gluten-free"
-                      className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
-                    >
-                      Gluten-free
-                    </Label>
-                  </div>
-                  <div>
-                    <RadioGroupItem
-                      value="Pescatarian"
-                      id="Pescatarian"
-                      className="peer sr-only"
-                      onClick={() => setDiet('Pescatarian')}
-                    />
-                    <Label
-                      htmlFor="Pescatarian"
-                      className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
-                    >
-                      <PiShrimpBold className="pb-1  w-5 h-5" />
-                      Pescatarian
-                    </Label>
-                  </div>
-                  <div>
-                    <RadioGroupItem
-                      value="Low-Carb"
-                      id="Low-Carb"
-                      className="peer sr-only"
-                      onClick={() => setDiet('Low-Carb')}
-                    />
-                    <Label
-                      htmlFor="Low-Carb"
-                      className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
-                    >
-                      Low-Carb
-                    </Label>
-                  </div>
-                </RadioGroup>
-              </FormControl>
-            </FormItem>
-          )}
-        />
-        <Button className="w-full max-w-xl" onClick={() => onSubmit()}>
-          Save
-        </Button>
-      </form>
-    </Form>
+    <div className="flex flex-col justify-center items-center w-full">
+      <RadioGroup defaultValue={diet} className="grid grid-cols-3 gap-4 pb-16">
+        <div>
+          <RadioGroupItem
+            value="Anything"
+            id="Anything"
+            className="peer sr-only"
+            onClick={() => setDiet('Anything')}
+          />
+          <Label
+            htmlFor="Anything"
+            className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+          >
+            Anything
+          </Label>
+        </div>
+        <div>
+          <RadioGroupItem
+            value="Mediterranean"
+            id="Mediterranean"
+            className="peer sr-only"
+            onClick={() => setDiet('Mediterranean')}
+          />
+          <Label
+            htmlFor="Mediterranean"
+            className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+          >
+            Mediterranean
+          </Label>
+        </div>
+        <div>
+          <RadioGroupItem
+            value="Paleo"
+            id="Paleo"
+            className="peer sr-only"
+            onClick={() => setDiet('Paleo')}
+          />
+          <Label
+            htmlFor="Paleo"
+            className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+          >
+            Paleo
+          </Label>
+        </div>
+        <div>
+          <RadioGroupItem
+            value="Vegan"
+            id="Vegan"
+            className="peer sr-only"
+            onClick={() => setDiet('Vegan')}
+          />
+          <Label
+            htmlFor="Vegan"
+            className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+          >
+            <LuVegan className="pb-1 w-5 h-5" />
+            Vegan
+          </Label>
+        </div>
+        <div>
+          <RadioGroupItem
+            value="Keto"
+            id="Keto"
+            className="peer sr-only"
+            onClick={() => setDiet('Keto')}
+          />
+          <Label
+            htmlFor="Keto"
+            className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+          >
+            Keto
+          </Label>
+        </div>
+        <div>
+          <RadioGroupItem
+            value="Vegetarian"
+            id="Vegetarian"
+            className="peer sr-only"
+            onClick={() => setDiet('Vegetarian')}
+          />
+          <Label
+            htmlFor="Vegetarian"
+            className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+          >
+            Vegetarian
+          </Label>
+        </div>
+        <div>
+          <RadioGroupItem
+            value="Gluten-free"
+            id="Gluten-free"
+            className="peer sr-only"
+            onClick={() => setDiet('Gluten-free')}
+          />
+          <Label
+            htmlFor="Gluten-free"
+            className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+          >
+            Gluten-free
+          </Label>
+        </div>
+        <div>
+          <RadioGroupItem
+            value="Pescatarian"
+            id="Pescatarian"
+            className="peer sr-only"
+            onClick={() => setDiet('Pescatarian')}
+          />
+          <Label
+            htmlFor="Pescatarian"
+            className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+          >
+            <PiShrimpBold className="pb-1  w-5 h-5" />
+            Pescatarian
+          </Label>
+        </div>
+        <div>
+          <RadioGroupItem
+            value="Low-Carb"
+            id="Low-Carb"
+            className="peer sr-only"
+            onClick={() => setDiet('Low-Carb')}
+          />
+          <Label
+            htmlFor="Low-Carb"
+            className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+          >
+            Low-Carb
+          </Label>
+        </div>
+      </RadioGroup>
+
+      <Button className="w-full max-w-xl" onClick={() => onSubmit()}>
+        Save
+      </Button>
+    </div>
   );
 }

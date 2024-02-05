@@ -22,17 +22,27 @@ interface AllergiesProps {
 export function Allergies({ userDetails }: AllergiesProps) {
   const deleteAllergy = async (allergy: string) => {
     console.log('deleting', allergy);
+    setIsLoading(true);
     if (allergy.length > 0 && userDetails?.allergies?.includes(allergy)) {
-      const updatedDetails: UserDetails = {
-        ...userDetails,
-        allergies: userDetails?.allergies?.filter((a) => a !== allergy)
-      };
-      const result = await postData({
-        url: '/api/upsert-user-details',
-        data: { userDetails: updatedDetails }
-      });
-      const data = JSON.parse(result.body);
-      setUserAllergies(userDetails?.allergies?.filter((a) => a !== allergy));
+      try {
+        const updatedDetails: UserDetails = {
+          ...userDetails,
+          allergies: userDetails?.allergies?.filter((a) => a !== allergy)
+        };
+        const result = await postData({
+          url: '/api/upsert-user-details',
+          data: { userDetails: updatedDetails }
+        });
+        setUserAllergies(userDetails?.allergies?.filter((a) => a !== allergy));
+
+        toast.success('Allergy deleted');
+      } catch (error) {
+        console.log(error);
+
+        toast.error('Error deleting allergy');
+      } finally {
+        setIsLoading(false);
+      }
     }
   };
   const [isLoading, setIsLoading] = useState(false);
@@ -57,8 +67,6 @@ export function Allergies({ userDetails }: AllergiesProps) {
           url: '/api/upsert-user-details',
           data: { userDetails: updatedDetails }
         });
-        toast.error('Error updating your preferences please try again later');
-
         setUserAllergies(allergies);
 
         toast.dismiss(toastId);
@@ -109,7 +117,7 @@ export function Allergies({ userDetails }: AllergiesProps) {
                     </p>
                   </div>
                   <Button
-                    onSubmit={() => deleteAllergy('nuts')}
+                    onSubmit={() => deleteAllergy(allergy)}
                     variant="secondary"
                   >
                     Remove

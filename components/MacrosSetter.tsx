@@ -39,17 +39,17 @@ export function MacrosSetter({ userDetails }: MacroSetterProps) {
     'Enter your fat goal'
   ];
   const formSchema = z.object({
-    protein: z.number().min(2),
-    carbs: z.number().min(2),
-    fat: z.number().min(2)
+    protein: z.string().min(2),
+    carbs: z.string().min(2),
+    fat: z.string().min(2)
   });
   const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      protein: userDetails?.macros?.protein,
-      carbs: userDetails?.macros?.carbs,
-      fat: userDetails?.macros?.fat
+      protein: userDetails?.macros?.protein.toString(),
+      carbs: userDetails?.macros?.carbs.toString(),
+      fat: userDetails?.macros?.fat.toString()
     }
   });
 
