@@ -4,7 +4,7 @@ import { resolve } from 'path';
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   const sitemapPath = resolve('./public/sitemap.xml');
-
+  
   // Set content type header for the response
   res.setHeader('Content-Type', 'text/xml');
 
