@@ -5,7 +5,6 @@ export async function POST(req: Request) {
   if (req.method === 'POST') {
     try {
       const { userDetails } = await req.json();
-      console.log('upserting user details: ', userDetails);
       const session = await getSession();
       if (!session) {
         return new Response(JSON.stringify('Unauthorized'), {

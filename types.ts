@@ -29,13 +29,17 @@ export interface Macros {
   fat: number;
   carbs: number;
 }
+
+
+type Jsonb = any;
+
 export interface UserDetails {
   avatar_url?: string | null;
-  billing_address?: Json | null;
+  billing_address?: Jsonb | null;
   full_name?: string | null;
   id?: string;
   address?: string | null;
-  payment_method?: Json | null;
+  payment_method?: Jsonb | null;
   geolocation?: GeoCoordinate | null;
   allergies?: string[] | null;
   bio?: string | null;
@@ -46,6 +50,6 @@ export interface UserDetails {
   phone?: string | null;
   username?: string | null;
   age?: number | null;
-  subscription?: Json | null;
+  subscription?: Jsonb | null;
   diet_type?: string | null;
 }
