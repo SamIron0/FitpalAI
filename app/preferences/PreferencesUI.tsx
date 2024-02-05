@@ -54,7 +54,7 @@ export function PreferencesUI({ userDetails }: PreferencesUIProps) {
       toast.error('Error updating your preferences please try again later');
     }
   };
-  const isSidebarOpen = useSidebar();
+  const {isSidebarOpen} = useSidebar();
   return (
     <>
       {isSidebarOpen && (
