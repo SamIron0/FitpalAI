@@ -56,7 +56,7 @@ export default function DietType({ userDetails }: DietTypeProps) {
     if (userDetails?.diet_type) {
       setDiet(userDetails?.diet_type);
     }
-  }, [userDetails]);
+  }, []);
 
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
