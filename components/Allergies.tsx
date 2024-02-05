@@ -43,7 +43,7 @@ export function Allergies({ userDetails }: AllergiesProps) {
         });
         setUserAllergies(userAllergies?.filter((a) => a !== allergy));
         toast.success('Allergies updated');
-       // router.refresh();
+        // router.refresh();
       } catch (error) {
         console.log(error);
 
@@ -64,19 +64,16 @@ export function Allergies({ userDetails }: AllergiesProps) {
     setIsLoading(true);
     const toastId = toast.loading('Adding...');
     if (new_allergy.length > 0) {
-      const allergies: string[] | null = userDetails?.allergies || [];
-      allergies?.push(new_allergy);
+      userAllergies?.push(new_allergy);
       const updatedDetails: UserDetails = {
         ...userDetails,
-        allergies: allergies
+        allergies: userAllergies
       };
       try {
         const result = await postData({
           url: '/api/upsert-user-details',
           data: { userDetails: updatedDetails }
         });
-        setUserAllergies(allergies);
-
         toast.dismiss(toastId);
         toast.success('Allergy updated');
       } catch (error) {
