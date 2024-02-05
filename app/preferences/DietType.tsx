@@ -64,11 +64,7 @@ export default function DietType({ userDetails }: DietTypeProps) {
           url: '/api/upsert-user-details',
           data: { userDetails: updatedDetails }
         });
-        // const data = JSON.parse(result.body);
-        if (!result) {
-          toast.dismiss(toastId);
-          toast.error('Error updating your preferences please try again later');
-        }
+
         toast.dismiss(toastId);
         toast.success('Allergy added');
       } catch (error) {

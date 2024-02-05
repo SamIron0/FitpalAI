@@ -41,7 +41,8 @@ export function Allergies({ userDetails }: AllergiesProps) {
     if (userDetails?.allergies) {
       setUserAllergies(userDetails?.allergies);
     }
-  });
+  }, [userDetails?.allergies]);
+
   const addAllergy = async () => {
     setIsLoading(true);
     const toastId = toast.loading('Adding...');
@@ -56,12 +57,8 @@ export function Allergies({ userDetails }: AllergiesProps) {
           url: '/api/upsert-user-details',
           data: { userDetails: updatedDetails }
         });
-        const data = JSON.parse(result.body);
-        if (!data) {
-          toast.dismiss(toastId);
+        toast.error('Error updating your preferences please try again later');
 
-          toast.error('Error updating your preferences please try again later');
-        }
         setUserAllergies(allergies);
 
         toast.dismiss(toastId);
@@ -70,7 +67,6 @@ export function Allergies({ userDetails }: AllergiesProps) {
         console.log(error);
         toast.dismiss(toastId);
         toast.error('Error adding allergy');
-
       }
     }
     setIsLoading(false);
