@@ -638,7 +638,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
           )}
 
           <Card className="w-full flex justify-center py-4 sm:w-2/5 mb-4 sm:mb-0">
-            <Calories proteins={protein} fats={fat} carbs={carbs} />
+            <Calories macros={{ protein, fat, carbs }} />
           </Card>
         </div>
       </div>

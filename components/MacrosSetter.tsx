@@ -9,7 +9,6 @@ import { Button } from '@/components/ui/button';
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -35,7 +34,7 @@ export function MacrosSetter({ userDetails }: MacroSetterProps) {
 
   const [isLoading, setIsLoading] = React.useState(false);
 
-  const surveyQuestions = [
+  const macrosQuestions = [
     'Enter your protein goal',
     'Enter your carb goal',
     'Enter your fat goal'
@@ -98,7 +97,7 @@ export function MacrosSetter({ userDetails }: MacroSetterProps) {
       )}
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-          {surveyQuestions.map((question, idx) => (
+          {macrosQuestions.map((question, idx) => (
             //Unique field for each survey question
             <FormField
               key={idx}
@@ -108,14 +107,22 @@ export function MacrosSetter({ userDetails }: MacroSetterProps) {
                 <FormItem>
                   <FormLabel>{question}</FormLabel>
                   <FormControl>
-                    <Input {...field} />
+                    <Input
+                      placeholder={(idx === 0
+                        ? userDetails?.macros?.protein
+                        : idx === 1
+                        ? userDetails?.macros?.carbs
+                        : userDetails?.macros?.fat
+                      )?.toString()}
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
           ))}
-          <Button type="submit">Submit</Button>
+          <Button type="submit">Save</Button>
         </form>
       </Form>
     </div>
