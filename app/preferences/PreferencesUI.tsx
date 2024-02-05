@@ -10,7 +10,7 @@ import { Label } from '@/components/ui/label';
 import { Allergies } from '@/components/Allergies';
 import { UserDetails } from '@/types';
 import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
+import { Card, CardContent, CardTitle } from '@/components/ui/card';
 import { Calories } from '@/components/Calories';
 import { Form, FormControl, FormField, FormItem } from '@/components/ui/form';
 import { postData } from '@/utils/helpers';
@@ -75,12 +75,17 @@ export function PreferencesUI({ userDetails }: PreferencesUIProps) {
               }}
             />
           ) : activeCategory === 'Macros' ? (
-            <div className="flex flex-col sm:flex-row">
-              <Card className="w-full flex justify-center py-4 sm:w-2/5 mb-4 sm:mb-0">
+            <div className="flex flex-col w-full sm:flex-row">
+              <Card className="w-full flex justify-center py-4 sm:w-2/5 mb-4 md:mb-0 md:mr-4">
+                <CardTitle className="text-muted-foreground">
+                  Set your macros
+                </CardTitle>
                 <Calories macros={userDetails?.macros} />
               </Card>
               <Card className="w-full flex justify-center sm:w-3/5 ">
-                <MacrosSetter userDetails={userDetails} />
+                <CardContent className="w-full">
+                  <MacrosSetter userDetails={userDetails} />
+                </CardContent>
               </Card>
             </div>
           ) : activeCategory === 'Allergies' ? (

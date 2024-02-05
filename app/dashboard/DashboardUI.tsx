@@ -463,7 +463,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
         </div>
         <div className="w-full pt-8 flex flex-col justify-center md:flex-row">
           {generateMode ? (
-            <Card className="w-full md:w-3/5 mb-4 md:mb-0 sm:mr-4">
+            <Card className="w-full md:w-3/5 mb-4 md:mb-0 md:mr-4">
               <div className="relative flex flex-1 flex-col">
                 <div className=" p-4 w-full mx-auto flex flex-col justify-center md:p-6">
                   <div className="flex w-full  flex-col justify-center pb-3">
@@ -570,7 +570,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
               </div>
             </Card>
           ) : (
-            <Card className="w-full md:w-3/5 mb-4 md:mb-0 sm:mr-4">
+            <Card className="w-full md:w-3/5 mb-4 md:mb-0">
               {!activeMealPlan?.meals ? (
                 <EmptyMealplans onGenerateClick={() => setGenerateMode(true)} />
               ) : (
