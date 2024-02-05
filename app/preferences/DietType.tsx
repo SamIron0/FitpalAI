@@ -20,6 +20,7 @@ import { Label } from '@/components/ui/label';
 import { useEffect, useState } from 'react';
 import { UserDetails } from '@/types';
 import { postData } from '@/utils/helpers';
+import { useRouter } from 'next/navigation';
 
 const FormSchema = z.object({
   type: z.enum(
@@ -58,7 +59,8 @@ export default function DietType({ userDetails }: DietTypeProps) {
   }, [userDetails]);
 
   const [isLoading, setIsLoading] = useState(false);
-  async function onSubmit() {
+  const router = useRouter();
+  async function onSubmit() { 
     console.log('submitting', diet);
 
     setIsLoading(true);
@@ -73,9 +75,9 @@ export default function DietType({ userDetails }: DietTypeProps) {
           url: '/api/upsert-user-details',
           data: { userDetails: updatedDetails }
         });
-
         toast.dismiss(toastId);
         toast.success('Diet type updated');
+        router.refresh();
       } catch (error) {
         console.log(error);
         toast.dismiss(toastId);

@@ -22,23 +22,28 @@ interface AllergiesProps {
 }
 export function Allergies({ userDetails }: AllergiesProps) {
   const router = useRouter();
+  const [userAllergies, setUserAllergies] = useState<
+    string[] | undefined | null
+  >(userDetails?.allergies); //userAlle
+
   const deleteAllergy = async (allergy: string) => {
     console.log('deleting', allergy);
     setIsLoading(true);
     if (allergy.length > 0 && userDetails?.allergies?.includes(allergy)) {
+      //const allergies = userDetails?.allergies?.filter((a) => a !== allergy);
+
       try {
         const updatedDetails: UserDetails = {
           ...userDetails,
-          allergies: userDetails?.allergies?.filter((a) => a !== allergy)
+          allergies: userAllergies?.filter((a) => a !== allergy)
         };
         const result = await postData({
           url: '/api/upsert-user-details',
           data: { userDetails: updatedDetails }
         });
-        setUserAllergies(userDetails?.allergies?.filter((a) => a !== allergy));
-
+        setUserAllergies(userAllergies?.filter((a) => a !== allergy));
         toast.success('Allergies updated');
-        router.refresh();
+       // router.refresh();
       } catch (error) {
         console.log(error);
 
@@ -49,7 +54,6 @@ export function Allergies({ userDetails }: AllergiesProps) {
     }
   };
   const [isLoading, setIsLoading] = useState(false);
-  const [userAllergies, setUserAllergies] = useState<string[]>([]); //userAlle
   useEffect(() => {
     if (userDetails?.allergies) {
       setUserAllergies(userDetails?.allergies);
@@ -108,12 +112,12 @@ export function Allergies({ userDetails }: AllergiesProps) {
           </Button>
         </div>
         <Separator className="my-4" />
-        {userAllergies.length === 0 ? (
+        {userAllergies?.length === 0 ? (
           <EmptyAllergies />
         ) : (
           <div className="space-y-4">
             <div className="grid gap-6">
-              {userAllergies.map((allergy) => (
+              {userAllergies?.map((allergy) => (
                 <div className="flex items-center justify-between space-x-4">
                   <div className="flex items-center space-x-4">
                     <p className="text-sm font-medium leading-none">
