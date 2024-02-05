@@ -54,7 +54,7 @@ export function PreferencesUI({ userDetails }: PreferencesUIProps) {
       toast.error('Error updating your preferences please try again later');
     }
   };
-  const {isSidebarOpen} = useSidebar();
+  const { isSidebarOpen } = useSidebar();
   return (
     <>
       {isSidebarOpen && (
@@ -92,13 +92,12 @@ export function PreferencesUI({ userDetails }: PreferencesUIProps) {
                 <Card className="w-full flex justify-center py-4 sm:w-2/5 mb-4 md:mb-0 md:mr-4">
                   <Calories macros={userDetails?.macros} />
                 </Card>
-                <Card className="w-full flex justify-center sm:w-3/5 px-2 ">
-                  
+                <Card className="w-full sm:w-3/5 px-2 ">
                   <CardHeader>
-                     <CardTitle className="text-muted-foreground">
-                    Set your macros
-                  </CardTitle>
-</CardHeader>
+                    <CardTitle className="text-muted-foreground">
+                      Set your macros
+                    </CardTitle>
+                  </CardHeader>
                   <CardContent className="w-full">
                     <MacrosSetter userDetails={userDetails} />
                   </CardContent>
