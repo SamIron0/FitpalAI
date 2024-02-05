@@ -2,8 +2,8 @@ import { SurveyResponse } from '@/types';
 import { createSurveyResponse } from '@/utils/supabase-admin';
 import { getSession } from '@/app/supabase-server';
 import { getUserDetails } from '@/utils/supabase-admin';
-export async function POST(req: Request) {
-  if (req.method === 'POST') {
+export async function GET(req: Request) {
+  if (req.method === 'GET') {
     try {
       const session = await getSession();
       if (!session) {
@@ -21,7 +21,7 @@ export async function POST(req: Request) {
     }
   } else {
     return new Response('Method Not Allowed', {
-      headers: { Allow: 'POST' },
+      headers: { Allow: 'GET' },
       status: 405
     });
   }
