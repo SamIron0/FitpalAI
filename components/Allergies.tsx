@@ -70,7 +70,7 @@ export function Allergies({ userDetails }: AllergiesProps) {
         setUserAllergies(allergies);
 
         toast.dismiss(toastId);
-        toast.success('Allergy added');
+        toast.success('Allergy updated');
       } catch (error) {
         console.log(error);
         toast.dismiss(toastId);
