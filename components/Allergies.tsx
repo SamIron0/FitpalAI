@@ -44,6 +44,7 @@ export function Allergies({ userDetails }: AllergiesProps) {
   });
   const addAllergy = async () => {
     setIsLoading(true);
+    const toastId = toast.loading('Adding...');
     if (new_allergy.length > 0) {
       const allergies = [...(userDetails?.allergies || []), new_allergy];
       const updatedDetails: UserDetails = {
@@ -57,9 +58,14 @@ export function Allergies({ userDetails }: AllergiesProps) {
         });
         const data = JSON.parse(result.body);
         if (!data) {
+          toast.dismiss(toastId);
+
           toast.error('Error updating your preferences please try again later');
         }
         setUserAllergies(allergies);
+
+        toast.success('Allergy added');
+        toast.dismiss(toastId);
       } catch (error) {
         console.log(error);
       }

@@ -199,7 +199,7 @@ export default function DietType({ submit }: DietTypeProps) {
             </FormItem>
           )}
         />
-        <Button className="w-full max-w-xl" onClick={() => onSubmit}>
+        <Button className="w-full max-w-xl" onClick={() => onSubmit()}>
           Save
         </Button>
       </form>
