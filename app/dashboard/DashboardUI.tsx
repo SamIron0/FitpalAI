@@ -47,6 +47,7 @@ import {
 } from '@/components/ui/popover';
 import { useSidebar } from '../providers/SideBarContext';
 import { EmptyMealplans } from '@/components/EmptyMealplans';
+import { useUserDetails } from '../providers/UserDetailsContext';
 
 const data: Payment[] = [
   {
@@ -282,48 +283,53 @@ export function DashboardUI({ user }: DashboardUIProps) {
     return ghostCards;
   }
 
+  const { userDetails, setUserDetails } = useUserDetails();
   //call aws to create the initial meal plan
   const fetchData = async (query: string) => {
     setIsLoading(true);
     let mealplan: MealPlan; //await getData(query);
-    const userDetails: UserDetails = {
-      allergies: [],
-      goals: [],
-      weight: 0,
-      age: 0,
-      macros: {
-        protein: 0,
-        fat: 0,
-        carbs: 0
-      }
+    const user: UserDetails = {
+      allergies: userDetails?.allergies || [],
+      goals: userDetails?.goals || [],
+      weight: userDetails?.weight,
+      age: userDetails?.age,
+      macros: userDetails?.macros
     };
     try {
       const result = await postData({
         url: 'https://3x077l0rol.execute-api.us-east-1.amazonaws.com/main/',
         data: {
           query: query,
-          userDetails: userDetails
+          userDetails: user
         }
       });
       const data = JSON.parse(result.body);
       let parsedData = JSON.parse(data);
       //setGptResponse(result);
+
       mealplan = {
         id: '',
         owner: '',
         meals: [
-          { type: 'breakfast', title: parsedData.breakfast },
+          {
+            type: 'breakfast',
+            title: parsedData.breakfast.title,
+            macros: parsedData.breakfast.macros
+          },
           {
             type: 'lunch',
-            title: parsedData.lunch
+            title: parsedData.lunch.title,
+            macros: parsedData.lunch.macros
           },
           {
             type: 'dinner',
-            title: parsedData.dinner
+            title: parsedData.dinner.title,
+            macros: parsedData.dinner.macros
           },
           {
             type: 'snack',
-            title: parsedData.snack
+            title: parsedData.snack.title,
+            macros: parsedData.snack.macros
           }
         ]
       };
