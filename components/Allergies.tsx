@@ -103,6 +103,7 @@ export function Allergies() {
             placeholder="start typing..."
             value={new_allergy}
             onChange={(e) => setNewAllergy(e.target.value)}
+            style={{ fontSize: '16px' }}
           />
 
           <Button onClick={() => addAllergy()} className="shrink-0">

@@ -68,6 +68,6 @@ export function Calories({ macros }: CaloriesProps) {
       ]
     });
   }, [userDetails]);
-
   return <Doughnut data={data} />;
+
 }
