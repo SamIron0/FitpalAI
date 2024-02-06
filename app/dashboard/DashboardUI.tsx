@@ -33,7 +33,13 @@ import {
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
 import { Allergies } from '@/components/Allergies';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle
+} from '@/components/ui/card';
 import { getData, postData } from '@/utils/helpers';
 import { Pantry } from '@/components/Pantry';
 import { Calories } from '@/components/Calories';
@@ -402,6 +408,12 @@ export function DashboardUI({ user }: DashboardUIProps) {
                 </div>
               </CardHeader>
               <CardContent>{meal.title}</CardContent>
+              <CardFooter>
+                {meal.macros?.carbs &&
+                  meal.macros?.fat &&
+                  meal.macros?.protein &&
+                  meal.macros.carbs + meal.macros.fat + meal.macros.protein}
+              </CardFooter>
             </Card>
           );
       }
