@@ -19,6 +19,7 @@ import DietType from './DietType';
 import { MacrosSetter } from '@/components/MacrosSetter';
 import { useSidebar } from '../providers/SideBarContext';
 import { useUserDetails } from '../providers/UserDetailsContext';
+import { useRouter } from 'next/navigation';
 
 export const metadata: Metadata = {
   title: 'Forms',
@@ -27,8 +28,8 @@ export const metadata: Metadata = {
 
 export function PreferencesUI({ id }: { id: string | undefined }) {
   const { userDetails, setUserDetails } = useUserDetails();
+  const router = useRouter();
 
- 
   useEffect(() => {
     console.log('updating');
     const getDetails = async () => {
@@ -38,10 +39,35 @@ export function PreferencesUI({ id }: { id: string | undefined }) {
       setUserDetails(data);
     };
     getDetails();
-  },[]);
+  }, []);
   const [activeCategory, setActiveCategory] = useState('Diet Type');
 
   const { isSidebarOpen } = useSidebar();
+  const changeDietType = async (diet: string) => {
+    console.log('submitting', diet);
+    const toastId = toast.loading('Adding...');
+    if (diet) {
+      const updatedDetails: UserDetails = {
+        ...userDetails,
+        diet_type: diet
+      };
+      try {
+        const result = await postData({
+          url: '/api/upsert-user-details',
+          data: { userDetails: updatedDetails }
+        });
+        toast.dismiss(toastId);
+        toast.success('Diet type updated');
+        router.refresh();
+      } catch (error) {
+        console.log(error);
+        toast.dismiss(toastId);
+
+        toast.error('Error updating your preferences please try again later');
+      }
+    }
+  };
+
   return (
     <>
       {isSidebarOpen && (
@@ -69,7 +95,7 @@ export function PreferencesUI({ id }: { id: string | undefined }) {
           />
           <div className="flex justify-center w-full">
             {activeCategory === 'Diet Type' ? (
-              <DietType  />
+              <DietType onSubmit={(diet) => changeDietType(diet)} />
             ) : activeCategory === 'Macros' ? (
               <div className="flex flex-col w-full sm:flex-row">
                 <Card className="w-full flex justify-center py-4 sm:w-1/2 mb-4 md:mb-0 md:mr-4">
@@ -82,12 +108,12 @@ export function PreferencesUI({ id }: { id: string | undefined }) {
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="w-full">
-                    <MacrosSetter userDetails={userDetails} />
+                    <MacrosSetter />
                   </CardContent>
                 </Card>
               </div>
             ) : activeCategory === 'Allergies' ? (
-              <Allergies userDetails={userDetails} />
+              <Allergies />
             ) : null}
           </div>
         </div>

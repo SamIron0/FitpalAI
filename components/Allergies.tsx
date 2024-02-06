@@ -16,11 +16,12 @@ import { useEffect, useState } from 'react';
 import { EmptyAllergies } from './EmptyAllergies';
 import toast from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
+import { useUserDetails } from '@/app/providers/UserDetailsContext';
 
 interface AllergiesProps {
-  userDetails: UserDetails | null | undefined;
 }
-export function Allergies({ userDetails }: AllergiesProps) {
+export function Allergies() {
+  const { userDetails, setUserDetails } = useUserDetails();
   const router = useRouter();
   const [userAllergies, setUserAllergies] = useState<
     string[] | undefined | null

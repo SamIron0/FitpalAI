@@ -42,14 +42,14 @@ const FormSchema = z.object({
   )
 });
 
+interface DietTypeProps {
+  onSubmit: (diet: string) => void;
+}
 
-export default function DietType() {
+export default function DietType({ onSubmit }: DietTypeProps) {
   const router = useRouter();
 
-  const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: zodResolver(FormSchema)
-  });
-  const {userDetails} = useUserDetails();
+  const { userDetails, setUserDetails } = useUserDetails();
 
   const [diet, setDiet] = useState('Anything');
   console.log('diet type', diet);
@@ -61,33 +61,11 @@ export default function DietType() {
   }, [userDetails]);
 
   const [isLoading, setIsLoading] = useState(false);
-  async function onSubmit() {
-    console.log('submitting', diet);
 
-    setIsLoading(true);
-    const toastId = toast.loading('Adding...');
-    if (diet) {
-      const updatedDetails: UserDetails = {
-        ...userDetails,
-        diet_type: diet
-      };
-      try {
-        const result = await postData({
-          url: '/api/upsert-user-details',
-          data: { userDetails: updatedDetails }
-        });
-        toast.dismiss(toastId);
-        toast.success('Diet type updated');
-        router.refresh();
-      } catch (error) {
-        console.log(error);
-        toast.dismiss(toastId);
-
-        toast.error('Error updating your preferences please try again later');
-      }
-    }
-  }
-
+  const submit = () => {
+    onSubmit(diet);
+    
+  };
   return (
     <div className="flex flex-col justify-center items-center w-full max-w-2xl">
       <RadioGroup
@@ -205,7 +183,7 @@ export default function DietType() {
         </div>
       </RadioGroup>
 
-      <Button className="w-full max-w-xl" onClick={() => onSubmit()}>
+      <Button className="w-full max-w-xl" onClick={() => submit()}>
         Save
       </Button>
     </div>

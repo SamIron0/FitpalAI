@@ -20,13 +20,12 @@ import toast from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
 import { postData } from '@/utils/helpers';
 import { UserDetails } from '@/types';
+import { useUserDetails } from '@/app/providers/UserDetailsContext';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-interface MacroSetterProps {
-  userDetails: UserDetails | null | undefined;
-}
-export function MacrosSetter({ userDetails }: MacroSetterProps) {
+export function MacrosSetter() {
+  const { userDetails, setUserDetails } = useUserDetails();
   const [protein, setProtein] = React.useState(200);
   const [carbs, setCarbs] = React.useState(200);
   const [fat, setFat] = React.useState(200);
