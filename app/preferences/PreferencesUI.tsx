@@ -1,4 +1,6 @@
 'use client';
+import { z } from 'zod';
+
 import { Metadata } from 'next';
 import Image from 'next/image';
 
@@ -69,6 +71,42 @@ export function PreferencesUI({ id }: { id: string | undefined }) {
     }
   };
 
+
+const formSchema = z.object({
+  protein: z.string().min(2),
+  carbs: z.string().min(2),
+  fat: z.string().min(2)
+});
+const [isLoading, setIsLoading] = useState(false);
+  async function setMacros(values: z.infer<typeof formSchema>) {
+    setIsLoading(true);
+    const toastId = toast.loading('Saving...');
+    const updatedDetails: UserDetails = {
+      ...userDetails,
+      macros: {
+        protein: Number(values.protein),
+        carbs: Number(values.carbs),
+        fat: Number(values.fat)
+      }
+    };
+
+    try {
+      const url = '/api/upsert-user-details';
+      const body = { userDetails: updatedDetails };
+      const data = await postData({ url, data: body });
+      toast.dismiss(toastId);
+      toast.success('Macros updated.');
+      router.refresh();
+    } catch (error) {
+      toast.error(
+        'An error occurred while saving macros please try again later.'
+      );
+    }
+    setIsLoading(false);
+  }
+
+
+
   return (
     <>
       {isSidebarOpen && (
@@ -109,7 +147,7 @@ export function PreferencesUI({ id }: { id: string | undefined }) {
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="w-full">
-                    <MacrosSetter />
+                    <MacrosSetter onSubmit={(data) => setMacros(data)} />
                   </CardContent>
                 </Card>
               </div>

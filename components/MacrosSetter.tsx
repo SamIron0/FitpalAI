@@ -24,7 +24,15 @@ import { useUserDetails } from '@/app/providers/UserDetailsContext';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-export function MacrosSetter() {
+const formSchema = z.object({
+  protein: z.string().min(2),
+  carbs: z.string().min(2),
+  fat: z.string().min(2)
+});
+interface MacrosSetterProps {
+  onSubmit: (data: z.infer<typeof formSchema>) => void;
+}
+export function MacrosSetter( { onSubmit }: MacrosSetterProps) {
   const { userDetails, setUserDetails } = useUserDetails();
   const [protein, setProtein] = React.useState(200);
   const [carbs, setCarbs] = React.useState(200);
@@ -37,12 +45,7 @@ export function MacrosSetter() {
     'Enter your carb goal',
     'Enter your fat goal'
   ];
-  const formSchema = z.object({
-    protein: z.string().min(2),
-    carbs: z.string().min(2),
-    fat: z.string().min(2)
-  });
-  const router = useRouter();
+    const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -53,33 +56,7 @@ export function MacrosSetter() {
   });
 
   // 2. Define a submit handler.
-  async function onSubmit(values: z.infer<typeof formSchema>) {
-    setIsLoading(true);
-    const toastId = toast.loading('Saving...');
-    const updatedDetails: UserDetails = {
-      ...userDetails,
-      macros: {
-        protein: Number(values.protein),
-        carbs: Number(values.carbs),
-        fat: Number(values.fat)
-      }
-    };
-
-    try {
-      const url = '/api/upsert-user-details';
-      const body = { userDetails: updatedDetails };
-      const data = await postData({ url, data: body });
-      toast.dismiss(toastId);
-      toast.success('Macros updated.');
-      router.refresh();
-    } catch (error) {
-      toast.error(
-        'An error occurred while saving macros please try again later.'
-      );
-    }
-    setIsLoading(false);
-  }
-
+ 
   return (
     <div className="flex items-center w-full justify-center space-x-2">
       <Form {...form}>
