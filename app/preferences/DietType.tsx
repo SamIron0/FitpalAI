@@ -45,22 +45,23 @@ interface DietTypeProps {
   userDetails: UserDetails | null | undefined;
 }
 export default function DietType({ userDetails }: DietTypeProps) {
+  const router = useRouter();
+
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema)
   });
 
-  console.log('diet type', userDetails?.diet_type);
   const [diet, setDiet] = useState('Anything');
+  console.log('diet type', diet);
 
   useEffect(() => {
     if (userDetails?.diet_type) {
       setDiet(userDetails?.diet_type);
     }
-  }, []);
+  }, [userDetails]);
 
   const [isLoading, setIsLoading] = useState(false);
-  const router = useRouter();
-  async function onSubmit() { 
+  async function onSubmit() {
     console.log('submitting', diet);
 
     setIsLoading(true);
