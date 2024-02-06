@@ -58,6 +58,7 @@ export function PreferencesUI({ id }: { id: string | undefined }) {
         });
         toast.dismiss(toastId);
         toast.success('Diet type updated');
+        setUserDetails(updatedDetails);
         router.refresh();
       } catch (error) {
         console.log(error);
