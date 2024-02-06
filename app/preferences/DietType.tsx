@@ -21,6 +21,7 @@ import { useEffect, useState } from 'react';
 import { UserDetails } from '@/types';
 import { postData } from '@/utils/helpers';
 import { useRouter } from 'next/navigation';
+import { useUserDetails } from '../providers/UserDetailsContext';
 
 const FormSchema = z.object({
   type: z.enum(
@@ -41,15 +42,14 @@ const FormSchema = z.object({
   )
 });
 
-interface DietTypeProps {
-  userDetails: UserDetails | null | undefined;
-}
-export default function DietType({ userDetails }: DietTypeProps) {
+
+export default function DietType() {
   const router = useRouter();
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema)
   });
+  const {userDetails} = useUserDetails();
 
   const [diet, setDiet] = useState('Anything');
   console.log('diet type', diet);

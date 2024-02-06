@@ -18,6 +18,7 @@ import toast from 'react-hot-toast';
 import DietType from './DietType';
 import { MacrosSetter } from '@/components/MacrosSetter';
 import { useSidebar } from '../providers/SideBarContext';
+import { useUserDetails } from '../providers/UserDetailsContext';
 
 export const metadata: Metadata = {
   title: 'Forms',
@@ -25,43 +26,21 @@ export const metadata: Metadata = {
 };
 
 export function PreferencesUI({ id }: { id: string | undefined }) {
-  const [userDetails, setUserDetails] = useState<UserDetails | null>(null);
-const [updatedUserDetails, setUpdatedUserDetails] = useState<UserDetails | null>(null);
+  const { userDetails, setUserDetails } = useUserDetails();
+
+ 
   useEffect(() => {
+    console.log('updating');
     const getDetails = async () => {
       const data = await getData({
         url: '/api/get-user-details'
       });
-      setUpdatedUserDetails(data);
+      setUserDetails(data);
     };
     getDetails();
-  }, [userDetails?.diet_type, userDetails?.allergies, userDetails?.macros]);
+  });
   const [activeCategory, setActiveCategory] = useState('Diet Type');
 
-  const updateUserDietType = async (data: any) => {
-    // updatte user details to have the new diet type
-    if (!data) {
-      toast.error('Please select a diet type');
-      return;
-    }
-    const newUserDetails = {
-      ...updatedUserDetails,
-      diet_type: data
-    };
-    try {
-      console.log(data);
-      const result = await postData({
-        url: '/api/update-user-details',
-        data: { userDetails: newUserDetails }
-      });
-      if (!result) {
-        toast.error('Error updating your preferences please try again later');
-      }
-      toast.success('Your preferences have been updated');
-    } catch (error) {
-      toast.error('Error updating your preferences please try again later');
-    }
-  };
   const { isSidebarOpen } = useSidebar();
   return (
     <>
@@ -90,11 +69,11 @@ const [updatedUserDetails, setUpdatedUserDetails] = useState<UserDetails | null>
           />
           <div className="flex justify-center w-full">
             {activeCategory === 'Diet Type' ? (
-              <DietType userDetails={updatedUserDetails} />
+              <DietType  />
             ) : activeCategory === 'Macros' ? (
               <div className="flex flex-col w-full sm:flex-row">
                 <Card className="w-full flex justify-center py-4 sm:w-1/2 mb-4 md:mb-0 md:mr-4">
-                  <Calories userDetails={updatedUserDetails} />
+                  <Calories userDetails={userDetails} />
                 </Card>
                 <Card className="w-full sm:w-1/2 px-2 ">
                   <CardHeader>
@@ -103,12 +82,12 @@ const [updatedUserDetails, setUpdatedUserDetails] = useState<UserDetails | null>
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="w-full">
-                    <MacrosSetter userDetails={updatedUserDetails} />
+                    <MacrosSetter userDetails={userDetails} />
                   </CardContent>
                 </Card>
               </div>
             ) : activeCategory === 'Allergies' ? (
-              <Allergies userDetails={updatedUserDetails} />
+              <Allergies userDetails={userDetails} />
             ) : null}
           </div>
         </div>

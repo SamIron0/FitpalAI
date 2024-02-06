@@ -11,6 +11,7 @@ import { getSession } from './supabase-server';
 import ToasterProvider from './providers/ToasterProvider';
 import { cn } from '@/lib/utils';
 import { SidebarProvider } from './providers/SideBarContext';
+import { UserDetailsProvider } from './providers/UserDetailsContext';
 const meta = {
   title: 'Fitpal AI',
   description: 'Meal plans and calorie tracking.',
@@ -70,19 +71,21 @@ export default async function RootLayout({ children }: PropsWithChildren) {
         <SupabaseProvider>
           <ToasterProvider />
           <SidebarProvider>
-            <div className={cn('bg-background text-foreground')}>
-              {session?.user.email ? (
-                <div className="flex">
-                  <Sidebar session={session} /> {children}
-                </div>
-              ) : (
-                <div>
-                  <Navbar />
-                  {children}
-                </div>
-              )}
-            </div>
-            <Analytics />
+            <UserDetailsProvider>
+              <div className={cn('bg-background text-foreground')}>
+                {session?.user.email ? (
+                  <div className="flex">
+                    <Sidebar session={session} /> {children}
+                  </div>
+                ) : (
+                  <div>
+                    <Navbar />
+                    {children}
+                  </div>
+                )}
+              </div>
+              <Analytics />
+            </UserDetailsProvider>
           </SidebarProvider>
         </SupabaseProvider>
       </body>
