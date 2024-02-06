@@ -138,7 +138,7 @@ const [isLoading, setIsLoading] = useState(false);
             ) : activeCategory === 'Macros' ? (
               <div className="flex flex-col w-full sm:flex-row">
                 <Card className="w-full flex justify-center py-4 sm:w-1/2 mb-4 md:mb-0 md:mr-4">
-                  <Calories userDetails={userDetails} />
+                  <Calories />
                 </Card>
                 <Card className="w-full sm:w-1/2 px-2 ">
                   <CardHeader>
