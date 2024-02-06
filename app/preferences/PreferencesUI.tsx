@@ -71,13 +71,12 @@ export function PreferencesUI({ id }: { id: string | undefined }) {
     }
   };
 
-
-const formSchema = z.object({
-  protein: z.string().min(2),
-  carbs: z.string().min(2),
-  fat: z.string().min(2)
-});
-const [isLoading, setIsLoading] = useState(false);
+  const formSchema = z.object({
+    protein: z.string().min(2),
+    carbs: z.string().min(2),
+    fat: z.string().min(2)
+  });
+  const [isLoading, setIsLoading] = useState(false);
   async function setMacros(values: z.infer<typeof formSchema>) {
     setIsLoading(true);
     const toastId = toast.loading('Saving...');
@@ -105,8 +104,6 @@ const [isLoading, setIsLoading] = useState(false);
     setIsLoading(false);
   }
 
-
-
   return (
     <>
       {isSidebarOpen && (
@@ -119,7 +116,10 @@ const [isLoading, setIsLoading] = useState(false);
           }}
         />
       )}
-      <div className="space-y-6 p-6 sm:p-12 pt-20  pb-16">
+      <div
+        className="space-y-6 p-6 sm:p-12 pt-20  pb-16 "
+        style={{ fontSize: '16px' }}
+      >
         <div className="space-y-0.5 flex flex-col">
           <h2 className="text-2xl font-bold tracking-tight">Preferences</h2>
           <p className="text-muted-foreground">
