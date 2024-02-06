@@ -35,7 +35,7 @@ export function PreferencesUI({ id }: { id: string | undefined }) {
       setUserDetails(data);
     };
     getDetails();
-  }, [userDetails]);
+  }, [userDetails?.diet_type, userDetails?.allergies, userDetails?.macros]);
   const [activeCategory, setActiveCategory] = useState('Diet Type');
 
   const updateUserDietType = async (data: any) => {
