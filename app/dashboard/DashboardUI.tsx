@@ -576,7 +576,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
               </div>
             </Card>
           ) : (
-            <Card className="w-full md:w-3/5 mb-4 md:mb-0">
+            <Card className="w-full md:w-3/5 mb-4 md:mb-0 md:mr-4">
               {!activeMealPlan?.meals ? (
                 <EmptyMealplans onGenerateClick={() => setGenerateMode(true)} />
               ) : (
