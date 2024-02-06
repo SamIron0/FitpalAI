@@ -32,11 +32,10 @@ export function PreferencesUI({ id }: { id: string | undefined }) {
       const data = await getData({
         url: '/api/get-user-details'
       });
-      console.log('userDetails', data);
       setUserDetails(data);
     };
     getDetails();
-  }, []);
+  }, [userDetails]);
   const [activeCategory, setActiveCategory] = useState('Diet Type');
 
   const updateUserDietType = async (data: any) => {
@@ -91,7 +90,6 @@ export function PreferencesUI({ id }: { id: string | undefined }) {
           />
           <div className="flex justify-center w-full">
             {activeCategory === 'Diet Type' ? (
-              
               <DietType userDetails={userDetails} />
             ) : activeCategory === 'Macros' ? (
               <div className="flex flex-col w-full sm:flex-row">
