@@ -95,7 +95,7 @@ export function PreferencesUI({ id }: { id: string | undefined }) {
       const data = await postData({ url, data: body });
       toast.dismiss(toastId);
       toast.success('Macros updated.');
-      router.refresh();
+      router.push('/preferences');
     } catch (error) {
       toast.error(
         'An error occurred while saving macros please try again later.'
@@ -118,7 +118,6 @@ export function PreferencesUI({ id }: { id: string | undefined }) {
       )}
       <div
         className="space-y-6 p-6 sm:p-12 pt-20  pb-16 "
-        style={{ fontSize: '16px' }}
       >
         <div className="space-y-0.5 flex flex-col">
           <h2 className="text-2xl font-bold tracking-tight">Preferences</h2>

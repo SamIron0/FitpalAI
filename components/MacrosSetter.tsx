@@ -32,7 +32,7 @@ const formSchema = z.object({
 interface MacrosSetterProps {
   onSubmit: (data: z.infer<typeof formSchema>) => void;
 }
-export function MacrosSetter( { onSubmit }: MacrosSetterProps) {
+export function MacrosSetter({ onSubmit }: MacrosSetterProps) {
   const { userDetails, setUserDetails } = useUserDetails();
   const [protein, setProtein] = React.useState(200);
   const [carbs, setCarbs] = React.useState(200);
@@ -45,7 +45,7 @@ export function MacrosSetter( { onSubmit }: MacrosSetterProps) {
     'Enter your carb goal',
     'Enter your fat goal'
   ];
-    const router = useRouter();
+  const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -56,7 +56,7 @@ export function MacrosSetter( { onSubmit }: MacrosSetterProps) {
   });
 
   // 2. Define a submit handler.
- 
+
   return (
     <div className="flex items-center w-full justify-center space-x-2">
       <Form {...form}>
@@ -75,6 +75,7 @@ export function MacrosSetter( { onSubmit }: MacrosSetterProps) {
                   <FormLabel>{question}</FormLabel>
                   <FormControl>
                     <Input
+                      style={{ fontSize: '16px' }}
                       placeholder={(idx === 0
                         ? userDetails?.macros?.protein
                         : idx === 1
