@@ -38,7 +38,7 @@ export function PreferencesUI({ id }: { id: string | undefined }) {
       setUserDetails(data);
     };
     getDetails();
-  });
+  },[]);
   const [activeCategory, setActiveCategory] = useState('Diet Type');
 
   const { isSidebarOpen } = useSidebar();
