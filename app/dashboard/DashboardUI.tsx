@@ -379,7 +379,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
         meal.title &&
           results.push(
             <Card className="mb-4 mx-auto w-full">
-              <CardHeader className="flex flex-row w-full items-center justify-center">
+              <div className="flex flex-row w-full items-center justify-center">
                 <CardTitle className="text-muted-foreground">
                   {meal.type}
                 </CardTitle>
@@ -406,7 +406,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
                     </button>
                   </div>
                 </div>
-              </CardHeader>
+              </div>
               <CardContent>{meal.title}</CardContent>
               <CardFooter>
                 {meal.macros?.carbs &&
