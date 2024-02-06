@@ -26,13 +26,13 @@ export const metadata: Metadata = {
 
 export function PreferencesUI({ id }: { id: string | undefined }) {
   const [userDetails, setUserDetails] = useState<UserDetails | null>(null);
-
+const [updatedUserDetails, setUpdatedUserDetails] = useState<UserDetails | null>(null);
   useEffect(() => {
     const getDetails = async () => {
       const data = await getData({
         url: '/api/get-user-details'
       });
-      setUserDetails(data);
+      setUpdatedUserDetails(data);
     };
     getDetails();
   }, [userDetails?.diet_type, userDetails?.allergies, userDetails?.macros]);
@@ -45,7 +45,7 @@ export function PreferencesUI({ id }: { id: string | undefined }) {
       return;
     }
     const newUserDetails = {
-      ...userDetails,
+      ...updatedUserDetails,
       diet_type: data
     };
     try {
@@ -90,11 +90,11 @@ export function PreferencesUI({ id }: { id: string | undefined }) {
           />
           <div className="flex justify-center w-full">
             {activeCategory === 'Diet Type' ? (
-              <DietType userDetails={userDetails} />
+              <DietType userDetails={updatedUserDetails} />
             ) : activeCategory === 'Macros' ? (
               <div className="flex flex-col w-full sm:flex-row">
                 <Card className="w-full flex justify-center py-4 sm:w-1/2 mb-4 md:mb-0 md:mr-4">
-                  <Calories userDetails={userDetails} />
+                  <Calories userDetails={updatedUserDetails} />
                 </Card>
                 <Card className="w-full sm:w-1/2 px-2 ">
                   <CardHeader>
@@ -103,12 +103,12 @@ export function PreferencesUI({ id }: { id: string | undefined }) {
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="w-full">
-                    <MacrosSetter userDetails={userDetails} />
+                    <MacrosSetter userDetails={updatedUserDetails} />
                   </CardContent>
                 </Card>
               </div>
             ) : activeCategory === 'Allergies' ? (
-              <Allergies userDetails={userDetails} />
+              <Allergies userDetails={updatedUserDetails} />
             ) : null}
           </div>
         </div>
