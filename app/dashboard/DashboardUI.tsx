@@ -446,7 +446,8 @@ export function DashboardUI({ user }: DashboardUIProps) {
                   meal.macros?.protein &&
                   meal.macros.carbs * 4 +
                     meal.macros.fat * 9 +
-                    meal.macros.protein * 4}
+                    meal.macros.protein * 4}{' '}
+                Calories
               </div>
             </Card>
           );
