@@ -291,7 +291,6 @@ export function DashboardUI({ user }: DashboardUIProps) {
       toast.dismiss(toastId);
       toast.success('Meal plan saved successfully');
       setGenerateMode(false);
-      setQueryResultPageHeader('');
     } catch (error) {
       setIsLoading(false);
       toast.dismiss(toastId);
@@ -301,7 +300,9 @@ export function DashboardUI({ user }: DashboardUIProps) {
   function renderGhostCards() {
     const ghostCards = [];
     for (let i = 0; i < 3; i++) {
-      ghostCards.push(<Skeleton className="w-full mx-auto mb-4 h-20" />);
+      ghostCards.push(
+      <Skeleton className="w-full mx-auto mb-4 h-20" />
+      );
     }
     return ghostCards;
   }
@@ -511,7 +512,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
           }}
         />
       )}
-      <div className="w-full flex flex-col">
+      <div className="w-full pb-12flex flex-col">
         <div className="w-full flex justify-end pr-4 pt-4 ">
           {generateMode ? (
             <Button onClick={() => setGenerateMode(false)} className="px-4">
@@ -545,7 +546,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
                             fetchData(input);
                           }}
                         >
-                          <div className="relative  w-full">
+                          <div className="relative flex items-center justify-center w-full">
                             <input
                               value={input}
                               disabled={isLoading}
@@ -556,7 +557,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
                             <button
                               type="submit"
                               disabled={isLoading || !input}
-                              className={`inline-flex absolute  p-2 end-2.5 bottom-3.8 mx-1 items-center justify-center w-8 h-8 mr-2 text-indigo-100 transition-colors duration-150 bg-blue-500 rounded-full focus:shadow-outline hover:bg-blue-700 ${
+                              className={`inline-flex absolute  p-2 end-2.5 mx-1 items-center justify-center w-8 h-8 mr-2 text-indigo-100 transition-colors duration-150 bg-blue-500 rounded-full focus:shadow-outline hover:bg-blue-700 ${
                                 input ? 'cursor-pointer ' : 'cursor-not-allowed'
                               } `}
                             >
@@ -596,7 +597,10 @@ export function DashboardUI({ user }: DashboardUIProps) {
                     )}
 
                     {isLoading ? (
-                      <div className="pt-24">{renderGhostCards()}</div>
+                      <div className="pt-12">
+                        <Skeleton className="max-w-lg mx-auto mb-8 h-6" />
+                        {renderGhostCards()}
+                        </div>
                     ) : createdMealplan?.meals ? (
                       <>
                         <p className="text-3xl pb-7">{queryResultPageHeader}</p>
@@ -706,7 +710,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
               </div>
             )}
 
-            <Card className="w-full flex justify-center py-4 sm:w-2/5 mb-4 sm:mb-0">
+            <Card className="w-full flex justify-center py-4 ">
               {!activeMealPlan?.meals ? (
                 <Calories macros={{ protein, fat, carbs, calories }} />
               ) : (
