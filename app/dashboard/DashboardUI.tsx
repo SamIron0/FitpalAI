@@ -649,7 +649,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
                                   <DrawerClose className='w-full flex justify-center items-center'>
                                     <Button
                                       variant={'outline'}
-                                      className="max-w-md w-full text-zinc-300 mb-2 mx-4"
+                                      className="max-w-md w-full text-zinc-300 mb-2 "
                                     >
                                       Cancel
                                     </Button>
