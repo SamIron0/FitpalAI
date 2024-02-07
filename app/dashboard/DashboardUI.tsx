@@ -501,7 +501,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
     }
   };
 
-  const [saveDate, setSaveDate] =  React.useState<Date>()
+  const [saveDate, setSaveDate] = React.useState<Date>();
   const [protein, setProtein] = useState(0);
   const [carbs, setCarbs] = useState(0);
   const [fat, setFats] = useState(0);
@@ -624,25 +624,28 @@ export function DashboardUI({ user }: DashboardUIProps) {
                             </span>
                           </div>
                           <span className="flex items-center justify-end">
-                            <Drawer >
+                            <Drawer>
                               <DrawerTrigger asChild>
-                                <Button variant="outline" >Save</Button>
+                                <Button variant="outline">Save</Button>
                               </DrawerTrigger>
-                              <div className="flex w-full items-center justify-center">
-
-                              <DrawerContent className="flex border-muted flex-row justify-center">
-                                <Calendar
-                                  mode="single"
-                                  selected={saveDate}
-                                  onSelect={setSaveDate}
-                                  initialFocus
-                                  className="border-muted  mb-6"
-                                />{' '}
-                                <Button className='max-w-lg  mb-2'>Save</Button>
-                                <DrawerClose>
-                                  <Button variant={'destructive'} >Cancel</Button>
-                                </DrawerClose>
-                              </DrawerContent>
+                              <div className="flex  w-full items-center justify-center">
+                                <DrawerContent className="flex border-muted flex-col justify-center">
+                                  <Calendar
+                                    mode="single"
+                                    selected={saveDate}
+                                    onSelect={setSaveDate}
+                                    initialFocus
+                                    className="border-muted  mb-6"
+                                  />{' '}
+                                  <Button className="max-w-lg  mb-2">
+                                    Save
+                                  </Button>
+                                  <DrawerClose>
+                                    <Button variant={'destructive'}>
+                                      Cancel
+                                    </Button>
+                                  </DrawerClose>
+                                </DrawerContent>
                               </div>
                             </Drawer>
                           </span>
