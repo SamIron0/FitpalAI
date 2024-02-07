@@ -42,8 +42,9 @@ export function MacrosSetter({ onSubmit }: MacrosSetterProps) {
 
   const macrosQuestions = [
     'Enter your protein goal',
-    'Enter your carb goal',
-    'Enter your fat goal'
+    'Enter your carbs goal',
+    'Enter your fats goal',
+    'Enter your calorie goal'
   ];
   const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
