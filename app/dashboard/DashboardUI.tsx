@@ -248,7 +248,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
       try {
         const data = await postData({
           url: '/api/retrieve-meal-plans',
-          data: {trackDate: trackDate}
+          data: { trackDate: trackDate }
         });
         if (!data) {
           return;
@@ -291,16 +291,19 @@ export function DashboardUI({ user }: DashboardUIProps) {
       return;
     }
 
-    setCreatedMealPlan({
-      ...createdMealplan,
+    const new_plan: MealPlan = {
+      meals: createdMealplan.meals,
+      id: createdMealplan.id,
+      owner: createdMealplan.owner,
       date: planDate
-    });
-   console.log('Plan date', planDate);
+    };
+
+    console.log('Plan date', planDate);
     const toastId = toast.loading('Saving meal plan');
     try {
       const data = await postData({
         url: '/api/save-meal-plan',
-        data: { mealplan: createdMealplan }
+        data: { mealplan: new_plan }
       });
       if (!data) {
         toast.dismiss(toastId);
