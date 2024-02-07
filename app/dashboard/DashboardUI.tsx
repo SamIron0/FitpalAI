@@ -316,8 +316,8 @@ export function DashboardUI({ user }: DashboardUIProps) {
       const data = JSON.parse(result.body);
       let parsedData = JSON.parse(data);
       //setGptResponse(result);
-      const user_protein = parsedData.calories;
-      console.log('parsedData', user_protein);
+      //sconst user_protein = parsedData.calories;
+      console.log('parsedData', parsedData);
       mealplan = {
         id: '',
         owner: '',

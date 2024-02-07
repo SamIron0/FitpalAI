@@ -36,7 +36,7 @@ export function SurveyUI({ user }: SurveryProps) {
   const surveyQuestions = [
     'What is your biggest challenge in meal planning and preparation?',
     'What type of meals interest you most?',
-    'Would you be interested in tracking your pantry ingredients?',
+    'How many meals do you typically eat in a day?',
     'Have you used meal planning apps before? if so, what apps have you used?',
     'How did you hear about us',
     'What features are important to you in a meal planning app?'
