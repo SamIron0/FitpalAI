@@ -580,7 +580,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
                         </form>
                       </div>
                     )}
-                    {!isLoading && !completed && !createdMealplan?.meals ? (
+                    {!isLoading && !completed && !createdMealplan?.meals && (
                       <div className="pb-24">
                         <span className="px-2 pr-3 mb-2">Try</span>
                         <SuggestionPill
@@ -605,13 +605,11 @@ export function DashboardUI({ user }: DashboardUIProps) {
                           caption=" Make me a cheap recipe for lunch"
                         />
                       </div>
-                    ) : (
-                      isLoading && !completed && <div className="h-14" />
                     )}
-
                     {isLoading ? (
                       <div className="">
-                        <Skeleton className="max-w-lg mb-12 h-6" />
+                        <Skeleton className="max-w-lg mb-7 h-7" />
+                        <Skeleton className="max-w-md mb-4 h-7" />
                         {renderGhostCards()}
                       </div>
                     ) : createdMealplan?.meals ? (
