@@ -581,7 +581,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
                       <div className="pt-24">{renderGhostCards()}</div>
                     ) : createdMealplan?.meals ? (
                       <>
-                        <div className="fixed bottom-5 w-full max-w-3xl ">
+                        <div className="fixed bottom-5 w-full sm:max-w-3xl max-w-lg ">
                           <form
                             onSubmit={(e) => {
                               e.preventDefault();
