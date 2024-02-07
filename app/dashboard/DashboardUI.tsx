@@ -314,10 +314,10 @@ export function DashboardUI({ user }: DashboardUIProps) {
         }
       });
       const data = JSON.parse(result.body);
-      let parsedData = JSON.parse(data);
+      let parsedData = JSON.parse(data).result;
       //setGptResponse(result);
       //sconst user_protein = parsedData.calories;
-      console.log('parsedData', parsedData);
+      console.log('parsedData', JSON.parse(data).inputMacros);
       mealplan = {
         id: '',
         owner: '',
@@ -703,15 +703,15 @@ export function DashboardUI({ user }: DashboardUIProps) {
       </div>
       {createdMealplan?.meals && generateMode && (
         <>
-          <div className="fixed bottom-5 px-4 w-full sm:max-w-3xl max-w-lg flex justify-center items-center">
+          <div className="fixed bottom-5 px-4 w-full flex justify-center items-center">
             <form
               onSubmit={(e) => {
                 e.preventDefault();
                 fetchData(input);
               }}
-              className="w-full"
+              className="w-full flex justify-center"
             >
-              <div className="relative flex items-center max-w-md sm:max-w-xl">
+              <div className="relative flex w-full  items-center max-w-md sm:max-w-xl">
                 <input
                   value={input}
                   disabled={isLoading}
