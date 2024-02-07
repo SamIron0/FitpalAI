@@ -1,4 +1,5 @@
 'use client';
+import { FaRegHeart } from "react-icons/fa";
 import { FaArrowRight } from 'react-icons/fa';
 import { BsStars } from 'react-icons/bs';
 import { BsThreeDotsVertical } from 'react-icons/bs';
@@ -428,13 +429,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
                       onClick={() => likeMeal(meal)}
                       className="inline-flex mx-1 items-center justify-center w-9 h-9 mr-2 text-indigo-100 transition-colors duration-150 bg-blue-500 rounded-lg focus:shadow-outline hover:bg-blue-700"
                     >
-                      <svg className="w-4 h-4 fill-current" viewBox="0 0 20 20">
-                        <path
-                          d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
-                          clip-rule="evenodd"
-                          fill-rule="evenodd"
-                        ></path>
-                      </svg>
+                      <FaRegHeart className="w-4 h-4" />
                     </button>
                   </div>
                 </div>
@@ -519,7 +514,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
             {generateMode ? (
               <div className="w-full mb-4">
                 <div className="relative flex flex-1 flex-col">
-                  <div className=" p-4 w-full mx-auto flex flex-col justify-center md:p-6">
+                  <div className=" w-full mx-auto flex flex-col justify-center">
                     {!createdMealplan?.meals && (
                       <div className="flex w-full  flex-col justify-center pb-3">
                         <p className="text-4xl flex justify-center py-10 text-semibold ">
@@ -663,12 +658,12 @@ export function DashboardUI({ user }: DashboardUIProps) {
                           meal.title && (
                             <Card className="mb-4 w-full">
                               <div className="w-full flex justify-between flex-row">
-                                <div className="flex p-2 flex-col ">
+                                <div className="flex p-4 flex-col ">
                                   <div className="flex pb-2 flex-row w-full items-center  text-muted-foreground">
                                     {meal.type}
                                   </div>
                                   <div>{meal.title}</div>
-                                  <div className="flex flex-col w-full">
+                                  <div className="flex ptt-2 flex-col w-full">
                                     {meal.macros && (
                                       <span className="flex items-center text-md">
                                         {meal?.macros?.carbs +
@@ -707,9 +702,6 @@ export function DashboardUI({ user }: DashboardUIProps) {
                                       <DropdownMenuSeparator />
                                       <DropdownMenuItem>
                                         Delete
-                                      </DropdownMenuItem>
-                                      <DropdownMenuItem>
-                                        View payment details
                                       </DropdownMenuItem>
                                     </DropdownMenuContent>
                                   </DropdownMenu>
