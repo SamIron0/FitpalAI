@@ -278,6 +278,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
       toast.dismiss(toastId);
       toast.success('Meal plan saved successfully');
       setGenerateMode(false);
+      setQueryResultPageHeader('');
     } catch (error) {
       setIsLoading(false);
       toast.dismiss(toastId);
@@ -700,7 +701,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
           </div>
         </div>
       </div>
-      {createdMealplan?.meals && (
+      {createdMealplan?.meals && generateMode && (
         <>
           <div className="fixed bottom-5 px-4 w-full sm:max-w-3xl max-w-lg flex justify-center items-center">
             <form
