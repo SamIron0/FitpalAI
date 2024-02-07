@@ -637,11 +637,11 @@ export function DashboardUI({ user }: DashboardUIProps) {
                                     initialFocus
                                     className="border-muted  mb-6"
                                   />{' '}
-                                  <Button className="max-w-lg  mb-2">
+                                  <Button className="max-w-lg w-full  mb-2">
                                     Save
                                   </Button>
                                   <DrawerClose>
-                                    <Button variant={'destructive'}>
+                                    <Button variant={'outline'} className="max-w-lg w-full  mb-2">
                                       Cancel
                                     </Button>
                                   </DrawerClose>
