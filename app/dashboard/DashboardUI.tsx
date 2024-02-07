@@ -542,7 +542,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
                                 input ? 'cursor-pointer ' : 'cursor-not-allowed'
                               } `}
                             >
-                              <FaArrowRight className={`w-5 h-5  `} />{' '}
+                              <FaArrowRight className={`w-4 h-4  `} />{' '}
                             </button>
                           </div>
                         </form>
@@ -605,7 +605,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
                                     : 'cursor-not-allowed'
                                 } `}
                               >
-                                <FaArrowRight className={`w-5 h-5  `} />{' '}
+                                <FaArrowRight className={`w-4 h-4  `} />{' '}
                               </button>
                             </div>
                           </form>
