@@ -356,7 +356,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
             macros: parsedData.snacks.macros
           }
         ],
-        
+
       };
       setQueryResultPageHeader(input);
       setInput('');
@@ -606,10 +606,10 @@ export function DashboardUI({ user }: DashboardUIProps) {
                               {calories} Calories
                             </span>
                             <span className="flex text-muted-foreground text-sm">
-                              {protein} Protein, {fat} Fat, {carbs} Carbs{' '}
+                              {protein}g Protein, {fat}g Fat, {carbs}g Carbs{' '}
                             </span>
                           </div>
-                          <span className="flex w-full items-center justify-end">
+                          <span className="flex items-center justify-end">
                             <Button
                               onClick={() => saveMealPlan()}
                               disabled={isLoading}
