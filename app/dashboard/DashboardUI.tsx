@@ -495,25 +495,25 @@ export function DashboardUI({ user }: DashboardUIProps) {
           }}
         />
       )}
-      <div className="w-full sm:p-12 p-4">
-        <div className="w-full flex justify-end px-2 md:px-4">
+      <div className="w-full flex justify-end px-2 ">
+        {generateMode ? (
+          <Button onClick={() => setGenerateMode(false)} className="px-4">
+            Track
+          </Button>
+        ) : (
+          <Button
+            onClick={() => setGenerateMode(true)}
+            className="bg-blue-600  hover:bg-blue-500 "
+          >
+            <BsStars className="pr-1" />
+            Generate
+          </Button>
+        )}
+      </div>
+      <div className="w-full sm:p-12 p-4 max-w-3xl mx-auto">
+        <div className="w-full pt-8 flex flex-col justify-center">
           {generateMode ? (
-            <Button onClick={() => setGenerateMode(false)} className="px-7">
-              Track
-            </Button>
-          ) : (
-            <Button
-              onClick={() => setGenerateMode(true)}
-              className="bg-blue-600  hover:bg-blue-500 "
-            >
-              <BsStars className="pr-1" />
-              Generate
-            </Button>
-          )}
-        </div>
-        <div className="w-full pt-8 flex flex-col justify-center md:flex-row">
-          {generateMode ? (
-            <Card className="w-full md:w-3/5 mb-4 md:mb-0 md:mr-4">
+            <div className="w-full md:w-3/5 mb-4 md:mb-0 md:mr-4">
               <div className="relative flex flex-1 flex-col">
                 <div className=" p-4 w-full mx-auto flex flex-col justify-center md:p-6">
                   {!createdMealplan?.meals && (
@@ -583,7 +583,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
                     <div className="pt-24">{renderGhostCards()}</div>
                   ) : createdMealplan?.meals ? (
                     <>
-                      <p className="text-2xl pb-7">{input}</p>
+                      <p className="text-3xl pb-7">{input}</p>
                       <div className="w-full pb-4 flex flex-row">
                         <div className="flex flex-col w-full">
                           <span className="flex items-center text-md">
@@ -609,9 +609,9 @@ export function DashboardUI({ user }: DashboardUIProps) {
                   )}
                 </div>
               </div>
-            </Card>
+            </div>
           ) : (
-            <Card className="w-full md:w-3/5 mb-4 md:mb-0 md:mr-4">
+            <div className="w-full md:w-3/5 mb-4 md:mb-0 md:mr-4">
               {!activeMealPlan?.meals ? (
                 <EmptyMealplans onGenerateClick={() => setGenerateMode(true)} />
               ) : (
@@ -675,7 +675,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
                   </CardContent>
                 </>
               )}
-            </Card>
+            </div>
           )}
 
           <Card className="w-full flex justify-center py-4 sm:w-2/5 mb-4 sm:mb-0">
@@ -686,7 +686,6 @@ export function DashboardUI({ user }: DashboardUIProps) {
             )}
           </Card>
         </div>
-        ma
       </div>
     </>
   );
