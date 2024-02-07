@@ -55,6 +55,7 @@ import {
 import { useSidebar } from '../providers/SideBarContext';
 import { EmptyMealplans } from '@/components/EmptyMealplans';
 import { useUserDetails } from '../providers/UserDetailsContext';
+import { LuDivideSquare } from 'react-icons/lu';
 
 const data: Payment[] = [
   {
@@ -603,15 +604,13 @@ export function DashboardUI({ user }: DashboardUIProps) {
                               <button
                                 type="submit"
                                 disabled={isLoading || !input}
-                                className={`inline-flex mx-1 items-center justify-center w-9 h-9 mr-2 text-indigo-100 transition-colors duration-150 bg-blue-500 rounded-lg focus:shadow-outline hover:bg-blue-700 ${
+                                className={`inline-flex mx-1 items-center justify-center w-7 h-7 mr-2 text-indigo-100 transition-colors duration-150 bg-blue-500 rounded-full focus:shadow-outline hover:bg-blue-700 ${
                                   input
                                     ? 'cursor-pointer '
                                     : 'cursor-not-allowed'
                                 } `}
                               >
-                                <FaArrowRight
-                                  className={`w-5 h-5 text-white `}
-                                />{' '}
+                                <FaArrowRight className={`w-5 h-5  `} />{' '}
                               </button>
                             </div>
                           </form>
@@ -650,19 +649,15 @@ export function DashboardUI({ user }: DashboardUIProps) {
                     onGenerateClick={() => setGenerateMode(true)}
                   />
                 ) : (
-                  <>
+                  <div className="w-full flex flex-col">
                     {' '}
-                    <CardHeader>
-                      <CardTitle>
-                        <div className="w-full flex items-center justify-between">
-                          <h2 className="text-md text-muted-foreground">
-                            Meal Plan
-                          </h2>
-                          <DatePicker />
-                        </div>
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
+                    <div className="w-full flex items-center justify-between flex-row">
+                      <h2 className="text-md text-muted-foreground">
+                        Meal Plan
+                      </h2>
+                      <DatePicker />
+                    </div>
+                    <div>
                       {activeMealPlan?.meals.map((meal) => {
                         return (
                           meal.title && (
@@ -711,8 +706,8 @@ export function DashboardUI({ user }: DashboardUIProps) {
                           )
                         );
                       })}
-                    </CardContent>
-                  </>
+                    </div>
+                  </div>
                 )}
               </div>
             )}
