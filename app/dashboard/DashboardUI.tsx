@@ -283,13 +283,19 @@ export function DashboardUI({ user }: DashboardUIProps) {
   }, [createdMealplan]);
   const saveMealPlan = async () => {
     // save meal plan to supabase
-    console.log('Plan date', planDate);
+
     setIsLoading(true);
     if (createdMealplan === undefined) {
       setIsLoading(false);
       toast.error('Create meal plan first');
       return;
     }
+
+    setCreatedMealPlan({
+      ...createdMealplan,
+      date: planDate
+    });
+   // console.log('Plan date', planDate);
     const toastId = toast.loading('Saving meal plan');
     try {
       const data = await postData({
