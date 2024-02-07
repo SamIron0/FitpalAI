@@ -522,7 +522,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
           }}
         />
       )}
-      <div className="w-full pb-12flex flex-col">
+      <div className="w-full pb-12 flex flex-col">
         <div className="w-full flex justify-end pr-4 pt-4 ">
           {generateMode ? (
             <Button onClick={() => setGenerateMode(false)} className="px-4">
@@ -544,7 +544,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
               <div className="w-full mb-4">
                 <div className="relative flex flex-1 flex-col">
                   <div className=" w-full mx-auto flex flex-col justify-center">
-                    {!createdMealplan?.meals && (
+                    {!createdMealplan?.meals && !isLoading && (
                       <div className="flex w-full  flex-col justify-center pb-3">
                         <p className="text-4xl flex justify-center py-10 text-semibold ">
                           Create a Plan
@@ -624,23 +624,26 @@ export function DashboardUI({ user }: DashboardUIProps) {
                             </span>
                           </div>
                           <span className="flex items-center justify-end">
-                            <Drawer>
+                            <Drawer >
                               <DrawerTrigger asChild>
-                                <Button variant="outline">Save</Button>
+                                <Button variant="outline" >Save</Button>
                               </DrawerTrigger>
-                              <DrawerContent className="flex  flex-row">
+                              <div className="flex w-full items-center justify-center">
+
+                              <DrawerContent className="flex border-muted flex-row justify-center">
                                 <Calendar
                                   mode="single"
                                   selected={saveDate}
                                   onSelect={setSaveDate}
                                   initialFocus
-                                  className="border-muted mb-6"
+                                  className="border-muted  mb-6"
                                 />{' '}
-                                <Button>Save</Button>
+                                <Button className='max-w-lg  mb-2'>Save</Button>
                                 <DrawerClose>
-                                  <Button variant="outline">Cancel</Button>
+                                  <Button variant={'destructive'} >Cancel</Button>
                                 </DrawerClose>
                               </DrawerContent>
+                              </div>
                             </Drawer>
                           </span>
                         </div>
