@@ -677,7 +677,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
               </div>
             ) : (
               <div className="w-full mb-4">
-                {!activeMealPlan?.meals ? (
+                {usersMealPlans?.length===0 ? (
                   <EmptyMealplans
                     onGenerateClick={() => setGenerateMode(true)}
                   />
