@@ -240,7 +240,8 @@ export function DashboardUI({ user }: DashboardUIProps) {
   );
   const [usersMealPlans, setUsersMealPlans] = useState<MealPlan[]>([]);
   const { userDetails, setUserDetails } = useUserDetails();
-  const [planDate, setPlanDate] = React.useState<Date>( );
+  const [trackDate, setTrackDate] = React.useState<Date>();
+  const [planDate, setPlanDate] = React.useState<Date>();
 
   useEffect(() => {
     const retrieveMealPlan = async () => {
@@ -264,7 +265,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
       }
     };
     retrieveMealPlan();
-  }, [planDate]);
+  }, [trackDate]);
 
   useEffect(() => {
     console.log('updating');
@@ -282,7 +283,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
   }, [createdMealplan]);
   const saveMealPlan = async () => {
     // save meal plan to supabase
-    // console.log('Preparing to save meal plan');
+    console.log('Plan date', planDate);
     setIsLoading(true);
     if (createdMealplan === undefined) {
       setIsLoading(false);
@@ -680,7 +681,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
                       </h2>
                       <DatePicker
                         planDate={planDate}
-                        setPlanDate={setPlanDate}
+                        setPlanDate={setTrackDate}
                       />
                     </div>
                     <div>
