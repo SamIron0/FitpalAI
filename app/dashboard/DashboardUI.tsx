@@ -287,7 +287,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
   function renderGhostCards() {
     const ghostCards = [];
     for (let i = 0; i < 3; i++) {
-      ghostCards.push(<Skeleton className="w-full mx-auto mb-4 h-22" />);
+      ghostCards.push(<Skeleton className="w-full mx-auto mb-4 h-20" />);
     }
     return ghostCards;
   }
@@ -538,7 +538,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
                             <button
                               type="submit"
                               disabled={isLoading || !input}
-                              className={`inline-flex absolute  p-2 end-2.5 bottom-3.5  mx-1 items-center justify-center w-7 h-7 mr-2 text-indigo-100 transition-colors duration-150 bg-blue-500 rounded-full focus:shadow-outline hover:bg-blue-700 ${
+                              className={`inline-flex absolute  p-2 end-2.5 mx-1 items-center justify-center w-8 h-8 mr-2 text-indigo-100 transition-colors duration-150 bg-blue-500 rounded-full focus:shadow-outline hover:bg-blue-700 ${
                                 input ? 'cursor-pointer ' : 'cursor-not-allowed'
                               } `}
                             >
@@ -588,18 +588,18 @@ export function DashboardUI({ user }: DashboardUIProps) {
                               fetchData(input);
                             }}
                           >
-                            <div className="relative flex items-center w-full">
+                            <div className="relative flex items-center max-w-2xl">
                               <input
                                 value={input}
                                 disabled={isLoading}
                                 onChange={(e) => setInput(e.target.value)}
-                                className=" px-2 pl-4 pr-7 w-full h-[60px] focus:outline-none bg-zinc-800 border-[1px] border-zinc-600 text-md rounded-full "
+                                className=" px-2 pl-4 w-full h-[60px] focus:outline-none bg-zinc-800 border-[1px] border-zinc-600 text-md rounded-full "
                                 placeholder="Ask about a meal"
                               />
                               <button
                                 type="submit"
                                 disabled={isLoading || !input}
-                                className={`inline-flex absolute end-2.5 bottom-3.5 mx-1 items-center justify-center w-7 h-7 mr-2 text-indigo-100 transition-colors duration-150 bg-blue-500 rounded-full focus:shadow-outline hover:bg-blue-700 ${
+                                className={`inline-flex absolute end-2.5 mx-1 items-center justify-center w-8 h-8 mr-2 text-indigo-100 transition-colors duration-150 bg-blue-500 rounded-full focus:shadow-outline hover:bg-blue-700 ${
                                   input
                                     ? 'cursor-pointer '
                                     : 'cursor-not-allowed'
