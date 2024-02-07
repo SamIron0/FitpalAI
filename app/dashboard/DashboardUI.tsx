@@ -1,4 +1,5 @@
 'use client';
+import { FaArrowRight } from 'react-icons/fa';
 import { BsStars } from 'react-icons/bs';
 import { BsThreeDotsVertical } from 'react-icons/bs';
 import * as React from 'react';
@@ -496,7 +497,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
         />
       )}
       <div className="w-full flex flex-col">
-        <div className="w-full flex justify-end px-2 ">
+        <div className="w-full flex justify-end pr-4 pt-4 ">
           {generateMode ? (
             <Button onClick={() => setGenerateMode(false)} className="px-4">
               Track
@@ -584,6 +585,37 @@ export function DashboardUI({ user }: DashboardUIProps) {
                       <div className="pt-24">{renderGhostCards()}</div>
                     ) : createdMealplan?.meals ? (
                       <>
+                        <div className="fixed bottom-5 w-full max-w-3xl ">
+                          <form
+                            onSubmit={(e) => {
+                              e.preventDefault();
+                              fetchData(input);
+                            }}
+                          >
+                            <div className="relative w-full">
+                              <input
+                                value={input}
+                                disabled={isLoading}
+                                onChange={(e) => setInput(e.target.value)}
+                                className=" px-2 pl-4 pr-7 w-full h-[60px] focus:outline-none bg-zinc-800 border-[1px] border-zinc-600 text-md rounded-xl "
+                                placeholder="Ask about a meal"
+                              />
+                              <button
+                                type="submit"
+                                disabled={isLoading || !input}
+                                className={`inline-flex mx-1 items-center justify-center w-9 h-9 mr-2 text-indigo-100 transition-colors duration-150 bg-blue-500 rounded-lg focus:shadow-outline hover:bg-blue-700 ${
+                                  input
+                                    ? 'cursor-pointer '
+                                    : 'cursor-not-allowed'
+                                } `}
+                              >
+                                <FaArrowRight
+                                  className={`w-5 h-5 text-white `}
+                                />{' '}
+                              </button>
+                            </div>
+                          </form>
+                        </div>
                         <p className="text-3xl pb-7">{input}</p>
                         <div className="w-full pb-4 flex flex-row">
                           <div className="flex flex-col w-full">
