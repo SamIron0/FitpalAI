@@ -1,8 +1,8 @@
 import { getSession } from '@/app/supabase-server';
 import { retrieveMealPlans } from '@/utils/supabase-admin';
 
-export async function GET(req: Request) {
-  if (req.method === 'GET') {
+export async function POST(req: Request) {
+  if (req.method === 'POST') {
     try {
       const { trackDate } = await req.json();
       let date = trackDate;
