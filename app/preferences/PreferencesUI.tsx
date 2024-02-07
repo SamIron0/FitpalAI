@@ -85,7 +85,11 @@ export function PreferencesUI({ id }: { id: string | undefined }) {
       macros: {
         protein: Number(values.protein),
         carbs: Number(values.carbs),
-        fat: Number(values.fat)
+        fat: Number(values.fat),
+        calories:
+          Number(values.protein) * 4 +
+          Number(values.carbs) * 4 +
+          Number(values.fat) * 9
       }
     };
 

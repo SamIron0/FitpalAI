@@ -27,7 +27,8 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 const formSchema = z.object({
   protein: z.string().min(2),
   carbs: z.string().min(2),
-  fat: z.string().min(2)
+  fat: z.string().min(2),
+  calories: z.string().min(3)
 });
 interface MacrosSetterProps {
   onSubmit: (data: z.infer<typeof formSchema>) => void;
@@ -37,6 +38,7 @@ export function MacrosSetter({ onSubmit }: MacrosSetterProps) {
   const [protein, setProtein] = React.useState(200);
   const [carbs, setCarbs] = React.useState(200);
   const [fat, setFat] = React.useState(200);
+  const [calories, setCalories] = React.useState(2000);
 
   const [isLoading, setIsLoading] = React.useState(false);
 
@@ -52,7 +54,8 @@ export function MacrosSetter({ onSubmit }: MacrosSetterProps) {
     defaultValues: {
       protein: userDetails?.macros?.protein.toString(),
       carbs: userDetails?.macros?.carbs.toString(),
-      fat: userDetails?.macros?.fat.toString()
+      fat: userDetails?.macros?.fat.toString(),
+      calories: userDetails?.macros?.calories.toString()
     }
   });
 
@@ -70,7 +73,15 @@ export function MacrosSetter({ onSubmit }: MacrosSetterProps) {
             <FormField
               key={idx}
               control={form.control}
-              name={idx === 0 ? `protein` : idx === 1 ? `carbs` : `fat`}
+              name={
+                idx === 0
+                  ? `protein`
+                  : idx === 1
+                  ? `carbs`
+                  : idx === 2
+                  ? `fat`
+                  : `calories`
+              }
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>{question}</FormLabel>
@@ -81,7 +92,9 @@ export function MacrosSetter({ onSubmit }: MacrosSetterProps) {
                         ? userDetails?.macros?.protein
                         : idx === 1
                         ? userDetails?.macros?.carbs
-                        : userDetails?.macros?.fat
+                        : idx === 2
+                        ? userDetails?.macros?.fat
+                        : userDetails?.macros?.calories
                       )?.toString()}
                       {...field}
                     />

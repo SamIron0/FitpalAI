@@ -343,7 +343,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
           {
             type: 'lunch',
             title: parsedData.lunch.title,
-            macros: parsedData.lunch.macros
+            macros: parsedData.lunch.macros,
           },
           {
             type: 'dinner',
@@ -355,9 +355,11 @@ export function DashboardUI({ user }: DashboardUIProps) {
             title: parsedData.snacks.title,
             macros: parsedData.snacks.macros
           }
-        ]
+        ],
+        
       };
       setQueryResultPageHeader(input);
+      setInput('');
       setCreatedMealPlan(mealplan);
 
       // set total calories
@@ -706,9 +708,9 @@ export function DashboardUI({ user }: DashboardUIProps) {
 
             <Card className="w-full flex justify-center py-4 sm:w-2/5 mb-4 sm:mb-0">
               {!activeMealPlan?.meals ? (
-                <Calories macros={{ protein, fat, carbs }} />
+                <Calories macros={{ protein, fat, carbs, calories }} />
               ) : (
-                <Calories macros={{ protein, fat, carbs }} />
+                <Calories macros={{ protein, fat, carbs, calories }} />
               )}
             </Card>
           </div>
