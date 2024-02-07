@@ -57,6 +57,17 @@ import { useSidebar } from '../providers/SideBarContext';
 import { EmptyMealplans } from '@/components/EmptyMealplans';
 import { useUserDetails } from '../providers/UserDetailsContext';
 import { LuDivideSquare } from 'react-icons/lu';
+import {
+  DrawerTrigger,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerClose,
+  Drawer
+} from '@/components/ui/drawer';
+import { Calendar } from '@/components/ui/calendar';
 
 const data: Payment[] = [
   {
@@ -300,9 +311,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
   function renderGhostCards() {
     const ghostCards = [];
     for (let i = 0; i < 3; i++) {
-      ghostCards.push(
-      <Skeleton className="w-full mx-auto mb-4 h-20" />
-      );
+      ghostCards.push(<Skeleton className="w-full mx-auto mb-4 h-20" />);
     }
     return ghostCards;
   }
@@ -344,7 +353,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
           {
             type: 'lunch',
             title: parsedData.lunch.title,
-            macros: parsedData.lunch.macros,
+            macros: parsedData.lunch.macros
           },
           {
             type: 'dinner',
@@ -356,8 +365,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
             title: parsedData.snacks.title,
             macros: parsedData.snacks.macros
           }
-        ],
-
+        ]
       };
       setQueryResultPageHeader(input);
       setInput('');
@@ -600,7 +608,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
                       <div className="pt-12">
                         <Skeleton className="max-w-lg mx-auto mb-8 h-6" />
                         {renderGhostCards()}
-                        </div>
+                      </div>
                     ) : createdMealplan?.meals ? (
                       <>
                         <p className="text-3xl pb-7">{queryResultPageHeader}</p>
@@ -614,12 +622,18 @@ export function DashboardUI({ user }: DashboardUIProps) {
                             </span>
                           </div>
                           <span className="flex items-center justify-end">
-                            <Button
-                              onClick={() => saveMealPlan()}
-                              disabled={isLoading}
-                            >
-                              Save
-                            </Button>
+                            <Drawer>
+                              <DrawerTrigger asChild>
+                                <Button variant="outline">Save</Button>
+                              </DrawerTrigger>
+                              <DrawerContent>
+                                <Calendar />
+                                <Button>Save</Button>
+                                <DrawerClose>
+                                  <Button variant="outline">Cancel</Button>
+                                </DrawerClose>
+                              </DrawerContent>
+                            </Drawer>
                           </span>
                         </div>
                         {renderResultBox()}
