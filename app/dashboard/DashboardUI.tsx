@@ -607,8 +607,8 @@ export function DashboardUI({ user }: DashboardUIProps) {
                     )}
 
                     {isLoading ? (
-                      <div className="pt-12">
-                        <Skeleton className="max-w-lg mx-auto mb-8 h-6" />
+                      <div className="pt-5">
+                        <Skeleton className="max-w-lg mx-auto mb-12 h-6" />
                         {renderGhostCards()}
                       </div>
                     ) : createdMealplan?.meals ? (
