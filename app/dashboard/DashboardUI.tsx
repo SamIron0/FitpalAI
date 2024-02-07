@@ -228,6 +228,8 @@ export function DashboardUI({ user }: DashboardUIProps) {
     undefined
   );
   const [usersMealPlans, setUsersMealPlans] = useState<MealPlan[]>([]);
+  const { userDetails, setUserDetails } = useUserDetails();
+
   useEffect(() => {
     const retrieveMealPlan = async () => {
       try {
@@ -249,6 +251,17 @@ export function DashboardUI({ user }: DashboardUIProps) {
       }
     };
     retrieveMealPlan();
+  }, []);
+
+  useEffect(() => {
+    console.log('updating');
+    const getDetails = async () => {
+      const data = await getData({
+        url: '/api/get-user-details'
+      });
+      setUserDetails(data);
+    };
+    getDetails();
   }, []);
 
   useEffect(() => {
@@ -293,7 +306,6 @@ export function DashboardUI({ user }: DashboardUIProps) {
     return ghostCards;
   }
 
-  const { userDetails } = useUserDetails();
   //call aws to create the initial meal plan
   const fetchData = async (query: string) => {
     setIsLoading(true);
@@ -318,7 +330,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
       //setGptResponse(result);
       //sconst user_protein = parsedData.calories;
       console.log('parsedData', JSON.parse(data).inputMacros);
-      
+
       mealplan = {
         id: '',
         owner: '',
