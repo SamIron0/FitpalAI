@@ -314,10 +314,11 @@ export function DashboardUI({ user }: DashboardUIProps) {
         }
       });
       const data = JSON.parse(result.body);
-      let parsedData = JSON.parse(data).result;
+      let parsedData = JSON.parse(data).response;
       //setGptResponse(result);
       //sconst user_protein = parsedData.calories;
       console.log('parsedData', JSON.parse(data).inputMacros);
+      
       mealplan = {
         id: '',
         owner: '',
