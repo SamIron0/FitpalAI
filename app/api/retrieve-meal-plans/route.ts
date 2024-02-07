@@ -24,7 +24,7 @@ export async function POST(req: Request) {
     }
   } else {
     return new Response('Method Not Allowed', {
-      headers: { Allow: 'GET' },
+      headers: { Allow: 'POST' },
       status: 405
     });
   }
