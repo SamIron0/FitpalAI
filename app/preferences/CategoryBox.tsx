@@ -40,7 +40,6 @@ const CategoryBox: React.FC<CategoryBoxProps> = ({
         ${selected ? 'text-zinc-200' : 'text-zinc-500'}
       `}
     >
-      <Icon size={26} />
       <div className="font-medium text-sm">{label}</div>
     </div>
   );
