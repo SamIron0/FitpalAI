@@ -702,7 +702,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
       </div>
       {createdMealplan?.meals && (
         <>
-          <div className="fixed bottom-5 w-full sm:max-w-3xl max-w-lg flex justify-center items-center">
+          <div className="fixed bottom-5 px-4 w-full sm:max-w-3xl max-w-lg flex justify-center items-center">
             <form
               onSubmit={(e) => {
                 e.preventDefault();
