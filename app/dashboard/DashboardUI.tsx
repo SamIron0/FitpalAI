@@ -353,6 +353,23 @@ export function DashboardUI({ user }: DashboardUIProps) {
           );
         }, 0)
       );
+      setProtein(
+        mealplan.meals.reduce((accum: number, meal: any) => {
+          return accum + meal.macros?.protein;
+        }, 0)
+      );
+
+      setCarbs(
+        mealplan.meals.reduce((accum: number, meal: any) => {
+          return accum + meal.macros?.carbs;
+        }, 0)
+      );
+
+      setFats(
+        mealplan.meals.reduce((accum: number, meal: any) => {
+          return accum + meal.macros?.fat;
+        }, 0)
+      );
     } catch (error) {
       console.log(error);
     } finally {
@@ -566,17 +583,17 @@ export function DashboardUI({ user }: DashboardUIProps) {
                     <div className="pt-24">{renderGhostCards()}</div>
                   ) : createdMealplan?.meals ? (
                     <>
-                      <p className="text-2xl">{input}</p>
+                      <p className="text-2xl pb-">{input}</p>
                       <div className="w-full pb-4 flex flex-row">
-                        <div className="flex flex-col ">
+                        <div className="flex flex-col w-full">
                           <span className="flex items-center text-md">
                             {calories} Calories
                           </span>
-                          <span className='flex text-muted-foreground text-sm'>
+                          <span className="flex text-muted-foreground text-sm">
                             {protein} Protein, {fat} Fat, {carbs} Carbs{' '}
                           </span>
                         </div>
-                        <span className="flex w-1/2 items-center justify-end">
+                        <span className="flex w-full items-center justify-end">
                           <Button
                             onClick={() => saveMealPlan()}
                             disabled={isLoading}
