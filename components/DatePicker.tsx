@@ -15,11 +15,11 @@ import {
 import { useEffect } from 'react';
 
 export interface DatePickerProps {
-  planDate: Date | undefined;
+  trackDate: Date;
   setPlanDate: (date: Date) => void;
 }
-export function DatePicker({ planDate, setPlanDate }: DatePickerProps) {
-  const [date, setDate] = React.useState<Date>();
+export function DatePicker({ trackDate, setPlanDate }: DatePickerProps) {
+  const [date, setDate] = React.useState(new Date());
 
   useEffect(() => {
     if (!date) return;
@@ -43,7 +43,7 @@ export function DatePicker({ planDate, setPlanDate }: DatePickerProps) {
         <Calendar
           mode="single"
           selected={date}
-          onSelect={setDate}
+          onSelect={(date) => date && setDate(date)}
           initialFocus
           className="border-muted"
         />

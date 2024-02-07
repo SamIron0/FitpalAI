@@ -699,7 +699,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
                         Meal Plan
                       </h2>
                       <DatePicker
-                        planDate={trackDate}
+                        trackDate={trackDate}
                         setPlanDate={setTrackDate}
                       />
                     </div>
