@@ -138,7 +138,7 @@ export function PreferencesUI({ id }: { id: string | undefined }) {
               <DietType onSubmit={(diet) => changeDietType(diet)} />
             ) : activeCategory === 'Macros' ? (
               <div className="flex flex-col w-full sm:flex-row">
-                <Card className="w-full sm:w-1/2 px-2  mb-4 md:mb-0 md:mr-4 ">
+                <Card className="w-full sm:w-1/2 mb-4 md:mb-0 md:mr-4 ">
                   <CardHeader>
                     <CardTitle className="text-muted-foreground">
                       Set your macros
