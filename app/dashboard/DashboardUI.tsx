@@ -245,6 +245,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
 
   useEffect(() => {
     const retrieveMealPlan = async () => {
+      console.log(trackDate);
       try {
         const data = await postData({
           url: '/api/retrieve-meal-plans',

@@ -11,7 +11,6 @@ export async function GET(req: Request) {
           status: 401
         });
       }
-
       const mealplan = await retrieveMealPlans(session.user.id, trackDate);
       return new Response(JSON.stringify(mealplan), {
         status: 200
