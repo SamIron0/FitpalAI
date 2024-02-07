@@ -1,4 +1,6 @@
 'use client';
+import { GiGrapes } from "react-icons/gi";import { GiBroccoli } from "react-icons/gi";
+import { TbMeat } from "react-icons/tb";  
 import { PiShrimpBold } from 'react-icons/pi';
 import { LuVegan } from 'react-icons/lu';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -97,6 +99,7 @@ export default function DietType({ onSubmit }: DietTypeProps) {
             htmlFor="Mediterranean"
             className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
           >
+            <GiGrapes className="pb-1 w-6 h-6"/>
             Mediterranean
           </Label>
         </div>
@@ -106,6 +109,7 @@ export default function DietType({ onSubmit }: DietTypeProps) {
             htmlFor="Paleo"
             className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
           >
+            <TbMeat className="pb-1 w-6 h-6"/>
             Paleo
           </Label>
         </div>
@@ -138,6 +142,7 @@ export default function DietType({ onSubmit }: DietTypeProps) {
             htmlFor="Vegetarian"
             className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
           >
+            <GiBroccoli className="w-6 h-6 pb-1"/>
             Vegetarian
           </Label>
         </div>
