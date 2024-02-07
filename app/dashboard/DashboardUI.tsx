@@ -501,6 +501,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
     }
   };
 
+  const [saveDate, setSaveDate] =  React.useState<Date>()
   const [protein, setProtein] = useState(0);
   const [carbs, setCarbs] = useState(0);
   const [fat, setFats] = useState(0);
@@ -508,6 +509,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
   const [activeMealPlan, setActiveMealPlan] = useState<MealPlan>();
   const [generateMode, setGenerateMode] = useState(true);
   const { isSidebarOpen } = useSidebar();
+
   return (
     <>
       {isSidebarOpen && (
@@ -626,8 +628,14 @@ export function DashboardUI({ user }: DashboardUIProps) {
                               <DrawerTrigger asChild>
                                 <Button variant="outline">Save</Button>
                               </DrawerTrigger>
-                              <DrawerContent>
-                                <Calendar />
+                              <DrawerContent className="flex  flex-row">
+                                <Calendar
+                                  mode="single"
+                                  selected={saveDate}
+                                  onSelect={setSaveDate}
+                                  initialFocus
+                                  className="border-muted mb-6"
+                                />{' '}
                                 <Button>Save</Button>
                                 <DrawerClose>
                                   <Button variant="outline">Cancel</Button>
