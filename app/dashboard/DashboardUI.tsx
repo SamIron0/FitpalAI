@@ -541,13 +541,12 @@ export function DashboardUI({ user }: DashboardUIProps) {
                             />
                             <button
                               type="submit"
-                              disabled={isLoading}
-                              className=" absolute end-2.5 bottom-2.5 focus:outline-none font-medium rounded-lg text-sm px-4 py-2 inline-flex items-center justify-start pl-2 p7 overflow-hidden  text-blue-500 transition-all duration-150 ease-in-out bg-gray-50 group"
+                              disabled={isLoading || !input}
+                              className={`inline-flex absolute end-2.5 bottom-2.5 mx-1 items-center justify-center w-7 h-7 mr-2 text-indigo-100 transition-colors duration-150 bg-blue-500 rounded-full focus:shadow-outline hover:bg-blue-700 ${
+                                input ? 'cursor-pointer ' : 'cursor-not-allowed'
+                              } `}
                             >
-                              <span className="absolute bottom-0 left-0 w-full h-1 transition-all duration-150 ease-in-out bg-blue-500 group-hover:h-full"></span>
-                              <span className="relative w-lg text-left transition-colors duration-200 ease-in-out group-hover:text-white">
-                                Generate
-                              </span>
+                              <FaArrowRight className={`w-5 h-5  `} />{' '}
                             </button>
                           </div>
                         </form>
@@ -604,7 +603,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
                               <button
                                 type="submit"
                                 disabled={isLoading || !input}
-                                className={`inline-flex mx-1 items-center justify-center w-7 h-7 mr-2 text-indigo-100 transition-colors duration-150 bg-blue-500 rounded-full focus:shadow-outline hover:bg-blue-700 ${
+                                className={`inline-flex absolute end-2.5 bottom-2.5 mx-1 items-center justify-center w-7 h-7 mr-2 text-indigo-100 transition-colors duration-150 bg-blue-500 rounded-full focus:shadow-outline hover:bg-blue-700 ${
                                   input
                                     ? 'cursor-pointer '
                                     : 'cursor-not-allowed'
