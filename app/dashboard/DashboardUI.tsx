@@ -635,13 +635,19 @@ export function DashboardUI({ user }: DashboardUIProps) {
                                     selected={saveDate}
                                     onSelect={setSaveDate}
                                     initialFocus
-                                    className="border-muted  mb-6"
+                                    className="border-muted flex justify-center  mb-6"
                                   />{' '}
-                                  <Button className="max-w-lg w-full  mb-2">
+                                  <Button
+                                    className="max-w-lg mx-auto w-full  mb-2"
+                                    onClick={() => saveMealPlan()}
+                                  >
                                     Save
                                   </Button>
                                   <DrawerClose>
-                                    <Button variant={'outline'} className="max-w-lg w-full  mb-2">
+                                    <Button
+                                      variant={'outline'}
+                                      className="max-w-lg w-full  mb-2"
+                                    >
                                       Cancel
                                     </Button>
                                   </DrawerClose>
