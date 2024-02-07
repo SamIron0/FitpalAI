@@ -629,7 +629,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
                                 <Button variant="outline">Save</Button>
                               </DrawerTrigger>
                               <div className="flex  w-full items-center justify-center">
-                                <DrawerContent className="flex border-muted flex-col justify-center">
+                                <DrawerContent className="flex border-muted flex-col px-4 justify-center">
                                   <Calendar
                                     mode="single"
                                     selected={saveDate}
@@ -638,7 +638,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
                                     className="border-muted flex justify-center  mb-6"
                                   />{' '}
                                   <Button
-                                    className="max-w-md mx-auto w-full  mb-2 mx-4"
+                                    className="max-w-md mx-auto w-full  mb-2"
                                     onClick={() => saveMealPlan()}
                                   >
                                     Save
