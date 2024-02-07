@@ -240,7 +240,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
   );
   const [usersMealPlans, setUsersMealPlans] = useState<MealPlan[]>([]);
   const { userDetails, setUserDetails } = useUserDetails();
-  const [trackDate, setTrackDate] = React.useState<Date>();
+  const [trackDate, setTrackDate] = React.useState<Date>( new Date());
   const [planDate, setPlanDate] = React.useState<Date>();
 
   useEffect(() => {
@@ -699,7 +699,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
                         Meal Plan
                       </h2>
                       <DatePicker
-                        planDate={planDate}
+                        planDate={trackDate}
                         setPlanDate={setTrackDate}
                       />
                     </div>
