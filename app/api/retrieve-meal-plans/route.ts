@@ -4,7 +4,7 @@ import { retrieveMealPlans } from '@/utils/supabase-admin';
 export async function GET(req: Request) {
   if (req.method === 'GET') {
     try {
-      const { planDate }: { planDate: Date } = await req.json();
+      const { trackDate }= await req.json();
       const session = await getSession();
       if (!session) {
         return new Response(JSON.stringify('Unauthorized'), {
@@ -12,7 +12,7 @@ export async function GET(req: Request) {
         });
       }
 
-      const mealplan = await retrieveMealPlans(session.user.id, planDate);
+      const mealplan = await retrieveMealPlans(session.user.id, trackDate);
       return new Response(JSON.stringify(mealplan), {
         status: 200
       });
