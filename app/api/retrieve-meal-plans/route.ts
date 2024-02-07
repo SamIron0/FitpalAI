@@ -7,7 +7,7 @@ export async function POST(req: Request) {
       const { trackDate } = await req.json();
       let date = trackDate;
       if (!trackDate) {
-        date = new Date();
+        date = new Date().toISOString().split('T')[0];
       }
       const session = await getSession();
       if (!session) {
