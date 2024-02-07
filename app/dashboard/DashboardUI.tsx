@@ -598,7 +598,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
                                 value={input}
                                 disabled={isLoading}
                                 onChange={(e) => setInput(e.target.value)}
-                                className=" px-2 pl-4 pr-7 w-full h-[60px] focus:outline-none bg-zinc-800 border-[1px] border-zinc-600 text-md rounded-xl "
+                                className=" px-2 pl-4 pr-7 w-full h-[60px] focus:outline-none bg-zinc-800 border-[1px] border-zinc-600 text-md rounded-full "
                                 placeholder="Ask about a meal"
                               />
                               <button
@@ -651,7 +651,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
                 ) : (
                   <div className="w-full flex flex-col">
                     {' '}
-                    <div className="w-full flex items-center justify-between flex-row">
+                    <div className="w-full flex items-center justify-between flex-row pb-2">
                       <h2 className="text-md text-muted-foreground">
                         Meal Plan
                       </h2>
@@ -663,13 +663,26 @@ export function DashboardUI({ user }: DashboardUIProps) {
                           meal.title && (
                             <Card className="mb-4 w-full">
                               <div className="w-full flex justify-between flex-row">
-                                <div className="">
-                                  <CardHeader className="flex flex-row w-full items-center ">
-                                    <CardTitle className="text-muted-foreground">
-                                      {meal.type}
-                                    </CardTitle>
-                                  </CardHeader>
-                                  <CardContent>{meal.title}</CardContent>
+                                <div className="flex flex-col ">
+                                  <div className="flex pb-2 flex-row w-full items-center  text-muted-foreground">
+                                    {meal.type}
+                                  </div>
+                                  <div>{meal.title}</div>
+                                  <div className="flex flex-col w-full">
+                                    {meal.macros && (
+                                      <span className="flex items-center text-md">
+                                        {meal?.macros?.carbs +
+                                          meal?.macros?.protein +
+                                          meal?.macros?.fat}{' '}
+                                        Calories
+                                      </span>
+                                    )}
+                                    <span className="flex text-muted-foreground text-sm">
+                                      {meal.macros?.carbs} Carbs{' '}
+                                      {meal.macros?.protein} Protein{' '}
+                                      {meal.macros?.fat} Fat
+                                    </span>
+                                  </div>
                                 </div>
                                 <div className="flex px-3 items-center justify-end">
                                   <DropdownMenu>
