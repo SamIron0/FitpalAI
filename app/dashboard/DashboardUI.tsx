@@ -289,7 +289,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
     return ghostCards;
   }
 
-  const { userDetails, setUserDetails } = useUserDetails();
+  const { userDetails } = useUserDetails();
   //call aws to create the initial meal plan
   const fetchData = async (query: string) => {
     setIsLoading(true);
@@ -312,7 +312,8 @@ export function DashboardUI({ user }: DashboardUIProps) {
       const data = JSON.parse(result.body);
       let parsedData = JSON.parse(data);
       //setGptResponse(result);
-
+      const user_protein = parsedData.calories;
+      console.log('parsedData', user_protein);
       mealplan = {
         id: '',
         owner: '',
@@ -378,7 +379,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
       {
         meal.title &&
           results.push(
-            <Card className="mb-4 mx-auto w-full">
+            <Card className="mb-4 mx-auto p-4 w-full">
               <div className="flex flex-row w-full items-center justify-center">
                 <CardTitle className="text-muted-foreground">
                   {meal.type}
@@ -407,13 +408,15 @@ export function DashboardUI({ user }: DashboardUIProps) {
                   </div>
                 </div>
               </div>
-              <CardContent>{meal.title}</CardContent>
-              <CardFooter>
+              <div>{meal.title}</div>
+              <div>
                 {meal.macros?.carbs &&
                   meal.macros?.fat &&
                   meal.macros?.protein &&
-                  meal.macros.carbs + meal.macros.fat + meal.macros.protein}
-              </CardFooter>
+                  meal.macros.carbs * 4 +
+                    meal.macros.fat * 9 +
+                    meal.macros.protein * 4}
+              </div>
             </Card>
           );
       }
@@ -452,7 +455,6 @@ export function DashboardUI({ user }: DashboardUIProps) {
   const { isSidebarOpen } = useSidebar();
   return (
     <>
-      {' '}
       {isSidebarOpen && (
         <div
           style={{
