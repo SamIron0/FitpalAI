@@ -414,6 +414,15 @@ export function DashboardUI({ user }: DashboardUIProps) {
           return accum + meal.macros?.fat;
         }, 0)
       );
+
+      // log the query and response in  db
+      await postData({
+        url: '/api/save-query',
+        data: {
+          query: query,
+          result: parsedData
+        }
+      });
     } catch (error) {
       console.log(error);
     } finally {
@@ -678,7 +687,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
               </div>
             ) : (
               <div className="w-full mb-4">
-                {usersMealPlans?.length===0 ? (
+                {usersMealPlans?.length === 0 ? (
                   <EmptyMealplans
                     onGenerateClick={() => setGenerateMode(true)}
                   />

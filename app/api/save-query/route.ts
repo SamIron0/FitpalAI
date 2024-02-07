@@ -5,14 +5,14 @@ import { createServerSupabaseClient, getSession } from '@/app/supabase-server';
 export async function POST(req: Request) {
   if (req.method === 'POST') {
     try {
-      const { query, result, user_id } = await req.json();
+      const { query, result } = await req.json();
       const session = await getSession();
       if (!session) {
         return new Response(JSON.stringify('Unauthorized'), {
           status: 401
         });
       }
-      const response = await createQuery(query, result, user_id);
+      const response = await createQuery(query, result, session.user.id);
       return new Response(JSON.stringify(response), {
         status: 200
       });
