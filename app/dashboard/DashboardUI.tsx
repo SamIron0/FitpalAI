@@ -343,6 +343,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
           }
         ]
       };
+      setQueryResultPageHeader(input);
       setCreatedMealPlan(mealplan);
 
       // set total calories
@@ -451,6 +452,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
     return results;
   }
   const [input, setInput] = useState('');
+  const [queryResultPageHeader, setQueryResultPageHeader] = useState('');
   const [gptResponse, setGptResponse] = useState();
   const onPillClick = (caption: string) => {
     setInput(caption);
@@ -581,37 +583,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
                       <div className="pt-24">{renderGhostCards()}</div>
                     ) : createdMealplan?.meals ? (
                       <>
-                        <div className="fixed bottom-5 w-full sm:max-w-3xl max-w-lg flex justify-center items-center">
-                          <form
-                            onSubmit={(e) => {
-                              e.preventDefault();
-                              fetchData(input);
-                            }}
-                          >
-                            <div className="relative flex items-center max-w-md sm:max-w-xl">
-                              <input
-                                value={input}
-                                disabled={isLoading}
-                                onChange={(e) => setInput(e.target.value)}
-                                className=" px-2 pl-4 w-full h-[60px] focus:outline-none bg-zinc-800 border-[1px] border-zinc-600 text-md rounded-full "
-                                placeholder="Ask about a meal"
-                              />
-                              <button
-                                type="submit"
-                                disabled={isLoading || !input}
-                                className={`inline-flex absolute end-2.5 mx-1 items-center justify-center w-8 h-8 mr-2 text-indigo-100 transition-colors duration-150 bg-blue-500 rounded-full focus:shadow-outline hover:bg-blue-700 ${
-                                  input
-                                    ? 'cursor-pointer '
-                                    : 'cursor-not-allowed'
-                                } `}
-                              >
-                                <FaArrowRight className={`w-4 h-4   } `} />
-                                <FaArrowRight className={`w-4 h-4  `} />{' '}
-                              </button>
-                            </div>
-                          </form>
-                        </div>{' '}
-                        <p className="text-3xl pb-7">{input}</p>
+                        <p className="text-3xl pb-7">{queryResultPageHeader}</p>
                         <div className="w-full pb-4 flex flex-row">
                           <div className="flex flex-col w-full">
                             <span className="flex items-center text-md">
@@ -728,6 +700,39 @@ export function DashboardUI({ user }: DashboardUIProps) {
           </div>
         </div>
       </div>
+      {createdMealplan?.meals && (
+        <>
+          <div className="fixed bottom-5 w-full sm:max-w-3xl max-w-lg flex justify-center items-center">
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                fetchData(input);
+              }}
+              className="w-full"
+            >
+              <div className="relative flex items-center max-w-md sm:max-w-xl">
+                <input
+                  value={input}
+                  disabled={isLoading}
+                  onChange={(e) => setInput(e.target.value)}
+                  className=" px-2 pl-4 w-full h-[60px] focus:outline-none bg-zinc-800 border-[1px] border-zinc-600 text-md rounded-full "
+                  placeholder="Ask about a meal"
+                />
+                <button
+                  type="submit"
+                  disabled={isLoading || !input}
+                  className={`inline-flex absolute end-2.5 mx-1 items-center justify-center w-8 h-8 mr-2 text-indigo-100 transition-colors duration-150 bg-blue-500 rounded-full focus:shadow-outline hover:bg-blue-700 ${
+                    input ? 'cursor-pointer ' : 'cursor-not-allowed'
+                  } `}
+                >
+                  <FaArrowRight className={`w-4 h-4   } `} />
+                  <FaArrowRight className={`w-4 h-4  `} />{' '}
+                </button>
+              </div>
+            </form>
+          </div>{' '}
+        </>
+      )}
     </>
   );
 }
