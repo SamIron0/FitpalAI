@@ -638,7 +638,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
                                     className="border-muted flex justify-center  mb-6"
                                   />{' '}
                                   <Button
-                                    className="max-w-lg mx-auto w-full  mb-2"
+                                    className="max-w-md mx-auto w-full  mb-2 mx-4"
                                     onClick={() => saveMealPlan()}
                                   >
                                     Save
@@ -646,7 +646,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
                                   <DrawerClose>
                                     <Button
                                       variant={'outline'}
-                                      className="max-w-lg w-full  mb-2"
+                                      className="max-w-md w-full text-zinc-300 mb-2 mx-4"
                                     >
                                       Cancel
                                     </Button>
