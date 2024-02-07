@@ -240,7 +240,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
   );
   const [usersMealPlans, setUsersMealPlans] = useState<MealPlan[]>([]);
   const { userDetails, setUserDetails } = useUserDetails();
-  const [planDate, setPlanDate] = React.useState<Date>();
+  const [planDate, setPlanDate] = React.useState<Date>( );
 
   useEffect(() => {
     const retrieveMealPlan = async () => {
