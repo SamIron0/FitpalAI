@@ -244,8 +244,9 @@ export function DashboardUI({ user }: DashboardUIProps) {
   useEffect(() => {
     const retrieveMealPlan = async () => {
       try {
-        const data = await getData({
-          url: '/api/retrieve-meal-plans'
+        const data = await postData({
+          url: '/api/retrieve-meal-plans',
+          data: planDate
         });
         if (!data) {
           return;
@@ -262,7 +263,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
       }
     };
     retrieveMealPlan();
-  }, []);
+  }, [planDate]);
 
   useEffect(() => {
     console.log('updating');
@@ -366,8 +367,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
             title: parsedData.snacks.title,
             macros: parsedData.snacks.macros
           }
-        ],
-
+        ]
       };
 
       setQueryResultPageHeader(input);
@@ -644,7 +644,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
                                   >
                                     Save
                                   </Button>
-                                  <DrawerClose className='w-full flex justify-center items-center'>
+                                  <DrawerClose className="w-full flex justify-center items-center">
                                     <Button
                                       variant={'outline'}
                                       className="max-w-md w-full text-zinc-300 mb-2 "
@@ -678,7 +678,10 @@ export function DashboardUI({ user }: DashboardUIProps) {
                       <h2 className="text-md text-muted-foreground">
                         Meal Plan
                       </h2>
-                      <DatePicker planDate={planDate} setPlanDate={setPlanDate}/>
+                      <DatePicker
+                        planDate={planDate}
+                        setPlanDate={setPlanDate}
+                      />
                     </div>
                     <div>
                       {activeMealPlan?.meals.map((meal) => {
