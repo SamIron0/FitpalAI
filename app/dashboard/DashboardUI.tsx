@@ -341,6 +341,18 @@ export function DashboardUI({ user }: DashboardUIProps) {
         ]
       };
       setCreatedMealPlan(mealplan);
+
+      // set tottal calories
+      setCalories(
+        mealplan.meals.reduce((accum: number, meal: any) => {
+          return (
+            accum +
+            (meal.macros?.carbs * 4 +
+              meal.macros?.fat * 9 +
+              meal.macros?.protein * 4)
+          );
+        }, 0)
+      );
     } catch (error) {
       console.log(error);
     } finally {
@@ -447,9 +459,10 @@ export function DashboardUI({ user }: DashboardUIProps) {
     }
   };
 
-  const [protein, setProtein] = useState(220);
-  const [carbs, setCarbs] = useState(220);
-  const [fat, setFat] = useState(220);
+  const [protein, setProtein] = useState(0);
+  const [carbs, setCarbs] = useState(0);
+  const [fat, setFat] = useState(0);
+  const [calories, setCalories] = useState(0);
   const [activeMealPlan, setActiveMealPlan] = useState<MealPlan>();
   const [generateMode, setGenerateMode] = useState(true);
   const { isSidebarOpen } = useSidebar();
@@ -553,11 +566,16 @@ export function DashboardUI({ user }: DashboardUIProps) {
                     <div className="pt-24">{renderGhostCards()}</div>
                   ) : createdMealplan?.meals ? (
                     <>
-                      <p className='text-2xl'>{input}</p>
+                      <p className="text-2xl">{input}</p>
                       <div className="w-full pb-4 flex flex-row">
-                        <h2 className="w-1/2 flex items-center text-xl ">
-                          Meal Plan
-                        </h2>
+                        <div className="flex flex-col ">
+                          <span className="w-1/2 flex items-center text-xl ">
+                            {calories}
+                          </span>
+                          <span>
+                            {protein} Protein {protein} Carbs {carbs} Cards{' '}
+                          </span>
+                        </div>
                         <span className="flex w-1/2 items-center justify-end">
                           <Button
                             onClick={() => saveMealPlan()}
