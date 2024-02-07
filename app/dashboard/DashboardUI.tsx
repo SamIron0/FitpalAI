@@ -339,8 +339,8 @@ export function DashboardUI({ user }: DashboardUIProps) {
           },
           {
             type: 'snack',
-            title: parsedData.snack.title,
-            macros: parsedData.snack.macros
+            title: parsedData.snacks.title,
+            macros: parsedData.snacks.macros
           }
         ]
       };
