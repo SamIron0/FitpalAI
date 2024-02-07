@@ -240,6 +240,39 @@ export interface Database {
           }
         ];
       };
+
+      queries: {
+        Row: {
+          id: string;
+          query: string;
+          user_id: string;
+          result: string;
+          time?: Date;
+        };
+        Insert: {
+          id: string;
+          query?: string | null;
+          user_id?: string | null;
+          result?: string | null;
+          time?: Date | null;
+        };
+        Update: {
+          id?: string;
+          query?: string | null;
+          user_id?: string | null;
+          result?: string | null;
+          time?: Date | null;
+        };
+        Relationships: [
+          {
+            foreignKeyName: 'querys_user_id_fkey';
+            columns: ['user_id'];
+            referencedRelation: 'users';
+            referencedColumns: ['id'];
+          }
+        ];
+      };
+
       users: {
         Row: {
           avatar_url?: string | null;

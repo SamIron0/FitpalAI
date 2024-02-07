@@ -678,7 +678,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
                       <h2 className="text-md text-muted-foreground">
                         Meal Plan
                       </h2>
-                      <DatePicker />
+                      <DatePicker planDate={planDate} setPlanDate={setPlanDate}/>
                     </div>
                     <div>
                       {activeMealPlan?.meals.map((meal) => {

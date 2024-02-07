@@ -15,6 +15,13 @@ export interface MealPlan {
   date: Date | undefined;
 }
 
+export interface Query {
+  id: string;
+  query: string;
+  user_id: string;
+  result: string;
+  time: Date;
+}
 export interface SurveyResponse {
   id: string;
   user_id: string;
@@ -31,7 +38,6 @@ export interface Macros {
   carbs: number;
   calories: number;
 }
-
 
 type Jsonb = any;
 

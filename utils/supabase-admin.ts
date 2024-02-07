@@ -71,11 +71,12 @@ const isSurveyComplete = async (id: string) => {
   return data && data?.length > 0;
 };
 
-const retrieveMealPlans = async (user_id: string) => {
+const retrieveMealPlans = async (user_id: string, date: Date) => {
   const { data, error: supabaseError } = await supabaseAdmin
     .from('mealplans')
     .select()
-    .eq('owner', user_id);
+    .eq('owner', user_id)
+    .eq('date', date);
   return data;
 };
 
@@ -87,7 +88,8 @@ const createMealPlan = async (mealPlan: MealPlan) => {
       {
         id: uuidv4(),
         owner: mealPlan.owner,
-        meals: mealPlan.meals
+        meals: mealPlan.meals,
+        date: mealPlan.date
       }
     ]);
   if (supabaseError) {
@@ -97,6 +99,23 @@ const createMealPlan = async (mealPlan: MealPlan) => {
   return data;
 };
 
+const createQuery = async (query: string, user_id: string, result: string) => {
+  const { data, error: supabaseError } = await supabaseAdmin
+    .from('queries')
+    .insert([
+      {
+        id: uuidv4(),
+        query: query,
+        user_id: user_id,
+        result: result
+      }
+    ]);
+  if (supabaseError) {
+    throw supabaseError;
+  }
+  console.log(`New query inserted for ${user_id}.`);
+  return data;
+};
 
 export const upsertUserDetails = async (userDetails: UserDetails) => {
   console.log('saving', userDetails.id);
@@ -125,5 +144,6 @@ export {
   retrieveMealPlans,
   isSurveyComplete,
   createWaitListContact,
-  logClick
+  logClick,
+  createQuery
 };
