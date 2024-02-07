@@ -1,5 +1,5 @@
 'use client';
-import { FaRegHeart } from "react-icons/fa";
+import { FaRegHeart } from 'react-icons/fa';
 import { FaArrowRight } from 'react-icons/fa';
 import { BsStars } from 'react-icons/bs';
 import { BsThreeDotsVertical } from 'react-icons/bs';
@@ -345,7 +345,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
       };
       setCreatedMealPlan(mealplan);
 
-      // set tottal calories
+      // set total calories
       setCalories(
         mealplan.meals.reduce((accum: number, meal: any) => {
           return (
@@ -538,7 +538,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
                             <button
                               type="submit"
                               disabled={isLoading || !input}
-                              className={`inline-flex absolute  p-2 end-2.5 mx-1 items-center justify-center w-8 h-8 mr-2 text-indigo-100 transition-colors duration-150 bg-blue-500 rounded-full focus:shadow-outline hover:bg-blue-700 ${
+                              className={`inline-flex absolute  p-2 end-2.5 bottom-3.8 mx-1 items-center justify-center w-8 h-8 mr-2 text-indigo-100 transition-colors duration-150 bg-blue-500 rounded-full focus:shadow-outline hover:bg-blue-700 ${
                                 input ? 'cursor-pointer ' : 'cursor-not-allowed'
                               } `}
                             >
@@ -581,14 +581,14 @@ export function DashboardUI({ user }: DashboardUIProps) {
                       <div className="pt-24">{renderGhostCards()}</div>
                     ) : createdMealplan?.meals ? (
                       <>
-                        <div className="fixed bottom-5 w-full sm:max-w-3xl max-w-lg ">
+                        <div className="fixed bottom-5 w-full sm:max-w-3xl max-w-lg flex justify-center items-center">
                           <form
                             onSubmit={(e) => {
                               e.preventDefault();
                               fetchData(input);
                             }}
                           >
-                            <div className="relative flex items-center max-w-2xl">
+                            <div className="relative flex items-center max-w-md sm:max-w-xl">
                               <input
                                 value={input}
                                 disabled={isLoading}
@@ -605,11 +605,12 @@ export function DashboardUI({ user }: DashboardUIProps) {
                                     : 'cursor-not-allowed'
                                 } `}
                               >
+                                <FaArrowRight className={`w-4 h-4   } `} />
                                 <FaArrowRight className={`w-4 h-4  `} />{' '}
                               </button>
                             </div>
                           </form>
-                        </div>
+                        </div>{' '}
                         <p className="text-3xl pb-7">{input}</p>
                         <div className="w-full pb-4 flex flex-row">
                           <div className="flex flex-col w-full">
