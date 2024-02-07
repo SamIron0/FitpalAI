@@ -636,7 +636,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
                                     {meal.type}
                                   </div>
                                   <div>{meal.title}</div>
-                                  <div className="flex ptt-2 flex-col w-full">
+                                  <div className="flex pt-2 flex-col w-full">
                                     {meal.macros && (
                                       <span className="flex items-center text-md">
                                         {meal?.macros?.carbs +
@@ -726,7 +726,6 @@ export function DashboardUI({ user }: DashboardUIProps) {
                   } `}
                 >
                   <FaArrowRight className={`w-4 h-4   } `} />
-                  <FaArrowRight className={`w-4 h-4  `} />{' '}
                 </button>
               </div>
             </form>
