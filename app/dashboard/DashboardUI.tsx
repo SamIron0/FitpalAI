@@ -583,7 +583,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
                     <div className="pt-24">{renderGhostCards()}</div>
                   ) : createdMealplan?.meals ? (
                     <>
-                      <p className="text-2xl pb-">{input}</p>
+                      <p className="text-2xl pb-7">{input}</p>
                       <div className="w-full pb-4 flex flex-row">
                         <div className="flex flex-col w-full">
                           <span className="flex items-center text-md">
