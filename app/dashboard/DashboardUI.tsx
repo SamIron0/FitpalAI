@@ -344,6 +344,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
       mealplan = {
         id: '',
         owner: '',
+        date: planDate,
         meals: [
           {
             type: 'breakfast',
@@ -365,8 +366,10 @@ export function DashboardUI({ user }: DashboardUIProps) {
             title: parsedData.snacks.title,
             macros: parsedData.snacks.macros
           }
-        ]
+        ],
+
       };
+
       setQueryResultPageHeader(input);
       setInput('');
       setCreatedMealPlan(mealplan);
@@ -501,7 +504,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
     }
   };
 
-  const [saveDate, setSaveDate] = React.useState<Date>();
+  const [planDate, setPlanDate] = React.useState<Date>();
   const [protein, setProtein] = useState(0);
   const [carbs, setCarbs] = useState(0);
   const [fat, setFats] = useState(0);
@@ -632,8 +635,8 @@ export function DashboardUI({ user }: DashboardUIProps) {
                                 <DrawerContent className="flex border-muted flex-col px-4 justify-center">
                                   <Calendar
                                     mode="single"
-                                    selected={saveDate}
-                                    onSelect={setSaveDate}
+                                    selected={planDate}
+                                    onSelect={setPlanDate}
                                     initialFocus
                                     className="border-muted flex justify-center  mb-6 text-white"
                                   />{' '}
