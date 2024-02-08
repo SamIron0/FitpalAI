@@ -365,9 +365,6 @@ export function DashboardUI({ user }: DashboardUIProps) {
       });
       const data = JSON.parse(result.body);
       let parsedData = JSON.parse(data);
-      //setGptResponse(result);
-      //sconst user_protein = parsedData.calories;
-      //console.log('parsedData', JSON.parse(data).inputMacros);
 
       mealplan = {
         id: '',
@@ -396,9 +393,6 @@ export function DashboardUI({ user }: DashboardUIProps) {
           }
         ]
       };
-
-      setQueryResultPageHeader(input);
-      setInput('');
       setCreatedMealPlan(mealplan);
 
       // set total calories
@@ -655,7 +649,9 @@ export function DashboardUI({ user }: DashboardUIProps) {
                               <Button
                                 disabled={isLoading}
                                 onClick={() => {
-                                  fetchData(queryResultPageHeader);
+                                  fetchData(queryResultPageHeader).then(() =>
+                                    setInput('')
+                                  );
                                 }}
                                 className="inline-flex mx-1 px-3 items-center justify-center mr-1 text-zinc-900 transition-colors duration-150 bg-gray-200 rounded-md focus:shadow-outline hover:bg-gray-400"
                               >
