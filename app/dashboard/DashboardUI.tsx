@@ -348,7 +348,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
       age: userDetails?.age,
       macros: userDetails?.macros
     };
-    input ? setQueryResultPageHeader(input) : null;
+    input!='' ? setQueryResultPageHeader(input) : null;
     try {
       // log the query and response in  db
       await postData({
