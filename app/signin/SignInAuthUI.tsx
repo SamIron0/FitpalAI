@@ -31,9 +31,9 @@ export default function AuthUI() {
       if (error) {
         toast.error(error.message);
       } else {
-        toast.success('Signed in');
-       // window.history.back();
+        // window.history.back();
         router.push('/dashboard');
+        toast.success('Signed in');
       }
     } catch (error) {
       toast.error('An error occurred during login.');
