@@ -615,10 +615,10 @@ export function DashboardUI({ user }: DashboardUIProps) {
                           />
                           <SuggestionPill
                             onclick={() => {
-                              onPillClick('Include pasta');
+                              onPillClick('Include pasta today');
                             }}
                             icon={'🍜'}
-                            caption="Include pasta"
+                            caption="Include pasta today"
                           />
                           <SuggestionPill
                             onclick={() => {
