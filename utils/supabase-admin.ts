@@ -123,7 +123,7 @@ const createMealPlan = async (mealPlan: MealPlan) => {
   return data;
 };
 
-const createQuery = async (query: string, user_id: string, result: string) => {
+const createQuery = async (query: string, user_id: string, result: any) => {
   const { data, error: supabaseError } = await supabaseAdmin
     .from('queries')
     .insert([

@@ -430,12 +430,13 @@ export function DashboardUI({ user }: DashboardUIProps) {
 
       // log the query and response in  db
       await postData({
-        url: '/api/save-query',
+        url: '/api/record-query',
         data: {
           query: query,
           result: parsedData
         }
       });
+      
     } catch (error) {
       console.log(error);
     } finally {

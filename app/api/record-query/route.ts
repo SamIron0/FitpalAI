@@ -6,6 +6,7 @@ export async function POST(req: Request) {
   if (req.method === 'POST') {
     try {
       const { query, result } = await req.json();
+      console.log('saving', query);
       const session = await getSession();
       if (!session) {
         return new Response(JSON.stringify('Unauthorized'), {
