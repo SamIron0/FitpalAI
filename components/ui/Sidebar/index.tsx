@@ -46,7 +46,7 @@ const Sidebar = ({ session }: SidebarProps) => {
         >
           {isSidebarOpen && (
             <div className="h-screen ">
-              <aside className="flex flex-col h-full items-center w-16  overflow-y-auto border-r rtl:border-l rtl:border-r-0 bg-black border-black">
+              <aside className="flex flex-col h-full items-center w-16 pb-12  overflow-y-auto border-r rtl:border-l rtl:border-r-0 bg-black border-black">
                 <nav className="flex flex-col flex-1 space-y-6">
                   <button
                     className="p-2 pt-2 flex flex-col items-center w-full"
@@ -55,7 +55,10 @@ const Sidebar = ({ session }: SidebarProps) => {
                     <BiMenuAltLeft className="w-8 h-8 text-gray-200" />
                   </button>
 
-                  <a href={disabled ? '#' : '/dashboard'}>
+                  <a
+                    href={disabled ? '#' : '/dashboard'}
+                    className="flex justify-center"
+                  >
                     <img
                       className="w-[37px] h-[37px]"
                       src="/logo-2.svg"
