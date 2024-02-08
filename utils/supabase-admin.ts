@@ -81,7 +81,6 @@ const retrieveMealPlans = async (user_id: string, date: Date) => {
   return data;
 };
 
-
 const deleteMealPlan = async (mealPlan: MealPlan) => {
   const { data, error: supabaseError } = await supabaseAdmin
     .from('mealplans')
@@ -111,19 +110,18 @@ const createMealPlan = async (mealPlan: MealPlan) => {
   return data;
 };
 
-const createQuery = async (query: string, user_id: string, result: any) => {
+const createQuery = async (query: string, user_id: string) => {
   const { data, error: supabaseError } = await supabaseAdmin
     .from('queries')
     .insert([
       {
         id: uuidv4(),
         query: query,
-        user_id: user_id,
-        result: result
+        user_id: user_id
       }
     ]);
-    console.log(`New query inserted ${data}.`);
-    if (supabaseError) {
+  console.log(`New query inserted ${data}.`);
+  if (supabaseError) {
     throw supabaseError;
   }
   return data;

@@ -5,7 +5,7 @@ import { createServerSupabaseClient, getSession } from '@/app/supabase-server';
 export async function POST(req: Request) {
   if (req.method === 'POST') {
     try {
-      const { query, result } = await req.json();
+      const { query } = await req.json();
       console.log('saving', query);
       const session = await getSession();
       if (!session) {
@@ -13,7 +13,7 @@ export async function POST(req: Request) {
           status: 401
         });
       }
-      const response = await createQuery(query, result, session.user.id);
+      const response = await createQuery(query, session.user.id);
       return new Response(JSON.stringify(response), {
         status: 200
       });
