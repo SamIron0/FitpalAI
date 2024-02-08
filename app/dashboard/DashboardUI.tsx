@@ -348,6 +348,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
       age: userDetails?.age,
       macros: userDetails?.macros
     };
+    input ? setQueryResultPageHeader(input) : null;
     try {
       // log the query and response in  db
       await postData({
@@ -499,24 +500,6 @@ export function DashboardUI({ user }: DashboardUIProps) {
   const [gptResponse, setGptResponse] = useState();
   const onPillClick = (caption: string) => {
     setInput(caption);
-  };
-  const logClick = async () => {
-    const name = 'Generate';
-    const url = '/api/log-click';
-    const options = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(name)
-    };
-
-    const response = await fetch(url, options);
-    const data = await response.json();
-
-    // const meal:  MealPlan = data.mealplan
-    if (!response.ok) {
-    }
   };
 
   const [protein, setProtein] = useState(0);
@@ -810,7 +793,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
               <form
                 onSubmit={(e) => {
                   e.preventDefault();
-                  fetchData(input);
+                  fetchData(input).then(() => setInput(''));
                 }}
                 className="w-full flex justify-center"
               >
