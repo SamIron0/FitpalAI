@@ -72,6 +72,7 @@ const isSurveyComplete = async (id: string) => {
 };
 
 const retrieveMealPlans = async (user_id: string, date: Date) => {
+  console.log('retrieving meal plans for',date);
   const { data, error: supabaseError } = await supabaseAdmin
     .from('mealplans')
     .select()
