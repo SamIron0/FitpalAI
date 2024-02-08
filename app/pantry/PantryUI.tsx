@@ -10,7 +10,7 @@ export default function PantryUI() {
       </div>
       <Separator className="mt-6" />
 
-      <Card className="w-full mx-auto max-w-4xl">
+      <Card className="w-full flex justify-center mx-auto max-w-4xl">
         <EmptyPantry />
       </Card>
     </div>

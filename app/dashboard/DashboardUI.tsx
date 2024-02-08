@@ -798,9 +798,9 @@ export function DashboardUI({ user }: DashboardUIProps) {
                 </div>
               )}
 
-              <Card className="w-full flex justify-center py-4">
+              <Card className="w-full flex justify-center ">
                 {userDetails?.macros ? (
-                  <div className="w-full flex justify-center ">
+                  <div className="w-full flex justify-center py-4">
                     <Calories macros={{ protein, fat, carbs, calories }} />
                   </div>
                 ) : (
