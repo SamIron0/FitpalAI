@@ -639,15 +639,15 @@ export function DashboardUI({ user }: DashboardUIProps) {
                             </span>
                           </div>
                           <span className="flex items-center flex-row justify-end">
-                            <button
+                            <Button
                               disabled={isLoading}
                               onClick={() => {
                                 fetchData(queryResultPageHeader);
                               }}
-                              className="inline-flex mx-1 items-center justify-center w-9 h-9 mr-0.5 text-zinc-900 transition-colors duration-150 bg-gray-200 rounded-lg focus:shadow-outline hover:bg-gray-400"
+                              className="inline-flex mx-1 px-3 items-center justify-center mr-1 text-zinc-900 transition-colors duration-150 bg-gray-200 rounded-md focus:shadow-outline hover:bg-gray-400"
                             >
                               <TbRefresh className="w-4 h-4" />
-                            </button>
+                            </Button>
                             <Drawer>
                               <DrawerTrigger asChild>
                                 <Button variant="outline">Save</Button>
