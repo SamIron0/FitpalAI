@@ -295,6 +295,8 @@ export function DashboardUI({ user }: DashboardUIProps) {
     console.log('exists', exists);
     if (exists) {
       setDrawerMode('Confirmation');
+      setIsLoading(false);
+      return;
     }
 
     if (createdMealplan === undefined) {
