@@ -615,21 +615,19 @@ export function DashboardUI({ user }: DashboardUIProps) {
                           />
                           <SuggestionPill
                             onclick={() => {
+                              onPillClick('Include pasta');
+                            }}
+                            icon={'🍜'}
+                            caption="Include pasta"
+                          />
+                          <SuggestionPill
+                            onclick={() => {
                               onPillClick(
                                 'Make me a plan with easy prep meals'
                               );
                             }}
                             icon={'🍔'}
                             caption="Make me a plan with easy prep meals"
-                          />
-                          <SuggestionPill
-                            onclick={() => {
-                              onPillClick(
-                                'Include meatballs in my lunch'
-                              );
-                            }}
-                            icon={'🍜'}
-                            caption="Include pasta"
                           />
                         </div>
                       )}
