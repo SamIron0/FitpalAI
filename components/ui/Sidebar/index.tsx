@@ -34,7 +34,7 @@ const Sidebar = ({ session }: SidebarProps) => {
           } transition-transform duration-200 ease-in-out absolute inset-y-0 left-0 z-50  h-full bg-black overflow-y-auto`}
         >
           {isSidebarOpen && (
-            <div>
+            <div className='h-screen '>
               <button
                 className="p-2 pt-2 flex flex-col items-center w-full"
                 onClick={() => setSidebarOpen(!isSidebarOpen)}
@@ -42,7 +42,7 @@ const Sidebar = ({ session }: SidebarProps) => {
                 <BiMenuAltLeft className="w-8 h-8 text-gray-200" />
               </button>
 
-              <aside className="flex flex-col items-center w-16 h-screen py-8 overflow-y-auto border-r rtl:border-l rtl:border-r-0 bg-black border-black">
+              <aside className="flex flex-col items-center w-16 py-8 overflow-y-auto border-r rtl:border-l rtl:border-r-0 bg-black border-black">
                 <nav className="flex flex-col flex-1 space-y-6">
                   <a href={disabled ? '#' : '/dashboard'}>
                     <img
