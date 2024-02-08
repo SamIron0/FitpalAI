@@ -242,7 +242,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
   const { userDetails, setUserDetails } = useUserDetails();
   const [trackDate, setTrackDate] = React.useState<Date>(new Date());
   const [planDate, setPlanDate] = React.useState<Date>();
-
+  const [drawerMode, setDrawerMode] = useState('Calendar');
   useEffect(() => {
     const retrieveMealPlan = async () => {
       console.log(trackDate);
@@ -286,6 +286,18 @@ export function DashboardUI({ user }: DashboardUIProps) {
     // save meal plan to supabase
 
     setIsLoading(true);
+
+    //check if mealplan exists for given date
+    const exists = await postData({
+      url: '/api/check-if-mealplan-exists',
+      data: { date: planDate }
+    });
+
+    if (exists) {
+      setDrawerMode('Confirmation');
+      return;
+    }
+
     if (createdMealplan === undefined) {
       setIsLoading(false);
       toast.error('Create meal plan first');
@@ -301,6 +313,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
 
     console.log('Plan date', planDate);
     const toastId = toast.loading('Saving meal plan');
+
     try {
       const data = await postData({
         url: '/api/save-meal-plan',
@@ -651,19 +664,30 @@ export function DashboardUI({ user }: DashboardUIProps) {
                               </DrawerTrigger>
                               <div className="flex  w-full items-center justify-center">
                                 <DrawerContent className="flex border-muted flex-col px-4 justify-center">
-                                  <Calendar
-                                    mode="single"
-                                    selected={planDate}
-                                    onSelect={setPlanDate}
-                                    initialFocus
-                                    className="border-muted flex justify-center  mb-6 text-white"
-                                  />{' '}
-                                  <Button
-                                    className="max-w-md mx-auto w-full  mb-2"
-                                    onClick={() => saveMealPlan()}
-                                  >
-                                    Save
-                                  </Button>
+                                  {drawerMode === 'Calendar' ? (
+                                    <div className="flex flex-col">
+                                      <Calendar
+                                        mode="single"
+                                        selected={planDate}
+                                        onSelect={setPlanDate}
+                                        initialFocus
+                                        className="border-muted flex justify-center  mb-6 text-white"
+                                      />
+                                      <Button
+                                        className="max-w-md mx-auto w-full  mb-2"
+                                        onClick={() => saveMealPlan()}
+                                      >
+                                        Save
+                                      </Button>
+                                    </div>
+                                  ) : (
+                                    drawerMode === 'Confirmation' && (
+                                      <p>
+                                        A meal plan already exists for this day.
+                                        Are you sure you want to continue?
+                                      </p>
+                                    )
+                                  )}
                                   <DrawerClose className="w-full flex justify-center items-center">
                                     <Button
                                       variant={'outline'}

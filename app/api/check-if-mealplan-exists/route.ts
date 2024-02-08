@@ -4,7 +4,6 @@ import {
   createSurveyResponse
 } from '@/utils/supabase-admin';
 import { getSession } from '@/app/supabase-server';
-import { getUserDetails } from '@/utils/supabase-admin';
 export async function POST(req: Request) {
   if (req.method === 'POST') {
     try {
