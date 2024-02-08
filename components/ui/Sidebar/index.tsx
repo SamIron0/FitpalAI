@@ -42,7 +42,7 @@ const Sidebar = ({ session }: SidebarProps) => {
                 <BiMenuAltLeft className="w-8 h-8 text-gray-200" />
               </button>
 
-              <aside className="flex flex-col h-full items-center w-16 py-8 overflow-y-auto border-r rtl:border-l rtl:border-r-0 bg-black border-black">
+              <aside className="flex flex-col h-full items-center w-16 pb-16 overflow-y-auto border-r rtl:border-l rtl:border-r-0 bg-black border-black">
                 <nav className="flex flex-col flex-1 space-y-6">
                   <a href={disabled ? '#' : '/dashboard'}>
                     <img
