@@ -629,7 +629,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
                               );
                             }}
                             icon={'🍜'}
-                            caption="Include pasta and meatballs in my lunch"
+                            caption="Include pasta"
                           />
                         </div>
                       )}
