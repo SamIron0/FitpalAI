@@ -10,12 +10,19 @@ import { useSidebar } from '@/app/providers/SideBarContext';
 import { Session } from '@supabase/supabase-js';
 import { Popover, PopoverContent, PopoverTrigger } from '../popover';
 import { Button } from '../button';
-
+import { useSupabase } from '@/app/supabase-provider';
 interface SidebarProps {
   session: Session;
 }
 const Sidebar = ({ session }: SidebarProps) => {
   const { isSidebarOpen, setSidebarOpen } = useSidebar();
+  const { supabase } = useSupabase();
+  const signOut = async () => {
+    const { error } = await supabase.auth.signOut();
+    if (error) {
+      console.log(error);
+    }
+  };
   const disabled =
     session.user.email === 'fitpalaicontact@gmail.com' ? false : true;
   return (
@@ -106,8 +113,10 @@ const Sidebar = ({ session }: SidebarProps) => {
                       </a>
                     </div>
                   </PopoverTrigger>
-                  <PopoverContent className="w-80">
-                    <Button variant="outline">Logout</Button>
+                  <PopoverContent>
+                    <Button onClick={() => signOut()} variant="outline">
+                      Logout
+                    </Button>
                   </PopoverContent>
                 </Popover>
               </aside>
