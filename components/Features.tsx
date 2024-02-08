@@ -130,7 +130,7 @@ export default function Features() {
                           <div className="h-[64px] w-[3px] bg-gray-800 dark:bg-gray-800 absolute -end-[17px] top-[142px] rounded-e-lg"></div>
                           <div className="rounded-[2rem] overflow-hidden w-[272px] h-[572px] bg-white dark:bg-gray-800">
                             <img
-                              src="mockup2.jpeg"
+                              src="mockup2.PNG"
                               className="w-[272px] h-[572px]"
                               alt=""
                             />
