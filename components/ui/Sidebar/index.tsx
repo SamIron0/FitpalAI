@@ -11,19 +11,22 @@ import { Session } from '@supabase/supabase-js';
 import { Popover, PopoverContent, PopoverTrigger } from '../popover';
 import { Button } from '../button';
 import { useSupabase } from '@/app/supabase-provider';
+import { useRouter } from 'next/navigation';
 interface SidebarProps {
   session: Session;
 }
 const Sidebar = ({ session }: SidebarProps) => {
   const { isSidebarOpen, setSidebarOpen } = useSidebar();
   const { supabase } = useSupabase();
+  const router = useRouter();
   const signOut = async () => {
     const { error } = await supabase.auth.signOut();
     if (error) {
       console.log(error);
     }
+    router.push('/signin');
   };
-  const disabled =false;
+  const disabled = false;
   return (
     <>
       {!isSidebarOpen ? (
@@ -99,25 +102,25 @@ const Sidebar = ({ session }: SidebarProps) => {
                       color="white"
                     />
                   </a>
+                  <Popover>
+                    <PopoverTrigger asChild>
+                      <div className="flex flex-col ">
+                        <a className="flex justify-center " href="#">
+                          <img
+                            className="object-cover w-8 h-8 rounded-full"
+                            src="/user-01.png"
+                            alt=""
+                          />
+                        </a>
+                      </div>
+                    </PopoverTrigger>
+                    <PopoverContent>
+                      <Button onClick={() => signOut()} variant="outline">
+                        Logout
+                      </Button>
+                    </PopoverContent>
+                  </Popover>
                 </nav>
-                <Popover>
-                  <PopoverTrigger asChild>
-                    <div className="flex flex-col ">
-                      <a className="flex justify-center " href="#">
-                        <img
-                          className="object-cover w-8 h-8 rounded-full"
-                          src="/user-01.png"
-                          alt=""
-                        />
-                      </a>
-                    </div>
-                  </PopoverTrigger>
-                  <PopoverContent>
-                    <Button onClick={() => signOut()} variant="outline">
-                      Logout
-                    </Button>
-                  </PopoverContent>
-                </Popover>
               </aside>
             </div>
           )}
