@@ -23,8 +23,7 @@ const Sidebar = ({ session }: SidebarProps) => {
       console.log(error);
     }
   };
-  const disabled =
-    session.user.email === 'fitpalaicontact@gmail.com' ? false : true;
+  const disabled =false;
   return (
     <>
       {!isSidebarOpen ? (
