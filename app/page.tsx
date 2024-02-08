@@ -44,7 +44,7 @@ export default async function Home() {
                   </p>{' '}
                   <div className="pb-6 px-8">
                     <div className="rounded-full border-[#232325] bg-[#0D0D0E] flex items-center border  h-12  sm:w-[370px] w-[358px] mx-auto ">
-                      <Link href="/waitlist" className="flex p-3 w-full ">
+                      <Link href="/signup" className="flex p-3 w-full ">
                         <div className="w-1/4 flex justify-start pl-0.5 pr-0.5 ">
                           <div className="circle-div">
                             <img src={mealIcon.src} alt="meal image" />
@@ -52,7 +52,7 @@ export default async function Home() {
                         </div>
                         <div className="w-11/20 justify-center items-center pl-1 flex w-full flex-col">
                           <p className=" text-white text-sm absolute">
-                            Get FitpalAI Beta Now
+                            Introducing FitpalAI Beta - Join
                           </p>
                         </div>
                         <div className=" flex items-center justify-end pr-2 w-1/5 ">
