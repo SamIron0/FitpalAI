@@ -122,10 +122,10 @@ const createQuery = async (query: string, user_id: string, result: any) => {
         result: result
       }
     ]);
-  if (supabaseError) {
+    console.log(`New query inserted ${data}.`);
+    if (supabaseError) {
     throw supabaseError;
   }
-  console.log(`New query inserted for ${user_id}.`);
   return data;
 };
 
