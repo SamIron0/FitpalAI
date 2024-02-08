@@ -470,12 +470,6 @@ export function DashboardUI({ user }: DashboardUIProps) {
                   <div className="flex justify-end">
                     <button
                       disabled={isLoading}
-                      className="inline-flex mx-1 items-center justify-center w-9 h-9 mr-0.5 text-zinc-900 transition-colors duration-150 bg-gray-200 rounded-lg focus:shadow-outline hover:bg-gray-400"
-                    >
-                      <TbRefresh className="w-4 h-4" />
-                    </button>
-                    <button
-                      disabled={isLoading}
                       onClick={() => likeMeal(meal)}
                       className="inline-flex mx-1 items-center justify-center w-9 h-9 mr-2 text-indigo-100 transition-colors duration-150 bg-blue-500 rounded-lg focus:shadow-outline hover:bg-blue-700"
                     >
@@ -644,7 +638,16 @@ export function DashboardUI({ user }: DashboardUIProps) {
                               {protein}g Protein, {fat}g Fat, {carbs}g Carbs{' '}
                             </span>
                           </div>
-                          <span className="flex items-center justify-end">
+                          <span className="flex items-center flex-row justify-end">
+                            <button
+                              disabled={isLoading}
+                              onClick={() => {
+                                fetchData(queryResultPageHeader);
+                              }}
+                              className="inline-flex mx-1 items-center justify-center w-9 h-9 mr-0.5 text-zinc-900 transition-colors duration-150 bg-gray-200 rounded-lg focus:shadow-outline hover:bg-gray-400"
+                            >
+                              <TbRefresh className="w-4 h-4" />
+                            </button>
                             <Drawer>
                               <DrawerTrigger asChild>
                                 <Button variant="outline">Save</Button>
