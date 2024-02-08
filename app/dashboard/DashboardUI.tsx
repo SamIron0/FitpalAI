@@ -68,6 +68,8 @@ import {
   Drawer
 } from '@/components/ui/drawer';
 import { Calendar } from '@/components/ui/calendar';
+import { useRouter } from 'next/router';
+import { EmptyCalories } from '@/components/EmptyCalories';
 
 const data: Payment[] = [
   {
@@ -215,6 +217,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
     React.useState<VisibilityState>({});
   const [rowSelection, setRowSelection] = React.useState({});
 
+  const router = useRouter();
   const table = useReactTable({
     data,
     columns,
@@ -781,10 +784,12 @@ export function DashboardUI({ user }: DashboardUIProps) {
             )}
 
             <Card className="w-full flex justify-center py-4 ">
-              {!activeMealPlan?.meals ? (
+              {userDetails?.macros ? (
                 <Calories macros={{ protein, fat, carbs, calories }} />
               ) : (
-                <Calories macros={{ protein, fat, carbs, calories }} />
+                <EmptyCalories
+                  onSetCalories={() => router.push('/preferences')}
+                />
               )}
             </Card>
           </div>
