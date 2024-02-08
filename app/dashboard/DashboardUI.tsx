@@ -292,7 +292,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
       url: '/api/retrieve-meal-plans',
       data: { date: planDate }
     });
-console.log('exists', exists);
+    console.log('exists', exists);
     if (exists) {
       setDrawerMode('Confirmation');
     }
@@ -353,6 +353,13 @@ console.log('exists', exists);
       macros: userDetails?.macros
     };
     try {
+      // log the query and response in  db
+      await postData({
+        url: '/api/record-query',
+        data: {
+          query: query
+        }
+      });
       const result = await postData({
         url: 'https://3x077l0rol.execute-api.us-east-1.amazonaws.com/main/',
         data: {
@@ -426,15 +433,6 @@ console.log('exists', exists);
           return accum + meal.macros?.fat;
         }, 0)
       );
-
-      // log the query and response in  db
-      await postData({
-        url: '/api/record-query',
-        data: {
-          query: query,
-          result: parsedData
-        }
-      });
     } catch (error) {
       console.log(error);
     } finally {
