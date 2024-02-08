@@ -1,4 +1,5 @@
 'use client';
+import { IoFishOutline } from 'react-icons/io5';
 import { MdOutlineEggAlt } from 'react-icons/md';
 import { IoFastFoodOutline } from 'react-icons/io5';
 import { TbSalad } from 'react-icons/tb';
@@ -86,12 +87,11 @@ export default function DietType({ onSubmit }: DietTypeProps) {
             id="Anything"
             className="peer sr-only"
           />
-          <IoFastFoodOutline className="pb-1 w-6 h-6" />{' '}
           <Label
             htmlFor="Anything"
             className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
           >
-            Anything
+            <IoFastFoodOutline className="pb-1 w-6 h-6" /> Anything
           </Label>
         </div>
         <div>
@@ -134,6 +134,7 @@ export default function DietType({ onSubmit }: DietTypeProps) {
             htmlFor="Keto"
             className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
           >
+            <IoFishOutline className="pb-1 w-6 h-6" />
             Keto
           </Label>
         </div>
@@ -157,11 +158,11 @@ export default function DietType({ onSubmit }: DietTypeProps) {
             id="Gluten-free"
             className="peer sr-only"
           />
-          <TbSalad className="w-6 h-6 pb-1" />
           <Label
             htmlFor="Gluten-free"
             className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
           >
+            <TbSalad className="w-6 h-6 pb-1" />
             Gluten-free
           </Label>
         </div>
@@ -185,11 +186,11 @@ export default function DietType({ onSubmit }: DietTypeProps) {
             id="Low-Carb"
             className="peer sr-only"
           />
-          <MdOutlineEggAlt className="w-6 h-6 pb-1" />
           <Label
             htmlFor="Low-Carb"
             className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
           >
+            <MdOutlineEggAlt className="w-6 h-6 pb-1" />
             Low-Carb
           </Label>
         </div>
