@@ -8,6 +8,12 @@ import { TiHeartOutline } from 'react-icons/ti';
 import { IoSaveOutline } from 'react-icons/io5';
 import { useSidebar } from '@/app/providers/SideBarContext';
 import { Session } from '@supabase/supabase-js';
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '../popover';
+import { Button } from '../button';
 
 interface SidebarProps {
   session: Session;
@@ -91,15 +97,22 @@ const Sidebar = ({ session }: SidebarProps) => {
                     />
                   </a>
                 </nav>
-                <div className="flex flex-col mb-16 sm:mb-9">
-                  <a className="flex justify-center " href="#">
-                    <img
-                      className="object-cover w-8 h-8 rounded-full"
-                      src="/user-01.png"
-                      alt=""
-                    />
-                  </a>
-                </div>
+                <Popover>
+                  <PopoverTrigger asChild>
+                    <div className="flex flex-col ">
+                      <a className="flex justify-center " href="#">
+                        <img
+                          className="object-cover w-8 h-8 rounded-full"
+                          src="/user-01.png"
+                          alt=""
+                        />
+                      </a>
+                    </div>
+                  </PopoverTrigger>
+                  <PopoverContent className="w-80">
+                    <Button variant="outline">Logout</Button>
+                  </PopoverContent>
+                </Popover>
               </aside>
             </div>
           )}
