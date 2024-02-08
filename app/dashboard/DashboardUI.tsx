@@ -68,7 +68,7 @@ import {
   Drawer
 } from '@/components/ui/drawer';
 import { Calendar } from '@/components/ui/calendar';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { EmptyCalories } from '@/components/EmptyCalories';
 
 const data: Payment[] = [
@@ -334,6 +334,9 @@ export function DashboardUI({ user }: DashboardUIProps) {
     return ghostCards;
   }
 
+  const onsetCalorieClick = () => {
+router.push('/preferences')
+  }
   //call aws to create the initial meal plan
   const fetchData = async (query: string) => {
     setIsLoading(true);
@@ -800,7 +803,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
                   <Calories macros={{ protein, fat, carbs, calories }} />
                 ) : (
                   <EmptyCalories
-                    onSetCalories={() => router.push('/preferences')}
+                    onSetCalories={() => onsetCalorieClick()}
                   />
                 )}
               </Card>
