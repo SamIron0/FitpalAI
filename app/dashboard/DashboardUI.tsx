@@ -542,293 +542,304 @@ export function DashboardUI({ user }: DashboardUIProps) {
           }}
         />
       )}
-      <div className="w-full pb-12 flex flex-col">
-        <div className="w-full flex justify-end pr-4 pt-4 ">
-          {generateMode ? (
-            <Button onClick={() => setGenerateMode(false)} className="px-4">
-              Track
-            </Button>
-          ) : (
-            <Button
-              onClick={() => setGenerateMode(true)}
-              className="bg-blue-600  hover:bg-blue-500 "
-            >
-              <BsStars className="pr-1" />
-              Generate
-            </Button>
-          )}
-        </div>
-        <div className="w-full sm:p-12 p-4 max-w-3xl mx-auto">
-          <div className="w-full pt-8 flex flex-col justify-center">
+      <>
+        <div className="w-full pb-12 flex flex-col">
+          <div className="w-full flex justify-end pr-4 pt-4 ">
             {generateMode ? (
-              <div className="w-full mb-4">
-                <div className="relative flex flex-1 flex-col">
-                  <div className=" w-full mx-auto flex flex-col justify-center">
-                    {!createdMealplan?.meals && !isLoading && (
-                      <div className="flex w-full  flex-col justify-center pb-3">
-                        <p className="text-4xl flex justify-center py-10 text-semibold ">
-                          Create a Plan
-                        </p>
-
-                        <form
-                          onSubmit={(e) => {
-                            e.preventDefault();
-                            fetchData(input);
-                          }}
-                        >
-                          <div className="relative flex items-center justify-center w-full">
-                            <input
-                              value={input}
-                              disabled={isLoading}
-                              onChange={(e) => setInput(e.target.value)}
-                              className=" px-2 pl-4 w-full h-[60px] focus:outline-none bg-zinc-800 border-[1px] border-zinc-600 text-md rounded-md "
-                              placeholder="Ask about a meal"
-                            />
-                            <button
-                              type="submit"
-                              disabled={isLoading || !input}
-                              className={`inline-flex absolute  p-2 end-2.5 mx-1 items-center justify-center w-8 h-8 mr-2 text-indigo-100 transition-colors duration-150 bg-blue-500 rounded-full focus:shadow-outline hover:bg-blue-700 ${
-                                input ? 'cursor-pointer ' : 'cursor-not-allowed'
-                              } `}
-                            >
-                              <FaArrowRight className={`w-4 h-4  `} />{' '}
-                            </button>
-                          </div>
-                        </form>
-                      </div>
-                    )}
-                    {!isLoading && !completed && !createdMealplan?.meals && (
-                      <div className="pb-24">
-                        <span className="px-2 pr-3 mb-2">Try</span>
-                        <SuggestionPill
-                          onclick={() => {
-                            onPillClick('What should I make today');
-                          }}
-                          icon={'🥘'}
-                          caption="What should I make today"
-                        />
-                        <SuggestionPill
-                          onclick={() => {
-                            onPillClick('Make me a plan with easy prep meals');
-                          }}
-                          icon={'🍔'}
-                          caption="Make me a plan with easy prep meals"
-                        />
-                        <SuggestionPill
-                          onclick={() => {
-                            onPillClick(
-                              'Include pasta and meatballs as my lunch'
-                            );
-                          }}
-                          icon={'🍜'}
-                          caption="Include pasta and meatballs as my lunch"
-                        />
-                      </div>
-                    )}
-                    {isLoading ? (
-                      <div className="">
-                        <Skeleton className="max-w-lg mb-7 h-7" />
-                        <Skeleton className="max-w-md mb-4 h-7" />
-                        {renderGhostCards()}
-                      </div>
-                    ) : createdMealplan?.meals ? (
-                      <>
-                        <p className="text-3xl pb-7">{queryResultPageHeader}</p>
-                        <div className="w-full pb-4 flex flex-row">
-                          <div className="flex flex-col w-full">
-                            <span className="flex items-center text-md">
-                              {calories} Calories
-                            </span>
-                            <span className="flex text-muted-foreground text-sm">
-                              {protein}g Protein, {fat}g Fat, {carbs}g Carbs{' '}
-                            </span>
-                          </div>
-                          <span className="flex items-center flex-row justify-end">
-                            <Button
-                              disabled={isLoading}
-                              onClick={() => {
-                                fetchData(queryResultPageHeader);
-                              }}
-                              className="inline-flex mx-1 px-3 items-center justify-center mr-1 text-zinc-900 transition-colors duration-150 bg-gray-200 rounded-md focus:shadow-outline hover:bg-gray-400"
-                            >
-                              <TbRefresh className="w-4 h-4" />
-                            </Button>
-                            <Drawer>
-                              <DrawerTrigger asChild>
-                                <Button variant="outline">Save</Button>
-                              </DrawerTrigger>
-                              <div className="flex  w-full items-center justify-center">
-                                <DrawerContent className="flex border-muted flex-col px-4 justify-center">
-                                  {drawerMode === 'Calendar' ? (
-                                    <div className="flex flex-col">
-                                      <Calendar
-                                        mode="single"
-                                        selected={planDate}
-                                        onSelect={setPlanDate}
-                                        initialFocus
-                                        className="border-muted flex justify-center  mb-6 text-white"
-                                      />
-                                      <Button
-                                        className="max-w-md mx-auto w-full  mb-2"
-                                        onClick={() => saveMealPlan()}
-                                      >
-                                        Save
-                                      </Button>
-                                    </div>
-                                  ) : (
-                                    drawerMode === 'Confirmation' && (
-                                      <p>
-                                        A meal plan already exists for this day.
-                                        Are you sure you want to continue?
-                                      </p>
-                                    )
-                                  )}
-                                  <DrawerClose className="w-full flex justify-center items-center">
-                                    <Button
-                                      variant={'outline'}
-                                      className="max-w-md w-full text-zinc-300 mb-2 "
-                                    >
-                                      Cancel
-                                    </Button>
-                                  </DrawerClose>
-                                </DrawerContent>
-                              </div>
-                            </Drawer>
-                          </span>
-                        </div>
-                        {renderResultBox()}
-                      </>
-                    ) : (
-                      emptyState()
-                    )}
-                  </div>
-                </div>
-              </div>
+              <Button onClick={() => setGenerateMode(false)} className="px-4">
+                Track
+              </Button>
             ) : (
-              <div className="w-full mb-4">
-                <div className="w-full flex flex-col">
-                  {' '}
-                  <div className="w-full flex items-center justify-between flex-row pb-4">
-                    <h2 className="text-md text-muted-foreground">Meal Plan</h2>
-                    <DatePicker
-                      trackDate={trackDate}
-                      setPlanDate={setTrackDate}
-                    />
-                  </div>
-                  {usersMealPlans?.length === 0 ? (
-                    <EmptyMealplans
-                      onGenerateClick={() => setGenerateMode(true)}
-                    />
-                  ) : (
-                    <div>
-                      {activeMealPlan?.meals.map((meal) => {
-                        return (
-                          meal.title && (
-                            <Card className="mb-4 w-full">
-                              <div className="w-full flex justify-between flex-row">
-                                <div className="flex p-4 flex-col ">
-                                  <div className="flex pb-2 flex-row w-full items-center  text-muted-foreground">
-                                    {meal.type}
-                                  </div>
-                                  <div>{meal.title}</div>
-                                  <div className="flex pt-2 flex-col w-full">
-                                    {meal.macros && (
-                                      <span className="flex items-center text-md">
-                                        {meal?.macros?.carbs +
-                                          meal?.macros?.protein +
-                                          meal?.macros?.fat}{' '}
-                                        Calories
-                                      </span>
-                                    )}
-                                    <span className="flex text-muted-foreground text-sm">
-                                      {meal.macros?.carbs} Carbs{' '}
-                                      {meal.macros?.protein} Protein{' '}
-                                      {meal.macros?.fat} Fat
-                                    </span>
-                                  </div>
-                                </div>
-                                <div className="flex px-3 items-center justify-end">
-                                  <DropdownMenu>
-                                    <DropdownMenuTrigger asChild>
-                                      <Button
-                                        variant="ghost"
-                                        className="h-8 w-8 p-0"
-                                      >
-                                        <span className="sr-only">
-                                          Open menu
-                                        </span>
-                                        <DotsHorizontalIcon className="h-4 w-4" />
-                                      </Button>
-                                    </DropdownMenuTrigger>
-                                    <DropdownMenuContent
-                                      className="border-muted"
-                                      align="end"
-                                    >
-                                      <DropdownMenuItem>
-                                        Regenerate
-                                      </DropdownMenuItem>
-                                      <DropdownMenuSeparator />
-                                      <DropdownMenuItem>
-                                        Delete
-                                      </DropdownMenuItem>
-                                    </DropdownMenuContent>
-                                  </DropdownMenu>
-                                </div>
-                              </div>
-                            </Card>
-                          )
-                        );
-                      })}
-                    </div>
-                  )}
-                </div>
-              </div>
+              <Button
+                onClick={() => setGenerateMode(true)}
+                className="bg-blue-600  hover:bg-blue-500 "
+              >
+                <BsStars className="pr-1" />
+                Generate
+              </Button>
             )}
+          </div>
+          <div className="w-full sm:p-12 p-4 max-w-3xl mx-auto">
+            <div className="w-full pt-8 flex flex-col justify-center">
+              {generateMode ? (
+                <div className="w-full mb-4">
+                  <div className="relative flex flex-1 flex-col">
+                    <div className=" w-full mx-auto flex flex-col justify-center">
+                      {!createdMealplan?.meals && !isLoading && (
+                        <div className="flex w-full  flex-col justify-center pb-3">
+                          <p className="text-4xl flex justify-center py-10 text-semibold ">
+                            Create a Plan
+                          </p>
 
-            <Card className="w-full flex justify-center py-4 ">
-              {userDetails?.macros ? (
-                <Calories macros={{ protein, fat, carbs, calories }} />
+                          <form
+                            onSubmit={(e) => {
+                              e.preventDefault();
+                              fetchData(input);
+                            }}
+                          >
+                            <div className="relative flex items-center justify-center w-full">
+                              <input
+                                value={input}
+                                disabled={isLoading}
+                                onChange={(e) => setInput(e.target.value)}
+                                className=" px-2 pl-4 w-full h-[60px] focus:outline-none bg-zinc-800 border-[1px] border-zinc-600 text-md rounded-md "
+                                placeholder="Ask about a meal"
+                              />
+                              <button
+                                type="submit"
+                                disabled={isLoading || !input}
+                                className={`inline-flex absolute  p-2 end-2.5 mx-1 items-center justify-center w-8 h-8 mr-2 text-indigo-100 transition-colors duration-150 bg-blue-500 rounded-full focus:shadow-outline hover:bg-blue-700 ${
+                                  input
+                                    ? 'cursor-pointer '
+                                    : 'cursor-not-allowed'
+                                } `}
+                              >
+                                <FaArrowRight className={`w-4 h-4  `} />{' '}
+                              </button>
+                            </div>
+                          </form>
+                        </div>
+                      )}
+                      {!isLoading && !completed && !createdMealplan?.meals && (
+                        <div className="pb-24">
+                          <span className="px-2 pr-3 mb-2">Try</span>
+                          <SuggestionPill
+                            onclick={() => {
+                              onPillClick('What should I make today');
+                            }}
+                            icon={'🥘'}
+                            caption="What should I make today"
+                          />
+                          <SuggestionPill
+                            onclick={() => {
+                              onPillClick(
+                                'Make me a plan with easy prep meals'
+                              );
+                            }}
+                            icon={'🍔'}
+                            caption="Make me a plan with easy prep meals"
+                          />
+                          <SuggestionPill
+                            onclick={() => {
+                              onPillClick(
+                                'Include pasta and meatballs as my lunch'
+                              );
+                            }}
+                            icon={'🍜'}
+                            caption="Include pasta and meatballs as my lunch"
+                          />
+                        </div>
+                      )}
+                      {isLoading ? (
+                        <div className="">
+                          <Skeleton className="max-w-lg mb-7 h-7" />
+                          <Skeleton className="max-w-md mb-4 h-7" />
+                          {renderGhostCards()}
+                        </div>
+                      ) : createdMealplan?.meals ? (
+                        <>
+                          <p className="text-3xl pb-7">
+                            {queryResultPageHeader}
+                          </p>
+                          <div className="w-full pb-4 flex flex-row">
+                            <div className="flex flex-col w-full">
+                              <span className="flex items-center text-md">
+                                {calories} Calories
+                              </span>
+                              <span className="flex text-muted-foreground text-sm">
+                                {protein}g Protein, {fat}g Fat, {carbs}g Carbs{' '}
+                              </span>
+                            </div>
+                            <span className="flex items-center flex-row justify-end">
+                              <Button
+                                disabled={isLoading}
+                                onClick={() => {
+                                  fetchData(queryResultPageHeader);
+                                }}
+                                className="inline-flex mx-1 px-3 items-center justify-center mr-1 text-zinc-900 transition-colors duration-150 bg-gray-200 rounded-md focus:shadow-outline hover:bg-gray-400"
+                              >
+                                <TbRefresh className="w-4 h-4" />
+                              </Button>
+                              <Drawer>
+                                <DrawerTrigger asChild>
+                                  <Button variant="outline">Save</Button>
+                                </DrawerTrigger>
+                                <div className="flex  w-full items-center justify-center">
+                                  <DrawerContent className="flex border-muted flex-col px-4 justify-center">
+                                    {drawerMode === 'Calendar' ? (
+                                      <div className="flex flex-col">
+                                        <Calendar
+                                          mode="single"
+                                          selected={planDate}
+                                          onSelect={setPlanDate}
+                                          initialFocus
+                                          className="border-muted flex justify-center  mb-6 text-white"
+                                        />
+                                        <Button
+                                          className="max-w-md mx-auto w-full  mb-2"
+                                          onClick={() => saveMealPlan()}
+                                        >
+                                          Save
+                                        </Button>
+                                      </div>
+                                    ) : (
+                                      drawerMode === 'Confirmation' && (
+                                        <p>
+                                          A meal plan already exists for this
+                                          day. Are you sure you want to
+                                          continue?
+                                        </p>
+                                      )
+                                    )}
+                                    <DrawerClose className="w-full flex justify-center items-center">
+                                      <Button
+                                        variant={'outline'}
+                                        className="max-w-md w-full text-zinc-300 mb-2 "
+                                      >
+                                        Cancel
+                                      </Button>
+                                    </DrawerClose>
+                                  </DrawerContent>
+                                </div>
+                              </Drawer>
+                            </span>
+                          </div>
+                          {renderResultBox()}
+                        </>
+                      ) : (
+                        emptyState()
+                      )}
+                    </div>
+                  </div>
+                </div>
               ) : (
-                <EmptyCalories
-                  onSetCalories={() => router.push('/preferences')}
-                />
+                <div className="w-full mb-4">
+                  <div className="w-full flex flex-col">
+                    {' '}
+                    <div className="w-full flex items-center justify-between flex-row pb-4">
+                      <h2 className="text-md text-muted-foreground">
+                        Meal Plan
+                      </h2>
+                      <DatePicker
+                        trackDate={trackDate}
+                        setPlanDate={setTrackDate}
+                      />
+                    </div>
+                    {usersMealPlans?.length === 0 ? (
+                      <EmptyMealplans
+                        onGenerateClick={() => setGenerateMode(true)}
+                      />
+                    ) : (
+                      <div>
+                        {activeMealPlan?.meals.map((meal) => {
+                          return (
+                            meal.title && (
+                              <Card className="mb-4 w-full">
+                                <div className="w-full flex justify-between flex-row">
+                                  <div className="flex p-4 flex-col ">
+                                    <div className="flex pb-2 flex-row w-full items-center  text-muted-foreground">
+                                      {meal.type}
+                                    </div>
+                                    <div>{meal.title}</div>
+                                    <div className="flex pt-2 flex-col w-full">
+                                      {meal.macros && (
+                                        <span className="flex items-center text-md">
+                                          {meal?.macros?.carbs +
+                                            meal?.macros?.protein +
+                                            meal?.macros?.fat}{' '}
+                                          Calories
+                                        </span>
+                                      )}
+                                      <span className="flex text-muted-foreground text-sm">
+                                        {meal.macros?.carbs} Carbs{' '}
+                                        {meal.macros?.protein} Protein{' '}
+                                        {meal.macros?.fat} Fat
+                                      </span>
+                                    </div>
+                                  </div>
+                                  <div className="flex px-3 items-center justify-end">
+                                    <DropdownMenu>
+                                      <DropdownMenuTrigger asChild>
+                                        <Button
+                                          variant="ghost"
+                                          className="h-8 w-8 p-0"
+                                        >
+                                          <span className="sr-only">
+                                            Open menu
+                                          </span>
+                                          <DotsHorizontalIcon className="h-4 w-4" />
+                                        </Button>
+                                      </DropdownMenuTrigger>
+                                      <DropdownMenuContent
+                                        className="border-muted"
+                                        align="end"
+                                      >
+                                        <DropdownMenuItem>
+                                          Regenerate
+                                        </DropdownMenuItem>
+                                        <DropdownMenuSeparator />
+                                        <DropdownMenuItem>
+                                          Delete
+                                        </DropdownMenuItem>
+                                      </DropdownMenuContent>
+                                    </DropdownMenu>
+                                  </div>
+                                </div>
+                              </Card>
+                            )
+                          );
+                        })}
+                      </div>
+                    )}
+                  </div>
+                </div>
               )}
-            </Card>
+
+              <Card className="w-full flex justify-center py-4 ">
+                {userDetails?.macros ? (
+                  <Calories macros={{ protein, fat, carbs, calories }} />
+                ) : (
+                  <EmptyCalories
+                    onSetCalories={() => router.push('/preferences')}
+                  />
+                )}
+              </Card>
+            </div>
           </div>
         </div>
-      </div>
-      {createdMealplan?.meals && generateMode && (
-        <>
-          <div className="fixed bottom-5 px-4 w-full flex justify-center items-center">
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                fetchData(input);
-              }}
-              className="w-full flex justify-center"
-            >
-              <div className="relative flex w-full  items-center max-w-md sm:max-w-xl">
-                <input
-                  value={input}
-                  disabled={isLoading}
-                  onChange={(e) => setInput(e.target.value)}
-                  className=" px-2 pl-4 w-full h-[60px] focus:outline-none bg-zinc-800 border-[1px] border-zinc-600 text-md rounded-full "
-                  placeholder="Ask about a meal"
-                />
-                <button
-                  type="submit"
-                  disabled={isLoading || !input}
-                  className={`inline-flex absolute end-2.5 mx-1 items-center justify-center w-8 h-8 mr-2 text-indigo-100 transition-colors duration-150 bg-blue-500 rounded-full focus:shadow-outline hover:bg-blue-700 ${
-                    input ? 'cursor-pointer ' : 'cursor-not-allowed'
-                  } `}
-                >
-                  <FaArrowRight className={`w-4 h-4   } `} />
-                </button>
-              </div>
-            </form>
-          </div>{' '}
-        </>
-      )}
+        {createdMealplan?.meals && generateMode && (
+          <>
+            <div className="fixed bottom-5 px-4 w-full flex justify-center items-center">
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  fetchData(input);
+                }}
+                className="w-full flex justify-center"
+              >
+                <div className="relative flex w-full  items-center max-w-md sm:max-w-xl">
+                  <input
+                    value={input}
+                    disabled={isLoading}
+                    onChange={(e) => setInput(e.target.value)}
+                    className=" px-2 pl-4 w-full h-[60px] focus:outline-none bg-zinc-800 border-[1px] border-zinc-600 text-md rounded-full "
+                    placeholder="Ask about a meal"
+                  />
+                  <button
+                    type="submit"
+                    disabled={isLoading || !input}
+                    className={`inline-flex absolute end-2.5 mx-1 items-center justify-center w-8 h-8 mr-2 text-indigo-100 transition-colors duration-150 bg-blue-500 rounded-full focus:shadow-outline hover:bg-blue-700 ${
+                      input ? 'cursor-pointer ' : 'cursor-not-allowed'
+                    } `}
+                  >
+                    <FaArrowRight className={`w-4 h-4   } `} />
+                  </button>
+                </div>
+              </form>
+            </div>{' '}
+          </>
+        )}
+      </>
     </>
   );
 }
