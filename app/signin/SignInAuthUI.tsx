@@ -33,7 +33,7 @@ export default function AuthUI() {
       } else {
         toast.success('Signed in');
        // window.history.back();
-        router.push('/survey');
+        router.push('/dashboard');
       }
     } catch (error) {
       toast.error('An error occurred during login.');

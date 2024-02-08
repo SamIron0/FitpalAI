@@ -52,7 +52,7 @@ export default async function Home() {
                         </div>
                         <div className="w-11/20 justify-center items-center pl-1 flex w-full flex-col">
                           <p className=" text-white text-sm absolute">
-                            Introducing FitpalAI - Join Waitlist
+                            Get FitpalAI Beta Now
                           </p>
                         </div>
                         <div className=" flex items-center justify-end pr-2 w-1/5 ">
