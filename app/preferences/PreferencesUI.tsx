@@ -128,7 +128,7 @@ export function PreferencesUI({ id }: { id: string | undefined }) {
           </p>
         </div>
         <Separator className="mt-6" />
-        <div className="flex flex-col justify-center ">
+        <div className="flex flex-col justify-center space-y-5 ">
           <Categories
             activeCategory={activeCategory}
             setActiveCategory={setActiveCategory}

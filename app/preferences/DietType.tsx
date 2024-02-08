@@ -91,7 +91,7 @@ export default function DietType({ onSubmit }: DietTypeProps) {
             htmlFor="Anything"
             className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
           >
-            <IoFastFoodOutline className="pb-1 w-6 h-6" /> Anything
+            <IoFastFoodOutline className="pb-3 w-6 h-6" /> Anything
           </Label>
         </div>
         <div>
@@ -104,7 +104,7 @@ export default function DietType({ onSubmit }: DietTypeProps) {
             htmlFor="Mediterranean"
             className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
           >
-            <GiGrapes className="pb-1 w-6 h-6" />
+            <GiGrapes className="pb-3 w-6 h-6" />
             Mediterranean
           </Label>
         </div>
@@ -114,7 +114,7 @@ export default function DietType({ onSubmit }: DietTypeProps) {
             htmlFor="Paleo"
             className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
           >
-            <TbMeat className="pb-1 w-6 h-6" />
+            <TbMeat className="pb-3 w-6 h-6" />
             Paleo
           </Label>
         </div>
@@ -124,7 +124,7 @@ export default function DietType({ onSubmit }: DietTypeProps) {
             htmlFor="Vegan"
             className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
           >
-            <LuVegan className="pb-1 w-6 h-6" />
+            <LuVegan className="pb-3 w-6 h-6" />
             Vegan
           </Label>
         </div>
@@ -134,7 +134,7 @@ export default function DietType({ onSubmit }: DietTypeProps) {
             htmlFor="Keto"
             className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
           >
-            <IoFishOutline className="pb-1 w-6 h-6" />
+            <IoFishOutline className="pb-3 w-6 h-6" />
             Keto
           </Label>
         </div>
@@ -148,7 +148,7 @@ export default function DietType({ onSubmit }: DietTypeProps) {
             htmlFor="Vegetarian"
             className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
           >
-            <GiBroccoli className="w-6 h-6 pb-1" />
+            <GiBroccoli className="w-6 h-6 pb-3" />
             Vegetarian
           </Label>
         </div>
@@ -162,7 +162,7 @@ export default function DietType({ onSubmit }: DietTypeProps) {
             htmlFor="Gluten-free"
             className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
           >
-            <TbSalad className="w-6 h-6 pb-1" />
+            <TbSalad className="w-6 h-6 pb-3" />
             Gluten-free
           </Label>
         </div>
@@ -176,7 +176,7 @@ export default function DietType({ onSubmit }: DietTypeProps) {
             htmlFor="Pescatarian"
             className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
           >
-            <GiShrimp className="pb-1 w-6 h-6" />
+            <GiShrimp className="pb-3 w-6 h-6" />
             Pescatarian
           </Label>
         </div>
@@ -190,7 +190,7 @@ export default function DietType({ onSubmit }: DietTypeProps) {
             htmlFor="Low-Carb"
             className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
           >
-            <MdOutlineEggAlt className="w-6 h-6 pb-1" />
+            <MdOutlineEggAlt className="w-6 h-6 pb-3" />
             Low-Carb
           </Label>
         </div>
