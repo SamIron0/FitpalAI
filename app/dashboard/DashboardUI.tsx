@@ -602,24 +602,26 @@ export function DashboardUI({ user }: DashboardUIProps) {
                         <span className="px-2 pr-3 mb-2">Try</span>
                         <SuggestionPill
                           onclick={() => {
-                            onPillClick('What should I make for dinner');
+                            onPillClick('What should I make today');
                           }}
                           icon={'🥘'}
-                          caption="What should I make for dinner "
+                          caption="What should I make today"
                         />
                         <SuggestionPill
                           onclick={() => {
-                            onPillClick('Make me a meal plan for the week');
+                            onPillClick('Make me a plan with easy prep meals');
                           }}
                           icon={'🍔'}
-                          caption="Make me a meal plan for the week"
+                          caption="Make me a plan with easy prep meals"
                         />
                         <SuggestionPill
                           onclick={() => {
-                            onPillClick('Make me a cheap recipe for lunch');
+                            onPillClick(
+                              'Include pasta and meatballs as my lunch'
+                            );
                           }}
                           icon={'🍜'}
-                          caption=" Make me a cheap recipe for lunch"
+                          caption="Include pasta and meatballs as my lunch"
                         />
                       </div>
                     )}
