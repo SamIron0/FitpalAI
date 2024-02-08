@@ -240,7 +240,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
   );
   const [usersMealPlans, setUsersMealPlans] = useState<MealPlan[]>([]);
   const { userDetails, setUserDetails } = useUserDetails();
-  const [trackDate, setTrackDate] = React.useState<Date>( new Date());
+  const [trackDate, setTrackDate] = React.useState<Date>(new Date());
   const [planDate, setPlanDate] = React.useState<Date>();
 
   useEffect(() => {
@@ -687,22 +687,20 @@ export function DashboardUI({ user }: DashboardUIProps) {
               </div>
             ) : (
               <div className="w-full mb-4">
-                {usersMealPlans?.length === 0 ? (
-                  <EmptyMealplans
-                    onGenerateClick={() => setGenerateMode(true)}
-                  />
-                ) : (
-                  <div className="w-full flex flex-col">
-                    {' '}
-                    <div className="w-full flex items-center justify-between flex-row pb-4">
-                      <h2 className="text-md text-muted-foreground">
-                        Meal Plan
-                      </h2>
-                      <DatePicker
-                        trackDate={trackDate}
-                        setPlanDate={setTrackDate}
-                      />
-                    </div>
+                <div className="w-full flex flex-col">
+                  {' '}
+                  <div className="w-full flex items-center justify-between flex-row pb-4">
+                    <h2 className="text-md text-muted-foreground">Meal Plan</h2>
+                    <DatePicker
+                      trackDate={trackDate}
+                      setPlanDate={setTrackDate}
+                    />
+                  </div>
+                  {usersMealPlans?.length === 0 ? (
+                    <EmptyMealplans
+                      onGenerateClick={() => setGenerateMode(true)}
+                    />
+                  ) : (
                     <div>
                       {activeMealPlan?.meals.map((meal) => {
                         return (
@@ -763,8 +761,8 @@ export function DashboardUI({ user }: DashboardUIProps) {
                         );
                       })}
                     </div>
-                  </div>
-                )}
+                  )}
+                </div>
               </div>
             )}
 
