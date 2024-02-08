@@ -10,7 +10,7 @@ export function EmptyMealplans({ onGenerateClick }: Props) {
         <span>🍲</span>
         <h3 className="mt-4 text-lg font-semibold">Nothing to see here</h3>
         <p className="mb-4 mt-2 text-sm text-muted-foreground">
-          You do not have not any mealplans yet.
+          You do not have not any mealplans for this day.
         </p>
         <Button onClick={onGenerateClick}>Add mealplans</Button>
       </div>
