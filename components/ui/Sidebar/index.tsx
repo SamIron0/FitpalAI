@@ -45,8 +45,8 @@ const Sidebar = ({ session }: SidebarProps) => {
           } transition-transform duration-200 ease-in-out fixed inset-y-0 left-0 z-50  h-full bg-black overflow-y-auto`}
         >
           {isSidebarOpen && (
-            <div className="h-screen ">
-              <aside className="flex flex-col h-full items-center w-16 pb-12  overflow-y-auto border-r rtl:border-l rtl:border-r-0 bg-black border-black">
+            <div className="h-screen mb-12 ">
+              <aside className="flex flex-col h-full items-center w-16   overflow-y-auto border-r rtl:border-l rtl:border-r-0 bg-black border-black">
                 <nav className="flex flex-col flex-1 space-y-6">
                   <button
                     className="p-2 pt-2 flex flex-col items-center w-full"
