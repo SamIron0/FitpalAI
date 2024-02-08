@@ -5,7 +5,7 @@ export async function POST(req: Request) {
   if (req.method === 'POST') {
     try {
       const { trackDate } = await req.json();
-      let date = trackDate;
+      let date = trackDate.toISOString().split('T')[0];
       if (!trackDate) {
         date = new Date().toISOString().split('T')[0];
       }
