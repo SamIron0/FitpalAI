@@ -335,8 +335,8 @@ export function DashboardUI({ user }: DashboardUIProps) {
   }
 
   const onsetCalorieClick = () => {
-router.push('/preferences')
-  }
+    router.push('/preferences');
+  };
   //call aws to create the initial meal plan
   const fetchData = async (query: string) => {
     setIsLoading(true);
@@ -798,13 +798,13 @@ router.push('/preferences')
                 </div>
               )}
 
-              <Card className="w-full flex justify-center py-4 ">
+              <Card className="w-full flex justify-center py-4">
                 {userDetails?.macros ? (
-                  <Calories macros={{ protein, fat, carbs, calories }} />
+                  <div className="w-full flex justify-center ">
+                    <Calories macros={{ protein, fat, carbs, calories }} />
+                  </div>
                 ) : (
-                  <EmptyCalories
-                    onSetCalories={() => onsetCalorieClick()}
-                  />
+                  <EmptyCalories onSetCalories={() => onsetCalorieClick()} />
                 )}
               </Card>
             </div>
