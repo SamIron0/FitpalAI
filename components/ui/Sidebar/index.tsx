@@ -31,7 +31,7 @@ const Sidebar = ({ session }: SidebarProps) => {
         <div
           className={`transform ${
             isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
-          } transition-transform duration-200 ease-in-out absolute inset-y-0 left-0 z-50  h-full bg-black overflow-y-auto`}
+          } transition-transform duration-200 ease-in-out fixed inset-y-0 left-0 z-50  h-full bg-black overflow-y-auto`}
         >
           {isSidebarOpen && (
             <div className='h-screen '>
