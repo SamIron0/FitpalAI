@@ -92,7 +92,7 @@ const Sidebar = ({ session }: SidebarProps) => {
                     />
                   </a>
                 </nav>
-                <div className="flex flex-col mb-9 space-y-6">
+                <div className="flex flex-col mb-16 sm:mb-9">
                   <a className="flex justify-center " href="#">
                     <img
                       className="object-cover w-8 h-8 rounded-full"
