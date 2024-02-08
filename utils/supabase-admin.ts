@@ -72,7 +72,6 @@ const isSurveyComplete = async (id: string) => {
 };
 
 const retrieveMealPlans = async (user_id: string, date: Date) => {
-  console.log('retrieving', date);
   const { data, error: supabaseError } = await supabaseAdmin
     .from('mealplans')
     .select()
@@ -82,18 +81,7 @@ const retrieveMealPlans = async (user_id: string, date: Date) => {
   return data;
 };
 
-export const checkIfMealPlanExists = async (user_id: string, date: Date) => {
-  const { data, error: supabaseError } = await supabaseAdmin
-    .from('mealplans')
-    .select()
-    .eq('owner', user_id)
-    .eq('date', date)
-    .single();
-  if (supabaseError) {
-    throw supabaseError;
-  }
-  return data;
-};
+
 const deleteMealPlan = async (mealPlan: MealPlan) => {
   const { data, error: supabaseError } = await supabaseAdmin
     .from('mealplans')

@@ -289,13 +289,12 @@ export function DashboardUI({ user }: DashboardUIProps) {
 
     //check if mealplan exists for given date
     const exists = await postData({
-      url: '/api/check-if-mealplan-exists',
+      url: '/api/retrieve-meal-plans',
       data: { date: planDate }
     });
-
+console.log('exists', exists);
     if (exists) {
       setDrawerMode('Confirmation');
-      return;
     }
 
     if (createdMealplan === undefined) {
@@ -436,7 +435,6 @@ export function DashboardUI({ user }: DashboardUIProps) {
           result: parsedData
         }
       });
-      
     } catch (error) {
       console.log(error);
     } finally {
