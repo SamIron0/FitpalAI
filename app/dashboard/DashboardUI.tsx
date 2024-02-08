@@ -348,7 +348,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
       age: userDetails?.age,
       macros: userDetails?.macros
     };
-    input!='' ? setQueryResultPageHeader(input) : null;
+    input != '' ? setQueryResultPageHeader(input) : null;
     try {
       // log the query and response in  db
       await postData({
@@ -448,12 +448,13 @@ export function DashboardUI({ user }: DashboardUIProps) {
       const result = JSON.parse(data.body);
       let parsedData = JSON.parse(result);
       if (!parsedData) {
-        toast.error('Error liking meal');
+        toast.error('Coming soon');
         return;
       }
       toast.success('Added to likes');
     } catch (error) {
       toast.error('Error liking meal');
+      setIsLoading(true);
     }
   };
   function renderResultBox() {
