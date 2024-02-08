@@ -287,18 +287,6 @@ export function DashboardUI({ user }: DashboardUIProps) {
 
     setIsLoading(true);
 
-    //check if mealplan exists for given date
-    const exists = await postData({
-      url: '/api/retrieve-meal-plans',
-      data: { date: planDate }
-    });
-    console.log('exists', exists);
-    if (exists) {
-      setDrawerMode('Confirmation');
-      setIsLoading(false);
-      return;
-    }
-
     if (createdMealplan === undefined) {
       setIsLoading(false);
       toast.error('Create meal plan first');

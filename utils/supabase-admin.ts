@@ -90,7 +90,7 @@ const deleteMealPlan = async (mealPlan: MealPlan) => {
 };
 const createMealPlan = async (mealPlan: MealPlan) => {
   // delete meal plan for this date if it exists
-  deleteMealPlan(mealPlan);
+  await deleteMealPlan(mealPlan);
   //then insert
   console.log('saving', mealPlan);
   const { data, error: supabaseError } = await supabaseAdmin
