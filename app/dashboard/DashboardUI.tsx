@@ -608,10 +608,10 @@ export function DashboardUI({ user }: DashboardUIProps) {
                           <span className="px-2 pr-3 mb-2">Try</span>
                           <SuggestionPill
                             onclick={() => {
-                              onPillClick('What should I make today');
+                              onPillClick('Include chicken today');
                             }}
                             icon={'🥘'}
-                            caption="What should I make today"
+                            caption="Include chicken today"
                           />
                           <SuggestionPill
                             onclick={() => {
@@ -625,11 +625,11 @@ export function DashboardUI({ user }: DashboardUIProps) {
                           <SuggestionPill
                             onclick={() => {
                               onPillClick(
-                                'Include pasta and meatballs as my lunch'
+                                'Include meatballs in my lunch'
                               );
                             }}
                             icon={'🍜'}
-                            caption="Include pasta and meatballs as my lunch"
+                            caption="Include pasta and meatballs in my lunch"
                           />
                         </div>
                       )}
