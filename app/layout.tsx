@@ -128,7 +128,6 @@ export default async function RootLayout({ children }: PropsWithChildren) {
               <div className={cn('bg-background text-foreground')}>
                 {session?.user.email ? (
                   <>
-                    <Announcement />
                     <div className="flex">
                       <Sidebar session={session} /> {children}
                     </div>
