@@ -1,12 +1,18 @@
 'use client';
 import { IoClose } from 'react-icons/io5';
 import { useUserDetails } from '@/app/providers/UserDetailsContext';
+import { useState } from 'react';
 export default function Announcement() {
   const { userDetails } = useUserDetails();
-
+  const [announcementOpen, setAnnouncementOpen] = useState<boolean>(
+    !userDetails?.macros
+  );
+  function closeAnnouncement() {
+    setAnnouncementOpen(false);
+  }
   return (
     <div>
-      {!userDetails?.macros && (
+      {announcementOpen && (
         <div className="relative isolate flex items-center gap-x-6 overflow-hidden bg-gray-50 px-6 py-2.5 sm:px-3.5 sm:before:flex-1">
           <div
             className="absolute left-[max(-7rem,calc(50%-52rem))] top-1/2 -z-10 -translate-y-1/2 transform-gpu blur-2xl"
