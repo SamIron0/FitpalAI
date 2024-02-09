@@ -511,9 +511,10 @@ export function DashboardUI({ user }: DashboardUIProps) {
   const [activeMealPlan, setActiveMealPlan] = useState<MealPlan>();
   const [generateMode, setGenerateMode] = useState(true);
   const { isSidebarOpen } = useSidebar();
-  const [announcementOpen, setAnnouncementOpen] = useState(
-    !userDetails?.macros?.calories
-  );
+  const [announcementOpen, setAnnouncementOpen] = useState(false);
+  useEffect(() => {
+    if (!userDetails?.macros) setAnnouncementOpen(true);
+  }, [userDetails]);
   return (
     <>
       {announcementOpen && (
