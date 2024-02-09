@@ -70,6 +70,7 @@ import {
 import { Calendar } from '@/components/ui/calendar';
 import { useRouter } from 'next/navigation';
 import { EmptyCalories } from '@/components/EmptyCalories';
+import Announcement from '@/components/Announcement';
 
 const data: Payment[] = [
   {
@@ -510,9 +511,17 @@ export function DashboardUI({ user }: DashboardUIProps) {
   const [activeMealPlan, setActiveMealPlan] = useState<MealPlan>();
   const [generateMode, setGenerateMode] = useState(true);
   const { isSidebarOpen } = useSidebar();
-
+  const [announcementOpen, setAnnouncementOpen] = useState(
+    !userDetails?.macros?.calories
+  );
   return (
     <>
+      {announcementOpen && (
+        <Announcement
+          announcementOpen={announcementOpen}
+          closeAnnouncement={() => setAnnouncementOpen(false)}
+        />
+      )}
       {isSidebarOpen && (
         <div
           style={{

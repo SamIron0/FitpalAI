@@ -2,14 +2,8 @@
 import { IoClose } from 'react-icons/io5';
 import { useUserDetails } from '@/app/providers/UserDetailsContext';
 import { useState } from 'react';
-export default function Announcement() {
-  const { userDetails } = useUserDetails();
-  const [announcementOpen, setAnnouncementOpen] = useState<boolean>(
-    !userDetails?.macros
-  );
-  function closeAnnouncement() {
-    setAnnouncementOpen(false);
-  }
+export default function Announcement({announcementOpen, closeAnnouncement}: {announcementOpen: boolean, closeAnnouncement: () => void}) {
+  
   return (
     <div>
       {announcementOpen && (
