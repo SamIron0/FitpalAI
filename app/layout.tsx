@@ -130,6 +130,7 @@ export default async function RootLayout({ children }: PropsWithChildren) {
           <ToasterProvider />
           <SidebarProvider>
             <UserDetailsProvider>
+              {!userDetails?.macros && <Announcement />}
               <div className={cn('bg-background text-foreground')}>
                 {session?.user.email ? (
                   <>
