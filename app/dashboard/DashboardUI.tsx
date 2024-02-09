@@ -279,6 +279,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
         url: '/api/get-user-details'
       });
       setUserDetails(data);
+      if (!data?.macros) setAnnouncementOpen(true);
     };
     getDetails();
   }, []);
@@ -512,17 +513,8 @@ export function DashboardUI({ user }: DashboardUIProps) {
   const [generateMode, setGenerateMode] = useState(true);
   const { isSidebarOpen } = useSidebar();
   const [announcementOpen, setAnnouncementOpen] = useState(false);
-  useEffect(() => {
-    if (!userDetails?.macros) setAnnouncementOpen(true);
-  }, [userDetails]);
   return (
     <>
-      {announcementOpen && (
-        <Announcement
-          announcementOpen={announcementOpen}
-          closeAnnouncement={() => setAnnouncementOpen(false)}
-        />
-      )}
       {isSidebarOpen && (
         <div
           style={{
@@ -535,6 +527,12 @@ export function DashboardUI({ user }: DashboardUIProps) {
       )}
       <>
         <div className="w-full pb-12 flex flex-col">
+          {announcementOpen && (
+            <Announcement
+              announcementOpen={announcementOpen}
+              closeAnnouncement={() => setAnnouncementOpen(false)}
+            />
+          )}
           <div className="w-full flex justify-end pr-4 pt-4 ">
             {generateMode ? (
               <Button onClick={() => setGenerateMode(false)} className="px-4">
