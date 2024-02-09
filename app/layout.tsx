@@ -53,7 +53,6 @@ export const metadata = {
   }
 };
 
-
 export default async function RootLayout({ children }: PropsWithChildren) {
   const session = await getSession();
   const userDetails = await getUserDetails(session?.user?.id || '');
@@ -80,10 +79,11 @@ export default async function RootLayout({ children }: PropsWithChildren) {
           <ToasterProvider />
           <SidebarProvider>
             <UserDetailsProvider>
-              <Announcement />
               <div className={cn('bg-background text-foreground')}>
                 {session?.user.email ? (
                   <>
+                    <Announcement />
+
                     <div className="flex">
                       <Sidebar session={session} /> {children}
                     </div>

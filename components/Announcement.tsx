@@ -40,8 +40,7 @@ export default function Announcement() {
           </div>
           <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
             <p className="text-sm leading-6 text-gray-900">
-              Enter your details in the preferences tab to create personalized
-              plans.
+              Enter your details in the preferences tab.
             </p>
             <a
               href="/preferences"
@@ -53,6 +52,7 @@ export default function Announcement() {
           <div className="flex flex-1 justify-end">
             <button
               type="button"
+              onClick={closeAnnouncement}
               className="-m-3 p-3 focus-visible:outline-offset-[-4px]"
             >
               <span className="sr-only">Dismiss</span>
