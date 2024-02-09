@@ -12,6 +12,7 @@ import { getSession } from './supabase-server';
 import ToasterProvider from './providers/ToasterProvider';
 import { cn } from '@/lib/utils';
 import { SidebarProvider } from './providers/SideBarContext';
+import { getUserDetails } from './supabase-server';
 import {
   UserDetailsProvider,
   useUserDetails
@@ -105,7 +106,7 @@ function Announcement() {
 
 export default async function RootLayout({ children }: PropsWithChildren) {
   const session = await getSession();
-  const user = useUserDetails();
+  const userDetails = await getUserDetails(session?.user?.id || '');
   return (
     <>
       <head>
