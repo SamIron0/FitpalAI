@@ -12,7 +12,11 @@ import { getSession } from './supabase-server';
 import ToasterProvider from './providers/ToasterProvider';
 import { cn } from '@/lib/utils';
 import { SidebarProvider } from './providers/SideBarContext';
-import { UserDetailsProvider } from './providers/UserDetailsContext';
+import {
+  UserDetailsProvider,
+  useUserDetails
+} from './providers/UserDetailsContext';
+
 const meta = {
   title: 'Fitpal AI',
   description: 'Meal plans and calorie tracking.',
@@ -101,7 +105,7 @@ function Announcement() {
 
 export default async function RootLayout({ children }: PropsWithChildren) {
   const session = await getSession();
-
+  const user = useUserDetails();
   return (
     <>
       <head>
