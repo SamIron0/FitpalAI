@@ -438,6 +438,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
   const likeMeal = async (meal: any) => {
     setIsLoading(true);
     try {
+      /*
       const data = await postData({
         url: '/api/like-meal',
         data: meal
@@ -447,7 +448,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
       if (!parsedData) {
         toast.error('Coming soon');
         return;
-      }
+      }*/
       toast.success('Added to likes');
     } catch (error) {
       toast.error('Error liking meal');
@@ -522,7 +523,6 @@ export function DashboardUI({ user }: DashboardUIProps) {
       )}
       <>
         <div className="w-full pb-12 flex flex-col">
-         
           <div className="w-full flex justify-end pr-4 pt-4 ">
             {generateMode ? (
               <Button onClick={() => setGenerateMode(false)} className="px-4">
