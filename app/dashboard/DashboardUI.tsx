@@ -527,12 +527,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
       )}
       <>
         <div className="w-full pb-12 flex flex-col">
-          {announcementOpen && (
-            <Announcement
-              announcementOpen={announcementOpen}
-              closeAnnouncement={() => setAnnouncementOpen(false)}
-            />
-          )}
+         
           <div className="w-full flex justify-end pr-4 pt-4 ">
             {generateMode ? (
               <Button onClick={() => setGenerateMode(false)} className="px-4">
