@@ -450,9 +450,10 @@ export function DashboardUI({ user }: DashboardUIProps) {
         return;
       }*/
       toast.success('Added to likes');
+      setIsLoading(false);
     } catch (error) {
       toast.error('Error liking meal');
-      setIsLoading(true);
+      setIsLoading(false);
     }
   };
   function renderResultBox() {
