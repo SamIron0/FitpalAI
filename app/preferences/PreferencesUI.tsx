@@ -42,7 +42,7 @@ export function PreferencesUI({ id }: { id: string | undefined }) {
     };
     getDetails();
   }, []);
-  const [activeCategory, setActiveCategory] = useState('Diet Type');
+  const [activeCategory, setActiveCategory] = useState('Macros');
 
   const { isSidebarOpen } = useSidebar();
   const changeDietType = async (diet: string) => {

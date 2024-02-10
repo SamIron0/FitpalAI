@@ -118,7 +118,8 @@ const createQuery = async (query: string, user_id: string) => {
       {
         id: uuidv4(),
         query: query,
-        user_id: user_id
+        user_id: user_id,
+        time: new Date()
       }
     ]);
   console.log(`New query inserted ${data}.`);

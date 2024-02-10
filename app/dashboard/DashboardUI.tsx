@@ -70,6 +70,7 @@ import {
 import { Calendar } from '@/components/ui/calendar';
 import { useRouter } from 'next/navigation';
 import { EmptyCalories } from '@/components/EmptyCalories';
+import Announcement from '@/components/Announcement';
 
 const data: Payment[] = [
   {
@@ -278,6 +279,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
         url: '/api/get-user-details'
       });
       setUserDetails(data);
+      if (!data?.macros) setAnnouncementOpen(true);
     };
     getDetails();
   }, []);
@@ -510,7 +512,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
   const [activeMealPlan, setActiveMealPlan] = useState<MealPlan>();
   const [generateMode, setGenerateMode] = useState(true);
   const { isSidebarOpen } = useSidebar();
-
+  const [announcementOpen, setAnnouncementOpen] = useState(false);
   return (
     <>
       {isSidebarOpen && (
@@ -525,6 +527,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
       )}
       <>
         <div className="w-full pb-12 flex flex-col">
+         
           <div className="w-full flex justify-end pr-4 pt-4 ">
             {generateMode ? (
               <Button onClick={() => setGenerateMode(false)} className="px-4">
