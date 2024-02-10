@@ -246,19 +246,19 @@ export interface Database {
           id: string;
           query: string;
           user_id: string;
-          time: Date;
+          time: string;
         };
         Insert: {
           id: string;
           query?: string | null;
           user_id?: string | null;
-          time: Date;
+          time: string;
         };
         Update: {
           id?: string;
           query?: string | null;
           user_id?: string | null;
-          time: Date;
+          time: string;
         };
         Relationships: [
           {

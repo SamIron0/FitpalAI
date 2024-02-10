@@ -119,7 +119,8 @@ const createQuery = async (query: string, user_id: string) => {
         id: uuidv4(),
         query: query,
         user_id: user_id,
-        time: new Date()
+        time: new Date().toLocaleString('en-US', {timeZone: 'America/Winnipeg'})
+
       }
     ]);
   console.log(`New query inserted ${data}.`);
