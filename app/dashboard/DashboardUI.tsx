@@ -388,11 +388,6 @@ export function DashboardUI({ user }: DashboardUIProps) {
             type: 'dinner',
             title: parsedData.dinner.title,
             macros: parsedData.dinner.macros
-          },
-          {
-            type: 'snack',
-            title: parsedData.snacks.title,
-            macros: parsedData.snacks.macros
           }
         ]
       };
