@@ -2,7 +2,7 @@
 
 FItpal AI is a meal plan generator that extracts users intent from natural language using GPT and generates a meal plan by categorizing users input and personal details into buckets of AI generated plans
 
-This repo contains only the front end code. Refer to the repo @ https://github.com/SamIron0/cruiseo for the aws lambda function used to call the open ai api.
+This repo contains only the front end code. Refer to the repo @ https://github.com/SamIron0/fitpalai-lambda for the aws lambda function used to call the open ai api.
 
 ## Main Functionalities 
 - Utilizes a frontend architecture created with Next.js, React, and TypeScript (TSX) on Vercel.
