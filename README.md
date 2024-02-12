@@ -7,9 +7,3 @@ htttps://fitpalai.com
 - Open AI api integration for knowledge work
 - Responsive Tailwind CSS design
 
-
-## Demo
-[![Screenshot of demo](./public/demo2.png)](https://fitpalai.com/)
-[![Screenshot of demo](./public/demo3.png)](https://fitpalai.com/)
-[![Screenshot of demo](./public/demo4.png)](https://fitpalai.com/)
-[![Screenshot of demo](./public/demo5.png)](https://fitpalai.com/)
