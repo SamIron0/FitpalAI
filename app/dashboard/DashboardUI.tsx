@@ -352,7 +352,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
     };
     input != "" ? setQueryResultPageHeader(input) : null;
     try {
-      var result = fetch(
+      var result = await fetch(
         "https://26ed-2604-3d09-aa7a-95e0-9df7-c484-1877-40db.ngrok-free.app/execute-script",
         {
           method: "POST",
