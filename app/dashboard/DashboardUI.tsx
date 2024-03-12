@@ -353,7 +353,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
     };
     input != "" ? setQueryResultPageHeader(input) : null;
     var ngrokLink =
-      "https://185c-2604-3d09-aa7a-95e0-9df7-c484-1877-40db.ngrok-free.app//execute-script";
+      "https://185c-2604-3d09-aa7a-95e0-9df7-c484-1877-40db.ngrok-free.app/execute-script";
 
     try {
       var result = await axios.post(ngrokLink, {
