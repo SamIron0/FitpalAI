@@ -351,24 +351,16 @@ export function DashboardUI({ user }: DashboardUIProps) {
       macros: userDetails?.macros,
     };
     input != "" ? setQueryResultPageHeader(input) : null;
-    try {
-      var result = await fetch(
-        "https://6261-2604-3d09-aa7a-95e0-14d8-1a9-760a-9401.ngrok-free.app/execute-script",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            userData:
-              "The users name is Samuel, he eats 88g of protein, 120g of carbs,9g of fats and 2505 calories everyday.",
-            userName: "tinubu",
-          }),
-        }
-      );
-      //const data = JSON.parse(result.body);
+    var ngrokLink =
+      "https://6261-2604-3d09-aa7a-95e0-14d8-1a9-760a-9401.ngrok-free.app/execute-script";
 
-      //let parsedData = JSON.parse(data);
+    try {
+      var result = await axios.post(ngrokLink, {
+        userData:
+          "The users name is Samuel, he eats 88g of protein, 120g of carbs,9g of fats and 2505 calories everyday.",
+        userName: "tinubu",
+      });
+
       /*
       mealplan = {
         id: "",
