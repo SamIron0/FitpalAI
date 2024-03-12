@@ -1,10 +1,10 @@
-"use client";
-import { FaRegHeart } from "react-icons/fa";
-import { FaArrowRight } from "react-icons/fa";
-import { BsStars } from "react-icons/bs";
-import { BsThreeDotsVertical } from "react-icons/bs";
-import * as React from "react";
-import { CaretSortIcon, DotsHorizontalIcon } from "@radix-ui/react-icons";
+'use client';
+import { FaRegHeart } from 'react-icons/fa';
+import { FaArrowRight } from 'react-icons/fa';
+import { BsStars } from 'react-icons/bs';
+import { BsThreeDotsVertical } from 'react-icons/bs';
+import * as React from 'react';
+import { CaretSortIcon, DotsHorizontalIcon } from '@radix-ui/react-icons';
 import {
   ColumnDef,
   ColumnFiltersState,
@@ -14,17 +14,17 @@ import {
   getFilteredRowModel,
   getPaginationRowModel,
   getSortedRowModel,
-  useReactTable,
-} from "@tanstack/react-table";
-import { Doughnut } from "react-chartjs-2";
+  useReactTable
+} from '@tanstack/react-table';
+import { Doughnut } from 'react-chartjs-2';
 
-import { useEffect, useState } from "react";
-import { TbRefresh } from "react-icons/tb";
-import SuggestionPill from "../../components/SuggestionPill";
-import { MealPlan, UserDetails } from "@/types";
-import { Skeleton } from "@/components/ui/skeleton";
-import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
+import { useEffect, useState } from 'react';
+import { TbRefresh } from 'react-icons/tb';
+import SuggestionPill from '../../components/SuggestionPill';
+import { MealPlan, UserDetails } from '@/types';
+import { Skeleton } from '@/components/ui/skeleton';
+import { Button } from '@/components/ui/button';
+import { Checkbox } from '@/components/ui/checkbox';
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -32,32 +32,32 @@ import {
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Allergies } from "@/components/Allergies";
+  DropdownMenuTrigger
+} from '@/components/ui/dropdown-menu';
+import { Allergies } from '@/components/Allergies';
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+  CardTitle
+} from '@/components/ui/card';
 import axios from 'axios';
-import { getData, postData } from "@/utils/helpers";
-import { Pantry } from "@/components/Pantry";
-import { Calories } from "@/components/Calories";
-import toast from "react-hot-toast";
-import { User } from "@supabase/supabase-js";
-import { DatePicker } from "@/components/DatePicker";
+import { getData, postData } from '@/utils/helpers';
+import { Pantry } from '@/components/Pantry';
+import { Calories } from '@/components/Calories';
+import toast from 'react-hot-toast';
+import { User } from '@supabase/supabase-js';
+import { DatePicker } from '@/components/DatePicker';
 import {
   Popover,
   PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import { useSidebar } from "../providers/SideBarContext";
-import { EmptyMealplans } from "@/components/EmptyMealplans";
-import { useUserDetails } from "../providers/UserDetailsContext";
-import { LuDivideSquare } from "react-icons/lu";
+  PopoverTrigger
+} from '@/components/ui/popover';
+import { useSidebar } from '../providers/SideBarContext';
+import { EmptyMealplans } from '@/components/EmptyMealplans';
+import { useUserDetails } from '../providers/UserDetailsContext';
+import { LuDivideSquare } from 'react-icons/lu';
 import {
   DrawerTrigger,
   DrawerContent,
@@ -66,61 +66,61 @@ import {
   DrawerDescription,
   DrawerFooter,
   DrawerClose,
-  Drawer,
-} from "@/components/ui/drawer";
-import { Calendar } from "@/components/ui/calendar";
-import { useRouter } from "next/navigation";
-import { EmptyCalories } from "@/components/EmptyCalories";
-import Announcement from "@/components/Announcement";
+  Drawer
+} from '@/components/ui/drawer';
+import { Calendar } from '@/components/ui/calendar';
+import { useRouter } from 'next/navigation';
+import { EmptyCalories } from '@/components/EmptyCalories';
+import Announcement from '@/components/Announcement';
 
 const data: Payment[] = [
   {
-    id: "m5gr84i9",
+    id: 'm5gr84i9',
     amount: 316,
-    status: "success",
-    email: "ken99@yahoo.com",
+    status: 'success',
+    email: 'ken99@yahoo.com'
   },
   {
-    id: "3u1reuv4",
+    id: '3u1reuv4',
     amount: 242,
-    status: "success",
-    email: "Abe45@gmail.com",
+    status: 'success',
+    email: 'Abe45@gmail.com'
   },
   {
-    id: "derv1ws0",
+    id: 'derv1ws0',
     amount: 837,
-    status: "processing",
-    email: "Monserrat44@gmail.com",
+    status: 'processing',
+    email: 'Monserrat44@gmail.com'
   },
   {
-    id: "5kma53ae",
+    id: '5kma53ae',
     amount: 874,
-    status: "success",
-    email: "Silas22@gmail.com",
+    status: 'success',
+    email: 'Silas22@gmail.com'
   },
   {
-    id: "bhqecj4p",
+    id: 'bhqecj4p',
     amount: 721,
-    status: "failed",
-    email: "carmella@hotmail.com",
-  },
+    status: 'failed',
+    email: 'carmella@hotmail.com'
+  }
 ];
 
 export type Payment = {
   id: string;
   amount: number;
-  status: "pending" | "processing" | "success" | "failed";
+  status: 'pending' | 'processing' | 'success' | 'failed';
   email: string;
 };
 
 export const columns: ColumnDef<Payment>[] = [
   {
-    id: "select",
+    id: 'select',
     header: ({ table }) => (
       <Checkbox
         checked={
           table.getIsAllPageRowsSelected() ||
-          (table.getIsSomePageRowsSelected() && "indeterminate")
+          (table.getIsSomePageRowsSelected() && 'indeterminate')
         }
         onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
         aria-label="Select all"
@@ -134,47 +134,47 @@ export const columns: ColumnDef<Payment>[] = [
       />
     ),
     enableSorting: false,
-    enableHiding: false,
+    enableHiding: false
   },
   {
-    accessorKey: "status",
-    header: "Status",
+    accessorKey: 'status',
+    header: 'Status',
     cell: ({ row }) => (
-      <div className="capitalize">{row.getValue("status")}</div>
-    ),
+      <div className="capitalize">{row.getValue('status')}</div>
+    )
   },
   {
-    accessorKey: "email",
+    accessorKey: 'email',
     header: ({ column }) => {
       return (
         <Button
           variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
         >
           Email
           <CaretSortIcon className="ml-2 h-4 w-4" />
         </Button>
       );
     },
-    cell: ({ row }) => <div className="lowercase">{row.getValue("email")}</div>,
+    cell: ({ row }) => <div className="lowercase">{row.getValue('email')}</div>
   },
   {
-    accessorKey: "amount",
+    accessorKey: 'amount',
     header: () => <div className="text-right">Amount</div>,
     cell: ({ row }) => {
-      const amount = parseFloat(row.getValue("amount"));
+      const amount = parseFloat(row.getValue('amount'));
 
       // Format the amount as a dollar amount
-      const formatted = new Intl.NumberFormat("en-US", {
-        style: "currency",
-        currency: "USD",
+      const formatted = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD'
       }).format(amount);
 
       return <div className="text-right font-medium">{formatted}</div>;
-    },
+    }
   },
   {
-    id: "actions",
+    id: 'actions',
     enableHiding: false,
     cell: ({ row }) => {
       const payment = row.original;
@@ -198,12 +198,12 @@ export const columns: ColumnDef<Payment>[] = [
           </DropdownMenuContent>
         </DropdownMenu>
       );
-    },
-  },
+    }
+  }
 ];
 export const addAllergies = (allergies: string[]) => {
   if (allergies.length > 0) {
-    postData({ url: "/api/update-allergies", data: allergies });
+    postData({ url: '/api/update-allergies', data: allergies });
   }
 };
 
@@ -235,8 +235,8 @@ export function DashboardUI({ user }: DashboardUIProps) {
       sorting,
       columnFilters,
       columnVisibility,
-      rowSelection,
-    },
+      rowSelection
+    }
   });
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [completed, setCompleted] = useState<boolean>(false);
@@ -247,14 +247,14 @@ export function DashboardUI({ user }: DashboardUIProps) {
   const { userDetails, setUserDetails } = useUserDetails();
   const [trackDate, setTrackDate] = React.useState<Date>(new Date());
   const [planDate, setPlanDate] = React.useState<Date>();
-  const [drawerMode, setDrawerMode] = useState("Calendar");
+  const [drawerMode, setDrawerMode] = useState('Calendar');
   useEffect(() => {
     const retrieveMealPlan = async () => {
       console.log(trackDate);
       try {
         const data = await postData({
-          url: "/api/retrieve-meal-plans",
-          data: { trackDate: trackDate },
+          url: '/api/retrieve-meal-plans',
+          data: { trackDate: trackDate }
         });
         if (!data) {
           return;
@@ -274,10 +274,10 @@ export function DashboardUI({ user }: DashboardUIProps) {
   }, [trackDate]);
 
   useEffect(() => {
-    console.log("updating");
+    console.log('updating');
     const getDetails = async () => {
       const data = await getData({
-        url: "/api/get-user-details",
+        url: '/api/get-user-details'
       });
       setUserDetails(data);
       if (!data?.macros) setAnnouncementOpen(true);
@@ -295,7 +295,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
 
     if (createdMealplan === undefined) {
       setIsLoading(false);
-      toast.error("Create meal plan first");
+      toast.error('Create meal plan first');
       return;
     }
 
@@ -303,30 +303,30 @@ export function DashboardUI({ user }: DashboardUIProps) {
       meals: createdMealplan.meals,
       id: createdMealplan.id,
       owner: createdMealplan.owner,
-      date: planDate,
+      date: planDate
     };
 
-    console.log("Plan date", planDate);
-    const toastId = toast.loading("Saving meal plan");
+    console.log('Plan date', planDate);
+    const toastId = toast.loading('Saving meal plan');
 
     try {
       const data = await postData({
-        url: "/api/save-meal-plan",
-        data: { mealplan: new_plan },
+        url: '/api/save-meal-plan',
+        data: { mealplan: new_plan }
       });
       if (!data) {
         toast.dismiss(toastId);
-        toast.error("Error saving meal plan");
+        toast.error('Error saving meal plan');
         return;
       }
       setIsLoading(false);
       toast.dismiss(toastId);
-      toast.success("Meal plan saved successfully");
+      toast.success('Meal plan saved successfully');
       setGenerateMode(false);
     } catch (error) {
       setIsLoading(false);
       toast.dismiss(toastId);
-      toast.error("Error saving meal plan");
+      toast.error('Error saving meal plan');
     }
   };
   function renderGhostCards() {
@@ -338,7 +338,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
   }
 
   const onsetCalorieClick = () => {
-    router.push("/preferences");
+    router.push('/preferences');
   };
   //call aws to create the initial meal plan
   const fetchData = async (query: string) => {
@@ -349,18 +349,19 @@ export function DashboardUI({ user }: DashboardUIProps) {
       goals: userDetails?.goals || [],
       weight: userDetails?.weight,
       age: userDetails?.age,
-      macros: userDetails?.macros,
+      macros: userDetails?.macros
     };
-    input != "" ? setQueryResultPageHeader(input) : null;
+    input != '' ? setQueryResultPageHeader(input) : null;
     var ngrokLink =
-      "https://ea6d-2604-3d09-aa7a-95e0-9df7-c484-1877-40db.ngrok-free.app/execute-script";
+      'https://ea6d-2604-3d09-aa7a-95e0-9df7-c484-1877-40db.ngrok-free.app/execute-script';
 
     try {
       var result = await axios.post(ngrokLink, {
         userData:
-          "The users name is Samuel, he eats 88g of protein, 120g of carbs,9g of fats and 2505 calories everyday.",
-        userName: "tinubu",
+          'The users name is Samuel, he eats 88g of protein, 120g of carbs,9g of fats and 2505 calories everyday.',
+        userName: 'tinubu'
       });
+      console.log(result);
 
       /*
       mealplan = {
@@ -433,18 +434,18 @@ export function DashboardUI({ user }: DashboardUIProps) {
     setIsLoading(true);
     try {
       const data = await postData({
-        url: "/api/like-meal",
-        data: meal,
+        url: '/api/like-meal',
+        data: meal
       });
       const result = JSON.parse(data.body);
       let parsedData = JSON.parse(result);
       if (!parsedData) {
-        toast.error("Coming soon");
+        toast.error('Coming soon');
         return;
       }
-      toast.success("Added to likes");
+      toast.success('Added to likes');
     } catch (error) {
-      toast.error("Error liking meal");
+      toast.error('Error liking meal');
       setIsLoading(true);
     }
   };
@@ -478,7 +479,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
                   meal.macros?.protein &&
                   meal.macros.carbs * 4 +
                     meal.macros.fat * 9 +
-                    meal.macros.protein * 4}{" "}
+                    meal.macros.protein * 4}{' '}
                 Calories
               </div>
             </Card>
@@ -487,8 +488,8 @@ export function DashboardUI({ user }: DashboardUIProps) {
     });
     return results;
   }
-  const [input, setInput] = useState("");
-  const [queryResultPageHeader, setQueryResultPageHeader] = useState("");
+  const [input, setInput] = useState('');
+  const [queryResultPageHeader, setQueryResultPageHeader] = useState('');
   const [gptResponse, setGptResponse] = useState();
   const onPillClick = (caption: string) => {
     setInput(caption);
@@ -507,10 +508,10 @@ export function DashboardUI({ user }: DashboardUIProps) {
       {isSidebarOpen && (
         <div
           style={{
-            position: "fixed",
-            width: "100%",
-            height: "100%",
-            backgroundColor: "rgba(0,0,0,0.5)",
+            position: 'fixed',
+            width: '100%',
+            height: '100%',
+            backgroundColor: 'rgba(0,0,0,0.5)'
           }}
         />
       )}
@@ -562,11 +563,11 @@ export function DashboardUI({ user }: DashboardUIProps) {
                                 disabled={isLoading || !input}
                                 className={`inline-flex absolute  p-2 end-2.5 mx-1 items-center justify-center w-8 h-8 mr-2 text-indigo-100 transition-colors duration-150 bg-blue-500 rounded-full focus:shadow-outline hover:bg-blue-700 ${
                                   input
-                                    ? "cursor-pointer "
-                                    : "cursor-not-allowed"
+                                    ? 'cursor-pointer '
+                                    : 'cursor-not-allowed'
                                 } `}
                               >
-                                <FaArrowRight className={`w-4 h-4  `} />{" "}
+                                <FaArrowRight className={`w-4 h-4  `} />{' '}
                               </button>
                             </div>
                           </form>
@@ -577,25 +578,25 @@ export function DashboardUI({ user }: DashboardUIProps) {
                           <span className="px-2 pr-3 mb-2">Try</span>
                           <SuggestionPill
                             onclick={() => {
-                              onPillClick("Include chicken today");
+                              onPillClick('Include chicken today');
                             }}
-                            icon={"🥘"}
+                            icon={'🥘'}
                             caption="Include chicken today"
                           />
                           <SuggestionPill
                             onclick={() => {
-                              onPillClick("Include pasta today");
+                              onPillClick('Include pasta today');
                             }}
-                            icon={"🍜"}
+                            icon={'🍜'}
                             caption="Include pasta today"
                           />
                           <SuggestionPill
                             onclick={() => {
                               onPillClick(
-                                "Make me a plan with easy prep meals"
+                                'Make me a plan with easy prep meals'
                               );
                             }}
-                            icon={"🍔"}
+                            icon={'🍔'}
                             caption="Make me a plan with easy prep meals"
                           />
                         </div>
@@ -617,7 +618,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
                                 {calories} Calories
                               </span>
                               <span className="flex text-muted-foreground text-sm">
-                                {protein}g Protein, {fat}g Fat, {carbs}g Carbs{" "}
+                                {protein}g Protein, {fat}g Fat, {carbs}g Carbs{' '}
                               </span>
                             </div>
                             <span className="flex items-center flex-row justify-end">
@@ -625,7 +626,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
                                 disabled={isLoading}
                                 onClick={() => {
                                   fetchData(queryResultPageHeader).then(() =>
-                                    setInput("")
+                                    setInput('')
                                   );
                                 }}
                                 className="inline-flex mx-1 px-3 items-center justify-center mr-1 text-zinc-900 transition-colors duration-150 bg-gray-200 rounded-md focus:shadow-outline hover:bg-gray-400"
@@ -638,7 +639,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
                                 </DrawerTrigger>
                                 <div className="flex  w-full items-center justify-center">
                                   <DrawerContent className="flex border-muted flex-col px-4 justify-center">
-                                    {drawerMode === "Calendar" ? (
+                                    {drawerMode === 'Calendar' ? (
                                       <div className="flex flex-col">
                                         <Calendar
                                           mode="single"
@@ -655,7 +656,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
                                         </Button>
                                       </div>
                                     ) : (
-                                      drawerMode === "Confirmation" && (
+                                      drawerMode === 'Confirmation' && (
                                         <p>
                                           A meal plan already exists for this
                                           day. Are you sure you want to
@@ -665,7 +666,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
                                     )}
                                     <DrawerClose className="w-full flex justify-center items-center">
                                       <Button
-                                        variant={"outline"}
+                                        variant={'outline'}
                                         className="max-w-md w-full text-zinc-300 mb-2 "
                                       >
                                         Cancel
@@ -687,7 +688,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
               ) : (
                 <div className="w-full mb-4">
                   <div className="w-full flex flex-col">
-                    {" "}
+                    {' '}
                     <div className="w-full flex items-center justify-between flex-row pb-4">
                       <h2 className="text-md text-muted-foreground">
                         Meal Plan
@@ -718,13 +719,13 @@ export function DashboardUI({ user }: DashboardUIProps) {
                                         <span className="flex items-center text-md">
                                           {meal?.macros?.carbs +
                                             meal?.macros?.protein +
-                                            meal?.macros?.fat}{" "}
+                                            meal?.macros?.fat}{' '}
                                           Calories
                                         </span>
                                       )}
                                       <span className="flex text-muted-foreground text-sm">
-                                        {meal.macros?.carbs} Carbs{" "}
-                                        {meal.macros?.protein} Protein{" "}
+                                        {meal.macros?.carbs} Carbs{' '}
+                                        {meal.macros?.protein} Protein{' '}
                                         {meal.macros?.fat} Fat
                                       </span>
                                     </div>
@@ -785,7 +786,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
               <form
                 onSubmit={(e) => {
                   e.preventDefault();
-                  fetchData(input).then(() => setInput(""));
+                  fetchData(input).then(() => setInput(''));
                 }}
                 className="w-full flex justify-center"
               >
@@ -801,14 +802,14 @@ export function DashboardUI({ user }: DashboardUIProps) {
                     type="submit"
                     disabled={isLoading || !input}
                     className={`inline-flex absolute end-2.5 mx-1 items-center justify-center w-8 h-8 mr-2 text-indigo-100 transition-colors duration-150 bg-blue-500 rounded-full focus:shadow-outline hover:bg-blue-700 ${
-                      input ? "cursor-pointer " : "cursor-not-allowed"
+                      input ? 'cursor-pointer ' : 'cursor-not-allowed'
                     } `}
                   >
                     <FaArrowRight className={`w-4 h-4   } `} />
                   </button>
                 </div>
               </form>
-            </div>{" "}
+            </div>{' '}
           </>
         )}
       </>
