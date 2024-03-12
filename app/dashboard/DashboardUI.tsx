@@ -42,6 +42,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import axios from 'axios';
 import { getData, postData } from "@/utils/helpers";
 import { Pantry } from "@/components/Pantry";
 import { Calories } from "@/components/Calories";
