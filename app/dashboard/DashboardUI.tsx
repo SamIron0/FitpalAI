@@ -352,17 +352,22 @@ export function DashboardUI({ user }: DashboardUIProps) {
     };
     input != "" ? setQueryResultPageHeader(input) : null;
     try {
-      // log the query and response in  db
-      const result = await postData({
-        url: "https://26ed-2604-3d09-aa7a-95e0-9df7-c484-1877-40db.ngrok-free.app/execute-script",
-        data: {
-          userData:
-            "The users name is Samuel, he eats 88g of protein, 120g of carbs,9g of fats and 2505 calories everyday.",
-          userName: "tinubu",
-        },
-      });
+      var result = fetch(
+        "https://26ed-2604-3d09-aa7a-95e0-9df7-c484-1877-40db.ngrok-free.app/execute-script",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            userData:
+              "The users name is Samuel, he eats 88g of protein, 120g of carbs,9g of fats and 2505 calories everyday.",
+            userName: "tinubu",
+          }),
+        }
+      );
       const data = JSON.parse(result.body);
-      
+
       //let parsedData = JSON.parse(data);
       /*
       mealplan = {
