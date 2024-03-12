@@ -366,7 +366,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
           }),
         }
       );
-      const data = JSON.parse(result.body);
+      //const data = JSON.parse(result.body);
 
       //let parsedData = JSON.parse(data);
       /*
