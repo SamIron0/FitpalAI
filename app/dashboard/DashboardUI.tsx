@@ -58,6 +58,7 @@ import { useSidebar } from '../providers/SideBarContext';
 import { EmptyMealplans } from '@/components/EmptyMealplans';
 import { useUserDetails } from '../providers/UserDetailsContext';
 import { LuDivideSquare } from 'react-icons/lu';
+
 import {
   DrawerTrigger,
   DrawerContent,
