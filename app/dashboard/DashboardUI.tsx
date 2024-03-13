@@ -464,7 +464,12 @@ export function DashboardUI({ user }: DashboardUIProps) {
                 </div>
               </div>
             </div>
-            <div>{meal.foods}</div>
+            <div>
+              {meal &&
+                meal.foods?.map((food: any, index: number, array: any[]) =>
+                  index === array.length - 1 ? food : food + ', '
+                )}
+            </div>
             <div>
               {meal.macros?.carbs &&
                 meal.macros?.fat &&
