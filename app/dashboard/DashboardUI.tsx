@@ -250,7 +250,6 @@ export function DashboardUI({ user }: DashboardUIProps) {
   const [drawerMode, setDrawerMode] = useState('Calendar');
   useEffect(() => {
     const retrieveMealPlan = async () => {
-      console.log(trackDate);
       try {
         const data = await postData({
           url: '/api/retrieve-meal-plans',
@@ -259,7 +258,6 @@ export function DashboardUI({ user }: DashboardUIProps) {
         if (!data) {
           return;
         }
-        console.log(data);
         setUsersMealPlans(data);
         setActiveMealPlan(data[0]);
         if (data.length > 0) {
@@ -274,7 +272,6 @@ export function DashboardUI({ user }: DashboardUIProps) {
   }, [trackDate]);
 
   useEffect(() => {
-    console.log('updating');
     const getDetails = async () => {
       const data = await getData({
         url: '/api/get-user-details'
@@ -306,7 +303,6 @@ export function DashboardUI({ user }: DashboardUIProps) {
       date: planDate
     };
 
-    console.log('Plan date', planDate);
     const toastId = toast.loading('Saving meal plan');
 
     try {
@@ -363,7 +359,6 @@ export function DashboardUI({ user }: DashboardUIProps) {
         special_instructions: query
       });
 
-      console.log('result', result.data);
       var data = result.data.body;
 
       const mealplan: MealPlan = {
