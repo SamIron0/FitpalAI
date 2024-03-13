@@ -562,8 +562,10 @@ export function DashboardUI({ user }: DashboardUIProps) {
                             }}
                           >
                             <Button
+                                                            type="submit"
+
                               onClick={() => setGenerateMode(true)}
-                              className="bg-blue-600  hover:bg-blue-500 w-full max-w-lg "
+                              className="bg-blue-600  hover:bg-blue-500 mx-auto max-w-md "
                             >
                               Generate
                             </Button>
