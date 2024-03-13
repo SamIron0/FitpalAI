@@ -557,7 +557,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
                                 disabled={isLoading}
                                 onChange={(e) => setInput(e.target.value)}
                                 className=" px-2 pl-4 w-full h-[60px] focus:outline-none bg-zinc-800 border-[1px] border-zinc-600 text-md rounded-md "
-                                placeholder="Ask about a meal"
+                                placeholder="Enter special instructions(optional)"
                               />
                               <button
                                 type="submit"
