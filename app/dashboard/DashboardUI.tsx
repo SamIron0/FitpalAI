@@ -589,26 +589,26 @@ export function DashboardUI({ user }: DashboardUIProps) {
                           <span className="px-2 pr-3 mb-2">Try</span>
                           <SuggestionPill
                             onclick={() => {
-                              onPillClick('Include chicken today');
+                              onPillClick('Include cajun shrimp');
                             }}
-                            icon={'🥘'}
-                            caption="Include chicken today"
+                            icon={'🦐'}
+                            caption="Include cajun shrimp"
                           />
                           <SuggestionPill
                             onclick={() => {
-                              onPillClick('Include pasta today');
+                              onPillClick('Include alfredo pasta');
                             }}
                             icon={'🍜'}
-                            caption="Include pasta today"
+                            caption="Include alfredo pasta"
                           />
                           <SuggestionPill
                             onclick={() => {
                               onPillClick(
-                                'Make me a plan with easy prep meals'
+                                'Air fryer recipe for lunch and dinner'
                               );
                             }}
-                            icon={'🍔'}
-                            caption="Make me a plan with easy prep meals"
+                            icon={'🥓'}
+                            caption="Air fryer recipe for lunch and dinner"
                           />
                         </div>
                       )}
@@ -790,7 +790,8 @@ export function DashboardUI({ user }: DashboardUIProps) {
                         protein: createdMealplan?.macros.protein || 0,
                         fat: createdMealplan?.macros.fat || 0,
                         carbs: createdMealplan?.macros.carbs || 0,
-                        total_calories: createdMealplan?.macros.total_calories || 0
+                        total_calories:
+                          createdMealplan?.macros.total_calories || 0
                       }}
                     />
                   </div>
