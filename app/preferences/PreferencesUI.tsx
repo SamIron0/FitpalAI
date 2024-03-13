@@ -86,7 +86,7 @@ export function PreferencesUI({ id }: { id: string | undefined }) {
         protein: Number(values.protein),
         carbs: Number(values.carbs),
         fat: Number(values.fat),
-        calories:
+        total_calories:
           Number(values.protein) * 4 +
           Number(values.carbs) * 4 +
           Number(values.fat) * 9
