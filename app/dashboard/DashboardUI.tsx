@@ -561,6 +561,15 @@ export function DashboardUI({ user }: DashboardUIProps) {
                               fetchData(input);
                             }}
                           >
+                            <Button
+                              onClick={() => setGenerateMode(true)}
+                              className="bg-blue-600  hover:bg-blue-500 w-full max-w-lg "
+                            >
+                              Generate
+                            </Button>
+                            <span className="py-4 w-full flex justify-center items-center text-sm text-zinc-400">
+                              or
+                            </span>
                             <div className="relative flex items-center justify-center w-full">
                               <input
                                 value={input}
