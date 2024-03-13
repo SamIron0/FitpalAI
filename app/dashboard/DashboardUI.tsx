@@ -301,7 +301,8 @@ export function DashboardUI({ user }: DashboardUIProps) {
       meals: createdMealplan.meals,
       id: createdMealplan.id,
       owner: createdMealplan.owner,
-      date: planDate
+      date: planDate,
+      macros: createdMealplan.macros
     };
 
     const toastId = toast.loading('Saving meal plan');
@@ -374,7 +375,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
               protein: parseInt(data.breakfast_protein),
               fat: parseInt(data.breakfast_fat),
               carbs: parseInt(data.breakfast_carbs),
-              calories:
+              total_calories:
                 parseInt(data.breakfast_protein) * 4 +
                 parseInt(data.breakfast_carbs) * 4 +
                 parseInt(data.breakfast_fat) * 9
@@ -387,7 +388,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
               protein: parseInt(data.lunch_protein),
               fat: parseInt(data.lunch_fat),
               carbs: parseInt(data.lunch_carbs),
-              calories:
+              total_calories:
                 parseInt(data.lunch_protein) * 4 +
                 parseInt(data.lunch_carbs) * 4 +
                 parseInt(data.lunch_fat) * 9
@@ -400,13 +401,31 @@ export function DashboardUI({ user }: DashboardUIProps) {
               protein: parseInt(data.dinner_protein),
               fat: parseInt(data.dinner_fat),
               carbs: parseInt(data.dinner_carbs),
-              calories:
+              total_calories:
                 parseInt(data.dinner_protein) * 4 +
                 parseInt(data.dinner_carbs) * 4 +
                 parseInt(data.dinner_fat) * 9
             }
           }
-        ]
+        ],
+        macros: {
+          protein:
+            parseInt(data.breakfast_protein) +
+            parseInt(data.lunch_protein) +
+            parseInt(data.dinner_protein),
+          fat:
+            parseInt(data.breakfast_fat) +
+            parseInt(data.lunch_fat) +
+            parseInt(data.dinner_fat),
+          carbs:
+            parseInt(data.breakfast_carbs) +
+            parseInt(data.lunch_carbs) +
+            parseInt(data.dinner_carbs),
+          total_calories:
+            parseInt(data.breakfast_calories) +
+            parseInt(data.lunch_calories) +
+            parseInt(data.dinner_calories)
+        }
       };
       setCreatedMealPlan(mealplan);
     } catch (error) {
@@ -491,11 +510,6 @@ export function DashboardUI({ user }: DashboardUIProps) {
   const onPillClick = (caption: string) => {
     setInput(caption);
   };
-
-  const [protein, setProtein] = useState(0);
-  const [carbs, setCarbs] = useState(0);
-  const [fat, setFats] = useState(0);
-  const [calories, setCalories] = useState(0);
   const [activeMealPlan, setActiveMealPlan] = useState<MealPlan>();
   const [generateMode, setGenerateMode] = useState(true);
   const { isSidebarOpen } = useSidebar();
@@ -612,10 +626,13 @@ export function DashboardUI({ user }: DashboardUIProps) {
                           <div className="w-full pb-4 flex flex-row">
                             <div className="flex flex-col w-full">
                               <span className="flex items-center text-md">
-                                {calories} Calories
+                                {createdMealplan?.macros?.total_calories}{' '}
+                                Calories
                               </span>
                               <span className="flex text-muted-foreground text-sm">
-                                {protein}g Protein, {fat}g Fat, {carbs}g Carbs{' '}
+                                {createdMealplan?.macros?.protein}g Protein,{' '}
+                                {createdMealplan?.macros?.fat}g Fat,{' '}
+                                {createdMealplan?.macros?.carbs}g Carbs{' '}
                               </span>
                             </div>
                             <span className="flex items-center flex-row justify-end">
@@ -768,7 +785,14 @@ export function DashboardUI({ user }: DashboardUIProps) {
               <Card className="w-full flex justify-center ">
                 {userDetails?.macros ? (
                   <div className="w-full flex justify-center py-4">
-                    <Calories macros={{ protein, fat, carbs, calories }} />
+                    <Calories
+                      macros={{
+                        protein: createdMealplan?.macros.protein || 0,
+                        fat: createdMealplan?.macros.fat || 0,
+                        carbs: createdMealplan?.macros.carbs || 0,
+                        total_calories: createdMealplan?.macros.total_calories || 0
+                      }}
+                    />
                   </div>
                 ) : (
                   <EmptyCalories onSetCalories={() => onsetCalorieClick()} />

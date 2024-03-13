@@ -13,6 +13,7 @@ export interface MealPlan {
   id: string;
   owner: string | undefined;
   date: Date | undefined;
+  macros: Macros;
 }
 
 export interface Query {
@@ -35,7 +36,7 @@ export interface Macros {
   protein: number;
   fat: number;
   carbs: number;
-  calories: number;
+  total_calories: number;
 }
 
 type Jsonb = any;
