@@ -55,7 +55,7 @@ export function MacrosSetter({ onSubmit }: MacrosSetterProps) {
       protein: userDetails?.macros?.protein.toString(),
       carbs: userDetails?.macros?.carbs.toString(),
       fat: userDetails?.macros?.fat.toString(),
-      calories: userDetails?.macros?.calories?.toString() || '0'
+      calories: userDetails?.macros?.total_calories?.toString() || '0'
     }
   });
 
@@ -94,7 +94,7 @@ export function MacrosSetter({ onSubmit }: MacrosSetterProps) {
                         ? userDetails?.macros?.carbs
                         : idx === 2
                         ? userDetails?.macros?.fat
-                        : userDetails?.macros?.calories
+                        : userDetails?.macros?.total_calories
                       )?.toString()}
                       {...field}
                     />
