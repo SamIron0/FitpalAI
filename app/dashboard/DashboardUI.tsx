@@ -371,39 +371,39 @@ export function DashboardUI({ user }: DashboardUIProps) {
             type: 'breakfast',
             foods: data.breakfast,
             macros: {
-              protein: data.breakfast_protein,
-              fat: data.breakfast_fat,
-              carbs: data.breakfast_carbs,
+              protein: parseInt(data.breakfast_protein),
+              fat: parseInt(data.breakfast_fat),
+              carbs: parseInt(data.breakfast_carbs),
               calories:
-                data.breakfast_protein * 4 +
-                data.breakfast_carbs * 4 +
-                data.breakfast_fat * 9
+                parseInt(data.breakfast_protein) * 4 +
+                parseInt(data.breakfast_carbs) * 4 +
+                parseInt(data.breakfast_fat) * 9
             }
           },
           {
             type: 'lunch',
             foods: data.lunch,
             macros: {
-              protein: data.lunch_protein,
-              fat: data.lunch_fat,
-              carbs: data.lunch_carbs,
+              protein: parseInt(data.lunch_protein),
+              fat: parseInt(data.lunch_fat),
+              carbs: parseInt(data.lunch_carbs),
               calories:
-                data.lunch_protein * 4 +
-                data.lunch_carbs * 4 +
-                data.lunch_fat * 9
+                parseInt(data.lunch_protein) * 4 +
+                parseInt(data.lunch_carbs) * 4 +
+                parseInt(data.lunch_fat) * 9
             }
           },
           {
             type: 'dinner',
             foods: data.dinner,
             macros: {
-              protein: data.dinner_protein,
-              fat: data.dinner_fat,
-              carbs: data.dinner_carbs,
+              protein: parseInt(data.dinner_protein),
+              fat: parseInt(data.dinner_fat),
+              carbs: parseInt(data.dinner_carbs),
               calories:
-                data.dinner_protein * 4 +
-                data.dinner_carbs * 4 +
-                data.dinner_fat * 9
+                parseInt(data.dinner_protein) * 4 +
+                parseInt(data.dinner_carbs) * 4 +
+                parseInt(data.dinner_fat) * 9
             }
           }
         ]
