@@ -362,7 +362,12 @@ export function DashboardUI({ user }: DashboardUIProps) {
         userName: 'tinubu',
         special_instructions: query
       });
-      console.log(result);
+
+      console.log('result', result.data);
+      console.log('result body', result.data.body);
+      console.log('3', JSON.parse(result.data.body));
+      var parsedData = JSON.parse(result.data.body);
+
 
       /*
       mealplan = {
@@ -542,7 +547,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
                       {!createdMealplan?.meals && !isLoading && (
                         <div className="flex w-full  flex-col justify-center pb-3">
                           <p className="text-4xl flex justify-center py-10 text-semibold ">
-                            Create a Plan
+                            Create a Mealplan
                           </p>
 
                           <form
