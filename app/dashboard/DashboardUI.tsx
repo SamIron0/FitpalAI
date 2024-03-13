@@ -375,10 +375,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
               protein: parseInt(data.breakfast_protein),
               fat: parseInt(data.breakfast_fat),
               carbs: parseInt(data.breakfast_carbs),
-              total_calories:
-                parseInt(data.breakfast_protein) * 4 +
-                parseInt(data.breakfast_carbs) * 4 +
-                parseInt(data.breakfast_fat) * 9
+              total_calories: parseInt(data.breakfast_calories)
             }
           },
           {
@@ -388,10 +385,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
               protein: parseInt(data.lunch_protein),
               fat: parseInt(data.lunch_fat),
               carbs: parseInt(data.lunch_carbs),
-              total_calories:
-                parseInt(data.lunch_protein) * 4 +
-                parseInt(data.lunch_carbs) * 4 +
-                parseInt(data.lunch_fat) * 9
+              total_calories: parseInt(data.lunch_calories)
             }
           },
           {
@@ -401,10 +395,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
               protein: parseInt(data.dinner_protein),
               fat: parseInt(data.dinner_fat),
               carbs: parseInt(data.dinner_carbs),
-              total_calories:
-                parseInt(data.dinner_protein) * 4 +
-                parseInt(data.dinner_carbs) * 4 +
-                parseInt(data.dinner_fat) * 9
+              total_calories: parseInt(data.dinner_calories)
             }
           }
         ],
@@ -562,10 +553,9 @@ export function DashboardUI({ user }: DashboardUIProps) {
                             }}
                           >
                             <Button
-                                                            type="submit"
-
+                              type="submit"
                               onClick={() => setGenerateMode(true)}
-                              className="bg-blue-600  hover:bg-blue-500 mx-auto max-w-md "
+                              className="bg-blue-600  hover:bg-blue-500 flex mx-auto max-w-md "
                             >
                               Generate
                             </Button>
