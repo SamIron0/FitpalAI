@@ -3,9 +3,9 @@ import { Json } from './types_db';
 export type MealType = 'breakfast' | 'lunch' | 'dinner' | 'snack';
 export interface Meal {
   type: MealType;
-  title: string | null;
+  foods: string[] | null;
   ingredients?: string[] | null;
-  steps?: string[] | null;
+  instructions?: string[] | null;
   macros?: Macros | null;
 }
 export interface MealPlan {

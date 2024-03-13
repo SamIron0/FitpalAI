@@ -364,64 +364,55 @@ export function DashboardUI({ user }: DashboardUIProps) {
       });
 
       console.log('result', result.data);
-      console.log('result body', result.data.body);
-      console.log('3', JSON.parse(result.data.body));
-      var parsedData = JSON.parse(result.data.body);
+      var data = result.data.body;
 
-
-      /*
-      mealplan = {
-        id: "",
-        owner: "",
+      const mealplan: MealPlan = {
+        id: '',
+        owner: '',
         date: planDate,
         meals: [
           {
-            type: "breakfast",
-            title: parsedData.breakfast.title,
-            macros: parsedData.breakfast.macros,
+            type: 'breakfast',
+            foods: data.breakfast,
+            macros: {
+              protein: data.breakfast_protein,
+              fat: data.breakfast_fat,
+              carbs: data.breakfast_carbs,
+              calories:
+                data.breakfast_protein * 4 +
+                data.breakfast_carbs * 4 +
+                data.breakfast_fat * 9
+            }
           },
           {
-            type: "lunch",
-            title: parsedData.lunch.title,
-            macros: parsedData.lunch.macros,
+            type: 'lunch',
+            foods: data.lunch,
+            macros: {
+              protein: data.lunch_protein,
+              fat: data.lunch_fat,
+              carbs: data.lunch_carbs,
+              calories:
+                data.lunch_protein * 4 +
+                data.lunch_carbs * 4 +
+                data.lunch_fat * 9
+            }
           },
           {
-            type: "dinner",
-            title: parsedData.dinner.title,
-            macros: parsedData.dinner.macros,
-          },
-        ],
+            type: 'dinner',
+            foods: data.dinner,
+            macros: {
+              protein: data.dinner_protein,
+              fat: data.dinner_fat,
+              carbs: data.dinner_carbs,
+              calories:
+                data.dinner_protein * 4 +
+                data.dinner_carbs * 4 +
+                data.dinner_fat * 9
+            }
+          }
+        ]
       };
       setCreatedMealPlan(mealplan);
-
-      // set total calories
-      setCalories(
-        mealplan.meals.reduce((accum: number, meal: any) => {
-          return (
-            accum +
-            (meal.macros?.carbs * 4 +
-              meal.macros?.fat * 9 +
-              meal.macros?.protein * 4)
-          );
-        }, 0)
-      );
-      setProtein(
-        mealplan.meals.reduce((accum: number, meal: any) => {
-          return accum + meal.macros?.protein;
-        }, 0)
-      );
-
-      setCarbs(
-        mealplan.meals.reduce((accum: number, meal: any) => {
-          return accum + meal.macros?.carbs;
-        }, 0)
-      );
-
-      setFats(
-        mealplan.meals.reduce((accum: number, meal: any) => {
-          return accum + meal.macros?.fat;
-        }, 0)
-      );*/
     } catch (error) {
       console.log(error);
     } finally {
@@ -459,37 +450,36 @@ export function DashboardUI({ user }: DashboardUIProps) {
     const results: any[] = [];
     createdMealplan?.meals?.forEach((meal) => {
       {
-        meal.title &&
-          results.push(
-            <Card className="mb-4 mx-auto p-4 w-full">
-              <div className="flex flex-row w-full items-center justify-center">
-                <CardTitle className="text-muted-foreground">
-                  {meal.type}
-                </CardTitle>
-                <div className="flex w-full justify-end ">
-                  <div className="flex justify-end">
-                    <button
-                      disabled={isLoading}
-                      onClick={() => likeMeal(meal)}
-                      className="inline-flex mx-1 items-center justify-center w-9 h-9 mr-2 text-indigo-100 transition-colors duration-150 bg-blue-500 rounded-lg focus:shadow-outline hover:bg-blue-700"
-                    >
-                      <FaRegHeart className="w-4 h-4" />
-                    </button>
-                  </div>
+        results.push(
+          <Card className="mb-4 mx-auto p-4 w-full">
+            <div className="flex flex-row w-full items-center justify-center">
+              <CardTitle className="text-muted-foreground">
+                {meal.type}
+              </CardTitle>
+              <div className="flex w-full justify-end ">
+                <div className="flex justify-end">
+                  <button
+                    disabled={isLoading}
+                    onClick={() => likeMeal(meal)}
+                    className="inline-flex mx-1 items-center justify-center w-9 h-9 mr-2 text-indigo-100 transition-colors duration-150 bg-blue-500 rounded-lg focus:shadow-outline hover:bg-blue-700"
+                  >
+                    <FaRegHeart className="w-4 h-4" />
+                  </button>
                 </div>
               </div>
-              <div>{meal.title}</div>
-              <div>
-                {meal.macros?.carbs &&
-                  meal.macros?.fat &&
-                  meal.macros?.protein &&
-                  meal.macros.carbs * 4 +
-                    meal.macros.fat * 9 +
-                    meal.macros.protein * 4}{' '}
-                Calories
-              </div>
-            </Card>
-          );
+            </div>
+            <div>{meal.foods}</div>
+            <div>
+              {meal.macros?.carbs &&
+                meal.macros?.fat &&
+                meal.macros?.protein &&
+                meal.macros.carbs * 4 +
+                  meal.macros.fat * 9 +
+                  meal.macros.protein * 4}{' '}
+              Calories
+            </div>
+          </Card>
+        );
       }
     });
     return results;
@@ -712,14 +702,14 @@ export function DashboardUI({ user }: DashboardUIProps) {
                       <div>
                         {activeMealPlan?.meals.map((meal) => {
                           return (
-                            meal.title && (
+                            meal && (
                               <Card className="mb-4 w-full">
                                 <div className="w-full flex justify-between flex-row">
                                   <div className="flex p-4 flex-col ">
                                     <div className="flex pb-2 flex-row w-full items-center  text-muted-foreground">
                                       {meal.type}
                                     </div>
-                                    <div>{meal.title}</div>
+                                    <div>{meal.foods}</div>
                                     <div className="flex pt-2 flex-col w-full">
                                       {meal.macros && (
                                         <span className="flex items-center text-md">
