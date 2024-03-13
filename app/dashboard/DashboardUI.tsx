@@ -413,9 +413,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
             parseInt(data.lunch_carbs) +
             parseInt(data.dinner_carbs),
           total_calories:
-            parseInt(data.breakfast_calories) +
-            parseInt(data.lunch_calories) +
-            parseInt(data.dinner_calories)
+            parseInt(data.total_calories)
         }
       };
       setCreatedMealPlan(mealplan);
@@ -555,7 +553,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
                             <Button
                               type="submit"
                               onClick={() => setGenerateMode(true)}
-                              className="bg-blue-600  hover:bg-blue-500 flex mx-auto max-w-md "
+                              className="bg-blue-600  hover:bg-blue-500 flex mx-auto max-w-lg "
                             >
                               Generate
                             </Button>
