@@ -358,7 +358,9 @@ export function DashboardUI({ user }: DashboardUIProps) {
         userData:
           'The users name is Samuel, he eats 88g of protein, 120g of carbs,9g of fats and 2505 calories everyday.',
         userName: 'tinubu',
-        special_instructions: query
+        special_instructions: query,
+        userDetails: user
+        
       });
 
       var data = result.data.body;
@@ -553,7 +555,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
                             <Button
                               type="submit"
                               onClick={() => setGenerateMode(true)}
-                              className="bg-blue-600  hover:bg-blue-500 flex mx-auto max-w-lg "
+                              className="bg-blue-600  hover:bg-blue-500 flex  mx-auto w-full "
                             >
                               Generate
                             </Button>
