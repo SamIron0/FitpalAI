@@ -355,8 +355,6 @@ export function DashboardUI({ user }: DashboardUIProps) {
 
     try {
       var result = await axios.post(ngrokLink, {
-        userData:
-          'The users name is Samuel, he eats 88g of protein, 120g of carbs,9g of fats and 2505 calories everyday.',
         userName: 'tinubu',
         special_instructions: query,
         user: user
