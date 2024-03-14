@@ -14,7 +14,7 @@ import {
 } from 'react-icons/tb';
 
 export const categories = [
-/*  {
+  {
     label: 'Diet Type',
     icon: TbCar,
     description: 'View All Available Destinations!'
@@ -23,7 +23,7 @@ export const categories = [
     label: 'Allergies',
     icon: TbShoppingCart,
     description: 'This property is has windmills!'
-  },*/
+  },
   {
     label: 'Macros',
     icon: MdFlight,
