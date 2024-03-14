@@ -345,8 +345,8 @@ export function DashboardUI({ user }: DashboardUIProps) {
     const user = {
       allergies: userDetails?.allergies || [],
       macros: userDetails?.macros,
-      diet_type: userDetails?.diet_type,
-      geolocation: userDetails?.geolocation
+      diet_type: userDetails?.diet_type
+      //      geolocation: userDetails?.geolocation
     };
 
     input != '' ? setQueryResultPageHeader(input) : null;
@@ -371,47 +371,44 @@ export function DashboardUI({ user }: DashboardUIProps) {
             type: 'breakfast',
             foods: data.breakfast,
             macros: {
-              protein: parseInt(data.breakfast_protein_calories),
-              fat: parseInt(data.breakfast_fat_calories),
-              carbs: parseInt(data.breakfast_carbs_calories),
-              total_calories: parseInt(data.breakfast_calories)
+              protein: data.breakfast_protein,
+              fat: data.breakfast_fat,
+              carbs: data.breakfast_carbs,
+              total_calories:
+                data.breakfast_protein +
+                data.breakfast_fat +
+                data.breakfast_carbs
             }
           },
           {
             type: 'lunch',
             foods: data.lunch,
             macros: {
-              protein: parseInt(data.lunch_protein_calories),
-              fat: parseInt(data.lunch_fat_calories),
-              carbs: parseInt(data.lunch_carbs_calories),
-              total_calories: parseInt(data.lunch_calories)
+              protein: data.lunch_protein,
+              fat: data.lunch_fat,
+              carbs: data.lunch_carbs,
+              total_calories:
+                data.lunch_protein + data.lunch_fat + data.lunch_carbs
             }
           },
           {
             type: 'dinner',
             foods: data.dinner,
             macros: {
-              protein: parseInt(data.dinner_protein_calories),
-              fat: parseInt(data.dinner_fat_calories),
-              carbs: parseInt(data.dinner_carbs_calories),
-              total_calories: parseInt(data.dinner_calories)
+              protein: data.dinner_protein,
+              fat: data.dinner_fat,
+              carbs: data.dinner_carbs,
+              total_calories:
+                data.dinner_protein + data.dinner_fat + data.dinner_carbs
             }
           }
         ],
         macros: {
           protein:
-            parseInt(data.breakfast_protein_calories) +
-            parseInt(data.lunch_protein_calories) +
-            parseInt(data.dinner_protein_calories),
-          fat:
-            parseInt(data.breakfast_fat_calories) +
-            parseInt(data.lunch_fat_calories) +
-            parseInt(data.dinner_fat_calories),
-          carbs:
-            parseInt(data.breakfast_carbs_calories) +
-            parseInt(data.lunch_carbs_calories) +
-            parseInt(data.dinner_carbs_calories),
-          total_calories: parseInt(data.total_calories)
+            data.breakfast_protein + data.lunch_protein + data.dinner_protein,
+          fat: data.breakfast_fat + data.lunch_fat + data.dinner_fat,
+          carbs: data.breakfast_carbs + data.lunch_carbs + data.dinner_carbs,
+          total_calories: data.total_calories
         }
       };
       setCreatedMealPlan(mealplan);
