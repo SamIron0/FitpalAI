@@ -467,15 +467,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
                   index === array.length - 1 ? food : food + ', '
                 )}
             </div>
-            <div>
-              {meal.macros?.carbs &&
-                meal.macros?.fat &&
-                meal.macros?.protein &&
-                meal.macros.carbs * 4 +
-                  meal.macros.fat * 9 +
-                  meal.macros.protein * 4}{' '}
-              Calories
-            </div>
+            <div>{meal.macros?.total_calories} Calories</div>
           </Card>
         );
       }
