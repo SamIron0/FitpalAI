@@ -344,11 +344,11 @@ export function DashboardUI({ user }: DashboardUIProps) {
     let mealplan: MealPlan; //await getData(query);
     const user: UserDetails = {
       allergies: userDetails?.allergies || [],
-      goals: userDetails?.goals || [],
-      weight: userDetails?.weight,
-      age: userDetails?.age,
-      macros: userDetails?.macros
+      macros: userDetails?.macros,
+      diet_type: userDetails?.diet_type,
+      geolocation: userDetails?.geolocation,
     };
+    
     input != '' ? setQueryResultPageHeader(input) : null;
     var ngrokLink =
       'https://ea6d-2604-3d09-aa7a-95e0-9df7-c484-1877-40db.ngrok-free.app/execute-script';
@@ -359,8 +359,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
           'The users name is Samuel, he eats 88g of protein, 120g of carbs,9g of fats and 2505 calories everyday.',
         userName: 'tinubu',
         special_instructions: query,
-        user: user
-        
+        user: user 
       });
 
       var data = result.data.body;
