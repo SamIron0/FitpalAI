@@ -374,10 +374,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
               protein: data.breakfast_protein,
               fat: data.breakfast_fat,
               carbs: data.breakfast_carbs,
-              total_calories:
-                data.breakfast_protein +
-                data.breakfast_fat +
-                data.breakfast_carbs
+              total_calories: data.breakfast_calories
             }
           },
           {
@@ -387,8 +384,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
               protein: data.lunch_protein,
               fat: data.lunch_fat,
               carbs: data.lunch_carbs,
-              total_calories:
-                data.lunch_protein + data.lunch_fat + data.lunch_carbs
+              total_calories: data.lunch_calories
             }
           },
           {
@@ -398,16 +394,14 @@ export function DashboardUI({ user }: DashboardUIProps) {
               protein: data.dinner_protein,
               fat: data.dinner_fat,
               carbs: data.dinner_carbs,
-              total_calories:
-                data.dinner_protein + data.dinner_fat + data.dinner_carbs
+              total_calories: data.dinner_calories
             }
           }
         ],
         macros: {
-          protein:
-            data.breakfast_protein + data.lunch_protein + data.dinner_protein,
-          fat: data.breakfast_fat + data.lunch_fat + data.dinner_fat,
-          carbs: data.breakfast_carbs + data.lunch_carbs + data.dinner_carbs,
+          protein: data.total_protein,
+          fat: data.total_fat,
+          carbs: data.total_carbs,
           total_calories: data.total_calories
         }
       };
