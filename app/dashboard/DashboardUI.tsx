@@ -371,9 +371,9 @@ export function DashboardUI({ user }: DashboardUIProps) {
             type: 'breakfast',
             foods: data.breakfast,
             macros: {
-              protein: parseInt(data.breakfast_protein),
-              fat: parseInt(data.breakfast_fat),
-              carbs: parseInt(data.breakfast_carbs),
+              protein: parseInt(data.breakfast_protein_calories),
+              fat: parseInt(data.breakfast_fat_calories),
+              carbs: parseInt(data.breakfast_carbs_calories),
               total_calories: parseInt(data.breakfast_calories)
             }
           },
@@ -381,9 +381,9 @@ export function DashboardUI({ user }: DashboardUIProps) {
             type: 'lunch',
             foods: data.lunch,
             macros: {
-              protein: parseInt(data.lunch_protein),
-              fat: parseInt(data.lunch_fat),
-              carbs: parseInt(data.lunch_carbs),
+              protein: parseInt(data.lunch_protein_calories),
+              fat: parseInt(data.lunch_fat_calories),
+              carbs: parseInt(data.lunch_carbs_calories),
               total_calories: parseInt(data.lunch_calories)
             }
           },
@@ -391,26 +391,26 @@ export function DashboardUI({ user }: DashboardUIProps) {
             type: 'dinner',
             foods: data.dinner,
             macros: {
-              protein: parseInt(data.dinner_protein),
-              fat: parseInt(data.dinner_fat),
-              carbs: parseInt(data.dinner_carbs),
+              protein: parseInt(data.dinner_protein_calories),
+              fat: parseInt(data.dinner_fat_calories),
+              carbs: parseInt(data.dinner_carbs_calories),
               total_calories: parseInt(data.dinner_calories)
             }
           }
         ],
         macros: {
           protein:
-            parseInt(data.breakfast_protein) +
-            parseInt(data.lunch_protein) +
-            parseInt(data.dinner_protein),
+            parseInt(data.breakfast_protein_calories) +
+            parseInt(data.lunch_protein_calories) +
+            parseInt(data.dinner_protein_calories),
           fat:
-            parseInt(data.breakfast_fat) +
-            parseInt(data.lunch_fat) +
-            parseInt(data.dinner_fat),
+            parseInt(data.breakfast_fat_calories) +
+            parseInt(data.lunch_fat_calories) +
+            parseInt(data.dinner_fat_calories),
           carbs:
-            parseInt(data.breakfast_carbs) +
-            parseInt(data.lunch_carbs) +
-            parseInt(data.dinner_carbs),
+            parseInt(data.breakfast_carbs_calories) +
+            parseInt(data.lunch_carbs_calories) +
+            parseInt(data.dinner_carbs_calories),
           total_calories: parseInt(data.total_calories)
         }
       };
