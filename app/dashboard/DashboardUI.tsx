@@ -338,10 +338,22 @@ export function DashboardUI({ user }: DashboardUIProps) {
   const onsetCalorieClick = () => {
     router.push('/preferences');
   };
-  //call aws to create the initial meal plan
+  const getUserLocation = async () => {
+    try {
+      const data = await fetch('/api/getLocation');
+      if (!data) {
+        console.log('Error fetching location');
+        return;
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const fetchData = async (query: string) => {
+    console.log('fetching user location');
+    console.log(getUserLocation());
     setIsLoading(true);
-    let mealplan: MealPlan; //await getData(query);
+    let mealplan: MealPlan;
     const user_profile = {
       allergies: userDetails?.allergies || [],
       macros: userDetails?.macros,
