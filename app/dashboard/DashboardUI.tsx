@@ -342,7 +342,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
   const fetchData = async (query: string) => {
     setIsLoading(true);
     let mealplan: MealPlan; //await getData(query);
-    const user = {
+    const user_profile = {
       allergies: userDetails?.allergies || [],
       macros: userDetails?.macros,
       diet_type: userDetails?.diet_type
@@ -355,9 +355,9 @@ export function DashboardUI({ user }: DashboardUIProps) {
 
     try {
       var result = await axios.post(ngrokLink, {
-        userName: 'tinubu',
+        userName: user?.email,
         special_instructions: query,
-        user: user
+        user: user_profile
       });
 
       var data = result.data.body;
