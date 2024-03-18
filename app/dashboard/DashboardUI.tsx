@@ -187,8 +187,10 @@ export function DashboardUI({ user }: DashboardUIProps) {
     router.push('/preferences');
   };
   useEffect(() => {
+    console.log('getting user location');
     const getUserLocation = async () => {
       try {
+        console.log('trying');
         const data = await fetch('/api/getLocation');
         if (!data) {
           console.log('Error fetching location');
@@ -199,13 +201,12 @@ export function DashboardUI({ user }: DashboardUIProps) {
       } catch (error) {
         console.log(error);
       }
-
-      await getUserLocation();
     };
+    getUserLocation();
   }, []);
   const fetchData = async (query: string) => {
     setIsLoading(true);
-    console.log('userloc', user_location)
+    console.log('userloc', user_location);
     const user_profile = {
       allergies: userDetails?.allergies || [],
       macros: userDetails?.macros,
