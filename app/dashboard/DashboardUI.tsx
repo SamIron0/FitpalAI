@@ -351,14 +351,15 @@ export function DashboardUI({ user }: DashboardUIProps) {
   };
   const fetchData = async (query: string) => {
     console.log('fetching user location');
-    console.log(getUserLocation());
+    var location = await getUserLocation();
     setIsLoading(true);
     let mealplan: MealPlan;
     const user_profile = {
       allergies: userDetails?.allergies || [],
       macros: userDetails?.macros,
-      diet_type: userDetails?.diet_type
-      //      geolocation: userDetails?.geolocation
+      diet_type: userDetails?.diet_type,
+      geolocation: location,
+      user_name: user?.email
     };
 
     input != '' ? setQueryResultPageHeader(input) : null;
@@ -367,9 +368,8 @@ export function DashboardUI({ user }: DashboardUIProps) {
 
     try {
       var result = await axios.post(ngrokLink, {
-        userName: user?.email,
-        special_instructions: query,
-        user: user_profile
+        user: user_profile,
+        special_instructions: query
       });
 
       var data = result.data.body;
