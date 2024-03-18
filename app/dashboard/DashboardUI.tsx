@@ -73,6 +73,7 @@ import { Calendar } from '@/components/ui/calendar';
 import { useRouter } from 'next/navigation';
 import { EmptyCalories } from '@/components/EmptyCalories';
 import Announcement from '@/components/Announcement';
+import { getUserDetails } from '../supabase-server';
 
 export const addAllergies = (allergies: string[]) => {
   if (allergies.length > 0) {
@@ -84,21 +85,13 @@ interface DashboardUIProps {
   user: User | undefined;
 }
 export function DashboardUI({ user }: DashboardUIProps) {
-  const [sorting, setSorting] = React.useState<SortingState>([]);
-  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
-    []
-  );
-  const [columnVisibility, setColumnVisibility] =
-    React.useState<VisibilityState>({});
-  const [rowSelection, setRowSelection] = React.useState({});
-
   const router = useRouter();
-
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [completed, setCompleted] = useState<boolean>(false);
   const [createdMealplan, setCreatedMealPlan] = useState<MealPlan | undefined>(
     undefined
   );
+  const [user_location, setUserLocation] = useState({});
   const [usersMealPlans, setUsersMealPlans] = useState<MealPlan[]>([]);
   const { userDetails, setUserDetails } = useUserDetails();
   const [trackDate, setTrackDate] = React.useState<Date>(new Date());
@@ -193,21 +186,24 @@ export function DashboardUI({ user }: DashboardUIProps) {
   const onsetCalorieClick = () => {
     router.push('/preferences');
   };
-  async function getUserLocation() {
-    try {
-      const data = await fetch('/api/getLocation');
-      if (!data) {
-        console.log('Error fetching location');
-        return;
+  useEffect(() => {
+    const getUserLocation = async () => {
+      try {
+        const data = await fetch('/api/getLocation');
+        if (!data) {
+          console.log('Error fetching location');
+          return;
+        }
+        console.log(data);
+        setUserLocation(data);
+      } catch (error) {
+        console.log(error);
       }
-      return data;
-    } catch (error) {
-      console.log(error);
-    }
-  }
+
+      getUserLocation();
+    };
+  });
   const fetchData = async (query: string) => {
-    //console.log('fetching user location');
-    const location = await getUserLocation();
     setIsLoading(true);
     const user_profile = {
       allergies: userDetails?.allergies || [],
