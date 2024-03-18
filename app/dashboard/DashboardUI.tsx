@@ -358,7 +358,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
       allergies: userDetails?.allergies || [],
       macros: userDetails?.macros,
       diet_type: userDetails?.diet_type,
-      geolocation: location,
+      geolocation: location.region_name,
       user_name: user?.email
     };
 
