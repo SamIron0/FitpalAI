@@ -348,17 +348,18 @@ export function DashboardUI({ user }: DashboardUIProps) {
     } catch (error) {
       console.log(error);
     }
+    return data;
   };
   const fetchData = async (query: string) => {
-    console.log('fetching user location');
-    var location = await getUserLocation();
+    //console.log('fetching user location');
+    const location = await getUserLocation();
     setIsLoading(true);
     let mealplan: MealPlan;
     const user_profile = {
       allergies: userDetails?.allergies || [],
       macros: userDetails?.macros,
       diet_type: userDetails?.diet_type,
-      geolocation: location.region_name,
+      geolocation: location,
       user_name: user?.email
     };
 
