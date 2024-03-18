@@ -202,7 +202,7 @@ export function DashboardUI({ user }: DashboardUIProps) {
 
       await getUserLocation();
     };
-  });
+  }, []);
   const fetchData = async (query: string) => {
     setIsLoading(true);
     console.log('userloc', user_location)
