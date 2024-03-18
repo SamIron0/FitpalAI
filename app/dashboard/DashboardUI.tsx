@@ -200,11 +200,12 @@ export function DashboardUI({ user }: DashboardUIProps) {
         console.log(error);
       }
 
-      getUserLocation();
+      await getUserLocation();
     };
   });
   const fetchData = async (query: string) => {
     setIsLoading(true);
+    console.log('userloc', user_location)
     const user_profile = {
       allergies: userDetails?.allergies || [],
       macros: userDetails?.macros,
